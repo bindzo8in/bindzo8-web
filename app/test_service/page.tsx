@@ -43,7 +43,6 @@ const features: Feature[] = [
 ];
 
 export default function Page() {
-    console.log("Features:", features)
     return (
         <MarketingSection
             title="Social Media Marketing"

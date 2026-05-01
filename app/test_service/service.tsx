@@ -29,7 +29,6 @@ export function MarketingSection({
   features,
   className = "",
 }: MarketingSectionProps) {
-    console.log(features)
   return (
     <div className={`min-h-screen bg-white font-kumbh ${className}`}>
       <section

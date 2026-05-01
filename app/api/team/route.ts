@@ -45,9 +45,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    console.log(Object.keys(prisma));
     const body = await request.json()
-    console.log("Team data: ",body);
     const item = await prisma.teamMember.create({
       data: {
         name: body.name,

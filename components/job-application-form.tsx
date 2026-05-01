@@ -70,7 +70,6 @@ export function JobApplicationForm() {
     });
 
     if (!res.ok) {
-      console.log(res)
       throw new Error("Resume upload failed");
     }
 
@@ -82,7 +81,6 @@ export function JobApplicationForm() {
 
   const onSubmit = async (values: FormValues) => {
     const uploadedResume = await uploadResume(values.resume);
-    console.log(uploadedResume);
 
 
     const payload = {
@@ -96,7 +94,6 @@ export function JobApplicationForm() {
       resumePublicId: uploadedResume.publicId,
     };
 
-    console.log(payload);
     
     const admin_mail = await sendCareerAdminMail({ ...payload, resumeFileName: uploadedResume.publicId, to: "bindzo8in@gmail.com", subject: "New Application" })
     

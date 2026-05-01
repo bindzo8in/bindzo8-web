@@ -44,7 +44,6 @@ export async function POST(request: Request) {
   }
 
   try {
-    console.log('prisma',prisma.client)
     const body = await request.json()
     const item = await prisma.client.create({
       data: {

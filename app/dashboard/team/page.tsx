@@ -61,7 +61,6 @@ export default function TeamPage() {
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
       })
-      console.log(res)
       if (res.ok) {
         setModalOpen(false)
         setRefreshKey(prev => prev + 1)

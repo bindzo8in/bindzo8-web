@@ -73,7 +73,6 @@ export default function ContactForm() {
     })
 
     async function onSubmit(values: FormValues) {
-        console.log(values)
         await sendContactMails(values);
         alert('Form submitted! Check console for details.')
     }
