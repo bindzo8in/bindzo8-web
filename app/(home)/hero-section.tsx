@@ -60,7 +60,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* scroll indicator */}
-        <motion.div
+        {/* <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function HeroSection() {
           <span className="text-[rgba(122,122,124,0.918)] text-xs font-kumbh tracking-widest uppercase">
             Scroll Down
           </span>
-        </motion.div>
+        </motion.div> */}
 
       </section>
     </>

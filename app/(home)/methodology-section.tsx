@@ -14,7 +14,10 @@ export default function MethodologySection() {
 
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    // Only run the complex SVG motion path animation on screens wider than md (768px)
+    mm.add("(min-width: 768px)", () => {
       /**
        * IMPORTANT:
        * Replace selectors below if your exported SVG ids are different.
@@ -25,9 +28,6 @@ export default function MethodologySection() {
        * #spin
        * #step
        * #hole
-       *
-       * If Figma exported names differently:
-       * inspect DOM and rename selectors.
        */
 
       const ball = wrapRef.current?.querySelector("#ball");
@@ -36,8 +36,6 @@ export default function MethodologySection() {
       const spin = wrapRef.current?.querySelector("#spin");
 
       if (!ball || !logo || !spin || !ballWrap) return;
-
-
 
       gsap.set(ballWrap, {
         force3D: true,
@@ -54,30 +52,10 @@ export default function MethodologySection() {
         transformOrigin: "50% 50%",
       });
 
-      // gsap.to(ball, {
-      //   rotate: 360,
-      //   repeat: -1,
-      //   ease: "none",
-      //   duration: 1.4
-      // });
-
-      // gsap.set(spin, {
-      //   transformOrigin: "50% 50%",
-      // });
-
-      const ballStartTransform = ball.getAttribute("transform") || "";
-
       const tl = gsap.timeline({
         repeat: -1,
         repeatDelay: 1,
         defaults: { ease: "none" },
-        // scrollTrigger: {
-        //   trigger: wrapRef.current,
-        //   // markers: true,
-        //   start: "top 40%",
-        //   end: "+=1500",
-        //   scrub: 1,
-        // }
       });
 
       /* =====================================
@@ -90,8 +68,6 @@ export default function MethodologySection() {
             { x: 0, y: 0 },
             { x: 170, y: 0 }
           ],
-          // curviness: 1.35,
-          // autoRotate: true,
         },
       }, ">")
       tl.to(ballWrap, {
@@ -121,7 +97,6 @@ export default function MethodologySection() {
           ]
         }
       }, ">")
-      // till this time is 2.20s
 
       tl.to(ballWrap, {
         duration: 0.2,
@@ -162,8 +137,6 @@ export default function MethodologySection() {
         }
       }, ">")
 
-      // 3.20s
-
       tl.to(ballWrap, {
         duration: 0.2,
         motionPath: {
@@ -183,8 +156,6 @@ export default function MethodologySection() {
           ]
         }
       }, ">")
-
-      //  3.60s
 
       tl.to(ballWrap, {
         duration: 0.5,
@@ -207,8 +178,6 @@ export default function MethodologySection() {
         }
       }, ">")
 
-      // 4.60s
-
       tl.to(ballWrap, {
         duration: 0.5,
         motionPath: {
@@ -219,8 +188,6 @@ export default function MethodologySection() {
           ]
         }
       }, ">");
-
-      // 5.40s
 
       tl.to(ballWrap, {
         id: "drop",
@@ -255,7 +222,6 @@ export default function MethodologySection() {
         duration: 0.1,
         motionPath: {
           path: [
-            // { x: 170, y: 1280},
             { x: 150, y: 1650 }
           ]
         },
@@ -266,7 +232,6 @@ export default function MethodologySection() {
         duration: 0.3,
         motionPath: {
           path: [
-            // { x: 170, y: 1280},
             { x: 150, y: 1650 },
             { x: 100, y: 1700 }
           ]
@@ -290,16 +255,72 @@ export default function MethodologySection() {
         2.2
       );
 
-    }, wrapRef);
+    });
 
-
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (
-    <section className="relative">
-      <div ref={wrapRef} className="w-full">
+    <section className="relative bg-[#FFF5F4] w-full font-kumbh">
+      {/* --- DESKTOP SVG VIEW (Hidden on Mobile) --- */}
+      <div ref={wrapRef} className="w-full hidden md:block">
         <MethodologySVG className="h-auto w-full" />
+      </div>
+
+      {/* --- MOBILE FALLBACK VIEW (Hidden on Desktop) --- */}
+      <div className="w-full block md:hidden px-6 py-16">
+        <h2 className="text-4xl font-bold text-[#E7325C] mb-12 text-center">
+          Our Methodology
+        </h2>
+
+        <div className="flex flex-col gap-10">
+          
+          {/* Step 1 */}
+          <div className="flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative overflow-hidden border-t-4 border-[#E7325C]">
+            <div className="w-12 h-12 rounded-full bg-[#E7325C] text-white flex items-center justify-center font-bold text-xl mb-4 shadow-md">
+              1
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-wide">
+              BRANDING
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              Branding gives your business a unique identity that builds trust,
+              attracts customers, and sets you apart. We help you create a
+              powerful brand that connects, inspires, and drives growth.
+            </p>
+          </div>
+
+          {/* Step 2 */}
+          <div className="flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative overflow-hidden border-t-4 border-[#F97316]">
+            <div className="w-12 h-12 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-xl mb-4 shadow-md">
+              2
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-wide">
+              DEVELOPMENT
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              Development drives growth, innovation, and success in business. We
+              help you build strong strategies and solutions to move your
+              business forward.
+            </p>
+          </div>
+
+          {/* Step 3 */}
+          <div className="flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative overflow-hidden border-t-4 border-[#3B82F6]">
+            <div className="w-12 h-12 rounded-full bg-[#3B82F6] text-white flex items-center justify-center font-bold text-xl mb-4 shadow-md">
+              3
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-wide">
+              MARKETING
+            </h3>
+            <p className="text-gray-600 leading-relaxed text-sm">
+              Marketing connects your brand with the right audience, builds
+              awareness, and drives sales. We help you create impact strategies
+              that attract, engage, and grow your business.
+            </p>
+          </div>
+
+        </div>
       </div>
     </section>
   );

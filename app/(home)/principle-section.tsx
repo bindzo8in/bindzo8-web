@@ -116,7 +116,7 @@ export default function PrinciplesSection() {
     <section className="min-h-screen bg-[#232323] text-white overflow-hidden relative font-kumbh">
       <div className="grid lg:grid-cols-2 min-h-screen">
         {/* LEFT SIDE */}
-        <div className="flex items-center justify-center p-8">
+        <div className="flex items-center justify-center p-4 md:p-8">
           <div
             onMouseMove={handleMove}
             onMouseEnter={() => setHovered(true)}
@@ -184,35 +184,35 @@ style={{ aspectRatio: "328.94547 / 398.49118" }}
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex flex-col justify-center px-8 lg:px-20 py-20">
-          <h2 className="text-[58px] leading-none font-bold text-[#E7325C] mb-20">
+        <div className="flex flex-col justify-center px-6 sm:px-8 lg:px-20 py-12 md:py-20">
+          <h2 className="text-4xl md:text-[58px] leading-none font-bold text-[#E7325C] mb-10 md:mb-20">
             Our Principles
           </h2>
 
-          <div className="space-y-14 max-w-[760px]">
+          <div className="space-y-10 md:space-y-14 max-w-[760px]">
             <div>
-              <h3 className="text-[32px] leading-tight font-normal text-orange-400">
+              <h3 className="text-2xl md:text-[32px] leading-tight font-normal text-orange-400">
                 Unique Design & Branding Excellence
               </h3>
-              <p className="mt-3 text-[16px] text-orange-300/90">
+              <p className="mt-3 text-[15px] md:text-[16px] text-orange-300/90">
                 Crafted to stand out and speak your brand.
               </p>
             </div>
 
             <div>
-              <h3 className="text-[32px] leading-tight font-normal text-orange-400">
+              <h3 className="text-2xl md:text-[32px] leading-tight font-normal text-orange-400">
                 Engaging UX Design
               </h3>
-              <p className="mt-3 text-[16px] text-orange-300/90">
+              <p className="mt-3 text-[15px] md:text-[16px] text-orange-300/90">
                 Built to retain visitors and achieve your business goals.
               </p>
             </div>
 
             <div>
-              <h3 className="text-[32px] leading-tight font-normal text-orange-400">
+              <h3 className="text-2xl md:text-[32px] leading-tight font-normal text-orange-400">
                 Lightning-Fast Performance
               </h3>
-              <p className="mt-3 text-[16px] text-orange-300/90">
+              <p className="mt-3 text-[15px] md:text-[16px] text-orange-300/90">
                 Optimized visuals and interactions for a smooth experience.
               </p>
             </div>

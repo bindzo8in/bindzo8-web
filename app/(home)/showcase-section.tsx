@@ -213,10 +213,10 @@ useLayoutEffect(() => {
   return (
     <section
       // ref={sectionRef}
-      className="relative min-h-[640px] flex items-center overflow-visible border border-black"
+      className="relative min-h-[640px] flex flex-col md:flex-row items-center overflow-visible py-16 md:py-0"
     >
       {/* Animated watermark */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0 border border-green-500 max-h-[350px] my-auto"
+      <div className="absolute inset-0 pointer-events-none select-none z-0 max-h-[350px] my-auto overflow-hidden md:overflow-visible"
         ref={sectionRef}
       >
         <img
@@ -228,19 +228,19 @@ useLayoutEffect(() => {
       </div>
 
       {/* LEFT — copy */}
-      <article className="relative z-10 flex-1 flex justify-center items-center px-8 lg:px-16">
-        <div className="flex flex-col gap-7 max-w-xs">
+      <article className="relative z-10 w-full md:flex-1 flex justify-center md:justify-start items-center px-8 lg:px-16 mb-12 md:mb-0">
+        <div className="flex flex-col gap-5 md:gap-7 max-w-xs text-center md:text-left items-center md:items-start w-full">
           <span className="text-[#E7325C] text-lg font-semibold tracking-wide">
             Our Products
           </span>
 
-          <h2 className="font-bold text-black text-[2.25rem] leading-tight">
+          <h2 className="font-bold text-black text-3xl md:text-[2.25rem] leading-tight">
             Latest Projects
-            <br />
-            From Our Team
+            <br className="hidden md:block" />
+            {" "}From Our Team
           </h2>
 
-          <button className="flex items-center gap-2 self-start border border-[#E7325C] text-[#E7325C] px-6 py-2.5 rounded-2xl text-sm font-medium hover:bg-[#E7325C] hover:text-white transition-all duration-300 group">
+          <button className="flex items-center gap-2 border border-[#E7325C] text-[#E7325C] px-6 py-2.5 rounded-2xl text-sm font-medium hover:bg-[#E7325C] hover:text-white transition-all duration-300 group mt-2 md:mt-0">
             View all Projects
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </button>
@@ -248,7 +248,7 @@ useLayoutEffect(() => {
       </article>
 
       {/* RIGHT — carousel */}
-      <article className="relative z-10 flex-1 flex justify-center items-center py-16 pr-4 overflow-hidden">
+      <article className="relative z-10 w-full md:flex-1 flex justify-center items-center px-4 md:px-0 md:py-16 md:pr-4 overflow-hidden">
         <Carousel
           plugins={[plugin.current]}
           opts={{ align: "center", loop: true }}
@@ -260,10 +260,10 @@ useLayoutEffect(() => {
             {slides.map((slide) => (
               <CarouselItem
                 key={slide.id}
-                className="pl-4 basis-[75%] sm:basis-[70%]"
+                className="pl-4 basis-[85%] sm:basis-[75%] md:basis-[70%]"
               >
                 <div
-                  className={`relative rounded-2xl bg-gradient-to-br ${slide.bg} p-6 h-[320px] flex flex-col justify-between shadow-xl overflow-hidden`}
+                  className={`relative rounded-2xl bg-gradient-to-br ${slide.bg} p-6 h-[280px] md:h-[320px] flex flex-col justify-between shadow-xl overflow-hidden`}
                 >
                   {/* your slide content */}
                 </div>
@@ -271,9 +271,9 @@ useLayoutEffect(() => {
             ))}
           </CarouselContent>
 
-          <CarouselPrevious className="-left-5 bg-[#f97316] border-0 text-white hover:bg-[#ea580c] hover:scale-110 shadow-md transition-all duration-200 w-10 h-10" />
+          <CarouselPrevious className="left-2 md:-left-5 bg-[#f97316] border-0 text-white hover:bg-[#ea580c] hover:scale-110 shadow-md transition-all duration-200 w-10 h-10 hidden sm:flex" />
 
-          <CarouselNext className="-right-5 bg-[#f97316] border-0 text-white hover:bg-[#ea580c] hover:scale-110 shadow-md transition-all duration-200 w-10 h-10" />
+          <CarouselNext className="right-2 md:-right-5 bg-[#f97316] border-0 text-white hover:bg-[#ea580c] hover:scale-110 shadow-md transition-all duration-200 w-10 h-10 hidden sm:flex" />
         </Carousel>
       </article>
     </section>

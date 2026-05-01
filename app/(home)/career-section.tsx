@@ -47,8 +47,8 @@ export default function CareerSection() {
 
       {/* TOP TYPE EFFECT */}
       <div className="relative z-10 pt-20 px-6 lg:px-20">
-        <div className="max-w-[760px] border border-[#ef832d] h-[150px] flex items-center justify-center">
-          <h2 className="text-[#ef832d] text-[70px] md:text-[110px] font-light tracking-wide leading-none">
+        <div className="max-w-[760px] border border-[#ef832d] h-[100px] md:h-[150px] flex items-center justify-center overflow-hidden">
+          <h2 className="text-[#ef832d] text-5xl md:text-[80px] lg:text-[110px] font-light tracking-wide leading-none">
             {text}
             <span className="animate-pulse">|</span>
           </h2>
