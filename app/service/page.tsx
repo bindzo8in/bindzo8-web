@@ -563,6 +563,7 @@ function UseCasesSlide() {
               fill
               priority
               className="object-contain object-right-top"
+              
             />
           </div>
         </div>
