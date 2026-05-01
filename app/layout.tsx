@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Kumbh_Sans, Raleway } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "@/components/Footer";
-
+import { AuthProvider } from "@/components/session-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +25,7 @@ const raleway = Raleway({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-raleway',
-  display: 'swap', // recommended
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -44,10 +44,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col pt-[95px]">
-        <Navbar />
-        {children}
-        <Footer />
-        </body>
+        <AuthProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </AuthProvider>
+      </body>
     </html>
   );
 }

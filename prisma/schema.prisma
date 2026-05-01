@@ -11,3 +11,57 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TeamMember {
+  id            String    @id @default(cuid())
+  name          String
+  position      String
+  dateOfJoining DateTime
+  mediaUrl      String
+  mediaType     String    // "video" | "image"
+  mediaPublicId String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+}
+
+model Project {
+  id            String    @id @default(cuid())
+  title         String
+  description   String
+  category      String
+  tag           String
+  mediaUrl      String
+  mediaType     String    // "video" | "image"
+  mediaPublicId String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+}
+
+model Testimonial {
+  id        String    @id @default(cuid())
+  content   String
+  author    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Client {
+  id           String    @id @default(cuid())
+  name         String
+  logoUrl      String
+  logoPublicId String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+}
