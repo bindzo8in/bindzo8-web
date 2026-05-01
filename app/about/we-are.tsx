@@ -2,33 +2,45 @@ import React from 'react'
 
 function WeAre() {
   return (
-    <section className="container relative w-full min-h-[485px] flex items-center justify-center bg-gradient-to-r from-[#E7325C] to-[#EF8030] text-white overflow-hidden font-kumbh">
+    <section className="relative w-full min-h-[400px] md:min-h-[500px] flex items-center justify-center bg-gradient-to-r from-[#E7325C] to-[#EF8030] text-white overflow-hidden font-kumbh py-16 md:py-24">
+      
+      {/* Decorative background elements for premium feel */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-5%] w-64 h-64 rounded-full bg-white blur-3xl" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-96 h-96 rounded-full bg-white blur-3xl" />
+      </div>
 
-  {/* Center Content */}
-  <div className="text-center max-w-4xl px-6">
-    <p className="text-xl mb-4">We are</p>
+      {/* Center Content */}
+      <div className="relative z-10 text-center max-w-4xl px-6 md:px-12">
+        <p className="text-lg md:text-2xl mb-4 font-light tracking-wide opacity-90 uppercase">
+          We are
+        </p>
 
-    <h1 className="text-4xl md:text-6xl font-bold mb-4">
-      Bindzo 8 Techno Solutions
-    </h1>
+        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
+          Bindzo 8 Techno Solutions
+        </h2>
 
-    <p className="text-lg md:text-xl mb-6">
-      Tech · Design · Digital Marketing
-    </p>
+        <div className="flex items-center justify-center gap-4 mb-8">
+          <div className="h-[1px] w-8 md:w-12 bg-white/50" />
+          <p className="text-base md:text-2xl font-medium tracking-wider">
+            Tech · Design · Digital Marketing
+          </p>
+          <div className="h-[1px] w-8 md:w-12 bg-white/50" />
+        </div>
 
-    <p className="text-sm md:text-base leading-relaxed opacity-90">
-      Our goal is to build visually stunning, high-performing websites backed by
-      effective SEO and marketing strategies. By collaborating closely with our
-      clients, we create digital experiences that truly deliver results.
-    </p>
-  </div>
+        <p className="text-sm md:text-lg leading-relaxed opacity-90 max-w-2xl mx-auto font-light">
+          Our goal is to build visually stunning, high-performing websites backed by
+          effective SEO and marketing strategies. By collaborating closely with our
+          clients, we create digital experiences that truly deliver results.
+        </p>
+      </div>
 
-  {/* Right Vertical Text */}
-  <div className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 origin-right text-sm tracking-widest">
-    Get Quote
-  </div>
+      {/* Right Vertical Text (Hidden on Mobile) */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 rotate-90 origin-right text-xs md:text-sm tracking-[0.3em] hidden xl:block opacity-40 hover:opacity-100 transition-all duration-500 cursor-pointer uppercase font-bold">
+        Get Quote
+      </div>
 
-</section>
+    </section>
   )
 }
 

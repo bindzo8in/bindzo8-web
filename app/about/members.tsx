@@ -34,7 +34,7 @@ function Member() {
         </div>
 
         <div className="max-w-6xl mx-auto pt-20">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20 gap-x-10 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-10 justify-items-center">
             {members.map((member, index) => (
               <MemberCard key={index} {...member} />
             ))}
@@ -55,13 +55,13 @@ type MemberCardProps = {
 
 export function MemberCard({ name, role, image }: MemberCardProps) {
   return (
-    <div className="flex flex-col items-center text-center">
-      <div className="relative w-[220px] h-[220px] mb-4">
+    <div className="flex flex-col items-center text-center group">
+      <div className="relative w-full max-w-[220px] aspect-square mb-6 transition-transform duration-500 group-hover:scale-105">
         <Image
           src={image}
           alt={name}
           fill
-          sizes="220px"
+          sizes="(max-width: 640px) 220px, (max-width: 1024px) 220px, 220px"
           className="object-contain"
         />
       </div>

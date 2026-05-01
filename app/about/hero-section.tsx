@@ -30,56 +30,62 @@ function HeroSection() {
 
     const handleClickContent = (index: number) => setSelectedContent(index)
     return (
-        <section className='container mx-auto min-h-[calc(100vh-95px)] flex items-center justify-center relative bg-white'>
+        <section className='container mx-auto min-h-[calc(100vh-95px)] flex items-center justify-center relative bg-white py-12 md:py-0'>
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-10 left-10 w-96 h-96 bg-red-500 blur-3xl rounded-full opacity-40" />
-                <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-900 blur-3xl rounded-full opacity-40" />
+                <div className="absolute top-10 left-10 w-64 h-64 md:w-96 md:h-96 bg-red-500 blur-3xl rounded-full opacity-30 md:opacity-40" />
+                <div className="absolute bottom-10 right-10 w-64 h-64 md:w-96 md:h-96 bg-blue-900 blur-3xl rounded-full opacity-30 md:opacity-40" />
             </div>
-            <div className="absolute inset-0 z-1 font-kumbh h-fit block mx-auto py-7 my-8 space-y-8">
-                <div className='bg-white'>
-                    <h1 className='capitalize text-4xl text-center mb-8'>about us</h1>
-                    <p className='text-lg font-extralight text-center max-w-4xl block mx-auto'>We deliver complete end-to-end IT solutions, offering website development, mobile app development, software creation, graphic design, digital marketing, animation, and video production to meet all your business needs.</p>
+            <div className="relative z-10 font-kumbh w-full px-4 sm:px-6 md:px-8 space-y-12 md:space-y-16">
+                <div className='max-w-4xl mx-auto text-center'>
+                    <h1 className='capitalize text-4xl md:text-5xl lg:text-6xl font-bold mb-6'>about us</h1>
+                    <p className='text-base md:text-lg font-extralight leading-relaxed'>
+                        We deliver complete end-to-end IT solutions, offering website development, mobile app development, software creation, graphic design, digital marketing, animation, and video production to meet all your business needs.
+                    </p>
                 </div>
-                <div className="font-kumbh flex flex-row items-center justify-center gap-12">
 
-                    {/* Left side fixed */}
-                    <figure className="w-[323px] shrink-0 flex flex-col justify-center items-center">
-                        <Image
-                            src="/binzo8_members/balaji_sir.webp"
-                            alt="founder"
-                            width={323}
-                            height={323}
-                            className="bg-white w-[323px] h-[323px] object-cover object-center rounded-full"
-                        />
-
-                        <figcaption className="text-center mt-4">
-                            <h6 className="capitalize font-bold">balaji</h6>
-                            <p>Founder</p>
+                <div className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24">
+                    {/* Left side: Founder Image */}
+                    <figure className="w-full max-w-[280px] md:max-w-[323px] flex flex-col justify-center items-center shrink-0">
+                        <div className="relative w-full aspect-square rounded-full overflow-hidden shadow-2xl">
+                            <Image
+                                src="/binzo8_members/balaji_sir.webp"
+                                alt="Balaji - Founder"
+                                fill
+                                className="object-cover object-center"
+                            />
+                        </div>
+                        <figcaption className="text-center mt-6">
+                            <h6 className="capitalize font-bold text-xl">balaji</h6>
+                            <p className="text-[#EF8030] font-medium">Founder</p>
                         </figcaption>
                     </figure>
 
-                    {/* Right side fixed/flexible */}
-                    <article className="flex gap-8 w-[520px] shrink-0">
-                        <div className="flex flex-col gap-8 w-[130px] shrink-0">
+                    {/* Right side: Mission/Vision/Goal Tabs */}
+                    <article className="flex flex-col lg:flex-row gap-8 w-full max-w-3xl">
+                        <div className="grid grid-cols-3 lg:flex lg:flex-col gap-3 sm:gap-4 shrink-0">
                             {content.map((item, index) => (
                                 <Button
                                     key={item.id}
                                     onClick={() => handleClickContent(index)}
-                                    className="rounded-4xl py-1 px-2 font-extralight bg-[#EF8030] whitespace-nowrap"
+                                    className={`rounded-full py-2 px-3 sm:px-6 text-xs sm:text-sm font-medium transition-all duration-300 ${
+                                        selectedContent === index 
+                                        ? "bg-[#EF8030] text-white shadow-lg scale-105" 
+                                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                    } whitespace-nowrap`}
                                 >
                                     {item.title}
                                 </Button>
                             ))}
                         </div>
 
-                        <div className="w-[360px] text-xs">
-                            {current.text}
+                        <div className="flex-1 min-h-[180px] flex flex-col justify-center bg-gray-50/50 p-6 sm:p-8 rounded-3xl border border-gray-100">
+                            <div className="text-base md:text-lg leading-relaxed text-gray-700">
+                                {current.text}
+                            </div>
                         </div>
                     </article>
-
                 </div>
             </div>
-
         </section>
     )
 }
