@@ -45,10 +45,9 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="mx-8 px-8 py-14 bg-[#e8e5df] rounded-tl-2xl rounded-tr-2xl"
+    <section className="mx-4 sm:mx-8 px-4 sm:px-8 py-10 sm:py-14 bg-[#e8e5df] rounded-2xl"
     style={{background: "linear-gradient(180deg, rgba(232, 229, 223, 1) 0%, rgba(255, 255, 255, 1) 100%)"}}>
-      <div className="max-w-[1000px] mx-auto"
-      >
+      <div className="max-w-[1000px] mx-auto">
         {/* Heading */}
         <h2 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-[#c0272d] mb-10">
           Frequently Asked Questions:

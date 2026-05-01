@@ -79,7 +79,7 @@ export default function ServicesSection() {
   const router = useRouter();
 
   return (
-    <section className="px-8 pt-20 pb-16 bg-[#f0eee9] min-h-screen">
+    <section className="px-4 sm:px-8 pt-12 md:pt-20 pb-16 bg-[#f0eee9] min-h-screen">
       {/* Heading */}
       <h1 className="text-center text-[clamp(2.2rem,4vw,3.2rem)] font-bold text-[#8b1a1a] mb-12 tracking-tight">
         Our Services

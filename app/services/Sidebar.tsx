@@ -75,42 +75,53 @@ export default function Sidebar() {
 
 
   return (
-    <aside className="sticky top-[95px] hidden h-[calc(100vh-95px)] w-[425px] flex-shrink-0 overflow-hidden bg-[#0a0a0a] z-40 lg:block">
+    <aside className="relative w-full h-auto lg:h-[calc(100vh-95px)] bg-[#0a0a0a] z-40 lg:sticky lg:top-[95px] lg:w-[425px] flex-shrink-0 flex flex-col overflow-hidden shadow-xl order-2 lg:order-none">
       <div
-        className="grid grid-cols-2 gap-2 py-3"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-1 sm:gap-2 p-2 sm:p-3 overflow-y-auto no-scrollbar"
         onMouseLeave={() => setSelectedCategory(null)}
       >
         {sidebarCategories.map((cat, index) => (
           <button
             key={cat.text}
             className={cn(
-              "text-[10.5px] text-white/85 text-center font-medium bg-[#1c1c1c] border border-white/10 px-2 py-2.5 hover:text-white hover:bg-[#E7325C] transition-colors leading-tight rounded-none",
+              "text-[9px] sm:text-[10.5px] text-white/85 text-center font-medium bg-[#1c1c1c] border border-white/10 px-1 sm:px-2 py-2 sm:py-2.5 hover:text-white hover:bg-[#E7325C] transition-colors leading-tight rounded-none",
               selectedCategory === index && "bg-[#E7325C] text-white",
-              index % 2 === 0
-                ? "rounded-tr-2xl rounded-br-2xl"
-                : "rounded-tl-2xl rounded-bl-2xl"
+              "rounded-lg lg:rounded-none",
+              index % 2 === 0 && "lg:rounded-tr-2xl lg:rounded-br-2xl",
+              index % 2 !== 0 && "lg:rounded-tl-2xl lg:rounded-bl-2xl"
             )}
             onMouseEnter={() => setSelectedCategory(index)}
+            onClick={() => setSelectedCategory(selectedCategory === index ? null : index)}
           >
             {cat.text}
           </button>
         ))}
       </div>
 
-      {/* GIF preview - absolute, so it won't create scrollbar */}
+      {/* GIF preview - Positioned below the buttons without overlap */}
       {selectedCategory !== null && (
-        <div className="absolute left-0 right-0 bottom-6 px-4">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#111] p-4">
-            <img
-              key={sidebarCategories[selectedCategory].media}
-              src={sidebarCategories[selectedCategory].media}
-              alt={sidebarCategories[selectedCategory].text}
-              className="h-[260px] w-full bg-white object-contain"
-            />
+        <div className="mt-auto w-full px-4 py-4 lg:pb-8 bg-[#0a0a0a]">
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-[#111] p-3 md:p-4 shadow-2xl">
+            <div className="relative w-full h-[160px] sm:h-[200px] lg:h-[240px]">
+              <img
+                key={sidebarCategories[selectedCategory].media}
+                src={sidebarCategories[selectedCategory].media}
+                alt={sidebarCategories[selectedCategory].text}
+                className="w-full h-full bg-white object-contain rounded-xl"
+              />
+            </div>
 
-            <div className="mt-4 text-center text-sm font-semibold text-white">
+            <div className="mt-3 text-center text-xs md:text-sm font-semibold text-white uppercase tracking-wider">
               {sidebarCategories[selectedCategory].text}
             </div>
+            
+            {/* Mobile/Tablet close button */}
+            <button 
+              className="absolute top-2 right-2 w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-white lg:hidden"
+              onClick={() => setSelectedCategory(null)}
+            >
+              ✕
+            </button>
           </div>
         </div>
       )}
