@@ -140,16 +140,16 @@ export default function Page() {
 
             <div className="relative z-10">
                 {/* why choose us */}
-                <section className="py-16 flex justify-center items-center flex-col gap-16">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h4 className="text-2xl md:text-4xl mb-6 text-[#E7325C] text-center">
+                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
+                    <div className="max-w-5xl mx-auto px-6 sm:px-8">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#E7325C] text-center tracking-tight">
                             Why Choose Us
-                        </h4>
-                        <p className="text-base md:text-xl text-center text-white leading-relaxed ">
+                        </h2>
+                        <p className="text-base md:text-xl text-center text-white leading-relaxed opacity-90 max-w-4xl mx-auto">
                             Bindzo 8 delivers cutting-edge, timely solutions by embracing innovative methods and advanced technologies to ensure customer-focused results. With extensive experience, we’ve successfully handled it all before.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 px-6 max-w-7xl mx-auto">
                         {features.map((item, i) => (
                             <FeatureCard key={i} {...item} />
                         ))}
@@ -157,17 +157,17 @@ export default function Page() {
                 </section>
 
                 {/* who we work with */}
-                <section className="py-16 flex justify-center items-center flex-col gap-16">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h4 className="text-2xl md:text-4xl mb-6 text-[#E7325C] text-center">
+                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16 bg-white/5">
+                    <div className="max-w-5xl mx-auto px-6 sm:px-8">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#E7325C] text-center tracking-tight">
                             Who We Work With
-                        </h4>
-                        <p className="text-base md:text-xl text-center text-white leading-relaxed ">
+                        </h2>
+                        <p className="text-base md:text-xl text-center text-white leading-relaxed opacity-90 max-w-4xl mx-auto">
                             Many of our clients have dedicated years to building new business capabilities, integrating acquired systems, and modernizing their IT infrastructure, enabling Bindzo 8 to deliver complete, end-to-end solutions that seamlessly reach the market.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 max-w-5xl mx-auto">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 lg:gap-10 px-4 md:px-6 max-w-6xl mx-auto">
                         {industries.map((item, i) => (
                             <IndustryCard key={i} {...item} />
                         ))}
@@ -175,17 +175,17 @@ export default function Page() {
                 </section>
 
                 {/* what we do */}
-                <section className="py-16 flex justify-center items-center flex-col gap-16">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <h4 className="text-2xl md:text-4xl mb-6 text-[#E7325C] text-center">
+                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
+                    <div className="max-w-5xl mx-auto px-6 sm:px-8">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#E7325C] text-center tracking-tight">
                             What We Do
-                        </h4>
-                        <p className="text-base md:text-xl text-center text-white leading-relaxed ">
+                        </h2>
+                        <p className="text-base md:text-xl text-center text-white leading-relaxed opacity-90 max-w-4xl mx-auto">
                             Over the years, Bindzo 8 has successfully delivered 300+ projects, empowering businesses with data-driven solutions and consistently delivering exceptional value to our clients.
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 px-6 max-w-7xl mx-auto">
                         {whatWeDo.map((item, i) => (
                             <FeatureCard key={i} {...item} />
                         ))}
@@ -193,16 +193,18 @@ export default function Page() {
                 </section>
 
                 {/* achievements */}
-                <section className="py-16 flex justify-center items-center flex-col gap-16">
-                    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-[#E7325C]">
-                        <h4 className="text-2xl md:text-4xl mb-6 text-[#E7325C] text-center">
+                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
+                    <div className="max-w-5xl mx-auto px-6 sm:px-8 text-[#E7325C]">
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center tracking-tight">
                             Achievements & Celebrations
-                        </h4>
+                        </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 px-6 max-w-7xl mx-auto w-full">
                         {Array.from({ length: 6 }).map((_, i) => (
-                            <div className="w-[406px] h-[291px] bg-gray-500"></div>
+                            <div key={i} className="w-full aspect-[4/3] bg-white/10 rounded-2xl border border-white/10 shadow-lg backdrop-blur-sm flex items-center justify-center text-white/20 text-xl font-bold italic">
+                                Celebration Image {i + 1}
+                            </div>
                         ))}
                     </div>
                 </section>
@@ -219,18 +221,18 @@ type IndustryCardProps = {
 
 export function IndustryCard({ title, image }: IndustryCardProps) {
     return (
-        <article className="group flex h-[216px] w-[216px] flex-col items-center justify-center rounded-lg bg-white shadow-md transition-all duration-300 hover:bg-[#FFF0F0] hover:shadow-xl">
-            <div className="relative mb-7 h-[88px] w-[88px] transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-105">
+        <article className="group flex aspect-square w-full flex-col items-center justify-center rounded-2xl bg-white/95 p-4 md:p-6 shadow-xl transition-all duration-500 hover:bg-[#FFF0F0] hover:-translate-y-2 hover:shadow-2xl">
+            <div className="relative mb-4 md:mb-6 h-[60px] w-[60px] md:h-[88px] md:w-[88px] transition-transform duration-500 group-hover:scale-110">
                 <Image
                     src={image}
                     alt={title}
                     fill
-                    sizes="88px"
+                    sizes="(max-width: 768px) 60px, 88px"
                     className="object-contain"
                 />
             </div>
 
-            <h3 className="max-w-[150px] text-center text-base leading-tight text-[#EF8030]">
+            <h3 className="w-full text-center text-xs md:text-base font-bold leading-tight text-[#EF8030] px-2">
                 {title}
             </h3>
         </article>
