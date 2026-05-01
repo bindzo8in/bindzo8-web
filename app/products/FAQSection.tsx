@@ -47,40 +47,41 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-     <section className="relative p-32 overflow-hidden font-kumbh">
+     <section className="relative py-16 md:py-24 lg:py-32 px-4 sm:px-8 overflow-hidden font-kumbh">
 
-      {/* 🔵 Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <WaveBackground />
-      </div>
+       {/* 🔵 Background */}
+       <div className="absolute inset-0 z-0 pointer-events-none">
+         <WaveBackground />
+       </div>
 
-      {/* 🟡 Content */}
-      <div className="relative z-10 mx-8">
-        <div className=" bg-white/90 backdrop-blur-md px-8 py-14 rounded-2xl">
+       {/* 🟡 Content */}
+       <div className="relative z-10 max-w-6xl mx-auto">
+         <div className="bg-white/90 backdrop-blur-md px-6 sm:px-10 py-12 md:py-16 rounded-3xl shadow-2xl border border-white/20">
 
-          {/* Heading */}
-          <h2 className="text-2xl md:text-3xl  text-[#c0272d] mb-12">
-            Frequently Asked Questions:
-          </h2>
+           {/* Heading */}
+           <h2 className="text-3xl md:text-4xl font-bold text-[#c0272d] mb-10 md:mb-16 text-center md:text-left tracking-tight">
+             Frequently Asked Questions
+           </h2>
 
-          {/* FAQ Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-10">
-            {faqs.map((faq, i) => (
-              <div key={i}>
-                <p className="text-base md:text-lg font-bold text-gray-900 mb-2">
-                  {i + 1}. {faq.q}
-                </p>
+           {/* FAQ Grid */}
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-10 md:gap-y-14">
+             {faqs.map((faq, i) => (
+               <div key={i} className="group">
+                 <p className="text-lg md:text-xl font-bold text-gray-900 mb-3 flex gap-3">
+                   <span className="text-[#c0272d]">{i + 1}.</span>
+                   <span>{faq.q}</span>
+                 </p>
 
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed pl-4">
-                  {faq.a}
-                </p>
-              </div>
-            ))}
-          </div>
+                 <p className="text-sm md:text-base text-gray-600 leading-relaxed pl-8 border-l-2 border-gray-100 group-hover:border-[#c0272d] transition-colors duration-300">
+                   {faq.a}
+                 </p>
+               </div>
+             ))}
+           </div>
 
-        </div>
-      </div>
+         </div>
+       </div>
 
-    </section>
+     </section>
   );
 }

@@ -24,12 +24,12 @@ export default function ProductsSection({
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4">
-        <h2 className="mb-20 text-center text-4xl font-light text-[#E7325C] md:text-5xl">
+      <div className="container relative z-10 mx-auto px-4 md:px-8 lg:px-12">
+        <h2 className="mb-12 md:mb-20 text-center text-3xl font-bold text-[#E7325C] md:text-5xl lg:text-6xl tracking-tight">
           {title}
         </h2>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-3 xl:gap-16 lg:px-32">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3 xl:gap-12 lg:px-12 xl:px-0">
           {products.map((product) => (
             <ProductCard key={product.title} product={product} />
           ))}
@@ -41,8 +41,8 @@ export default function ProductsSection({
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="overflow-hidden rounded-xl bg-[#FFF4F4]/95 shadow-lg backdrop-blur-sm">
-      <div className="relative h-[260px] w-full md:h-[300px]">
+    <article className="overflow-hidden rounded-2xl bg-[#FFF4F4]/95 shadow-xl backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-white/20">
+      <div className="relative h-[240px] sm:h-[280px] w-full md:h-[320px]">
         <Image
           src={product.image}
           alt={product.title}
@@ -52,12 +52,12 @@ function ProductCard({ product }: { product: Product }) {
         />
       </div>
 
-      <div className="min-h-[210px] p-8">
-        <h3 className="mb-6 text-2xl font-bold text-black">
+      <div className="flex flex-col p-6 sm:p-8 min-h-[180px] md:min-h-[220px]">
+        <h3 className="mb-4 text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
           {product.title}
         </h3>
 
-        <p className="text-sm leading-snug text-black">
+        <p className="text-sm sm:text-base leading-relaxed text-gray-700">
           {product.description}
         </p>
       </div>
