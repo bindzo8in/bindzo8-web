@@ -21,30 +21,36 @@ export default function HorizontalScroll({
 
   useGSAP(
     () => {
-      const section = sectionRef.current;
-      const track = trackRef.current;
+      const mm = gsap.matchMedia();
 
-      if (!section || !track) return;
+      mm.add("(min-width: 1025px)", () => {
+        const section = sectionRef.current;
+        const track = trackRef.current;
 
-      const scrollWidth = track.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const scrollDistance = scrollWidth - viewportWidth;
+        if (!section || !track) return;
 
-      if (scrollDistance <= 0) return;
+        const scrollWidth = track.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const scrollDistance = scrollWidth - viewportWidth;
 
-      gsap.to(track, {
-        x: -scrollDistance,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: () => `+=${scrollDistance}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
+        if (scrollDistance <= 0) return;
+
+        gsap.to(track, {
+          x: -scrollDistance,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `+=${scrollDistance}`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
       });
+
+      return () => mm.revert();
     },
     { scope: sectionRef }
   );
@@ -52,11 +58,11 @@ export default function HorizontalScroll({
   return (
     <section
       ref={sectionRef}
-      className={`relative h-screen w-full overflow-hidden ${className}`}
+      className={`relative w-full lg:h-screen lg:overflow-hidden ${className}`}
     >
       <div
         ref={trackRef}
-        className="flex h-full w-max"
+        className="flex h-full flex-col lg:w-max lg:flex-row"
       >
         {children}
       </div>

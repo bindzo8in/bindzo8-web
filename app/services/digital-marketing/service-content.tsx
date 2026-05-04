@@ -20,7 +20,7 @@ const services = [
     text: (
       <>
         To make your website top in google search engine result page organically
-        which leads to come more <b>Business Conversion, High Visibility & Higher Traffic.</b>
+        which leads to come more <b>Business Conversion, High Visibility &amp; Higher Traffic.</b>
       </>
     ),
   },
@@ -40,10 +40,8 @@ const services = [
 
 function ServiceContent() {
   return (
-    <HorizontalSlide className='flex items-center justify-center py-[95px]'>
-         
-
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-x-20  px-5 md:grid-cols-2">
+    <HorizontalSlide className='flex items-center justify-center py-16 lg:py-[95px] bg-black'>
+      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-y-8 gap-x-20 px-6 md:grid-cols-2 lg:px-5">
         {/* left top image */}
         <ImageCard src={services[0].image} alt={services[0].title} />
 
@@ -70,7 +68,7 @@ export default ServiceContent
 
 function ImageCard({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative h-[200px] w-full overflow-hidden rounded-2xl md:h-[200px]">
+    <div className="relative h-[180px] w-full overflow-hidden rounded-2xl md:h-[200px]">
       <Image
         src={src}
         alt={alt}
@@ -90,7 +88,7 @@ function TextCard({
 }) {
   return (
     <div className="flex flex-col justify-center">
-      <h3 className="mb-5 text-2xl font-bold text-orange-500">
+      <h3 className="mb-3 text-xl lg:text-2xl font-bold text-orange-500">
         {title}
       </h3>
       <p className="max-w-xl text-[15px] leading-snug text-white">

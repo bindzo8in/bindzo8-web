@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ProjectContent = () => {
   return (
-    <HorizontalSlide className="flex items-center justify-center  px-4 py-[95px] text-white sm:px-6 lg:px-10">
+    <HorizontalSlide className="flex items-center justify-center px-4 py-16 lg:py-[95px] text-white sm:px-6 lg:px-10 bg-black">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2 lg:gap-16">
         {/* left */}
         <div className="flex justify-center md:justify-end">

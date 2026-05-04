@@ -11,7 +11,7 @@ export default function HorizontalSlide({
 }: HorizontalSlideProps) {
   return (
     <div
-      className={`h-screen w-screen shrink-0 overflow-hidden ${className}`}
+      className={`w-full shrink-0 overflow-hidden lg:h-screen lg:w-screen ${className}`}
     >
       {children}
     </div>

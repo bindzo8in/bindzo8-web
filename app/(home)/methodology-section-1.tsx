@@ -3,12 +3,10 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { GSDevTools } from "gsap/GSDevTools";
-
 import MethodologySVG from "./MethodologySVG";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(MotionPathPlugin, GSDevTools, ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
 export default function MethodologySection() {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -482,9 +480,7 @@ export default function MethodologySection() {
       //         opacity: 1,
       //         scale: 1,
       //       });
-      GSDevTools.create({
-        animation: tl
-      });
+     
     }, wrapRef);
 
 

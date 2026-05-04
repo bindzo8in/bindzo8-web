@@ -65,22 +65,28 @@ const KeybenefitContent = () => {
 
   useGSAP(
     () => {
-      const section = sectionRef.current;
-      if (!section) return;
+      const mm = gsap.matchMedia();
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: () => `+=${slideData.length * window.innerHeight}`,
-        pin: true,
-        scrub: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const index = Math.round(self.progress * (slideData.length - 1));
-          setSelectedIndex(index);
-        },
+      mm.add("(min-width: 1025px)", () => {
+        const section = sectionRef.current;
+        if (!section) return;
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: () => `+=${slideData.length * window.innerHeight}`,
+          pin: true,
+          scrub: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const index = Math.round(self.progress * (slideData.length - 1));
+            setSelectedIndex(index);
+          },
+        });
       });
+
+      return () => mm.revert();
     },
     { scope: sectionRef }
   );
@@ -90,9 +96,53 @@ const KeybenefitContent = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden py-[95px]"
+      className="relative w-full bg-black lg:h-screen lg:overflow-hidden py-12 lg:py-[95px] font-kumbh"
     >
-      <div className="flex h-full w-full items-center justify-center">
+      {/* Mobile / Tablet: vertical stack */}
+      <div className="flex flex-col lg:hidden gap-6 px-6">
+        <h1 className="text-2xl font-bold text-white text-center">Key Benefits</h1>
+        {/* Tab selectors */}
+        <div className="flex flex-col gap-2">
+          {slideData.map((slide, index) => (
+            <Button
+              key={slide.title}
+              onClick={() => setSelectedIndex(index)}
+              className={cn(
+                "w-full rounded-md px-4 py-2.5 transition-all duration-300 text-sm",
+                selectedIndex === index
+                  ? "bg-[#EF8030] text-white"
+                  : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
+              )}
+            >
+              {slide.title}
+            </Button>
+          ))}
+        </div>
+        {/* Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedSlide.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col items-center gap-4 text-white"
+          >
+            <h2 className="text-xl font-bold text-orange-500">{selectedSlide.title}</h2>
+            <ol className="space-y-3 w-full list-decimal pl-5">
+              {selectedSlide.content.map((item) => (
+                <li key={item} className="text-sm leading-relaxed">{item}</li>
+              ))}
+            </ol>
+            <figure className="relative h-40 w-40 mt-2">
+              <Image src={selectedSlide.media} alt={selectedSlide.title} fill className="object-contain" />
+            </figure>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Desktop: original pinned horizontal layout */}
+      <div className="hidden lg:flex h-full w-full items-center justify-center">
         <header className="relative h-[220px] w-[40px] shrink-0">
           <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-2xl text-white">
             Key Benefits

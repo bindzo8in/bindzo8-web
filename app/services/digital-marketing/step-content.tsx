@@ -37,7 +37,7 @@ const images = [
 
 export default function UsageContent() {
   return (
-    <HorizontalSlide className="relative flex items-center justify-center overflow-hidden bg-transparent text-white">
+    <HorizontalSlide className="relative flex items-center justify-center overflow-hidden bg-transparent text-white py-16 lg:py-0">
       <div className="relative z-10 mx-auto grid h-[calc(100%-96px)] w-full max-w-[1280px] grid-cols-1 items-center gap-6 px-5 md:grid-cols-[0.9fr_1.1fr] lg:px-10">
         {/* Left text */}
         <div className="grid w-full max-w-[620px] grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
@@ -72,8 +72,8 @@ export default function UsageContent() {
           </div>
         </div>
 
-        {/* Right image stack - desktop/tablet */}
-        <div className="relative hidden h-[560px] w-full md:block lg:h-[610px]">
+        {/* Right image stack - desktop only */}
+        <div className="relative hidden h-[610px] w-full lg:block">
           {images.map((image) => (
             <div
               key={image.src}
@@ -90,8 +90,8 @@ export default function UsageContent() {
           ))}
         </div>
 
-        {/* Mobile image stack */}
-        <div className="grid max-h-[45vh] grid-cols-3 gap-3 overflow-hidden md:hidden">
+        {/* Mobile/Tablet image grid */}
+        <div className="grid max-h-[45vh] grid-cols-3 gap-3 overflow-hidden lg:hidden">
           {images.map((image) => (
             <div
               key={image.src}
