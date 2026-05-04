@@ -46,6 +46,18 @@ export default function HorizontalScroll({
             pin: true,
             anticipatePin: 1,
             invalidateOnRefresh: true,
+            onEnter: () => {
+              document.body.dataset.hscroll = "1";
+            },
+            onEnterBack: () => {
+              document.body.dataset.hscroll = "1";
+            },
+            onLeave: () => {
+              delete document.body.dataset.hscroll;
+            },
+            onLeaveBack: () => {
+              delete document.body.dataset.hscroll;
+            },
           },
         });
       });

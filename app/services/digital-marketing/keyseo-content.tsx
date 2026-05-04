@@ -196,70 +196,76 @@ const KeySeoContent = () => {
 
   useGSAP(
     () => {
-      circleRefs.current.forEach((el, index) => {
-        applySlot(el, slotIndexes.current[index], true);
-      });
+      const mm = gsap.matchMedia();
 
-      const animationTl = gsap.timeline({
-        repeat: -1,
-        repeatDelay: 0.35,
-      });
-
-      animationTl.call(() => moveCircles("next"));
-      animationTl.to({}, { duration: 1.8 });
-
-      const glowTl = gsap.timeline({
-        repeat: -1,
-        yoyo: true,
-      });
-
-      glowTl.to(".seo-glow-blue", {
-        x: 60,
-        y: 40,
-        scale: 1.12,
-        duration: 4,
-        ease: "sine.inOut",
-      });
-
-      glowTl.to(
-        ".seo-glow-yellow",
-        {
-          x: -40,
-          y: -30,
-          scale: 1.1,
-          duration: 4,
-          ease: "sine.inOut",
-        },
-        0
-      );
-
-      glowTl.to(
-        ".seo-glow-pink",
-        {
-          x: -60,
-          y: 45,
-          scale: 1.15,
-          duration: 4,
-          ease: "sine.inOut",
-        },
-        0
-      );
-
-      const resizeObserver = new ResizeObserver(() => {
+      mm.add("(min-width: 1025px)", () => {
         circleRefs.current.forEach((el, index) => {
           applySlot(el, slotIndexes.current[index], true);
         });
+
+        const animationTl = gsap.timeline({
+          repeat: -1,
+          repeatDelay: 0.35,
+        });
+
+        animationTl.call(() => moveCircles("next"));
+        animationTl.to({}, { duration: 1.8 });
+
+        const glowTl = gsap.timeline({
+          repeat: -1,
+          yoyo: true,
+        });
+
+        glowTl.to(".seo-glow-blue", {
+          x: 60,
+          y: 40,
+          scale: 1.12,
+          duration: 4,
+          ease: "sine.inOut",
+        });
+
+        glowTl.to(
+          ".seo-glow-yellow",
+          {
+            x: -40,
+            y: -30,
+            scale: 1.1,
+            duration: 4,
+            ease: "sine.inOut",
+          },
+          0
+        );
+
+        glowTl.to(
+          ".seo-glow-pink",
+          {
+            x: -60,
+            y: 45,
+            scale: 1.15,
+            duration: 4,
+            ease: "sine.inOut",
+          },
+          0
+        );
+
+        const resizeObserver = new ResizeObserver(() => {
+          circleRefs.current.forEach((el, index) => {
+            applySlot(el, slotIndexes.current[index], true);
+          });
+        });
+
+        if (stageRef.current) {
+          resizeObserver.observe(stageRef.current);
+        }
+
+        return () => {
+          animationTl.kill();
+          glowTl.kill();
+          resizeObserver.disconnect();
+        };
       });
 
-      if (stageRef.current) {
-        resizeObserver.observe(stageRef.current);
-      }
-
-      return () => {
-        animationTl.kill();
-        glowTl.kill();
-        resizeObserver.disconnect();
-      };
+      return () => mm.revert();
     },
     {
       scope: sectionRef,
@@ -273,9 +279,34 @@ const KeySeoContent = () => {
       flex justify-center items-center
     "
     >
+      {/* Mobile / Tablet: vertical stack */}
+      <div className="lg:hidden w-full font-kumbh text-white py-12 px-6">
+        <h2 className="mb-6 text-base font-bold text-orange-500 sm:text-lg">
+          Key SEO Services We Provide
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {seoContent.map((item, index) => (
+            <div key={item.title} className="border border-white/10 rounded-xl p-4 bg-white/5">
+              <h3 className="text-sm font-bold leading-tight text-white mb-2 sm:text-base">
+                {index + 1}. {item.title}
+              </h3>
+              <ul className="space-y-1 text-[12px] leading-snug text-white/85 sm:text-sm">
+                {item.points.map((point) => (
+                  <li key={point} className="flex gap-2">
+                    <span className="text-orange-400 shrink-0">·</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: original animated layout */}
       <div
         ref={sectionRef}
-        className="relative mt-[96px] h-[calc(100%-96px)] w-full overflow-hidden font-kumbh text-white"
+        className="relative hidden lg:block mt-[96px] h-[calc(100%-96px)] w-full overflow-hidden font-kumbh text-white"
       >
         <div
           className="
@@ -291,7 +322,6 @@ const KeySeoContent = () => {
           gap-2
           px-4
           py-2
-          sm:px-6
           lg:grid-cols-[300px_1fr]
           lg:grid-rows-1
           lg:gap-4
@@ -302,18 +332,18 @@ const KeySeoContent = () => {
         >
           {/* Left content */}
           <div className="w-full max-w-[340px] lg:pl-3 xl:pl-6">
-            <h2 className="mb-2 text-xs font-bold text-orange-500 sm:text-sm lg:mb-3 lg:text-base">
+            <h2 className="mb-2 text-xs font-bold text-orange-500 lg:mb-3 lg:text-base">
               Key SEO Services We Provide
             </h2>
 
-            <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
+            <div className="space-y-1.5 lg:space-y-3">
               {seoContent.map((item, index) => (
                 <div key={item.title}>
-                  <h3 className="text-xs font-bold leading-tight sm:text-sm lg:text-base">
+                  <h3 className="text-xs font-bold leading-tight lg:text-base">
                     {index + 1}. {item.title}
                   </h3>
 
-                  <ul className="mt-0.5 space-y-0 text-[11px] leading-snug text-white/85 sm:text-xs lg:text-[13px]">
+                  <ul className="mt-0.5 space-y-0 text-[11px] leading-snug text-white/85 lg:text-[13px]">
                     {item.points.map((point) => (
                       <li key={point}>· {point}</li>
                     ))}
@@ -329,12 +359,10 @@ const KeySeoContent = () => {
               className="
               relative
               aspect-[830/767]
-              h-[clamp(260px,52vw,520px)]
+              h-[clamp(430px,58vh,560px)]
               max-h-[calc(100svh-150px)]
               max-w-full
               overflow-visible
-              sm:h-[clamp(320px,56vw,560px)]
-              lg:h-[clamp(430px,58vh,560px)]
               xl:h-[clamp(460px,62vh,590px)]
             "
             >
