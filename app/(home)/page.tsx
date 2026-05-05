@@ -7,7 +7,6 @@ import ShowcaseSections from './showcase-section'
 import CareerSection from './career-section'
 import TestimonialSection from './testimonials-section'
 import HappyClients from './happyClients-section'
-import Footer from './footer'
 
 const Page = () => {
   return (
