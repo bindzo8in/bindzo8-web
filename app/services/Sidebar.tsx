@@ -1,131 +1,154 @@
 "use client";
+
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const sidebarCategories = [
   {
-    text: "Enterprise Software",
-    media: "/services_gif/enterprise.gif",
+    text: "ECommerce Software",
+    slug: "ecommerce-solutions",
+    media: "/services_gif/ecommerce.gif",
   },
   {
     text: "Branding",
+    slug: "branding",
     media: "/services_gif/branding.gif",
   },
   {
     text: "Website Development",
+    slug: "website-design-and-development",
     media: "/services_gif/webdev.gif",
   },
   {
     text: "Quality Assurance",
+    slug: "quality-assurance",
     media: "/services_gif/qa.gif",
   },
   {
     text: "Mobile App Development",
+    slug: "mobile-app-development",
     media: "/services_gif/mobile-app.gif",
   },
   {
-    text: "Graphic Design",
+    text: "Design Solution",
+    slug: "design-solution",
     media: "/services_gif/graphics.gif",
   },
   {
     text: "Software Development",
+    slug: "software-development",
     media: "/services_gif/software.gif",
   },
   {
-    text: "AR and VR Service",
-    media: "/services_gif/arvr.gif",
-  },
-  {
     text: "Digital Marketing",
+    slug: "digital-marketing",
     media: "/services_gif/dm.gif",
   },
   {
-    text: "Animation and Video Production",
+    text: "Product Shooting",
+    slug: "product-shooting",
     media: "/services_gif/cc.gif",
   },
-  {
-    text: "IoT",
-    media: "/services_gif/iot.gif",
-  },
+  // {
+  //   text: "IoT",
+  //   media: "/services_gif/iot.gif",
+  // },
   {
     text: "Search Engine Marketing",
+    slug: "search-engine-marketing",
     media: "/services_gif/sem.gif",
   },
   {
     text: "Cyber Security",
+    slug: "cyber-security",
     media: "/services_gif/digital-secure.gif",
   },
   {
     text: "Creative & Communication",
+    slug: "creative-and-communication",
     media: "/services_gif/cc.gif",
-  },
-  {
-    text: "Cloud Service",
-    media: "/services_gif/cloud.gif",
-  },
-  {
-    text: "Social Media Marketing",
-    media: "/services_gif/smm.gif",
   },
 ];
 
 export default function Sidebar() {
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
-
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const router = useRouter();
 
   return (
-    <aside className="relative w-full h-auto lg:h-[calc(100vh-95px)] bg-[#0a0a0a] z-40 lg:sticky lg:top-[95px] lg:w-[425px] flex-shrink-0 flex flex-col overflow-hidden shadow-xl order-2 lg:order-none">
+    <aside className="relative z-40 order-2 flex h-auto w-full flex-shrink-0 flex-col overflow-hidden bg-[#0a0a0a] shadow-xl lg:sticky lg:top-[95px] lg:order-none lg:h-[calc(100vh-95px)] lg:w-[425px]">
+      {/* Mobile / Tablet Grid Card View */}
+      <div className="block lg:hidden" >
+        <div className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 md:grid-cols-4">
+          {sidebarCategories.map((cat) => (
+            <button
+              key={cat.text}
+              onClick={() => router.push(`/service/${cat.slug}`)}
+              type="button"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-[#151515] shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#E7325C]/60 hover:bg-[#1f1f1f]"
+            >
+              <div className="relative h-[120px] w-full bg-white sm:h-[135px] md:h-[145px]">
+                <img
+                  src={cat.media}
+                  alt={cat.text}
+                  className="h-full w-full object-contain p-2"
+                />
+              </div>
+
+              <div className="flex min-h-[56px] items-center justify-center px-2 py-3">
+                <h3 className="text-center text-[12px] font-semibold leading-tight text-white transition group-hover:text-[#E7325C] sm:text-[13px]">
+                  {cat.text}
+                </h3>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop Sidebar Button View */}
       <div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-2 gap-1 sm:gap-2 p-2 sm:p-3 overflow-y-auto no-scrollbar"
+        className="hidden grid-cols-2 gap-2 overflow-y-auto p-3 lg:grid"
         onMouseLeave={() => setSelectedCategory(null)}
       >
         {sidebarCategories.map((cat, index) => (
           <button
             key={cat.text}
+            type="button"
             className={cn(
-              "text-[9px] sm:text-[10.5px] text-white/85 text-center font-medium bg-[#1c1c1c] border border-white/10 px-1 sm:px-2 py-2 sm:py-2.5 hover:text-white hover:bg-[#E7325C] transition-colors leading-tight rounded-none",
+              "bg-[#1c1c1c] px-2 py-3 text-center text-[11px] font-medium leading-tight text-white/85 transition-colors hover:bg-[#E7325C] hover:text-white",
               selectedCategory === index && "bg-[#E7325C] text-white",
-              "rounded-lg lg:rounded-none",
-              index % 2 === 0 && "lg:rounded-tr-2xl lg:rounded-br-2xl",
-              index % 2 !== 0 && "lg:rounded-tl-2xl lg:rounded-bl-2xl"
+              index % 2 === 0 && "rounded-tr-2xl rounded-br-2xl",
+              index % 2 !== 0 && "rounded-tl-2xl rounded-bl-2xl"
             )}
             onMouseEnter={() => setSelectedCategory(index)}
-            onClick={() => setSelectedCategory(selectedCategory === index ? null : index)}
+            onClick={() =>
+              router.push(`/service/${cat.slug}`)
+            }
           >
             {cat.text}
           </button>
         ))}
       </div>
 
-      {/* GIF preview - Positioned below the buttons without overlap */}
+      {/* Desktop GIF Preview */}
       {selectedCategory !== null && (
-        <div className="mt-auto w-full px-4 py-4 lg:pb-8 bg-[#0a0a0a]">
-          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-[#111] p-3 md:p-4 shadow-2xl">
-            <div className="relative w-full h-[160px] sm:h-[200px] lg:h-[240px]">
+        <div className="mt-auto hidden w-full bg-[#0a0a0a] px-4 py-4 pb-8 lg:block">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#111] p-4 shadow-2xl">
+            <div className="relative h-[240px] w-full">
               <img
                 key={sidebarCategories[selectedCategory].media}
                 src={sidebarCategories[selectedCategory].media}
                 alt={sidebarCategories[selectedCategory].text}
-                className="w-full h-full bg-white object-contain rounded-xl"
+                className="h-full w-full rounded-xl bg-white object-contain"
               />
             </div>
 
-            <div className="mt-3 text-center text-xs md:text-sm font-semibold text-white uppercase tracking-wider">
+            <div className="mt-3 text-center text-sm font-semibold uppercase tracking-wider text-white">
               {sidebarCategories[selectedCategory].text}
             </div>
-            
-            {/* Mobile/Tablet close button */}
-            <button 
-              className="absolute top-2 right-2 w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-white lg:hidden"
-              onClick={() => setSelectedCategory(null)}
-            >
-              ✕
-            </button>
           </div>
         </div>
       )}
     </aside>
-
   );
 }

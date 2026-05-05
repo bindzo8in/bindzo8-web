@@ -12,7 +12,7 @@ import StepContent from "./step-content";
 
 const Page = () => {
   return (
-    <main className="min-h-screen w-full overflow-hidden font-kumbh">
+    <main className="relative min-h-screen w-full overflow-hidden font-kumbh">
       <HeroSection />
 
       <InfoSection />
@@ -23,9 +23,9 @@ const Page = () => {
           <ProcessContent />
           <ServiceContent />
           <ServiceContent />
-          <KeyseoContent />
-          <ProjectContent />
-          <StepContent />
+          {/* <KeyseoContent /> */}
+          {/* <ProjectContent /> */}
+          {/* <StepContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

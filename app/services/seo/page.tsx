@@ -9,6 +9,7 @@ import KeyseoContent from "./keyseo-content";
 import ProjectContent from "./proj-content";
 import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
+import SeoWhyChooseContent from "./whychoose-content";
 
 const Page = () => {
   return (
@@ -19,13 +20,14 @@ const Page = () => {
 
       <SectionFixedBlobs>
         <HorizontalScroll>
-          <UsageContent />
-          <ProcessContent />
-          <ServiceContent />
-          <ServiceContent />
           <KeyseoContent />
-          <ProjectContent />
+          <SeoWhyChooseContent />
           <StepContent />
+          <ProcessContent />
+          {/* <UsageContent />
+          <ServiceContent />
+          <ServiceContent />
+          <ProjectContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

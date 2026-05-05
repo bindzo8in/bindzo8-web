@@ -1,53 +1,100 @@
 export const marketingPagesData = [
     {
-        title: "Enterprise Software",
-        heroLabel: "Enterprise Software",
+        title: "Ecommerce Solutions",
+        slug: "ecommerce-solutions",
+        media: "/service_sidebar/ecommerce.svg",
+        heroLabel: "Ecommerce Solutions",
         heroDescription:
-            "Enterprise software is large-scale business software that helps companies manage operations like finance, HR, and customer data. It improves efficiency, security, and teamwork across the whole organization.",
+            "help businesses sell products and services online through secure, user-friendly, and scalable digital stores. They improve customer experience, simplify order management, and support business growth across web and mobile platforms.",
         features: [
             {
-                title: "Custom-built enterprise systems",
+                title: "Custom online store development",
                 description:
-                    "Designed to automate your business processes and streamline daily operations.",
+                    "Designed to match your brand, products, customer journey, and business goals.",
             },
             {
-                title: "Scalable solutions for growing companies",
+                title: "Responsive shopping experience",
                 description:
-                    "From small teams to large organizations, the software adapts as your business expands.",
+                    "Smooth and mobile-friendly store layouts that work perfectly across phones, tablets, and desktops.",
             },
             {
-                title: "Complete workflow automation",
+                title: "Secure payment integration",
                 description:
-                    "ERP, CRM, HR, billing, inventory, reporting — all managed from one unified system.",
+                    "Support for trusted payment gateways, safe transactions, and reliable checkout flows.",
             },
             {
-                title: "Secure and reliable architecture",
+                title: "Product and inventory management",
                 description:
-                    "Built with modern technologies and cloud infrastructure for maximum performance and data safety.",
+                    "Easily manage products, categories, pricing, stock levels, offers, and availability from one system.",
             },
             {
-                title: "Faster operations with reduced manual work",
+                title: "Order tracking and customer management",
                 description:
-                    "Eliminate errors, improve productivity, and optimize every department.",
+                    "Handle orders, shipping updates, customer details, invoices, and purchase history efficiently.",
             },
             {
-                title: "Industry-ready and fully customizable",
+                title: "Scalable ecommerce architecture",
                 description:
-                    "Perfect for logistics, retail, manufacturing, healthcare, finance, education, and more.",
+                    "Built to handle more products, traffic, users, and sales as your business grows.",
             },
             {
-                title: "Long-term support and updates",
+                title: "Marketing and conversion optimization",
                 description:
-                    "Continuous improvements, feature additions, and system maintenance to keep everything running smoothly.",
+                    "Improve sales with SEO-ready pages, coupons, product recommendations, abandoned cart flows, and analytics.",
             },
         ],
     },
-
     {
+        title: "Branding",
+        slug: "branding",
+        media: "/service_sidebar/branding.png",
+        heroLabel: "Branding",
+        heroDescription: " is the process of creating a unique identity for a business through visuals, messaging, and customer experience. It helps build recognition, trust, and emotional connection with the audience.",
+        features: [
+            {
+                title: "Strong brand identity creation",
+                description:
+                    "Logos, colors, and visual elements crafted to make your business instantly recognizable.",
+            },
+            {
+                title: "Clear and consistent brand messaging",
+                description:
+                    "Defines your voice, tone, and personality to connect strongly with your audience.",
+            },
+            {
+                title: "Professional brand guidelines",
+                description:
+                    "A complete system that maintains uniformity across all platforms and materials.",
+            },
+            {
+                title: "Audience-focused brand strategy",
+                description:
+                    "Positioning that highlights your value, differentiates you from competitors, and builds trust.",
+            },
+            {
+                title: "Creative assets for all platforms",
+                description:
+                    "Business cards, social media kits, packaging, marketing materials, and more.",
+            },
+            {
+                title: "Brand storytelling that inspires",
+                description:
+                    "Powerful narratives that communicate your purpose, vision, and mission effectively.",
+            },
+            {
+                title: "Long-term brand growth support",
+                description:
+                    "Continuous refinement, updates, and strategic improvements as your business evolves.",
+            },
+        ]
+    },
+     {
         title: "Website Design and Development",
+        slug: "website-design-and-development",
+        media: "/service_sidebar/web.png",
         heroLabel: "Website Design and Development",
         heroDescription:
-            "Website design and development is the process of planning, designing, and building a website to make it look good, work smoothly, and provide a great user experience.",
+            "  is the process of planning, designing, and building a website to make it look good, work smoothly, and provide a great user experience.",
         features: [
             {
                 title: "Purpose-driven website designs",
@@ -86,9 +133,57 @@ export const marketingPagesData = [
             },
         ],
     },
-
+    {
+        title: "Quality Assurance",
+        slug: "quality-assurance",
+        media: "/service_sidebar/qa.png",
+        heroLabel: "Quality assurance",
+        heroDescription:
+            "is the process of checking products or services to ensure they meet standards and work correctly. It helps prevent errors, improve reliability, and deliver consistent quality to customers.",
+        ctaLabel: "Get Quote",
+        onCtaClick: () => console.log("Quality Assurance quote clicked"),
+        features: [
+            {
+                title: "End-to-end testing for flawless performance",
+                description:
+                    "Ensures every feature works smoothly across all devices, platforms, and environments.",
+            },
+            {
+                title: "Bug detection and prevention",
+                description:
+                    "Identifies issues early in the development cycle to reduce risks and costly fixes later.",
+            },
+            {
+                title: "Manual & automated testing expertise",
+                description:
+                    "Thorough validation using industry-standard tools and structured testing processes.",
+            },
+            {
+                title: "High reliability & stability assurance",
+                description:
+                    "Guarantees that your software, app, or website performs consistently under real-world conditions.",
+            },
+            {
+                title: "User experience validation",
+                description:
+                    "Checks usability, navigation flow, and interface quality to ensure a seamless user journey.",
+            },
+            {
+                title: "Security and compliance testing",
+                description:
+                    "Verifies data protection, access control, and system-level security standards.",
+            },
+            {
+                title: "Continuous quality monitoring",
+                description:
+                    "Ongoing checks, performance tracking, and optimization to maintain long-term product quality.",
+            },
+        ],
+    },
     {
         title: "Mobile App Development",
+        slug: "mobile-app-development",
+        media: "/service_sidebar/mobile.png",
         heroLabel: "Mobile App Development",
         heroDescription:
             "Mobile app development is the process of creating applications for smartphones and tablets. It involves designing, coding, and testing apps to ensure they work smoothly, look good, and provide useful features for users.",
@@ -135,9 +230,57 @@ export const marketingPagesData = [
             },
         ],
     },
-
+    {
+  title: "Design Solution",
+  media: "/service_sidebar/graphics.png",
+  slug: "design-solution",
+  heroLabel: "Design Solution",
+  heroDescription:
+    "is the art of creating visual content using images, colors, and typography to communicate messages clearly and attractively. It helps brands stand out and connect with their audience.",
+  ctaLabel: "Get Quote",
+  onCtaClick: () => console.log("Design Solution quote clicked"),
+  features: [
+    {
+      title: "Visuals that speak your brand's language",
+      description:
+        "Creative designs that communicate your message clearly and leave a lasting impression.",
+    },
+    {
+      title: "Professional brand-ready graphics",
+      description:
+        "Logos, brand kits, social media creatives, posters, banners, and marketing materials.",
+    },
+    {
+      title: "High-quality, modern design aesthetics",
+      description:
+        "Clean layouts, balanced compositions, and visually rich concepts that elevate your brand.",
+    },
+    {
+      title: "Custom designs tailored to your audience",
+      description:
+        "Every graphic is crafted to connect with your target customers and enhance engagement.",
+    },
+    {
+      title: "Creative storytelling through visuals",
+      description:
+        "Designs that capture your brand's story, personality, and values at a glance.",
+    },
+    {
+      title: "Consistent branding across all platforms",
+      description:
+        "Uniform style across digital, print, and social media to build strong brand identity.",
+    },
+    {
+      title: "Fast delivery with professional refinement",
+      description:
+        "Quick turnaround, multiple concepts, and smooth revisions for perfect results.",
+    },
+  ],
+},
     {
         title: "Software Development",
+        slug: "software-development",
+        media: "/service_sidebar/sd.png",
         heroLabel: "Software Development",
         heroDescription:
             "Software development is the process of designing, coding, testing, and maintaining software applications. It turns ideas into functional programs that solve problems and improve business or user experience.",
@@ -181,7 +324,9 @@ export const marketingPagesData = [
     },
     {
         title: "Digital Marketing",
+        slug: "digital-marketing",
         heroLabel: "Digital Marketing",
+        media: "/service_sidebar/dm.png",
         heroDescription:
             "Digital marketing is the promotion of products or services using online platforms like social media, websites, search engines, and emails. It helps businesses reach the right audience, increase visibility, and drive sales effectively.",
         features: [
@@ -222,54 +367,105 @@ export const marketingPagesData = [
             },
         ],
     },
-
     {
-        title: "IoT",
-        heroLabel: "IoT",
-        heroDescription:
-            "IoT (Internet of Things) is the technology that connects everyday devices to the internet so they can collect, share, and act on data. It makes systems smarter, more automated, and efficient in homes, industries, and businesses.",
-        features: [
-            {
-                title: "Smart device connectivity for real-time control",
-                description:
-                    "Connect, monitor, and manage devices remotely from a unified dashboard.",
-            },
-            {
-                title: "Automation that boosts efficiency",
-                description:
-                    "Reduce manual work with intelligent systems that respond automatically to data.",
-            },
-            {
-                title: "Seamless hardware–software integration",
-                description:
-                    "Sensors, gateways, cloud platforms, and apps working together smoothly.",
-            },
-            {
-                title: "Data-driven insights for better decisions",
-                description:
-                    "Collect and analyze real-time data to optimize operations and prevent issues.",
-            },
-            {
-                title: "Secure IoT architecture",
-                description:
-                    "Encrypted communication, secure APIs, and reliable cloud infrastructure.",
-            },
-            {
-                title: "Industry-ready solutions",
-                description:
-                    "Perfect for smart homes, manufacturing, logistics, agriculture, healthcare, and retail.",
-            },
-            {
-                title: "Scalable ecosystem for future expansion",
-                description:
-                    "Easily add new devices, sensors, and features as your business grows.",
-            },
-        ],
+  title: "Product Shooting",
+  slug: "product-shooting",
+  media: "/service_sidebar/product_shoot.png",
+  heroLabel: "Product Shooting",
+  heroDescription:
+    "involves creating engaging visual content through motion graphics, storytelling, and edited footage. It helps brands communicate ideas clearly, attract attention, and deliver messages in a dynamic and memorable way.",
+  ctaLabel: "Get Quote",
+  onCtaClick: () => console.log("Product Shooting quote clicked"),
+  features: [
+    {
+      title: "High-impact visual storytelling",
+      description:
+        "Engaging videos and animations that communicate your message clearly and emotionally.",
     },
-
     {
+      title: "Professional 2D & 3D animation",
+      description:
+        "Character animation, product demos, explainer videos, and motion graphics designed with precision.",
+    },
+    {
+      title: "Cinematic video production",
+      description:
+        "Shoot, edit, and produce high-quality promotional, corporate, and branding videos.",
+    },
+    {
+      title: "Brand-focused creative direction",
+      description:
+        "Every frame is crafted to match your brand's identity, tone, and marketing goals.",
+    },
+    {
+      title: "Social media-ready content",
+      description:
+        "Shorts, reels, ads, and promotional clips optimized for all major platforms.",
+    },
+    {
+      title: "Advanced editing & post-production",
+      description:
+        "Color grading, sound design, VFX, transitions, titles, and polishing for a premium finish.",
+    },
+    {
+      title: "End-to-end production support",
+      description:
+        "From scripting and storyboarding to final delivery — everything handled seamlessly.",
+    },
+  ],
+},
+{
+  title: "Search Engine Marketing",
+  slug: "search-engine-marketing",
+  media: "/service_sidebar/sem.png",
+  heroLabel: "Search Engine Marketing",
+  heroDescription:
+    "uses paid ads to place your business at the top of Google search results. At Bindzo 8, we optimize keywords, ads, and budgets to generate quick traffic, quality leads, and measurable results.",
+  ctaLabel: "Get Quote",
+  onCtaClick: () => console.log("Search Engine Marketing quote clicked"),
+  features: [
+    {
+      title: "Keyword Research",
+      description:
+        "Identify high-intent keywords your customers are actively searching for. Focus on terms that deliver the best traffic and conversions.",
+    },
+    {
+      title: "Ad Creation",
+      description:
+        "Craft compelling ad copies with strong CTAs. Design visually appealing display ads for maximum engagement.",
+    },
+    {
+      title: "Campaign Optimization",
+      description:
+        "Adjust bids, keywords, and targeting to improve clicks and conversions. Continuously refine ads for better performance.",
+    },
+    {
+      title: "Audience Targeting",
+      description:
+        "Show ads to users based on location, interests, demographics, and behavior. Reach people who are most likely to convert.",
+    },
+    {
+      title: "Budget Management",
+      description:
+        "Allocate spending wisely to maximize ROI. Optimize bid strategies to reduce cost-per-click.",
+    },
+    {
+      title: "Performance Tracking",
+      description:
+        "Monitor campaign analytics in real time. Track impressions, clicks, leads, and conversions.",
+    },
+    {
+      title: "Measurable Results",
+      description:
+        "Understand exactly where your money goes. Get transparent reports on growth, traffic, and returns.",
+    },
+  ],
+},
+{
         title: "Cyber Security",
+        slug: "cyber-security",
         heroLabel: "Cyber Security",
+        media: "/service_sidebar/cs.png",
         heroDescription:
             "Cybersecurity is the practice of protecting computers, networks, and data from attacks, theft, and damage. It ensures safety, privacy, and smooth digital operations for individuals and businesses.",
         features: [
@@ -311,89 +507,45 @@ export const marketingPagesData = [
         ],
     },
     {
-        title: "Cyber Security",
-        heroLabel: "Cyber Security",
-        heroDescription:
-            "Cybersecurity is the practice of protecting computers, networks, and data from attacks, theft, and damage. It ensures safety, privacy, and smooth digital operations for individuals and businesses.",
-        features: [
-            {
-                title: "Advanced protection against digital threats",
-                description:
-                    "Safeguards your systems from malware, hacking, phishing, and data breaches.",
-            },
-            {
-                title: "Real-time monitoring & threat detection",
-                description:
-                    "Continuous surveillance to identify vulnerabilities and stop attacks instantly.",
-            },
-            {
-                title: "Secure network & infrastructure setup",
-                description:
-                    "Firewall configurations, encrypted communication, and safe access controls.",
-            },
-            {
-                title: "Data privacy and compliance",
-                description:
-                    "Ensures your business meets security standards and protects sensitive information.",
-            },
-            {
-                title: "Vulnerability assessment & penetration testing",
-                description:
-                    "Simulated attack testing to uncover weak points before real hackers do.",
-            },
-            {
-                title: "Incident response & recovery",
-                description:
-                    "Rapid action plans to minimize damage, restore systems, and prevent future attacks.",
-            },
-            {
-                title: "Ongoing updates & security maintenance",
-                description:
-                    "Regular patches, audits, and improvements to keep your systems hardened.",
-            },
-        ],
+  title: "Creative and Communication",
+  slug: "creative-and-communication",
+  media: "/service_sidebar/cc.png",
+  heroLabel: "Creative & Communication",
+  heroDescription:
+    "at Bindzo 8 focuses on crafting powerful visual content and strategic messaging that connect brands with their audiences. We blend creativity, storytelling, and clarity to deliver communication that is engaging, memorable, and aligned with your brand identity.",
+  ctaLabel: "Get Quote",
+  onCtaClick: () => console.log("Creative and Communication quote clicked"),
+  features: [
+    {
+      title: "Brand Storytelling",
+      description:
+        "We create meaningful narratives that convey your brand's purpose, personality, and value.",
     },
     {
-        title: "Cloud Service",
-        heroLabel: "Cloud Service",
-        heroDescription:
-            "Cloud services provide online storage, computing power, and software through the internet. They help businesses access data anytime, scale easily, reduce costs, and work more efficiently without needing physical servers.",
-        features: [
-            {
-                title: "Flexible and scalable cloud infrastructure",
-                description:
-                    "Grow your storage, compute power, and applications without heavy hardware costs.",
-            },
-            {
-                title: "Secure cloud environments",
-                description:
-                    "Data encryption, controlled access, and continuous monitoring to protect all your digital assets.",
-            },
-            {
-                title: "Fast deployment & global accessibility",
-                description:
-                    "Access your systems from anywhere with reliable, high-speed cloud performance.",
-            },
-            {
-                title: "Cost-efficient resource management",
-                description:
-                    "Pay only for what you use, reducing operational expenses and improving efficiency.",
-            },
-            {
-                title: "Cloud migration & modernization",
-                description:
-                    "Move your existing software, databases, and applications to the cloud with zero hassle.",
-            },
-            {
-                title: "Automatic backups & disaster recovery",
-                description:
-                    "Guaranteed data safety with scheduled backups and rapid restoration.",
-            },
-            {
-                title: "Support for multi-cloud & hybrid solutions",
-                description:
-                    "AWS, Azure, Google Cloud, or mixed setups — tailored to your business needs.",
-            },
-        ],
+      title: "Visual Content Creation",
+      description:
+        "Designs, graphics, videos, and creative assets that strengthen brand identity and attract customers.",
     },
+    {
+      title: "Messaging & Copywriting",
+      description:
+        "Clear, concise, and impactful communication tailored for websites, ads, social media, and campaigns.",
+    },
+    {
+      title: "Audience-Centric Approach",
+      description:
+        "Every creative element is designed to resonate with your target audience and drive engagement.",
+    },
+    {
+      title: "Consistent Brand Communication",
+      description:
+        "Unified tone, style, and messaging across all platforms to build long-term brand trust.",
+    },
+    {
+      title: "Creative Campaign Development",
+      description:
+        "Concept-driven campaigns that boost visibility, improve recall, and enhance brand presence.",
+    },
+  ],
+}
 ];

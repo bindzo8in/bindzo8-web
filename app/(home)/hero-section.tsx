@@ -28,7 +28,7 @@ export default function HeroSection() {
         .mouse-scroll-dot { animation: scrolling13 1s linear infinite; }
       `}</style>
 
-      <section className="relative w-full min-h-screen lg:h-screen bg-black flex flex-col lg:flex-row justify-center items-center px-6 py-16 sm:px-10 md:px-16 lg:py-0 lg:px-24 xl:px-36 gap-10 lg:gap-4 overflow-hidden">
+      <section className="relative w-full min-h-screen lg:h-screen bg-black flex flex-col lg:flex-row justify-center items-center px-6 sm:px-10 md:px-16  lg:px-24 xl:px-36 gap-10 lg:gap-4 overflow-hidden">
 
         <Background />
 

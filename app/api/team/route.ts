@@ -20,7 +20,7 @@ export async function GET(request: Request) {
           { position: { contains: search, mode: "insensitive" } },
         ],
       },
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: "asc" },
     })
 
     let nextCursor: string | undefined = undefined
@@ -34,6 +34,7 @@ export async function GET(request: Request) {
       nextCursor,
     })
   } catch (error) {
+    console.error(error)
     return NextResponse.json({ error: "Failed to fetch team members" }, { status: 500 })
   }
 }

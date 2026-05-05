@@ -1,16 +1,104 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import WaveBackground from "./background";
 
+type TeamMember = {
+  id: string;
+  name: string;
+  position: string;
+  mediaUrl: string;
+};
+
+const LIMIT = 100;
+
+const FALLBACK_MEMBERS = [
+  { name: "Manikandan R", role: "Graphic Designer", image: "/binzo8_members/mani_bro.png" },
+  { name: "Ranjani Rajkumar", role: "UI/UX Designer", image: "/binzo8_members/ranjani_mam.png" },
+  { name: "Jeyapandi R", role: "Developer", image: "/binzo8_members/m3.png" },
+  
+];
+
 function Member() {
-  const members = [
-    { name: "Manikandan R", role: "Graphic Designer", image: "/binzo8_members/mani_bro.png" },
-    { name: "Ranjani Rajkumar", role: "UI/UX Designer", image: "/binzo8_members/ranjani_mam.png" },
-    { name: "Ranjani Rajkumar", role: "Developer", image: "/binzo8_members/m3.png" },
-    { name: "Manikandan R", role: "Business Developer", image: "/binzo8_members/m4.png" },
-    { name: "Ranjani Rajkumar", role: "Sales", image: "/binzo8_members/m5.png" },
-    { name: "Ranjani Rajkumar", role: "Digital Marketing", image: "/binzo8_members/m6.png" },
-  ];
+  const [items, setItems] = useState<{ name: string, role: string, image: string }[]>([]);
+  const [nextCursor, setNextCursor] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
+  const [useFallback, setUseFallback] = useState(false);
+
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const isFetchingRef = useRef(false);
+  const fetchPage = useCallback(async (cursor?: string) => {
+    if (isFetchingRef.current) return;
+    isFetchingRef.current = true;
+    setIsLoading(true);
+
+    try {
+      const params = new URLSearchParams({ limit: String(LIMIT) });
+      if (cursor) params.set("cursor", cursor);
+
+      const res = await fetch(`/api/team?${params}`);
+      if (!res.ok) throw new Error("Failed to fetch");
+
+      const data = await res.json();
+
+
+
+      if (data?.items?.length > 0) {
+        const mappedItems = data.items.map((m: TeamMember) => ({
+          name: m.name,
+          role: m.position,
+          image: m.mediaUrl,
+        }));
+
+        setItems((prev) => {
+          // Avoid duplicates if initial fetch and fallback might overlap (though unlikely with real IDs)
+          return [...prev, ...mappedItems];
+        });
+        setNextCursor(data.nextCursor ?? null);
+        setHasMore(!!data.nextCursor);
+        setUseFallback(false);
+      } else if (!cursor) {
+        // No items in DB at all on first load
+        setItems(FALLBACK_MEMBERS);
+        setHasMore(false);
+        setUseFallback(true);
+      }
+    } catch {
+      if (!cursor) {
+        setItems(FALLBACK_MEMBERS);
+        setHasMore(false);
+        setUseFallback(true);
+      }
+    } finally {
+      setIsLoading(false);
+      isFetchingRef.current = false;
+    }
+  }, []);
+
+  // Initial load
+  useEffect(() => {
+    fetchPage();
+  }, [fetchPage]);
+
+  // IntersectionObserver sentinel
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel || useFallback) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !isFetchingRef.current) {
+          fetchPage(nextCursor ?? undefined);
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [fetchPage, hasMore, nextCursor, useFallback]);
 
   return (
     <section className="relative font-kumbh py-16 overflow-hidden min-h-screen bg-black">
@@ -35,10 +123,24 @@ function Member() {
 
         <div className="max-w-6xl mx-auto pt-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-10 justify-items-center">
-            {members.map((member, index) => (
-              <MemberCard key={index} {...member} />
+            {items.map((member, index) => (
+              <MemberCard key={`${member.name}-${index}`} {...member} />
             ))}
+
+            {isLoading &&
+              Array.from({ length: 3 }).map((_, i) => (
+                <SkeletonMemberCard key={`sk-${i}`} />
+              ))}
           </div>
+
+          {/* Invisible sentinel triggers next page load */}
+          <div ref={sentinelRef} className="h-1 w-full" />
+
+          {!hasMore && items.length > 0 && !useFallback && (
+            <p className="mt-12 text-center text-sm text-white/40 tracking-widest uppercase">
+              End of team members
+            </p>
+          )}
         </div>
       </div>
     </section>
@@ -68,6 +170,16 @@ export function MemberCard({ name, role, image }: MemberCardProps) {
 
       <h4 className="text-white text-lg tracking-wide">{name}</h4>
       <p className="text-gray-400 text-sm">{role}</p>
+    </div>
+  );
+}
+
+function SkeletonMemberCard() {
+  return (
+    <div className="flex flex-col items-center text-center animate-pulse">
+      <div className="w-[220px] aspect-square mb-6 bg-white/10 rounded-full" />
+      <div className="h-6 w-32 bg-white/10 rounded mb-2" />
+      <div className="h-4 w-24 bg-white/10 rounded" />
     </div>
   );
 }

@@ -1,6 +1,3 @@
-import React from 'react'
-import Link from 'next/link'
-
 const Footer = () => {
   return (
     <footer className="bg-[#fdf4f6] font-sans relative z-10 font-kumbh">

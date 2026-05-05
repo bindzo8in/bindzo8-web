@@ -16,8 +16,8 @@ function WeAre() {
           We are
         </p>
 
-        <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
-          Bindzo 8 Techno Solutions
+        <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
+          Bindzo 8 <span className='hidden sm:inline'>Private Limited</span><span className='sm:hidden inline'>Pvt. Ltd.</span>
         </h2>
 
         <div className="flex items-center justify-center gap-4 mb-8">

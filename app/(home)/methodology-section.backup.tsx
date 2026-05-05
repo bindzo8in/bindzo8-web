@@ -73,7 +73,6 @@ export default function MethodologySection() {
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: wrapRef.current,
-          markers: true,
           start: "top 40%",
           toggleActions: "play none none none"
         }

@@ -9,6 +9,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
 
+
+
 export default function MethodologySection() {
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -37,6 +39,19 @@ export default function MethodologySection() {
 
       if (!ball || !logo || !spin || !ballWrap) return;
 
+      const svgWidth = 1920;
+      const svgHeight = 2422;
+
+      const getRenderedSvgHeight = () => {
+        const el = wrapRef.current;
+        if (!el) return window.innerHeight;
+
+        const renderedWidth = el.offsetWidth;
+        const scale = renderedWidth / svgWidth;
+
+        return svgHeight * scale;
+      };
+
       gsap.set(ballWrap, {
         force3D: true,
         willChange: "transform",
@@ -52,10 +67,44 @@ export default function MethodologySection() {
         transformOrigin: "50% 50%",
       });
 
+      //       const tl = gsap.timeline({
+      //         // repeat: -1,
+      //         // repeatDelay: 1,
+      //         defaults: { ease: "none" },
+      //         scrollTrigger: {
+      //   trigger: wrapRef.current,
+      //   start: "top top",
+      //   end: () => {
+      //     const sectionHeight = wrapRef.current?.offsetHeight || window.innerHeight;
+      //     const viewportHeight = window.innerHeight;
+
+      //     return `+=${sectionHeight + viewportHeight}`;
+      //   },
+      //   scrub: 1,
+      //   pin: true,
+      //   invalidateOnRefresh: true,
+      //   anticipatePin: 1,
+      //   markers: true,
+      // }
+      //       });
       const tl = gsap.timeline({
-        repeat: -1,
-        repeatDelay: 1,
         defaults: { ease: "none" },
+        scrollTrigger: {
+          trigger: wrapRef.current,
+          start: "top top",
+          // end: "+=2200",
+          end: () => {
+            const renderedSvgHeight = getRenderedSvgHeight();
+            const viewportHeight = window.innerHeight;
+
+            return `+=${Math.max(renderedSvgHeight - viewportHeight, viewportHeight)}`;
+          },
+
+          // scrub: 1,
+          // pin: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
       });
 
       /* =====================================
@@ -261,67 +310,59 @@ export default function MethodologySection() {
   }, []);
 
   return (
-    <section className="relative bg-[#FFF5F4] w-full font-kumbh">
+    <section className="relative z-10 bg-[#FFF5F4] w-full font-kumbh">
       {/* --- DESKTOP SVG VIEW (Hidden on Mobile) --- */}
-      <div ref={wrapRef} className="w-full hidden md:block">
-        <MethodologySVG className="h-auto w-full" />
+      <div ref={wrapRef} className="hidden w-full overflow-hidden md:block">
+        <MethodologySVG className="h-full w-full object-contain" />
       </div>
 
-      {/* --- MOBILE FALLBACK VIEW (Hidden on Desktop) --- */}
-      <div className="w-full block md:hidden px-6 py-16">
-        <h2 className="text-4xl font-bold text-[#E7325C] mb-12 text-center">
-          Our Methodology
-        </h2>
+     {/* --- MOBILE HTML SVG-LIKE VIEW (Hidden on Desktop) --- */}
+<div className="relative block md:hidden w-full min-h-screen bg-[#FFF5F4] overflow-hidden font-kumbh px-6 py-10">
+  {/* Main Heading */}
+  <h2 className="text-3xl leading-tight text-center font-medium text-[#E7325C] whitespace-nowrap">
+    Our Methodology
+  </h2>
 
-        <div className="flex flex-col gap-10">
-          
-          {/* Step 1 */}
-          <div className="flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative overflow-hidden border-t-4 border-[#E7325C]">
-            <div className="w-12 h-12 rounded-full bg-[#E7325C] text-white flex items-center justify-center font-bold text-xl mb-4 shadow-md">
-              1
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-wide">
-              BRANDING
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm">
-              Branding gives your business a unique identity that builds trust,
-              attracts customers, and sets you apart. We help you create a
-              powerful brand that connects, inspires, and drives growth.
-            </p>
-          </div>
+  <div className="mt-6 flex flex-col gap-12">
+    {/* Branding */}
+    <div className="w-full">
+      <h3 className="mb-4 text-center text-[24px] font-medium text-black">
+        BRANDING
+      </h3>
 
-          {/* Step 2 */}
-          <div className="flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative overflow-hidden border-t-4 border-[#F97316]">
-            <div className="w-12 h-12 rounded-full bg-[#F97316] text-white flex items-center justify-center font-bold text-xl mb-4 shadow-md">
-              2
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-wide">
-              DEVELOPMENT
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm">
-              Development drives growth, innovation, and success in business. We
-              help you build strong strategies and solutions to move your
-              business forward.
-            </p>
-          </div>
+      <p className="text-justify text-[14px] leading-[1.5] text-black">
+        Branding gives your business a unique identity that builds trust,
+        attracts customers, and sets you apart. We help you create a powerful
+        brand that connects, inspires, and drives growth.
+      </p>
+    </div>
 
-          {/* Step 3 */}
-          <div className="flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] relative overflow-hidden border-t-4 border-[#3B82F6]">
-            <div className="w-12 h-12 rounded-full bg-[#3B82F6] text-white flex items-center justify-center font-bold text-xl mb-4 shadow-md">
-              3
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-wide">
-              MARKETING
-            </h3>
-            <p className="text-gray-600 leading-relaxed text-sm">
-              Marketing connects your brand with the right audience, builds
-              awareness, and drives sales. We help you create impact strategies
-              that attract, engage, and grow your business.
-            </p>
-          </div>
+    {/* Marketing */}
+    <div className="w-full">
+      <h3 className="mb-4 text-center text-[24px] font-medium text-black">
+        MARKETING
+      </h3>
 
-        </div>
-      </div>
+      <p className="text-justify text-[14px] leading-[1.5] text-black">
+        Marketing connects your brand with the right audience, builds
+        awareness, and drives sales. We help you create impact strategies that
+        attract, engage, and grow your business.
+      </p>
+    </div>
+
+    {/* Development */}
+    <div className="w-full">
+      <h3 className="mb-4 text-center text-[24px] font-medium text-black">
+        DEVELOPMENT
+      </h3>
+
+      <p className="text-justify text-[14px] leading-[1.5] text-black">
+        Development drives growth, innovation, and success in business. We help
+        you build strong strategies and solutions to move your business forward.
+      </p>
+    </div>
+  </div>
+</div>
     </section>
   );
 }

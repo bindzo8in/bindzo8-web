@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kumbh_Sans, Raleway } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AuthProvider } from "@/components/session-provider";
+import FixedQuoteButton from "@/components/contact-button";
+import FloatingWhatsApp from "@/components/floating-whatsapp";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,11 +45,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col pt-[95px]">
+      <body className="min-h-full flex flex-col pt-[75px] sm:pt-[96]">
         <AuthProvider>
           <Navbar />
           {children}
           <Footer />
+          <FixedQuoteButton />
+          <FloatingWhatsApp
+            phoneNumber="919884344503"
+          />
         </AuthProvider>
       </body>
     </html>

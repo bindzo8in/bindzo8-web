@@ -9,6 +9,8 @@ import KeyseoContent from "./keyseo-content";
 import ProjectContent from "./proj-content";
 import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
+import BrandingLogoDesignsContent from "./branding-content";
+import PackageDesignsContent from "./package-content";
 
 const Page = () => {
   return (
@@ -19,13 +21,15 @@ const Page = () => {
 
       <SectionFixedBlobs>
         <HorizontalScroll>
-          <UsageContent />
+          <BrandingLogoDesignsContent />
+          <PackageDesignsContent />
+          <StepContent />
           <ProcessContent />
+          {/* <UsageContent />
           <ServiceContent />
           <ServiceContent />
           <KeyseoContent />
-          <ProjectContent />
-          <StepContent />
+          <ProjectContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

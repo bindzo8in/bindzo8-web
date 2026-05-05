@@ -9,6 +9,7 @@ import KeyseoContent from "./keyseo-content";
 import ProjectContent from "./proj-content";
 import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
+import VideoEditingOfferContent from "./whatweoffer-content";
 
 const Page = () => {
   return (
@@ -20,12 +21,13 @@ const Page = () => {
       <SectionFixedBlobs>
         <HorizontalScroll>
           <UsageContent />
+          <VideoEditingOfferContent />
           <ProcessContent />
-          <ServiceContent />
+          {/* <ServiceContent />
           <ServiceContent />
           <KeyseoContent />
           <ProjectContent />
-          <StepContent />
+          <StepContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

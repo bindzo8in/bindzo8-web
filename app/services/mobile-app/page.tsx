@@ -9,6 +9,8 @@ import KeyseoContent from "./keyseo-content";
 import ProjectContent from "./proj-content";
 import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
+import GoodVibesContent from "./goodvibles-content";
+import FoodAppKeyHighlightsContent from "./keyhighlight-content";
 
 const Page = () => {
   return (
@@ -19,13 +21,15 @@ const Page = () => {
 
       <SectionFixedBlobs>
         <HorizontalScroll>
-          <UsageContent />
+          <GoodVibesContent />
+          <FoodAppKeyHighlightsContent />
+          <StepContent />
           <ProcessContent />
+          {/* <UsageContent />
           <ServiceContent />
           <ServiceContent />
           <KeyseoContent />
-          <ProjectContent />
-          <StepContent />
+          <ProjectContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />
