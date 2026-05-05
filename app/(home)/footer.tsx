@@ -75,7 +75,7 @@ const Footer = () => {
               <span className="text-[14px] mt-0.5">✉️</span>
               <div>
                 <p className="text-[12px] text-[#6b7280] m-0 hover:text-[#e05a8a] cursor-pointer transition-colors">bindzo8in@gmail.com</p>
-                <p className="text-[12px] text-[#6b7280] my-1 hover:text-[#e05a8a] cursor-pointer transition-colors">info@bindzo8.com</p>
+                <p className="text-[12px] text-[#6b7280] my-1 hover:text-[#e05a8a] cursor-pointer transition-colors">{process.env.ADMIN_EMAIL}</p>
                 <p className="text-[12px] text-[#6b7280] m-0 hover:text-[#e05a8a] cursor-pointer transition-colors">contact@bindzo8.com</p>
               </div>
             </div>

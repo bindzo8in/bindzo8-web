@@ -97,7 +97,7 @@ export default function Footer() {
               <span className="text-gray-800 mt-1">✉️</span>
               <div className="text-[13px] text-gray-800 font-medium space-y-1">
                 <p>bindzo8in@gmail.com</p>
-                <p>info@bindzo8.com</p>
+                <p>{process.env.ADMIN_EMAIL}</p>
                 <p>contact@bindzo8.com</p>
               </div>
             </div>
