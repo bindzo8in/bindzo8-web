@@ -547,5 +547,39 @@ export const marketingPagesData = [
         "Concept-driven campaigns that boost visibility, improve recall, and enhance brand presence.",
     },
   ],
+},
+{
+  title: "DV 360°",
+  slug: "dv-360",
+  media: "/services/dv360.png",
+  heroLabel: "Display & Video 360",
+  heroDescription:
+    "is an advanced digital advertising platform by Google used for programmatic ad buying. It allows businesses to plan, run, and optimize ads across display, video, mobile apps, and connected TV from one platform.",
+  ctaLabel: "Get Quote",
+  features: [
+    {
+      title: "Campaigns",
+      description: "Build and execute a cross-channel media plan.",
+    },
+    {
+      title: "Audiences",
+      description: "Manage your audiences alongside your media buys.",
+    },
+    {
+      title: "Creatives",
+      description:
+        "Tie your creative strategy to your data and your media plan.",
+    },
+    {
+      title: "Insights",
+      description:
+        "Get all the campaign metrics you need, in one place.",
+    },
+    {
+      title: "Inventory",
+      description:
+        "Discover high-quality inventory from top broadcasters and publishers.",
+    },
+  ],
 }
 ];

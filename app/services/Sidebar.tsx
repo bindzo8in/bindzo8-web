@@ -60,9 +60,9 @@ const sidebarCategories = [
     media: "/services_gif/sem.gif",
   },
   {
-    text: "Cyber Security",
-    slug: "cyber-security",
-    media: "/services_gif/digital-secure.gif",
+    text: "DV 360",
+    slug: "dv-360", 
+    media: "/services_gif/dv360.gif",
   },
   {
     text: "Creative & Communication",

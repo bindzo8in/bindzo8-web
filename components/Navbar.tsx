@@ -103,8 +103,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-[15px] tracking-wide no-underline transition-colors ${
                     isActive
-                      ? "font-semibold text-[#df803b]"
-                      : "font-medium text-[#222222] hover:text-[#df803b]"
+                      ? "font-semibold text-[#d3325c]"
+                      : "font-medium text-[#222222] hover:text-[#d3325c]"
                   }`}
                 >
                   {link.label}
