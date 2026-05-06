@@ -128,7 +128,7 @@ export default function ContactForm() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-gray-700 break-all">
-                                        bindzo8technosolutions@gmail.com
+                                        bindzo8in@gmail.com
                                     </p>
                                 </div>
                             </div>

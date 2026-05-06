@@ -1,8 +1,18 @@
 import HorizontalSlide from '@/components/horizontal-scroll/HorizontalSlide'
 import Image from 'next/image';
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const services = [
+  {
+    title: "SEO (Search Engine Optimization)",
+    image: "/products/1.jpeg",
+    text: (
+      <>
+        To make your website top in google search engine result page organically
+        which leads to come more <b>Business Conversion, High Visibility &amp; Higher Traffic.</b>
+      </>
+    ),
+  },
   {
     title: "SMM (Social Media Marketing)",
     image: "/products/1.jpeg",
@@ -11,16 +21,6 @@ const services = [
         World is connected through Social Media. We create a brand identity
         of your business in all social media and reach{" "}
         <b>Potential Customers based on your preference to Increase Your Revenue.</b>
-      </>
-    ),
-  },
-  {
-    title: "SEO (Search Engine Optimization)",
-    image: "/products/1.jpeg",
-    text: (
-      <>
-        To make your website top in google search engine result page organically
-        which leads to come more <b>Business Conversion, High Visibility &amp; Higher Traffic.</b>
       </>
     ),
   },
@@ -38,27 +38,27 @@ const services = [
   },
 ]
 
-function ServiceContent() {
+function ServiceContent({ services }: { services: { title: string, image: string, text: React.ReactNode }[] }) {
   return (
-    <HorizontalSlide className='flex items-center justify-center py-16 lg:py-[95px] bg-black'>
+    <HorizontalSlide className='flex items-center justify-center py-16 lg:py-[95px] bg-transparent!'>
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-y-8 gap-x-20 px-6 md:grid-cols-2 lg:px-5">
-        {/* left top image */}
-        <ImageCard src={services[0].image} alt={services[0].title} />
+        {services.map((service, index) => (
+          <Fragment key={index}>
+            {index % 2 == 0 ? (
+              <>
+                <ImageCard src={service.image} alt={service.title} />
 
-        {/* right top text */}
-        <TextCard title={services[1].title} text={services[1].text} />
+                <TextCard title={service.title} text={service.text} />
+              </>
+            ) : (
+              <>
+                <TextCard title={service.title} text={service.text} />
+                <ImageCard src={service.image} alt={service.title} />
+              </>
+            )}
 
-        {/* left middle text */}
-        <TextCard title={services[0].title} text={services[0].text} />
-
-        {/* right middle image */}
-        <ImageCard src={services[1].image} alt={services[1].title} />
-
-        {/* left bottom image */}
-        <ImageCard src={services[2].image} alt={services[2].title} />
-
-        {/* right bottom text */}
-        <TextCard title={services[2].title} text={services[2].text} />
+          </Fragment>
+        ))}
       </div>
     </HorizontalSlide>
   )

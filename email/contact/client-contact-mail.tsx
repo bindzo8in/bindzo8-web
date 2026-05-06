@@ -67,7 +67,7 @@ export function ClientContactMail({
             <Text style={footer}>
               Best regards,
               <br />
-              Bindzo8 Techno Solutions
+              Bindzo8 Private Limited
             </Text>
           </Section>
         </Container>

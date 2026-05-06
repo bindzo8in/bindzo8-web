@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const UsageContent = () => {
     return (
-        <HorizontalSlide className="flex flex-col lg:flex-row items-center justify-center py-16 lg:py-[95px] gap-12 lg:gap-4 px-6 lg:px-0 bg-black">
+        <HorizontalSlide className="flex flex-col lg:flex-row items-center justify-center py-16 lg:py-[95px] gap-12 lg:gap-4 px-6 lg:px-0 ">
             <div className='flex flex-col lg:flex-row flex-1 gap-8 lg:gap-x-4 justify-center items-start lg:items-center h-full px-4 lg:px-8'>
                 <ListBlock
                     title="Usage / Use Cases"

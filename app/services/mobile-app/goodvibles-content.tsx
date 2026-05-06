@@ -19,7 +19,7 @@ export default function GoodVibesContent() {
           <div className="relative z-10 flex w-full items-center justify-center lg:h-full lg:justify-start">
             <div className="relative h-[300px] w-full max-w-[620px] sm:h-[430px] sm:max-w-[760px] md:h-[500px] lg:h-[68vh] lg:max-h-[580px] lg:max-w-[760px] xl:h-[70vh] xl:max-h-[640px] xl:max-w-[820px]">
               <Image
-                src="/good-vibes/food-delivery-app.png"
+                src="/mobile_app.png"
                 alt="Good Vibes food delivery app screens"
                 fill
                 priority

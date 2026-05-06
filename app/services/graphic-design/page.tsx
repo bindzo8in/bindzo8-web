@@ -11,13 +11,20 @@ import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
 import BrandingLogoDesignsContent from "./branding-content";
 import PackageDesignsContent from "./package-content";
-
+const data = {
+  hero: {
+    title: "Design Solution",
+    desc: "We bring ideas to life through powerful visuals & modern design.",
+    
+  },
+  info: "Design is the visual voice of your brand. At Bindzo 8 Private Limited, we craft creative, meaningful, and memorable designs that reflect your identity and communicate your story with impact."
+}
 const Page = () => {
   return (
     <main className="min-h-screen w-full overflow-hidden font-kumbh">
-      <HeroSection />
+      <HeroSection heading={data.hero.title} subHeading={data.hero.desc} />
 
-      <InfoSection />
+      <InfoSection content={data.info} />
 
       <SectionFixedBlobs>
         <HorizontalScroll>
@@ -25,11 +32,6 @@ const Page = () => {
           <PackageDesignsContent />
           <StepContent />
           <ProcessContent />
-          {/* <UsageContent />
-          <ServiceContent />
-          <ServiceContent />
-          <KeyseoContent />
-          <ProjectContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

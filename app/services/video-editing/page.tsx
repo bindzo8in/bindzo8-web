@@ -14,20 +14,15 @@ import VideoEditingOfferContent from "./whatweoffer-content";
 const Page = () => {
   return (
     <main className="min-h-screen w-full overflow-hidden font-kumbh">
-      <HeroSection />
+      <HeroSection heading="Video Editing" subHeading="High-quality edits for social media, ads, events & branding."/>
 
-      <InfoSection />
+      <InfoSection content="Video content is the most engaging form of digital communication. At Bindzo 8 Private Limited, we turn raw footage into compelling, visually rich stories that captivate viewers and drive results." />
 
       <SectionFixedBlobs>
         <HorizontalScroll>
           <UsageContent />
           <VideoEditingOfferContent />
           <ProcessContent />
-          {/* <ServiceContent />
-          <ServiceContent />
-          <KeyseoContent />
-          <ProjectContent />
-          <StepContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

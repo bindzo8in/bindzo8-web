@@ -182,11 +182,11 @@ function WhyChooseUs() {
           </p>
 
           <h2 className="mb-6 text-[34px] font-bold leading-[1.12] text-black sm:text-[2.4rem] lg:text-[3rem]">
-            We're Bindzo IT Solutions Pvt Ltd
+            We're Bindzo 8 Pvt Ltd
           </h2>
 
           <p className="mb-8 text-justify text-[15px] leading-[1.8] text-black/65 sm:text-[16px] lg:mb-10 lg:text-[17px]">
-            Bindzo IT Solutions Pvt. Ltd. takes your business beyond boundaries
+            Bindzo 8 Pvt. Ltd. takes your business beyond boundaries
             with smart, scalable, and secure technology solutions. As a trusted
             end-to-end IT service partner, we deliver innovation that drives
             growth and efficiency. Our dedicated team ensures seamless IT

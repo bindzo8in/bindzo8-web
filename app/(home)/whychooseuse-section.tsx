@@ -16,11 +16,11 @@ const WhyChooseUs = () => {
           </p>
 
           <h2 className="text-[42px] lg:text-[58px] leading-tight font-bold text-black mb-8">
-            We’re Bindzo IT Solutions Pvt Ltd
+            We’re Bindzo 8 Pvt Ltd
           </h2>
 
           <p className="text-[18px] lg:text-[21px] leading-[1.8] text-black/70 max-w-[560px] mb-14">
-            Bindzo IT Solutions Pvt. Ltd. takes your business beyond
+            Bindzo 8 Pvt. Ltd. takes your business beyond
             boundaries with smart, scalable, and secure technology solutions.
             A trusted end-to-end IT service partner, we deliver innovation
             that drives growth and efficiency. Our dedicated team ensures

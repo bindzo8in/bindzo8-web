@@ -15,9 +15,9 @@ import FoodAppKeyHighlightsContent from "./keyhighlight-content";
 const Page = () => {
   return (
     <main className="min-h-screen w-full overflow-hidden font-kumbh">
-      <HeroSection />
+      <HeroSection heading="Mobile App Development" subHeading="Custom Android & iOS apps built for performance, security & scalability." />
 
-      <InfoSection />
+      <InfoSection content="Apps have become essential tools for businesses looking to provide convenience, automation, and instant accessibility. At Bindzo 8 Private Limited, we develop powerful Android and iOS applications that turn ideas into seamless digital experiences." />
 
       <SectionFixedBlobs>
         <HorizontalScroll>
@@ -25,11 +25,6 @@ const Page = () => {
           <FoodAppKeyHighlightsContent />
           <StepContent />
           <ProcessContent />
-          {/* <UsageContent />
-          <ServiceContent />
-          <ServiceContent />
-          <KeyseoContent />
-          <ProjectContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

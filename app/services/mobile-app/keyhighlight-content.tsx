@@ -66,7 +66,7 @@ export default function FoodAppKeyHighlightsContent() {
           <div className="relative z-10 flex w-full items-center justify-center lg:h-full lg:justify-end">
             <div className="relative h-[360px] w-full max-w-[620px] sm:h-[520px] sm:max-w-[740px] md:h-[600px] lg:h-[78vh] lg:max-h-[680px] lg:max-w-[720px] xl:h-[82vh] xl:max-h-[760px] xl:max-w-[820px]">
               <Image
-                src="/good-vibes/food-app-screens.png"
+                src="/screen.png"
                 alt="Good Vibes food app screens"
                 fill
                 priority

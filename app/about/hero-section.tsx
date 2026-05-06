@@ -36,7 +36,7 @@ function HeroSection() {
                 <div className="absolute bottom-10 right-10 w-64 h-64 md:w-96 md:h-96 bg-blue-900 blur-3xl rounded-full opacity-30 md:opacity-40" />
             </div>
             <div className="relative z-10 font-kumbh w-full px-4 sm:px-6 md:px-8 space-y-12 md:space-y-16">
-                <div className='max-w-4xl mx-auto text-center'>
+                <div className='max-w-4xl mx-auto text-center shadow-2xl rounded-2xl'>
                     <h1 className='capitalize text-4xl md:text-5xl lg:text-6xl font-bold mb-6'>about us</h1>
                     <p className='text-base md:text-lg font-extralight leading-relaxed'>
                         We deliver complete end-to-end IT solutions, offering website development, mobile app development, software creation, graphic design, digital marketing, animation, and video production to meet all your business needs.
@@ -51,7 +51,7 @@ function HeroSection() {
                                 src="/binzo8_members/balaji_sir.webp"
                                 alt="Balaji - Founder"
                                 fill
-                                className="object-cover object-center"
+                                className="object-cover object-center bg-white"
                             />
                         </div>
                         <figcaption className="text-center mt-6">

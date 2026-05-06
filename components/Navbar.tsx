@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
+import { useState, useEffect } from "react";
 
 import {
   Sheet,
@@ -25,14 +26,65 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const updateNavbar = () => {
+      const scrollY = window.scrollY;
+      const direction = scrollY > lastScrollY ? "down" : "up";
+      const isHScroll = document.body.dataset.hscroll === "1";
+
+      if (isHScroll) {
+        setIsVisible(false);
+      } else if (scrollY < 50) {
+        // Always show at the very top
+        setIsVisible(true);
+      } else if (direction === "down" && scrollY > 100) {
+        // Hide when scrolling down after some threshold
+        setIsVisible(false);
+      } else if (direction === "up") {
+        // Show when scrolling up
+        setIsVisible(true);
+      }
+
+      lastScrollY = scrollY;
+    };
+
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+
+    // Handle horizontal scroll state changes (via body attribute)
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-hscroll"
+        ) {
+          updateNavbar();
+        }
+      });
+    });
+
+    observer.observe(document.body, { attributes: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateNavbar);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <nav className="fixed left-0 top-0 z-[999999] w-full bg-[#e4dfd9]">
+    <nav
+      className={`fixed left-0 top-0 z-[999999] w-full bg-[#e4dfd9] transition-transform duration-300 ease-in-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="mx-auto flex h-[80px] max-w-[1600px] items-center justify-between px-6 font-kumbh lg:h-[95px] lg:px-12">
         {/* Logo */}
         <Link href="/" className="w-40 flex-shrink-0 lg:w-48 xl:w-64">
           <img
-            src="/logo.png"
+            src="/nav_logo.png"
             alt="Bindzo 8 Logo"
             className="h-[45px] object-contain lg:h-[60px]"
           />

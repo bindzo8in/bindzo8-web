@@ -14,9 +14,10 @@ import SeoWhyChooseContent from "./whychoose-content";
 const Page = () => {
   return (
     <main className="min-h-screen w-full overflow-hidden font-kumbh">
-      <HeroSection />
+      <HeroSection heading="Seo (Search Engine
+Optimization)" subHeading="Proven SEO strategies that improve visibility and grow your business organically." />
 
-      <InfoSection />
+      <InfoSection content="SEO is the long-term engine that drives your business to the top of Google. At Bindzo 8 Private Limited, we optimize websites to rank higher, attract organic traffic, and convert visitors into customers."/>
 
       <SectionFixedBlobs>
         <HorizontalScroll>
@@ -24,10 +25,6 @@ const Page = () => {
           <SeoWhyChooseContent />
           <StepContent />
           <ProcessContent />
-          {/* <UsageContent />
-          <ServiceContent />
-          <ServiceContent />
-          <ProjectContent /> */}
         </HorizontalScroll>
 
         <KeybenefitContent />

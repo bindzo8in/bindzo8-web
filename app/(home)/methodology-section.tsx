@@ -89,6 +89,8 @@ export default function MethodologySection() {
       //       });
       const tl = gsap.timeline({
         defaults: { ease: "none" },
+        repeat: -1,
+        repeatDelay: 1,
         scrollTrigger: {
           trigger: wrapRef.current,
           start: "top top",

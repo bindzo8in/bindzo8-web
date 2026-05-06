@@ -19,19 +19,19 @@ const techList = [
 
 const images = [
   {
-    src: "/mobile-app/usage-1.png",
+    src: "/web_step_slide/1.png",
     alt: "Mobile app infographic",
     className: "left-[8%] top-[4%] w-[240px] xl:w-[260px]",
   },
   {
-    src: "/mobile-app/usage-2.png",
+    src: "/web_step_slide/2.png",
     alt: "Mobile app screens",
     className: "left-[28%] top-[34%] w-[245px] xl:w-[265px]",
   },
   {
-    src: "/mobile-app/usage-3.png",
+    src: "/web_step_slide/3.png",
     alt: "Mobile app AI interface",
-    className: "left-[48%] bottom-[6%] w-[270px] xl:w-[300px]",
+    className: "left-[48%] bottom-[1%] w-[270px] xl:w-[300px]",
   },
 ];
 

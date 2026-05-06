@@ -16,9 +16,9 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left">
             <Link href="/" className="flex items-center">
-              <img src="/logo.png" alt="Bindzo 8 Logo" className="h-[50px] md:h-[60px] object-contain" />
+              <img src="/nav_logo.png" alt="Bindzo 8 Logo" className="h-[50px] md:h-[60px] object-contain" />
             </Link>
-            <p className="text-[#f45c75] font-semibold text-[14px] md:text-[15px]">Bindzo 8 Techno Solutions</p>
+            <p className="text-[#f45c75] font-semibold text-[14px] md:text-[15px]">Bindzo 8 Pvt. Ltd.</p>
           </div>
 
           {/* Marquee Icons */}
@@ -121,7 +121,7 @@ export default function Footer() {
       <div className="w-full py-6 text-center bg-[#d6335a]">
         <div className="max-w-[1500px] mx-auto px-6">
           <p className="text-white text-[12px] md:text-[13px] font-semibold tracking-wide opacity-90">
-            Copyright © 2025, Bindzo 8 IT Solutions. All Rights Reserved.
+            Copyright © {new Date().getFullYear()}, Bindzo 8 Private Limited. All Rights Reserved.
           </p>
         </div>
       </div>

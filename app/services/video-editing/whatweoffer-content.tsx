@@ -62,7 +62,7 @@ export default function VideoEditingOfferContent() {
           <div className="relative z-10 flex w-full items-center justify-center lg:h-full lg:justify-end">
             <div className="relative h-[330px] w-full max-w-[620px] sm:h-[460px] sm:max-w-[760px] md:h-[520px] lg:h-[62vh] lg:max-h-[580px] lg:max-w-[740px] xl:h-[68vh] xl:max-h-[680px] xl:max-w-[860px]">
               <Image
-                src="/video-editing/video-editor.png"
+                src="/gurl.png"
                 alt="Video editing professional illustration"
                 fill
                 priority

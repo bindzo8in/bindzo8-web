@@ -53,7 +53,7 @@ const services = [
   },
   {
     id: "graphic-design",
-    title: "Graphic Design",
+    title: "Design Solution",
     items: [
       "Logo & Brand Identity",
       "Business Promotional Design",

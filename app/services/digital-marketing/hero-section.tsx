@@ -16,9 +16,14 @@ import Icon7 from '@/public/icons/dig_mark/7.svg'
 import Icon8 from '@/public/icons/dig_mark/8.svg'
 import Icon9 from '@/public/icons/dig_mark/9.svg'
 
+const data = {
+    heading: 'Digital Marketing',
+    subHeading: 'Strategic campaigns that deliver real visibility, engagement & conversions.',
+}
+
 import { BlobAnimation } from './BlobAnimation'
 
-const HeroSection = () => {
+const HeroSection = ({ heading, subHeading }: { heading: string, subHeading: string }) => {
     const containerRef = useRef<HTMLElement | null>(null)
     const imageRef = useRef(null)
     const headingRef = useRef(null)
@@ -154,13 +159,13 @@ const HeroSection = () => {
                     className="scroll-m-20 text-center text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-balance mb-4 md:mb-10 lg:mb-16"
                     ref={headingRef}
                 >
-                    Digital Marketing
+                    {heading}
                 </h1>
                 <h2
                     className="scroll-m-20 pb-2 text-base sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight first:mt-0 max-w-2xl"
                     ref={subHeadingRef}
                 >
-                    Strategic campaigns that deliver real visibility, engagement &amp; conversions.
+                    {subHeading}
                 </h2>
             </div>
 

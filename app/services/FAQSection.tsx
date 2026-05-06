@@ -2,8 +2,8 @@
 
 const faqs = [
   {
-    q: "What services does Bindzo 8 Techno Solutions offer?",
-    a: "Bindzo 8 Techno Solutions delivers complete digital solutions including Website Development, Mobile App Development, Custom Software & ERP Solutions, UI/UX Design, Graphic Design, SEO, Digital Marketing, and Video Editing Services.",
+    q: "What services does Bindzo 8 Private Limited offer?",
+    a: "Bindzo 8 Private Limited delivers complete digital solutions including Website Development, Mobile App Development, Custom Software & ERP Solutions, UI/UX Design, Graphic Design, SEO, Digital Marketing, and Video Editing Services.",
   },
   {
     q: "Which industries do you support with custom software and CRM solutions?",
@@ -34,12 +34,12 @@ const faqs = [
     a: "Yes, we create professional promo videos, reels, ads, explainer videos, motion graphics, product videos, and corporate videos with high-quality editing and color grading.",
   },
   {
-    q: "What makes Bindzo 8 Techno Solutions unique?",
+    q: "What makes Bindzo 8 Private Limited unique?",
     a: "We combine creativity, modern technology, and business-focused strategies. With an experienced team, transparent process, fast delivery, customized solutions, and strong client support, we ensure high-quality results for every project.",
   },
   {
-    q: "Where is Bindzo 8 Techno Solutions located?",
-    a: "Bindzo 8 Techno Solutions is based in Coimbatore, Tamil Nadu, and provides services to clients across India and internationally through remote and hybrid project collaboration.",
+    q: "Where is Bindzo 8 Private Limited located?",
+    a: "Bindzo 8 Private Limited is based in Coimbatore, Tamil Nadu, and provides services to clients across India and internationally through remote and hybrid project collaboration.",
   },
 ];
 

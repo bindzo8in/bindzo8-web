@@ -7,7 +7,18 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
-const words = ["create", "update"];
+const words = [
+  "Growth",
+  "Visibility",
+  "Engagement",
+  "Leads",
+  "Branding",
+  "Strategy",
+  "Performance",
+  "Conversions",
+  "Reach",
+  "Impact",
+];
 
 export default function CareerSection() {
   const [text, setText] = useState("");
@@ -100,14 +111,14 @@ return (
     {/* CONTENT LAYER */}
     <div className="relative z-10 mx-auto w-full max-w-[1600px]">
       {/* TOP TYPE EFFECT */}
-      <div className="px-5 pt-16 sm:px-6 sm:pt-20 lg:px-20">
-        <div className="mx-auto flex h-[86px] w-full max-w-[760px] items-center justify-center overflow-hidden border border-[#ef832d] bg-black/50 px-4 backdrop-blur-sm sm:h-[110px] md:h-[150px] lg:mx-0">
-          <h2 className="text-center text-[42px] font-light leading-none tracking-wide text-[#ef832d] sm:text-[58px] md:text-[80px] lg:text-[110px]">
-            {text}
-            <span className="animate-pulse">|</span>
-          </h2>
-        </div>
-      </div>
+     <div className="px-5 pt-16 sm:px-6 sm:pt-20 lg:px-20">
+  <div className="mx-auto flex h-[64px] w-full max-w-[620px] items-center justify-center overflow-hidden border border-[#ef832d] bg-black/50 px-4 backdrop-blur-sm sm:h-[82px] md:h-[105px] lg:mx-0 lg:h-[120px]">
+    <h2 className="text-center text-[30px] font-light uppercase leading-none tracking-wide text-[#ef832d] sm:text-[42px] md:text-[58px] lg:text-[74px]">
+      {text}
+      <span className="animate-pulse">|</span>
+    </h2>
+  </div>
+</div>
 
       {/* MAIN CONTENT */}
       <div className="grid grid-cols-1 items-center gap-10 px-5 pb-16 pt-10 sm:px-6 sm:pt-12 md:gap-14 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:pb-20">
@@ -119,7 +130,7 @@ return (
             </h3>
 
             <p className="mb-5 text-justify text-[15px] leading-[1.75] text-white/80 sm:text-[16px] md:text-[18px] md:leading-[1.85]">
-              At Bindzo 8 Techno Solutions, we believe teamwork and innovation
+              At Bindzo 8 Private Limited, we believe teamwork and innovation
               can create miracles. Step into the evolving tech world where ideas
               turn into impact realities.
             </p>

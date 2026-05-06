@@ -14,9 +14,9 @@ import KeyHighlightContent from "./keyhighlights-content";
 const Page = () => {
   return (
     <main className="min-h-screen w-full overflow-hidden font-kumbh">
-      <HeroSection />
+      <HeroSection heading="Website Development" subHeading="High-performance websites designed to convert visitors into customers."/>
 
-      <InfoSection />
+      <InfoSection content="Your website is often the first impression your customers have of your brand. At Bindzo 8 Private Limited, we build websites that are not only visually appealing but also fast, responsive, and engineered for seamless user experiences." />
 
       <SectionFixedBlobs>
         <HorizontalScroll>
