@@ -22,7 +22,7 @@ export async function sendCareerAdminMail(data: {
   const buffer = Buffer.from(arrayBuffer);
 
   const { data: result, error } = await resend.emails.send({
-    from: "Acme <onboarding@resend.dev>",
+    from: `${process.env.NEXT_PUBLIC_COMPANY_NAME} <${process.env.NEXT_PUBLIC_EMAIL_2}>`,
     to: data.to,
     subject: data.subject,
     react: AdminNotification({
@@ -63,7 +63,7 @@ export async function sendApplicantConfirmationMail(data: {
 }) {
   try {
     const res = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
+       from: `${process.env.NEXT_PUBLIC_COMPANY_NAME} <${process.env.NEXT_PUBLIC_EMAIL_2}>`,
       to: data.to,
       subject: `Application Received - ${data.position}`,
       react: ApplicantConfirmation({ name: data.name, email: data.email, position: data.position, mobileNumber: data.mobileNumber })

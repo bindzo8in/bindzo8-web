@@ -91,6 +91,8 @@ export const metadata: Metadata = {
   }
 };
 
+import { Toaster } from "@/components/ui/sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -117,6 +119,7 @@ export default function RootLayout({
           <FloatingWhatsApp
             phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
           />
+          <Toaster expand richColors position="top-right"/>
         </AuthProvider>
       </body>
     </html>

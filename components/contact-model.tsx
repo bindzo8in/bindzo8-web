@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { toast } from "sonner";
 import Image from "next/image";
 import { ArrowRight, Loader2, X } from "lucide-react";
 import { z } from "zod";
@@ -98,6 +99,10 @@ export default function QuoteModal({
         service: values.service || service,
       });
 
+      toast.success("Quote request sent successfully!", {
+        description: "We'll get back to you shortly.",
+      });
+
       form.reset({
         name: "",
         email: "",
@@ -109,6 +114,9 @@ export default function QuoteModal({
       setOpen(false);
     } catch (error) {
       console.error("Quote mail sending failed:", error);
+      toast.error("Failed to send quote request.", {
+        description: "Please try again later.",
+      });
 
       form.setError("root", {
         message: "Something went wrong. Please try again.",

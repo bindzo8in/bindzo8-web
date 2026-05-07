@@ -14,6 +14,8 @@ type Project = {
   mediaType: "image" | "video"
 }
 
+import { toast } from "sonner"
+
 export default function ProjectsPage() {
   const [modalOpen, setModalOpen] = useState(false)
   const [editingItem, setEditingItem] = useState<Project | null>(null)
@@ -39,34 +41,50 @@ export default function ProjectsPage() {
   ]
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this project?")) return
-    try {
-      await fetch(`/api/projects/${id}`, { method: "DELETE" })
-      setRefreshKey(prev => prev + 1)
-    } catch (error) {
-      alert("Failed to delete")
-    }
+    toast.info("Are you sure you want to delete this project?", {
+      action: {
+        label: "Delete",
+        onClick: async () => {
+          try {
+            const res = await fetch(`/api/projects/${id}`, { method: "DELETE" })
+            if (res.ok) {
+              toast.success("Project deleted successfully")
+              setRefreshKey(prev => prev + 1)
+            } else {
+              toast.error("Failed to delete project")
+            }
+          } catch (error) {
+            toast.error("An error occurred while deleting")
+          }
+        },
+      },
+      cancel: {
+        label: "Cancel",
+        onClick: () => {},
+      },
+    })
   }
 
   const handleSave = async (data: any) => {
     const method = editingItem ? "PATCH" : "POST"
     const url = editingItem ? `/api/projects/${editingItem.id}` : "/api/projects"
 
-    try {
-      const res = await fetch(url, {
-        method,
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      })
-      if (res.ok) {
-        setModalOpen(false)
-        setRefreshKey(prev => prev + 1)
-      } else {
-        alert("Failed to save")
-      }
-    } catch (error) {
-      alert("An error occurred")
-    }
+    const promise = fetch(url, {
+      method,
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    }).then(async (res) => {
+      if (!res.ok) throw new Error("Failed to save")
+      setModalOpen(false)
+      setRefreshKey(prev => prev + 1)
+      return res
+    })
+
+    toast.promise(promise, {
+      loading: editingItem ? "Updating project..." : "Creating project...",
+      success: editingItem ? "Project updated successfully" : "Project created successfully",
+      error: (err) => err.message || "An error occurred while saving",
+    })
   }
 
   return (

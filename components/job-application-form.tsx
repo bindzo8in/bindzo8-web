@@ -1,5 +1,7 @@
 'use client';
 
+import { Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod/v3';
@@ -60,6 +62,8 @@ export function JobApplicationForm() {
     },
   });
 
+  const isSubmitting = form.formState.isSubmitting;
+
   async function uploadResume(file: File) {
     const formData = new FormData();
     formData.append("file", file);
@@ -80,25 +84,49 @@ export function JobApplicationForm() {
   }
 
   const onSubmit = async (values: FormValues) => {
-    const uploadedResume = await uploadResume(values.resume);
+    try {
+      const uploadToastId = toast.loading("Uploading resume...");
+      const uploadedResume = await uploadResume(values.resume);
+      toast.success("Resume uploaded successfully", { id: uploadToastId });
 
+      const payload = {
+        name: values.name,
+        email: values.email,
+        mobileNumber: values.mobileNumber,
+        location: values.location,
+        position: values.position,
+        description: values.description,
+        resumeUrl: uploadedResume.url,
+        resumePublicId: uploadedResume.publicId,
+      };
 
-    const payload = {
-      name: values.name,
-      email: values.email,
-      mobileNumber: values.mobileNumber,
-      location: values.location,
-      position: values.position,
-      description: values.description,
-      resumeUrl: uploadedResume.url,
-      resumePublicId: uploadedResume.publicId,
-    };
+      const mailToastId = toast.loading("Submitting application...");
+      
+      await sendCareerAdminMail({ 
+        ...payload, 
+        resumeFileName: uploadedResume.publicId, 
+        to: "bindzo8in@gmail.com", 
+        subject: "New Application" 
+      });
+      
+      await sendApplicantConfirmationMail({ 
+        ...payload, 
+        to: values.email 
+      });
 
-    
-    const admin_mail = await sendCareerAdminMail({ ...payload, resumeFileName: uploadedResume.publicId, to: "bindzo8in@gmail.com", subject: "New Application" })
-    
-    const client_mail = await sendApplicantConfirmationMail({ ...payload, to: "bindzo8in@gmail.com" })
-  }
+      toast.success("Application submitted successfully!", { 
+        id: mailToastId,
+        description: "We'll review your profile and get back to you soon." 
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error("Job application submission error:", error);
+      toast.error("Failed to submit application", {
+        description: "Please check your details and try again."
+      });
+    }
+  };
 
     return (
       <Form {...form}>
@@ -246,9 +274,17 @@ export function JobApplicationForm() {
           <div className="flex justify-center">
             <Button
               type="submit"
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 rounded-full"
+              disabled={isSubmitting}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 rounded-full disabled:opacity-70 disabled:pointer-events-none"
             >
-              Apply Now
+              {isSubmitting ? (
+                <>
+                  Applying...
+                  <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+                </>
+              ) : (
+                "Apply Now"
+              )}
             </Button>
           </div>
         </form>

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export default function LoginForm() {
   const [email, setEmail] = useState("")
@@ -25,12 +26,21 @@ export default function LoginForm() {
 
       if (result?.error) {
         setError("Invalid email or password")
+        toast.error("Invalid credentials", {
+          description: "Please check your email and password.",
+        })
       } else {
+        toast.success("Login successful!", {
+          description: "Redirecting to dashboard...",
+        })
         router.push("/dashboard")
         router.refresh()
       }
     } catch (err) {
       setError("An unexpected error occurred")
+      toast.error("Login failed", {
+        description: "An unexpected error occurred. Please try again.",
+      })
     } finally {
       setLoading(false)
     }

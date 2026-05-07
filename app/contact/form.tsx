@@ -1,5 +1,6 @@
 'use client'
 
+import { toast } from 'sonner'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
@@ -73,8 +74,18 @@ export default function ContactForm() {
     })
 
     async function onSubmit(values: FormValues) {
-        await sendContactMails(values);
-        alert('Form submitted! Check console for details.')
+        try {
+            await sendContactMails(values);
+            toast.success('Message sent successfully!', {
+                description: 'We will get back to you soon.',
+            })
+            form.reset()
+        } catch (error) {
+            console.error('Contact form submission error:', error)
+            toast.error('Failed to send message.', {
+                description: 'Please try again later.',
+            })
+        }
     }
 
     const phone = process.env.NEXT_PUBLIC_PHONE ?? "";

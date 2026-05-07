@@ -23,7 +23,7 @@ export async function sendContactMails(data: {
     });
 
     const adminMail = await resend.emails.send({
-      from: "Bindzo8 <onboarding@resend.dev>",
+       from: `${process.env.NEXT_PUBLIC_COMPANY_NAME} <${process.env.NEXT_PUBLIC_EMAIL_2}>`,
       to: "bindzo8in@gmail.com",
       subject: `New Contact Request - ${data.name}`,
       replyTo: data.email,
@@ -41,7 +41,7 @@ export async function sendContactMails(data: {
     });
 
     const clientMail = await resend.emails.send({
-      from: "Bindzo8 <onboarding@resend.dev>",
+       from: `${process.env.NEXT_PUBLIC_COMPANY_NAME} <${process.env.NEXT_PUBLIC_EMAIL_2}>`,
       to: data.email,
       subject: "We received your request - Bindzo8",
       react: (
@@ -71,7 +71,7 @@ export async function sendQuoteMails(data: QuoteEmailData) {
     });
 
     const adminMail = await resend.emails.send({
-      from: "Bindzo8 <onboarding@resend.dev>",
+       from: `${process.env.NEXT_PUBLIC_COMPANY_NAME} <${process.env.NEXT_PUBLIC_EMAIL_2}>`,
       to: "bindzo8in@gmail.com",
       subject: `New Quote Request - ${data.name}`,
       replyTo: data.email,
@@ -81,7 +81,7 @@ export async function sendQuoteMails(data: QuoteEmailData) {
     });
 
     const clientMail = await resend.emails.send({
-      from: "Bindzo8 <onboarding@resend.dev>",
+       from: `${process.env.NEXT_PUBLIC_COMPANY_NAME} <${process.env.NEXT_PUBLIC_EMAIL_2}>`,
       to: data.email,
       subject: "We received your request - Bindzo8",
       react:
