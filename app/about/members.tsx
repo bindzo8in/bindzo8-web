@@ -205,7 +205,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
         {/* brand gradient circle - active on mobile, hover on desktop */}
         <div className="absolute left-1/2 top-[40px] z-[1] h-[200px] w-[200px] -translate-x-1/2 scale-105 rounded-full bg-gradient-to-r from-[#E7325C] to-[#EF8030] opacity-100 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[45px] sm:h-[240px] sm:w-[240px] sm:scale-100 sm:opacity-0 sm:group-hover:scale-105 sm:group-hover:opacity-100" />
 
-        {/* back full circle border */}
+        {/* BACK full circle border (behind head) */}
         <div className="absolute left-1/2 top-[34px] z-10 h-[212px] w-[212px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[38px] sm:h-[252px] sm:w-[252px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105" />
 
         {/* person image with smooth bottom fade mask */}
@@ -213,10 +213,10 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
           src={member.image}
           alt={`Portrait of ${member.name}`}
           style={{
-            maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+            maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
           }}
-          className="absolute bottom-0 left-1/2 z-20 h-[250px] w-[230px] -translate-x-1/2 scale-105 object-contain grayscale-0 drop-shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] rotate-x-[5deg] rotate-y-[-6deg] sm:h-[300px] sm:w-[270px] sm:scale-100 sm:rotate-x-0 sm:rotate-y-0 sm:grayscale sm:group-hover:-translate-y-4 sm:group-hover:scale-110 sm:group-hover:rotate-x-[6deg] sm:group-hover:rotate-y-[-8deg] sm:group-hover:grayscale-0"
+          className="absolute bottom-0 left-1/2 z-20 h-[250px] w-[230px] -translate-x-1/2 scale-105 object-contain grayscale-0 drop-shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] rotate-x-[5deg] rotate-y-[-6deg] sm:h-[300px] sm:w-[270px] sm:scale-100 sm:rotate-x-0 sm:rotate-y-0 sm:grayscale sm:group-hover:-translate-y-4 sm:group-hover:scale-110 sm:group-hover:rotate-x-[6deg] sm:group-hover:rotate-y-[-8deg] sm:group-hover:grayscale-0 "
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.onerror = null;
@@ -225,6 +225,12 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
               .map((n) => n[0])
               .join("")}`;
           }}
+        />
+
+        {/* FRONT clipped border (in front of chest/body for 3D depth) */}
+        <div
+          className="absolute left-1/2 top-[34px] z-30 h-[212px] w-[212px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[38px] sm:h-[252px] sm:w-[252px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105"
+          style={{ clipPath: "polygon(0 50%, 100% 50%, 100% 100%, 0 100%)" }}
         />
       </div>
 
