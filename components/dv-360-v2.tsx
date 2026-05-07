@@ -366,10 +366,16 @@ function HeroSection() {
             Enterprise Programmatic Advertising
           </div>
 
-          <h1 className="max-w-[850px] text-[46px] font-semibold leading-[0.95] tracking-[-0.07em] text-white sm:text-[74px] lg:text-[112px]">
+          {/* <h1 className="max-w-[850px] text-[46px] font-semibold leading-[0.95] tracking-[-0.07em] text-white sm:text-[74px] lg:text-[112px]">
             DV360 Media Buying That Feels{" "}
             <span className="bg-[linear-gradient(90deg,#d3325c,#ff8a3d)] bg-clip-text text-transparent">
               Intelligent.
+            </span>
+          </h1> */}
+                    <h1 className="max-w-[850px] text-[46px] font-semibold leading-[0.95] tracking-[-0.07em] text-white sm:text-[74px] lg:text-[112px]">
+            DV
+            <span className="bg-[linear-gradient(90deg,#d3325c,#ff8a3d)] bg-clip-text text-transparent">
+              360.
             </span>
           </h1>
 
