@@ -1,7 +1,7 @@
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bindzo8.com';
 const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || 'Bindzo 8';
 const PHONE = process.env.NEXT_PUBLIC_PHONE || '';
-const EMAIL = process.env.NEXT_PUBLIC_EMAIL_2 || 'info@bindzo8.com';
+const EMAIL = process.env.NEXT_PUBLIC_EMAIL_2;
 
 export const getOrganizationSchema = () => ({
   '@context': 'https://schema.org',
