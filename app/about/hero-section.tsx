@@ -87,7 +87,7 @@ function HeroSection() {
                                 <button
                                     key={item.id}
                                     onClick={() => handleClickContent(index)}
-                                    className={`relative rounded-full py-3 px-6 text-xs sm:text-sm font-bold transition-all duration-300 outline-none ${
+                                    className={`relative rounded-full py-2 sm:py-3 px-1 sm:px-6 text-[10px] xs:text-xs sm:text-sm font-bold transition-all duration-300 outline-none ${
                                         selectedContent === index 
                                         ? "text-white" 
                                         : "text-gray-500 hover:text-gray-800"

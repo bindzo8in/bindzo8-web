@@ -85,7 +85,7 @@ export default function CareerSection() {
 return (
   <section
     ref={containerRef}
-    className="relative min-h-fit lg:min-h-screen py-16 lg:py-0 overflow-hidden bg-black text-white font-kumbh"
+    className="relative min-h-fit lg:min-h-screen py-8 md:py-16 lg:py-0 overflow-hidden bg-black text-white font-kumbh"
   >
     {/* BACKGROUND LAYER */}
     <div className="absolute inset-0 z-0 pointer-events-none">
@@ -111,7 +111,7 @@ return (
     {/* CONTENT LAYER */}
     <div className="relative z-10 mx-auto w-full max-w-[1600px]">
       {/* TOP TYPE EFFECT */}
-     <div className="px-5 pt-16 sm:px-6 sm:pt-20 lg:px-20">
+     <div className="px-5 pt-8 md:pt-16 sm:px-6 sm:pt-20 lg:px-20">
   <div className="mx-auto flex h-[64px] w-full max-w-[620px] items-center justify-center overflow-hidden border border-[#ef832d] bg-black/50 px-4 backdrop-blur-sm sm:h-[82px] md:h-[105px] lg:mx-0 lg:h-[120px]">
     <h2 className="text-center text-[30px] font-light uppercase leading-none tracking-wide text-[#ef832d] sm:text-[42px] md:text-[58px] lg:text-[74px]">
       {text}
@@ -121,9 +121,9 @@ return (
 </div>
 
       {/* MAIN CONTENT */}
-      <div className="grid grid-cols-1 items-center gap-10 px-5 pb-16 pt-10 sm:px-6 sm:pt-12 md:gap-14 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:pb-20">
-        {/* LEFT */}
-        <div className="relative order-2 lg:order-1">
+      <div className="grid grid-cols-1 items-center gap-8 px-5 pb-8 pt-6 sm:px-6 sm:pt-12 md:gap-14 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:pb-20">
+        {/* LEFT (text content) */}
+        <div className="relative order-1 lg:order-1">
           <div className="mx-auto max-w-[760px] text-center lg:mx-0 lg:text-left">
             <h3 className="mb-5 text-[22px] font-bold leading-[1.25] text-white sm:text-[26px] md:mb-7 md:text-[30px] lg:text-[32px]">
               Join Bindzo 8 – Where Innovation Meets Opportunity
@@ -159,8 +159,8 @@ return (
           </div>
         </div>
 
-        {/* RIGHT */}
-        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+        {/* RIGHT (gif graphic) */}
+        <div className="order-2 flex justify-center lg:order-2 lg:justify-end">
           <Image
             src="/grid.gif"
             alt="grid graphic"

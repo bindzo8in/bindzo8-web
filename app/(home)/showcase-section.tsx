@@ -2,13 +2,11 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
-import Autoplay from "embla-carousel-autoplay";
+import AutoScroll from "embla-carousel-auto-scroll";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import FloatingBrandMark from "./floatingBrandMark";
 import Image from "next/image";
@@ -77,7 +75,11 @@ export default function ShowcaseSections() {
 }
 
 function ProductSection() {
-  const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+  const autoScrollRef = useRef(AutoScroll({ 
+    speed: 1, 
+    stopOnInteraction: false,
+    stopOnMouseEnter: true
+  }));
   const [slides, setSlides] = useState(FALLBACK_SLIDES);
 
   useEffect(() => {
@@ -101,7 +103,7 @@ function ProductSection() {
   }, []);
 
   return (
-    <section className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl flex-col items-center justify-center px-5 py-14 sm:px-6 md:min-h-[640px] md:flex-row md:px-8 md:py-0 lg:px-12">
+    <section className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl flex-col items-center justify-center px-5 py-8 md:py-0 sm:px-6 md:min-h-[640px] md:flex-row md:px-8 lg:px-12">
       {/* LEFT — copy */}
       <article className="relative z-10 mb-10 flex w-full justify-center md:mb-0 md:flex-1 md:justify-start">
         <div className="flex w-full max-w-[430px] flex-col items-center gap-4 text-center md:items-start md:text-left lg:gap-6">
@@ -124,8 +126,8 @@ function ProductSection() {
       {/* RIGHT — carousel */}
       <article className="relative z-10 flex w-full justify-center overflow-hidden md:flex-1 md:justify-end md:py-16">
         <Carousel
-          plugins={[plugin.current]}
-          opts={{ align: "center", loop: true }}
+          plugins={[autoScrollRef.current]}
+          opts={{ align: "start", loop: true, dragFree: true }}
           className="w-full max-w-[620px]"
         >
           <CarouselContent className="-ml-3 sm:-ml-4">
@@ -161,10 +163,6 @@ function ProductSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-
-          <CarouselPrevious className="left-2 hidden h-10 w-10 border-0 bg-[#f97316] text-white shadow-md transition-all duration-200 hover:scale-110 hover:bg-[#ea580c] sm:flex md:-left-5" />
-
-          <CarouselNext className="right-2 hidden h-10 w-10 border-0 bg-[#f97316] text-white shadow-md transition-all duration-200 hover:scale-110 hover:bg-[#ea580c] sm:flex md:-right-5" />
         </Carousel>
       </article>
     </section>
@@ -173,7 +171,7 @@ function ProductSection() {
 
 function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl items-center px-5 py-16 sm:px-6 md:min-h-[640px] md:px-8 lg:px-16 lg:py-20">
+    <section id="why-choose-us" className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl items-center px-5 py-10 md:py-0 sm:px-6 md:min-h-[640px] md:px-8 lg:px-16 lg:py-20">
       <div className="relative z-10 grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
         {/* LEFT */}
         <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">

@@ -22,7 +22,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative bg-[#f0eee9] font-kumbh flex flex-col lg:flex-row items-start">
+    <main className="relative bg-[#f0eee9] font-kumbh flex flex-col lg:flex-row items-start pt-16 md:pt-20">
       <JsonLd data={getServiceSchema("Bindzo 8 Services", "Comprehensive technology and marketing services.")} />
       <JsonLd data={getFAQSchema(faqs)} />
       {/* Mobile-only ServicesSection (appears first) */}

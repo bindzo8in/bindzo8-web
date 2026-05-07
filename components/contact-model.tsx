@@ -33,7 +33,7 @@ export default function QuoteModal({
       <DialogTrigger asChild>
         <Button
           className={cn(
-            "fixed right-0 top-1/2 z-[9999] hidden h-[42px] w-[120px] -translate-y-1/2 translate-x-[39px] -rotate-90 rounded-t-[6px] bg-[#F47C2A] text-[14px] font-semibold text-white shadow-lg transition hover:bg-[#e86f1f] sm:flex",
+            "fixed right-0 top-1/2 z-[9999] hidden h-[42px] w-[120px] -translate-y-1/2 translate-x-[39px] -rotate-90 bg-[#F47C2A] text-[14px] font-semibold text-white shadow-lg transition hover:bg-[#e86f1f] sm:flex font-kumbh",
             className
           )}
         >

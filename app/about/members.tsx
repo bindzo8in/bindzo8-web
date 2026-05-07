@@ -196,23 +196,27 @@ interface TeamMemberCardProps {
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
   return (
-    <div className="group relative mx-auto flex w-full max-w-[300px] flex-col items-center overflow-hidden rounded-[30px] border border-white/30 bg-[#6b6b6b]/60 px-4 pb-8 text-center shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:max-w-[340px] sm:rounded-[34px] sm:px-6 sm:pb-10 sm:hover:-translate-y-2">
+    <div className="group relative mx-auto flex w-full max-w-[300px] flex-col items-center overflow-hidden rounded-[30px] border border-white/30 bg-[#6b6b6b]/60 px-4 pt-8 pb-8 text-center shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:max-w-[340px] sm:rounded-[34px] sm:px-6 sm:pt-10 sm:pb-10 sm:hover:-translate-y-2">
       {/* image + circle area */}
-      <div className="relative mb-6 h-[285px] w-full max-w-[250px] [perspective:1000px] sm:mb-7 sm:h-[330px] sm:max-w-[290px]">
+      <div className="relative mb-4 h-[260px] w-full max-w-[240px] [perspective:1000px] sm:mb-6 sm:h-[310px] sm:max-w-[280px]">
         {/* default black circle - desktop only visible */}
-        <div className="absolute left-1/2 top-[52px] z-0 h-[215px] w-[215px] -translate-x-1/2 rounded-full bg-gradient-to-r from-black to-gray-900 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[58px] sm:h-[245px] sm:w-[245px] sm:scale-100 sm:opacity-100 sm:group-hover:scale-105 sm:group-hover:opacity-0" />
+        <div className="absolute left-1/2 top-[40px] z-0 h-[200px] w-[200px] -translate-x-1/2 rounded-full bg-gradient-to-r from-black to-gray-900 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[45px] sm:h-[240px] sm:w-[240px] sm:scale-100 sm:opacity-100 sm:group-hover:scale-105 sm:group-hover:opacity-0" />
 
         {/* brand gradient circle - active on mobile, hover on desktop */}
-        <div className="absolute left-1/2 top-[52px] z-[1] h-[215px] w-[215px] -translate-x-1/2 scale-105 rounded-full bg-gradient-to-r from-[#E7325C] to-[#EF8030] opacity-100 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[58px] sm:h-[245px] sm:w-[245px] sm:scale-100 sm:opacity-0 sm:group-hover:scale-105 sm:group-hover:opacity-100" />
+        <div className="absolute left-1/2 top-[40px] z-[1] h-[200px] w-[200px] -translate-x-1/2 scale-105 rounded-full bg-gradient-to-r from-[#E7325C] to-[#EF8030] opacity-100 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[45px] sm:h-[240px] sm:w-[240px] sm:scale-100 sm:opacity-0 sm:group-hover:scale-105 sm:group-hover:opacity-100" />
 
-        {/* back full circle */}
-        <div className="absolute left-1/2 top-[46px] z-10 h-[225px] w-[225px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[52px] sm:h-[255px] sm:w-[255px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105" />
+        {/* back full circle border */}
+        <div className="absolute left-1/2 top-[34px] z-10 h-[212px] w-[212px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[38px] sm:h-[252px] sm:w-[252px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105" />
 
-        {/* person image */}
+        {/* person image with smooth bottom fade mask */}
         <img
           src={member.image}
           alt={`Portrait of ${member.name}`}
-          className="absolute bottom-0 left-1/2 z-20 h-[255px] w-[235px] -translate-x-1/2 -translate-y-3 scale-105 object-contain grayscale-0 drop-shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] rotate-x-[5deg] rotate-y-[-6deg] sm:h-[300px] sm:w-[270px] sm:translate-y-0 sm:scale-100 sm:rotate-x-0 sm:rotate-y-0 sm:grayscale sm:group-hover:-translate-y-4 sm:group-hover:scale-110 sm:group-hover:rotate-x-[6deg] sm:group-hover:rotate-y-[-8deg] sm:group-hover:grayscale-0"
+          style={{
+            maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+          }}
+          className="absolute bottom-0 left-1/2 z-20 h-[250px] w-[230px] -translate-x-1/2 scale-105 object-contain grayscale-0 drop-shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] rotate-x-[5deg] rotate-y-[-6deg] sm:h-[300px] sm:w-[270px] sm:scale-100 sm:rotate-x-0 sm:rotate-y-0 sm:grayscale sm:group-hover:-translate-y-4 sm:group-hover:scale-110 sm:group-hover:rotate-x-[6deg] sm:group-hover:rotate-y-[-8deg] sm:group-hover:grayscale-0"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.onerror = null;
@@ -222,9 +226,6 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
               .join("")}`;
           }}
         />
-
-        {/* bottom fade */}
-        <div className="pointer-events-none absolute bottom-0 left-0 z-30 h-16 w-full bg-gradient-to-t from-[#6b6b6b]/40 to-transparent" />
       </div>
 
       {/* text content */}
