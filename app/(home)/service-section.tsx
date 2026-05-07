@@ -8,13 +8,20 @@ export default function ServiceSection() {
     const [current, setCurrent] = useState<number>(0);
 
     const services: { title: string; media: string; }[] = [
-        { title: "Digital Marketing", media: "/home/services/digital_marketing.png" },
-        { title: "Cyber Security", media: "/home/services/cyber_security.png" },
-        { title: "Branding", media: "/home/services/branding.png" },
-        { title: "Web & CMS", media: "/home/services/web_&_cms.png" },
-        { title: "Cloud Services", media: "/home/services/cloud_services.png" },
-        { title: "Software Development", media: "/home/services/software_development.png" },
-        { title: "Mobile App", media: "/home/services/mobile_app.png" },
+        { title: "Digital Marketing", media: "/home_service_icons/digital-marketing.webp" },
+        { title: "Website Development", media: "/home_service_icons/website-development.webp" },
+        { title: "Mobile App Development", media: "/home_service_icons/mobile-app-development.webp" },
+        { title: "Search Engine Optimization", media: "/home_service_icons/search-engine-optimization.webp" },
+        { title: "Design Solution", media: "/home_service_icons/design-solution.webp" },
+        { title: "Video Editing", media: "/home_service_icons/video-editing.webp" },
+        { title: "E-Commerce Solutions", media: "/home_service_icons/ecommerce.webp" },
+        { title: "Branding", media: "/home_service_icons/branding.webp" },
+        { title: "Quality Assurance", media: "/home_service_icons/quality-assurance.webp" },
+        { title: "Software Development", media: "/home_service_icons/software-development.webp" },
+        { title: "Product Shooting", media: "/home_service_icons/product-shooting.webp" },
+        { title: "Search Engine Marketing", media: "/home_service_icons/search-engine-marketing.webp" },
+        { title: "DV 360", media: "/home_service_icons/dv-360.webp" },
+        { title: "Creative & Communication", media: "/home_service_icons/creative-and-communication.webp" }
     ];
 
     const INTERVAL = 3000;
@@ -67,6 +74,7 @@ export default function ServiceSection() {
                                         alt={service.title}
                                         fill
                                         className="object-contain rounded-lg"
+                                        priority={index > 2 ? false : true}
                                     />
                                 </div>
                             </div>

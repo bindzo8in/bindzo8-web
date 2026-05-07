@@ -6,7 +6,7 @@ import FAQSection from './faq'
 
 function Page() {
   return (
-    <main className='overflow-hidden'>
+    <main className='overflow-hidden pt-20 md:pt-24'>
         {/* hero section */}
         <HeroSection />
         <WeAre />

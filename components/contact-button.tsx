@@ -1,4 +1,8 @@
+"use client"
+
+
 export default function FixedQuoteButton() {
+
   return (
     <button
       className="

@@ -173,7 +173,7 @@ function ProductSection() {
 
 function WhyChooseUs() {
   return (
-    <section className="relative mx-auto flex min-h-screen w-full max-w-7xl items-center px-5 py-16 sm:px-6 md:min-h-[640px] md:px-8 lg:px-16 lg:py-20">
+    <section id="why-choose-us" className="relative mx-auto flex min-h-screen w-full max-w-7xl items-center px-5 py-16 sm:px-6 md:min-h-[640px] md:px-8 lg:px-16 lg:py-20">
       <div className="relative z-10 grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
         {/* LEFT */}
         <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">

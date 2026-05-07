@@ -76,7 +76,7 @@ export default function Sidebar() {
   const router = useRouter();
 
   return (
-    <aside className="relative z-40 order-2 flex h-auto w-full flex-shrink-0 flex-col overflow-hidden bg-[#0a0a0a] shadow-xl lg:sticky lg:top-[95px] lg:order-none lg:h-[calc(100vh-95px)] lg:w-[425px]">
+    <aside className="relative z-40 order-2 flex h-auto w-full flex-shrink-0 flex-col overflow-hidden bg-[#0a0a0a] shadow-xl transition-[top,height] duration-300 ease-in-out lg:sticky lg:top-[var(--nav-height,95px)] lg:order-none lg:h-[calc(100vh-var(--nav-height,95px))] lg:w-[425px]">
       {/* Mobile / Tablet Grid Card View */}
       <div className="block lg:hidden" >
         <div className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 md:grid-cols-4">

@@ -140,7 +140,7 @@ export default function Page() {
 
             <div className="relative z-10">
                 {/* why choose us */}
-                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
+                <section id="why-choose-us" className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
                     <div className="max-w-5xl mx-auto px-6 sm:px-8">
                         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#E7325C] text-center tracking-tight">
                             Why Choose Us
@@ -157,7 +157,7 @@ export default function Page() {
                 </section>
 
                 {/* who we work with */}
-                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16 bg-white/5">
+                <section id="who-we-work" className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16 bg-white/5">
                     <div className="max-w-5xl mx-auto px-6 sm:px-8">
                         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#E7325C] text-center tracking-tight">
                             Who We Work With
@@ -175,7 +175,7 @@ export default function Page() {
                 </section>
 
                 {/* what we do */}
-                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
+                <section id="what-we-do" className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
                     <div className="max-w-5xl mx-auto px-6 sm:px-8">
                         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#E7325C] text-center tracking-tight">
                             What We Do
@@ -193,7 +193,7 @@ export default function Page() {
                 </section>
 
                 {/* achievements */}
-                <section className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
+                <section id="our-achievements" className="py-12 md:py-20 flex justify-center items-center flex-col gap-10 md:gap-16">
                     <div className="max-w-5xl mx-auto px-6 sm:px-8 text-[#E7325C]">
                         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center tracking-tight">
                             Achievements & Celebrations

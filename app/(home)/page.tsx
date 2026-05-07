@@ -10,7 +10,7 @@ import HappyClients from './happyClients-section'
 
 const Page = () => {
   return (
-    <div>
+    <main className="pt-20 md:pt-24">
       <HeroSection />
       <ServiceSection />
       <Methodology />
@@ -21,7 +21,7 @@ const Page = () => {
       <CareerSection />
       <TestimonialSection />
       <HappyClients />
-    </div>
+    </main >
   )
 }
 

@@ -74,6 +74,13 @@ export default function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    const isHScroll = document.body.dataset.hscroll === "1";
+    // If hidden due to horizontal scroll, we keep the offset at 95px to avoid affecting the layout
+    const height = isVisible ? "95px" : (isHScroll ? "95px" : "0px");
+    document.documentElement.style.setProperty("--nav-height", height);
+  }, [isVisible]);
+
   return (
     <nav
       className={`fixed left-0 top-0 z-[999999] w-full bg-[#e4dfd9] transition-transform duration-300 ease-in-out ${

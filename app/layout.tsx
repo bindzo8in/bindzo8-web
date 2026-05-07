@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { AuthProvider } from "@/components/session-provider";
 import FixedQuoteButton from "@/components/contact-button";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
+import QuoteModal from "@/components/contact-model";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,14 +44,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col pt-[75px] sm:pt-[96]">
+      <body className="min-h-full flex flex-col">
         <AuthProvider>
           <Navbar />
           {children}
           <Footer />
-          <FixedQuoteButton />
+          {/* <FixedQuoteButton /> */}
+          <QuoteModal />
           <FloatingWhatsApp
             phoneNumber="919884344503"
           />

@@ -2,261 +2,135 @@
 
 import * as React from "react";
 import { ArrowRight, X } from "lucide-react";
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-} from "@/components/ui/field";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Name is required."),
-  email: z.string().email("Enter a valid email address."),
-  mobileNumber: z
-    .string()
-    .min(10, "Mobile number is required.")
-    .max(15, "Mobile number is too long."),
-  message: z.string().min(5, "Message is required."),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
-
-type ContactModalProps = {
-  children?: React.ReactNode;
+export type QuoteModalProps = {
+  triggerLabel?: string;
+  className?: string;
 };
 
-export default function ContactModal({ children }: ContactModalProps) {
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      mobileNumber: "",
-      message: "",
-    },
-  });
-
-  function onSubmit(data: ContactFormValues) {
-    console.log(data);
-    form.reset();
-  }
+export default function QuoteModal({
+  triggerLabel = "Get Quote",
+  className,
+}: QuoteModalProps) {
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        {children ?? <Button>Get in Touch</Button>}
+        <Button
+          className={cn(
+            "fixed right-0 top-1/2 z-[9999] hidden h-[42px] w-[120px] -translate-y-1/2 translate-x-[39px] -rotate-90 rounded-t-[6px] bg-[#F47C2A] text-[14px] font-semibold text-white shadow-lg transition hover:bg-[#e86f1f] sm:flex",
+            className
+          )}
+        >
+          {triggerLabel}
+        </Button>
       </DialogTrigger>
 
       <DialogContent
-        showCloseButton={false}
-        className="
-          max-h-[92vh] w-[94vw] max-w-[1280px] overflow-hidden
-          rounded-[32px] border-0 bg-[#FFF4F3] p-0
-          shadow-2xl sm:rounded-[38px] lg:rounded-[44px]
-        "
+        className={cn(
+          "max-h-[90dvh] w-[calc(100%-1.25rem)] overflow-hidden rounded-[22px] border-0 bg-[#fff4f4] p-0 shadow-2xl sm:max-w-[560px]",
+          "data-[state=open]:animate-in data-[state=open]:zoom-in-95 data-[state=open]:fade-in-0",
+          "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0"
+        )}
       >
-        <DialogTitle className="sr-only">Get in Touch</DialogTitle>
-
-        <div className="h-[34px] w-full bg-[#E7325C] sm:h-[42px]" />
+        <div className="h-4 w-full bg-[#E7325C]" />
 
         <DialogClose asChild>
           <button
             type="button"
-            className="
-              absolute right-5 top-12 z-20 flex h-9 w-9 items-center
-              justify-center rounded-full bg-[#E7325C] text-white
-              transition hover:scale-105 sm:right-7 sm:top-14
-            "
-            aria-label="Close contact modal"
+            aria-label="Close modal"
+            className="absolute right-3 top-7 z-20 grid size-8 place-items-center bg-[#E7325C] text-white shadow-sm transition hover:scale-105 hover:bg-[#cf244b] focus:outline-none focus:ring-2 focus:ring-[#E7325C]/30"
           >
-            <X className="h-5 w-5" />
+            <X className="size-4" strokeWidth={3} />
           </button>
         </DialogClose>
 
-        <div className="relative px-5 pb-8 pt-8 sm:px-8 sm:pb-10 lg:px-20 lg:pb-20 lg:pt-14">
-          <div
-            className="
-              pointer-events-none absolute left-8 top-[85px] z-0
-              hidden text-[360px] font-black leading-none text-[#C9C1C1]
-              opacity-80 lg:block
-            "
-          >
-            B
+        <div className="relative max-h-[calc(90dvh-1rem)] overflow-y-auto px-5 pb-6 pt-8 sm:px-8 sm:pb-8 sm:pt-9">
+          <div className="pointer-events-none absolute -left-3 top-16 hidden text-[210px] font-black leading-none text-black/[0.10] sm:block">
+            8
           </div>
 
-          <h2 className="relative z-10 text-center text-[38px] font-normal leading-none text-[#E7325C] sm:text-[52px] lg:text-[64px]">
-            Get in Touch
-          </h2>
+          <DialogHeader className="relative z-10 mb-6 pr-8 text-center">
+            <DialogTitle className="text-center font-kumbh text-[30px] font-normal leading-none tracking-wide text-[#E7325C] sm:text-[38px]">
+              Get in Touch
+            </DialogTitle>
+          </DialogHeader>
 
           <form
-            id="contact-modal-form"
-            onSubmit={form.handleSubmit(onSubmit)}
-            noValidate
-            className="
-              relative z-10 mt-10 grid gap-6
-              lg:mt-20 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-0
-            "
+            className="relative z-10 space-y-4"
+            onSubmit={(event) => {
+              event.preventDefault();
+              setOpen(false);
+            }}
           >
-            <FieldGroup className="space-y-6 sm:space-y-8 lg:space-y-16">
-              <Controller
-                name="name"
-                control={form.control}
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <Input
-                      {...field}
-                      id={field.name}
-                      placeholder="Name:"
-                      aria-invalid={fieldState.invalid}
-                      autoComplete="name"
-                      className="
-                        h-[58px] rounded-full border border-[#9B9B9B]
-                        bg-white px-7 text-[20px] text-black
-                        shadow-none outline-none placeholder:text-[#9B9B9B]
-                        focus-visible:ring-0 focus-visible:ring-offset-0
-                        sm:h-[66px] sm:text-[24px]
-                      "
-                    />
+            <FieldInput id="name" label="Name" placeholder="Name:" />
+            <FieldInput id="email" label="Email" placeholder="Email:" type="email" />
+            <FieldInput
+              id="phone"
+              label="Mobile Number"
+              placeholder="Mobile Number:"
+              type="tel"
+            />
 
-                    {fieldState.invalid && (
-                      <FieldError
-                        errors={[fieldState.error]}
-                        className="pl-6 text-sm text-[#E7325C]"
-                      />
-                    )}
-                  </Field>
-                )}
+            <div className="space-y-2">
+              <Label htmlFor="message" className="sr-only">
+                Message
+              </Label>
+              <Textarea
+                id="message"
+                placeholder="Message:"
+                className="min-h-[120px] resize-none rounded-[18px] border border-[#8f9698] bg-white px-5 py-4 font-kumbh text-[16px] text-gray-800 shadow-none outline-none placeholder:text-[#9c9c9c] focus-visible:ring-2 focus-visible:ring-[#E7325C]/25 sm:min-h-[135px]"
               />
-
-              <Controller
-                name="email"
-                control={form.control}
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <Input
-                      {...field}
-                      id={field.name}
-                      type="email"
-                      placeholder="Email:"
-                      aria-invalid={fieldState.invalid}
-                      autoComplete="email"
-                      className="
-                        h-[58px] rounded-full border border-[#9B9B9B]
-                        bg-white px-7 text-[20px] text-black
-                        shadow-none outline-none placeholder:text-[#9B9B9B]
-                        focus-visible:ring-0 focus-visible:ring-offset-0
-                        sm:h-[66px] sm:text-[24px]
-                      "
-                    />
-
-                    {fieldState.invalid && (
-                      <FieldError
-                        errors={[fieldState.error]}
-                        className="pl-6 text-sm text-[#E7325C]"
-                      />
-                    )}
-                  </Field>
-                )}
-              />
-
-              <Controller
-                name="mobileNumber"
-                control={form.control}
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <Input
-                      {...field}
-                      id={field.name}
-                      type="tel"
-                      placeholder="Mobile Number:"
-                      aria-invalid={fieldState.invalid}
-                      autoComplete="tel"
-                      className="
-                        h-[58px] rounded-full border border-[#9B9B9B]
-                        bg-white px-7 text-[20px] text-black
-                        shadow-none outline-none placeholder:text-[#9B9B9B]
-                        focus-visible:ring-0 focus-visible:ring-offset-0
-                        sm:h-[66px] sm:text-[24px]
-                      "
-                    />
-
-                    {fieldState.invalid && (
-                      <FieldError
-                        errors={[fieldState.error]}
-                        className="pl-6 text-sm text-[#E7325C]"
-                      />
-                    )}
-                  </Field>
-                )}
-              />
-            </FieldGroup>
-
-            <div className="flex flex-col gap-8 lg:gap-14">
-              <Controller
-                name="message"
-                control={form.control}
-                render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <Textarea
-                      {...field}
-                      id={field.name}
-                      placeholder="Message:"
-                      aria-invalid={fieldState.invalid}
-                      className="
-                        min-h-[190px] resize-none rounded-[28px]
-                        border border-[#9B9B9B] bg-white px-7 py-5
-                        text-[20px] text-black shadow-none
-                        outline-none placeholder:text-[#9B9B9B]
-                        focus-visible:ring-0 focus-visible:ring-offset-0
-                        sm:min-h-[235px] sm:text-[24px]
-                        lg:min-h-[250px]
-                      "
-                    />
-
-                    {fieldState.invalid && (
-                      <FieldError
-                        errors={[fieldState.error]}
-                        className="pl-6 text-sm text-[#E7325C]"
-                      />
-                    )}
-                  </Field>
-                )}
-              />
-
-              <div className="flex justify-center">
-                <Button
-                  type="submit"
-                  form="contact-modal-form"
-                  disabled={form.formState.isSubmitting}
-                  className="
-                    h-[58px] w-full max-w-[430px] rounded-full
-                    bg-[#F47C2A] text-[20px] font-normal text-white
-                    shadow-[0_8px_10px_rgba(0,0,0,0.28)]
-                    transition hover:bg-[#F47C2A]/90
-                    sm:h-[66px] sm:max-w-[500px] sm:text-[26px]
-                  "
-                >
-                  Send Your Request
-                  <ArrowRight className="ml-4 h-7 w-7" />
-                </Button>
-              </div>
             </div>
+
+            <Button
+              type="submit"
+              className="mt-2 h-12 w-full rounded-full bg-[#F47C2A] px-6 font-kumbh text-[16px] font-normal text-white shadow-[0_7px_8px_rgba(0,0,0,0.20)] transition hover:-translate-y-0.5 hover:bg-[#e86f1f] sm:h-13 sm:text-[18px]"
+            >
+              Send Your Request
+              <ArrowRight className="ml-3 size-6" strokeWidth={1.8} />
+            </Button>
           </form>
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+type FieldInputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  id: string;
+  label: string;
+};
+
+function FieldInput({ id, label, className, ...props }: FieldInputProps) {
+  return (
+    <div className="space-y-2">
+      <Label htmlFor={id} className="sr-only">
+        {label}
+      </Label>
+      <Input
+        id={id}
+        className={cn(
+          "h-12 rounded-full border border-[#8f9698] bg-white px-5 font-kumbh text-[16px] text-gray-800 shadow-none outline-none placeholder:text-[#9c9c9c] focus-visible:ring-2 focus-visible:ring-[#E7325C]/25 sm:h-14 sm:px-6 sm:text-[18px] lg:h-[56px]",
+          className
+        )}
+        {...props}
+      />
+    </div>
   );
 }
