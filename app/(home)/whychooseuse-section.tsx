@@ -4,7 +4,7 @@ import React from "react";
 
 const WhyChooseUs = () => {
   return (
-    <section className="relative overflow-hidden bg-[#f3f3f3] min-h-screen flex items-center px-8 lg:px-24 py-16 font-kumbh">
+    <section className="relative overflow-hidden bg-[#f3f3f3] min-h-fit lg:min-h-screen flex items-center px-8 lg:px-24 py-16 lg:py-0 font-kumbh">
       {/* Soft Left Gradient */}
       <div className="absolute left-0 top-0 h-full w-[38%] bg-gradient-to-r from-[#dce7f8] to-transparent pointer-events-none" />
 

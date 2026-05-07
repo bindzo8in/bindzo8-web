@@ -36,8 +36,8 @@ export default function PrinciplesSection() {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#232323] text-white font-kumbh">
-      <div className="mx-auto grid min-h-screen w-full max-w-[1600px] grid-cols-1 lg:grid-cols-2">
+    <section className="relative min-h-fit lg:min-h-screen overflow-hidden bg-[#232323] text-white font-kumbh">
+      <div className="mx-auto grid min-h-fit lg:min-h-screen w-full max-w-[1600px] grid-cols-1 lg:grid-cols-2">
         {/* LEFT SIDE */}
         <div className="flex items-center justify-center px-6 pt-12 pb-6 sm:px-8 sm:pt-16 lg:p-8">
           <div

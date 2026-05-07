@@ -99,7 +99,7 @@ export default function FloatingBrandMark({ children }: FloatingBrandMarkProps) 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen overflow-hidden "
+      className="relative w-full min-h-fit lg:min-h-screen overflow-hidden "
     >
       {/* ── BACKGROUND LAYER (pointer-events-none) ────────────────── */}
       <div
@@ -186,7 +186,7 @@ export default function FloatingBrandMark({ children }: FloatingBrandMarkProps) 
       </div>
 
       {/* ── FOREGROUND CONTENT (full z-index, fully interactive) ──── */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-20">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-fit lg:min-h-screen px-6 py-20">
         {children ?? <DefaultContent />}
       </div>
     </section>

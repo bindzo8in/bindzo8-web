@@ -101,7 +101,7 @@ function ProductSection() {
   }, []);
 
   return (
-    <section className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col items-center justify-center px-5 py-14 sm:px-6 md:min-h-[640px] md:flex-row md:px-8 md:py-0 lg:px-12">
+    <section className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl flex-col items-center justify-center px-5 py-14 sm:px-6 md:min-h-[640px] md:flex-row md:px-8 md:py-0 lg:px-12">
       {/* LEFT — copy */}
       <article className="relative z-10 mb-10 flex w-full justify-center md:mb-0 md:flex-1 md:justify-start">
         <div className="flex w-full max-w-[430px] flex-col items-center gap-4 text-center md:items-start md:text-left lg:gap-6">
@@ -173,7 +173,7 @@ function ProductSection() {
 
 function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="relative mx-auto flex min-h-screen w-full max-w-7xl items-center px-5 py-16 sm:px-6 md:min-h-[640px] md:px-8 lg:px-16 lg:py-20">
+    <section id="why-choose-us" className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl items-center px-5 py-16 sm:px-6 md:min-h-[640px] md:px-8 lg:px-16 lg:py-20">
       <div className="relative z-10 grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
         {/* LEFT */}
         <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">

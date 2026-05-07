@@ -319,7 +319,7 @@ export default function MethodologySection() {
       </div>
 
      {/* --- MOBILE HTML SVG-LIKE VIEW (Hidden on Desktop) --- */}
-<div className="relative block md:hidden w-full min-h-screen bg-[#FFF5F4] overflow-hidden font-kumbh px-6 py-10">
+<div className="relative block md:hidden w-full min-h-fit bg-[#FFF5F4] overflow-hidden font-kumbh px-6 py-10">
   {/* Main Heading */}
   <h2 className="text-3xl leading-tight text-center font-medium text-[#E7325C] whitespace-nowrap">
     Our Methodology

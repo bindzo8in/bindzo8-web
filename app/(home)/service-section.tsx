@@ -1,342 +1,248 @@
-"use client"
+"use client";
+
 import Image from "next/image";
-// import Background from "./background";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
-export default function ServiceSection() {
-
-    const [current, setCurrent] = useState<number>(0);
-
-    const services: { title: string; media: string; }[] = [
-        { title: "Digital Marketing", media: "/home_service_icons/digital-marketing.webp" },
-        { title: "Website Development", media: "/home_service_icons/website-development.webp" },
-        { title: "Mobile App Development", media: "/home_service_icons/mobile-app-development.webp" },
-        { title: "Search Engine Optimization", media: "/home_service_icons/search-engine-optimization.webp" },
-        { title: "Design Solution", media: "/home_service_icons/design-solution.webp" },
-        { title: "Video Editing", media: "/home_service_icons/video-editing.webp" },
-        { title: "E-Commerce Solutions", media: "/home_service_icons/ecommerce.webp" },
-        { title: "Branding", media: "/home_service_icons/branding.webp" },
-        { title: "Quality Assurance", media: "/home_service_icons/quality-assurance.webp" },
-        { title: "Software Development", media: "/home_service_icons/software-development.webp" },
-        { title: "Product Shooting", media: "/home_service_icons/product-shooting.webp" },
-        { title: "Search Engine Marketing", media: "/home_service_icons/search-engine-marketing.webp" },
-        { title: "DV 360", media: "/home_service_icons/dv-360.webp" },
-        { title: "Creative & Communication", media: "/home_service_icons/creative-and-communication.webp" }
-    ];
-
-    const INTERVAL = 3000;
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % services.length);
-        }, INTERVAL);
-        return () => clearInterval(timer);
-    }, [current, services.length]);
-
-    return (
-        <section className="relative w-full min-h-screen bg-transparent">
-            {/* <Background /> */}
-            <div className="relative w-full min-h-screen flex flex-col py-8">
-                <h4 className="text-4xl sm:text-5xl lg:text-6xl text-center font-kumbh text-[#EF8030]">
-                    Services
-                </h4>
-
-                <div className="relative flex flex-col md:flex-row justify-center items-center mt-6 sm:mt-10 gap-6 md:gap-0 flex-1">
-
-                    <div className="hidden md:flex flex-1 justify-center items-center p-4">
-                        <Image
-                            src="/home/services/logo_rotate_white.png"
-                            alt="Service Logo"
-                            width={406}
-                            height={462}
-                            className="animate-spin-slow"
-                        />
-                    </div>
-
-                    <div className="flex-1 relative w-full min-h-[500px] md:min-h-[650px]">
-                        {services.map((service, index) => (
-                            <div
-                                key={index}
-                                className="absolute inset-0 flex flex-col items-center justify-center"
-                                style={{
-                                    opacity: index === current ? 1 : 0,
-                                    transition: "opacity 1000ms ease-out",
-                                    pointerEvents: index === current ? "auto" : "none",
-                                }}
-                            >
-                                <h3 className="text-center font-kumbh text-2xl sm:text-3xl lg:text-4xl font-bold text-[#E7325C] mb-4 shrink-0">
-                                    {service.title}
-                                </h3>
-
-                                <div className="relative w-full h-[380px] md:h-[520px]">
-                                    <Image
-                                        src={service.media}
-                                        alt={service.title}
-                                        fill
-                                        className="object-contain rounded-lg"
-                                        priority={index > 2 ? false : true}
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-        // <section className="relative w-full min-h-screen bg-black flex justify-center items-center overflow-hidden p-4 sm:p-8">
-
-        //     <Background />
-
-        //     <div className="relative w-full flex flex-col py-8">
-        //         <h4 className="text-4xl sm:text-5xl lg:text-6xl text-center font-kumbh text-[#EF8030]">
-        //             Services
-        //         </h4>
-
-        //         {/* content */}
-        //         <div className="flex flex-col md:flex-row justify-center items-center mt-6 sm:mt-10 gap-6 md:gap-0">
-
-        //             {/* left side — hide on small screens */}
-        //             <div className="hidden md:flex flex-1 justify-center items-center p-4">
-        //                 <Image
-        //                     src="/home/services/logo_rotate_white.png"
-        //                     alt="Service Logo"
-        //                     width={406}
-        //                     height={462}
-        //                     className="w-[200px] h-[228px] lg:w-[406px] lg:h-[462px] animate-spin-slow"
-        //                 />
-        //             </div>
-
-        //             {/* right side — explicit height, cards use flex-col to fill it */}
-        //             <div className="flex-1 relative w-full h-[340px] sm:h-[400px] md:h-[460px]">
-        //                 {services.map((service, index) => (
-        //                     <div
-        //                         key={index}
-        //                         className="absolute inset-0 flex flex-col"
-        //                         style={{
-        //                             opacity: index === current ? 1 : 0,
-        //                             transition: "opacity 1000ms ease-out",
-        //                             pointerEvents: index === current ? "auto" : "none",
-        //                         }}
-        //                     >
-        //                         {/* title takes only what it needs */}
-        //                         <h3 className="text-center font-kumbh text-2xl sm:text-3xl lg:text-4xl font-bold text-[#E7325C] mb-4 shrink-0">
-        //                             {service.title}
-        //                         </h3>
-        //                         {/* image fills all remaining height */}
-        //                         <div className="relative w-full flex-1">
-        //                             <Image
-        //                                 src={service.media}
-        //                                 alt={service.title}
-        //                                 fill
-        //                                 className="object-contain rounded-lg"
-        //                             />
-        //                         </div>
-        //                     </div>
-        //                 ))}
-        //             </div>
-
-        //         </div>
-        //     </div>
-
-        // </section>
-    );
+interface Service {
+  title: string;
+  description: string;
+  media: string;
+  slug: string;
 }
 
-// "use client"
-// import Image from "next/image";
-// import Background from "./background";
-// import { useEffect, useState } from "react";
+const services: Service[] = [
+  {
+    title: "Digital Marketing",
+    description: "Elevate your online presence with data-driven strategies and creative campaigns that convert.",
+    media: "/home_service_icons/digital-marketing.webp",
+    slug: "digital-marketing",
+  },
+  {
+    title: "Website Development",
+    description: "High-performance, responsive websites built with the latest technologies to drive your business.",
+    media: "/home_service_icons/website-development.webp",
+    slug: "website-development",
+  },
+  {
+    title: "Mobile App Development",
+    description: "Scalable and intuitive mobile solutions for iOS and Android that provide a seamless user experience.",
+    media: "/home_service_icons/mobile-app-development.webp",
+    slug: "mobile-app-development",
+  },
+  {
+    title: "SEO Optimization",
+    description: "Boost your organic visibility and rank higher on search engines with our expert SEO techniques.",
+    media: "/home_service_icons/search-engine-optimization.webp",
+    slug: "seo",
+  },
+  {
+    title: "Design Solution",
+    description: "Creative and impactful design solutions that capture your brand essence and engage your audience.",
+    media: "/home_service_icons/design-solution.webp",
+    slug: "graphic-design",
+  },
+  {
+    title: "Video Editing",
+    description: "Professional video editing that tells your story and captures attention in a crowded digital world.",
+    media: "/home_service_icons/video-editing.webp",
+    slug: "video-editing",
+  },
+  {
+    title: "E-Commerce Solutions",
+    description: "Robust and user-friendly e-commerce platforms designed to maximize your sales and growth.",
+    media: "/home_service_icons/ecommerce.webp",
+    slug: "ecommerce",
+  },
+  {
+    title: "Branding",
+    description: "Build a strong and memorable brand identity that resonates with your customers.",
+    media: "/home_service_icons/branding.webp",
+    slug: "branding",
+  },
+];
 
-// export default function ServiceSection() {
+export default function ServiceSection() {
+  const [current, setCurrent] = useState<number>(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const tabsRef = useRef<HTMLDivElement>(null);
 
-//     const [current, setCurrent] = useState<number>(0);
+  // Simplified Auto-rotation
+  useEffect(() => {
+    if (isHovered) return;
+    
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % services.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [isHovered, services.length]);
 
-//     const services: { title: string; media: string; }[] = [
-//         { title: "Digital Marketing", media: "/home/services/digital_marketing.png" },
-//         { title: "Cyber Security", media: "/home/services/cyber_security.png" },
-//         { title: "Branding", media: "/home/services/branding.png" },
-//         { title: "Web & CMS", media: "/home/services/web_&_cms.png" },
-//         { title: "Cloud Services", media: "/home/services/cloud_services.png" },
-//         { title: "Software Development", media: "/home/services/software_development.png" },
-//         { title: "Mobile App", media: "/home/services/mobile_app.png" },
-//     ];
+  // Scroll active tab into view (for mobile)
+  useEffect(() => {
+    if (tabsRef.current) {
+      const activeTab = tabsRef.current.children[current] as HTMLElement;
+      if (activeTab) {
+        tabsRef.current.scrollTo({
+          left: activeTab.offsetLeft - (tabsRef.current.offsetWidth / 2) + (activeTab.offsetWidth / 2),
+          behavior: 'smooth'
+        });
+      }
+    }
+  }, [current]);
 
-//     const INTERVAL = 3000;
+  return (
+    <section className="relative w-full py-12 md:py-24 px-6 sm:px-10 md:px-16 lg:px-24 xl:px-36 overflow-hidden bg-transparent font-kumbh">
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+      {/* Header */}
+      <div className="relative z-10 mb-8 md:mb-20 text-center md:text-left">
+        <motion.h4 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-[#EF8030] text-sm uppercase tracking-[0.3em] font-semibold mb-4"
+        >
+          Our Expertise
+        </motion.h4>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight"
+        >
+          Solutions that drive <br />
+          <span className="text-[#E7325C]">Digital Excellence.</span>
+        </motion.h2>
+      </div>
 
-//     useEffect(() => {
-//         const timer = setInterval(() => {
-//             setCurrent((prev) => (prev + 1) % services.length);
-//         }, INTERVAL);
-//         return () => clearInterval(timer);
-//     }, [current, services.length]);
+      <div className="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+        {/* Left: Interactive List */}
+        <div 
+          ref={tabsRef}
+          className="w-full lg:w-[40%] flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 scrollbar-hide snap-x"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {services.map((service, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`group relative flex items-center justify-between min-w-max lg:min-w-0 w-auto lg:w-full p-4 lg:p-6 rounded-2xl transition-all duration-300 snap-center outline-none ${
+                index === current 
+                  ? "text-white scale-110 lg:scale-100" 
+                  : "text-white/40 hover:text-white/70"
+              }`}
+            >
+              <div className="flex flex-col lg:flex-row items-center gap-2 lg:gap-6 z-10">
+                <span className={`text-base lg:text-xl font-bold transition-colors duration-300 ${
+                  index === current ? "text-[#E7325C]" : "text-white/20 group-hover:text-white/40"
+                }`}>
+                  {(index + 1).toString().padStart(2, '0')}
+                </span>
+                <span className={`text-sm sm:text-base lg:text-2xl font-semibold transition-all duration-300 whitespace-nowrap lg:whitespace-normal ${
+                  index === current ? "lg:translate-x-2" : "group-hover:translate-x-1"
+                }`}>
+                  {service.title}
+                </span>
+              </div>
+              
+              {index === current && (
+                <>
+                  {/* Desktop Pill */}
+                  <motion.div
+                    layoutId="activeIndicator"
+                    className="absolute inset-0 bg-white/5 border border-white/10 rounded-2xl hidden lg:block"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                  {/* Mobile Dot */}
+                  <motion.div
+                    layoutId="mobileIndicator"
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#E7325C] rounded-full lg:hidden"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                  />
+                </>
+              )}
+              
+              <ChevronRight className={`hidden lg:block w-6 h-6 z-10 transition-all duration-300 ${
+                index === current ? "text-[#E7325C] opacity-100" : "text-white/10 opacity-0 group-hover:opacity-100"
+              }`} />
+            </button>
+          ))}
+        </div>
 
-//     return (
-//         <section className="relative w-full min-h-screen bg-black flex justify-center items-center overflow-hidden p-4 sm:p-8">
+        {/* Right: Detailed Content Card */}
+        <div className="w-full lg:w-[60%] sticky top-24 h-auto lg:h-[700px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, scale: 0.95, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.95, x: -20 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="relative w-full h-full p-8 md:p-12 rounded-[2rem] bg-white/[0.03] border border-white/10 backdrop-blur-xl flex flex-col justify-between overflow-hidden shadow-2xl"
+            >
+              {/* Background Glow */}
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#E7325C]/20 blur-[100px] rounded-full pointer-events-none" />
+              <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#EF8030]/10 blur-[100px] rounded-full pointer-events-none" />
 
-//             <Background />
+              <div className="relative z-10">
+                <motion.h3 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-3xl md:text-5xl font-bold text-white mb-6"
+                >
+                  {services[current].title}
+                </motion.h3>
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-lg md:text-xl text-white/60 leading-relaxed max-w-xl mb-10"
+                >
+                  {services[current].description}
+                </motion.p>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <Link 
+                    href={`/services/${services[current].slug}`}
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-[#E7325C] hover:bg-[#d42d53] text-white rounded-full font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(231,50,92,0.4)]"
+                  >
+                    Explore
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+              </div>
 
-//             <div className="relative w-full h-full flex flex-col">
-//                 <h4 className="text-4xl sm:text-5xl lg:text-6xl text-center font-kumbh text-[#EF8030]">
-//                     Services
-//                 </h4>
-
-//                 {/* content */}
-//                 <div className="flex flex-col md:flex-row flex-1 justify-center items-center mt-6 sm:mt-10 gap-6 md:gap-0">
-
-//                     {/* left side — hide on small screens */}
-//                     <div className="hidden md:flex flex-1 justify-center items-center p-4">
-//                         <Image
-//                             src="/home/services/logo_rotate_white.png"
-//                             alt="Service Logo"
-//                             width={406}
-//                             height={462}
-//                             className="w-[200px] h-[228px] lg:w-[406px] lg:h-[462px] animate-spin-slow"
-//                         />
-//                     </div>
-
-//                     {/* right side */}
-//                     <div className="flex-1 relative h-[320px] sm:h-[380px] md:h-[460px] w-full">
-//                         {services.map((service, index) => (
-//                             <div
-//                                 key={index}
-//                                 style={{
-//                                     opacity: index === current ? 1 : 0,
-//                                     transition: "opacity 1000ms ease-out",
-//                                     position: "absolute",
-//                                     width: "100%",
-//                                     pointerEvents: index === current ? "auto" : "none",
-//                                 }}
-//                             >
-//                                 <h3 className="text-center font-kumbh text-2xl sm:text-3xl lg:text-4xl font-bold text-[#E7325C] mb-4">
-//                                     {service.title}
-//                                 </h3>
-//                                 <div className="relative w-full h-[260px] sm:h-[320px] md:h-[400px]">
-//                                     <Image
-//                                         src={service.media}
-//                                         alt={service.title}
-//                                         fill
-//                                         className="object-contain rounded-lg"
-//                                     />
-//                                 </div>
-//                             </div>
-//                         ))}
-//                     </div>
-
-//                 </div>
-//             </div>
-
-//         </section>
-//     );
-// }
-// // "use client"
-// // import Image from "next/image";
-// // import Background from "./background";
-// // import { useEffect, useState } from "react";
-
-
-// // export default function ServiceSection() {
-
-// //     const [current, setCurrent] = useState<number>(0);
-// //     const [visible, setVisible] = useState<boolean>(true);
-
-// //     const services: {
-// //         title: string;
-// //         media: string;
-// //     }[] =
-// //         [
-// //             {
-// //                 title: "Digital Marketing",
-// //                 media: "/home/services/digital_marketing.png"
-// //             },
-// //             {
-// //                 title: "Cyber Security",
-// //                 media: "/home/services/cyber_security.png"
-// //             },
-// //             {
-// //                 title: "Branding",
-// //                 media: "/home/services/branding.png"
-// //             },
-// //             {
-// //                 title: "Web & CMS",
-// //                 media: "/home/services/web_&_cms.png"
-// //             },
-// //             {
-// //                 title: "Cloud Services",
-// //                 media: "/home/services/cloud_services.png"
-// //             },
-// //             {
-// //                 title: "Software Development",
-// //                 media: "/home/services/software_development.png"
-// //             },
-// //             {
-// //                 title: "Mobile App",
-// //                 media: "/home/services/mobile_app.png"
-// //             }
-// //         ];
-// //     const INTERVAL = 3000;
-
-// //     useEffect(() => {
-// //         const timer = setInterval(() => {
-// //             setCurrent((prev) => (prev + 1) % services.length);
-// //             setVisible(true)
-// //         }, INTERVAL);
-
-// //         return () => clearInterval(timer);
-// //     }, [current, services.length]);
-
-
-// //     return (
-// //         <>
-// //             {/* hero section */}
-// //             <section className="relative inset-0 w-full h-screen bg-black flex justify-center items-center gap-4 overflow-hidden p-8">
-
-// //                 <Background />
-// //                 <div className="relative w-full h-full">
-// //                     {/* heading */}
-// //                     <h4 className="text-6xl z-50 text-center text-nowrap font-kumbh text-[#EF8030]">Services</h4>
-// //                     <div className="flex flex-1 justify-center items-center mt-10 h-full">
-// //                         {/* left side */}
-// //                         <div className="flex-1 flex justify-center items-center p-4">
-// //                             <Image
-// //                                 src={"/home/services/logo_rotate_white.png"}
-// //                                 alt="Service Logo"
-// //                                 width={406}
-// //                                 height={462}
-// //                                 className="w-[406px] h-[462px] animate-spin-slow"
-
-// //                             />
-// //                         </div>
-// //                         {/* right side */}
-// //    {/* right side */}
-// // <div className="flex-1 relative h-[460px]">
-// //     {services.map((service, index) => (
-// //         <div
-// //             key={index}
-// //             style={{
-// //                 opacity: index === current ? 1 : 0,
-// //                 // transform: index === current ? "translateY(0px)" : "translateY(20px)",
-// //                 transition: "opacity 1000ms ease-out, transform 500ms ease-out",
-// //                 position: "absolute",
-// //                 width: "100%",
-// //                 pointerEvents: index === current ? "auto" : "none",
-// //             }}
-// //         >
-// //             <h3 className="text-center font-kumbh text-4xl font-bold text-[#E7325C] mb-4">{service.title}</h3>
-// //             <div className="relative w-full h-[400px]">
-// //                 <Image
-// //                     src={service.media}
-// //                     alt={service.title}
-// //                     fill
-// //                     className="object-contain rounded-lg "
-// //                 />
-// //             </div>
-// //         </div>
-// //     ))}
-// // </div>
-// //                     </div>
-// //                 </div>
-
-// //             </section>
-// //         </>
-// //     );
-// // }
+              <motion.div 
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="relative mt-12 w-full aspect-video rounded-2xl overflow-hidden shadow-2xl"
+              >
+                <Image
+                  src={services[current].media}
+                  alt={services[current].title}
+                  fill
+                  className="object-contain p-4 bg-white/[0.02]"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -28,11 +28,11 @@ export default function HeroSection() {
         .mouse-scroll-dot { animation: scrolling13 1s linear infinite; }
       `}</style>
 
-      <section className="relative w-full min-h-screen lg:h-screen bg-transparent flex flex-col lg:flex-row justify-center items-center px-6 sm:px-10 md:px-16  lg:px-24 xl:px-36 gap-10 lg:gap-4 overflow-hidden">
+      <section className="relative w-full py-12 md:py-20 lg:py-0 min-h-fit lg:h-screen bg-transparent flex flex-col-reverse lg:flex-row justify-center items-center px-6 sm:px-10 md:px-16 lg:px-24 xl:px-36 gap-8 lg:gap-4 overflow-hidden">
 
         {/* <Background /> */}
 
-        {/* left side */}
+        {/* left side (text) */}
         <motion.div
           className="w-full lg:w-1/2 font-kumbh font-normal flex flex-col justify-center items-start gap-4 md:gap-6 z-10"
           initial={{ opacity: 0, x: -200 }}
@@ -51,7 +51,7 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* right side — SVG scales itself, no explicit heights needed */}
+        {/* right side (image) */}
         <motion.div
           className="w-full lg:w-1/2 flex justify-center items-center z-10"
           animate={floatControls}

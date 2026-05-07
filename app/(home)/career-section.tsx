@@ -85,7 +85,7 @@ export default function CareerSection() {
 return (
   <section
     ref={containerRef}
-    className="relative min-h-screen overflow-hidden bg-black text-white font-kumbh"
+    className="relative min-h-fit lg:min-h-screen py-16 lg:py-0 overflow-hidden bg-black text-white font-kumbh"
   >
     {/* BACKGROUND LAYER */}
     <div className="absolute inset-0 z-0 pointer-events-none">
