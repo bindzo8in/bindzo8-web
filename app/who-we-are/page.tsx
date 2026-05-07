@@ -132,7 +132,7 @@ const whatWeDo = [
 
 export default function Page() {
     return (
-        <div className="font-kumbh relative">
+        <div className="font-kumbh relative pt-16 md:pt-20">
 
             <div className="z-0 absolute inset-0 pointer-events-none">
                 <WaveBackground />

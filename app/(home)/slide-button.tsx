@@ -71,14 +71,14 @@ export default function SlideButton() {
       onClick={isCompleted ? handleReset : undefined}
     >
       <motion.span
-        className="absolute inset-0 flex items-center justify-center text-white font-bold pointer-events-none text-[10px] sm:text-sm md:text-base uppercase tracking-tight sm:tracking-wider px-12 sm:px-0"
+        className="absolute inset-0 flex items-center justify-center text-white font-bold pointer-events-none text-[10px] uppercase tracking-tight sm:tracking-wider px-12 sm:px-0 sm:pl-12"
         style={{ opacity: slideOpacity }}
       >
         Slide to explore
       </motion.span>
 
       <motion.span
-        className="absolute inset-0 flex items-center justify-center text-white font-bold pointer-events-none text-[10px] sm:text-sm md:text-base uppercase tracking-tight sm:tracking-wider"
+        className="absolute inset-0 flex items-center justify-center text-white font-bold pointer-events-none text-[10px] uppercase tracking-tight sm:tracking-wider"
         style={{ opacity: exploreOpacity }}
       >
         Explore

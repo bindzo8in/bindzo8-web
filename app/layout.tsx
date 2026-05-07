@@ -101,6 +101,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
+      
     >
       <head>
         <JsonLd data={getOrganizationSchema()} />
