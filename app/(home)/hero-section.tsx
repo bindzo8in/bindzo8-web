@@ -2,7 +2,7 @@
 import { motion, useAnimationControls } from "motion/react"
 import { useEffect } from "react"
 import SlideButton from "./slide-button"
-import Background from "./background"
+// import Background from "./background"
 import HeroRight from "./heroRight" // ← your SVG component
 
 export default function HeroSection() {
@@ -28,9 +28,9 @@ export default function HeroSection() {
         .mouse-scroll-dot { animation: scrolling13 1s linear infinite; }
       `}</style>
 
-      <section className="relative w-full min-h-screen lg:h-screen bg-black flex flex-col lg:flex-row justify-center items-center px-6 sm:px-10 md:px-16  lg:px-24 xl:px-36 gap-10 lg:gap-4 overflow-hidden">
+      <section className="relative w-full min-h-screen lg:h-screen bg-transparent flex flex-col lg:flex-row justify-center items-center px-6 sm:px-10 md:px-16  lg:px-24 xl:px-36 gap-10 lg:gap-4 overflow-hidden">
 
-        <Background />
+        {/* <Background /> */}
 
         {/* left side */}
         <motion.div

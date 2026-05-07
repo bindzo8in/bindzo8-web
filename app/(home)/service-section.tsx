@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import Background from "./background";
+// import Background from "./background";
 import { useEffect, useState } from "react";
 
 export default function ServiceSection() {
@@ -34,8 +34,8 @@ export default function ServiceSection() {
     }, [current, services.length]);
 
     return (
-        <section className="relative w-full min-h-screen bg-black">
-            <Background />
+        <section className="relative w-full min-h-screen bg-transparent">
+            {/* <Background /> */}
             <div className="relative w-full min-h-screen flex flex-col py-8">
                 <h4 className="text-4xl sm:text-5xl lg:text-6xl text-center font-kumbh text-[#EF8030]">
                     Services

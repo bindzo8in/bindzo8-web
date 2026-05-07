@@ -321,7 +321,7 @@ export default function WaveBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-screen h-screen pointer-events-none"
+      className="fixed inset-0 w-screen h-screen pointer-events-none -z-10"
       style={{ display: "block" }}
     />
   );
