@@ -4,6 +4,9 @@ import { Resend } from "resend";
 import { AdminContactMail } from "@/email/contact/admin-contact-mail";
 import { ClientContactMail } from "@/email/contact/client-contact-mail";
 import { resend } from "./email";
+import AdminQuoteEmail from "@/email/quota/admin";
+import ClientQuoteEmail from "@/email/quota/client";
+import { QuoteEmailData } from "@/email/quota/type";
 
 
 export async function sendContactMails(data: {
@@ -60,3 +63,40 @@ export async function sendContactMails(data: {
     throw new Error("Failed to send contact emails");
   }
 }
+
+export async function sendQuoteMails(data: QuoteEmailData) {
+  try {
+    const submittedAt = new Date().toLocaleString("en-US", {
+      timeZone: "Asia/Kolkata",
+    });
+
+    const adminMail = await resend.emails.send({
+      from: "Bindzo8 <onboarding@resend.dev>",
+      to: "bindzo8in@gmail.com",
+      subject: `New Quote Request - ${data.name}`,
+      replyTo: data.email,
+      react:
+        AdminQuoteEmail({ data })
+
+    });
+
+    const clientMail = await resend.emails.send({
+      from: "Bindzo8 <onboarding@resend.dev>",
+      to: data.email,
+      subject: "We received your request - Bindzo8",
+      react:
+        ClientQuoteEmail({ data })
+
+
+    });
+
+    return {
+      success: true,
+      adminMail,
+      clientMail,
+    };
+  } catch (error) {
+    console.error("Quote mail error:", error);
+    throw new Error("Failed to send quote emails");
+  }
+} 
