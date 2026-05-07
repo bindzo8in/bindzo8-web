@@ -10,10 +10,22 @@ import ProjectContent from "./proj-content";
 import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
 import SeoWhyChooseContent from "./whychoose-content";
+import { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+import { getServiceSchema } from "@/components/seo/Schemas";
+
+export const metadata: Metadata = {
+  title: "SEO - Search Engine Optimization",
+  description: "Proven SEO strategies to improve visibility, rank higher on Google, and grow your business organically through data-driven optimization.",
+  alternates: {
+    canonical: "/services/seo",
+  },
+};
 
 const Page = () => {
   return (
     <main className="min-h-screen w-full overflow-hidden font-kumbh">
+      <JsonLd data={getServiceSchema("SEO (Search Engine Optimization)", "Proven SEO strategies that improve visibility and grow your business organically.")} />
       <HeroSection heading="Seo (Search Engine
 Optimization)" subHeading="Proven SEO strategies that improve visibility and grow your business organically." />
 

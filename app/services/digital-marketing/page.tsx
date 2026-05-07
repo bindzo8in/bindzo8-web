@@ -9,6 +9,17 @@ import KeyseoContent from "./keyseo-content";
 import ProjectContent from "./proj-content";
 import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
+import { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+import { getServiceSchema } from "@/components/seo/Schemas";
+
+export const metadata: Metadata = {
+  title: "Digital Marketing Services",
+  description: "Strategic digital marketing campaigns including SEO, SMM, PPC, and Email marketing to deliver real visibility, engagement, and conversions.",
+  alternates: {
+    canonical: "/services/digital-marketing",
+  },
+};
 
 const data = {
     heading: 'Digital Marketing',
@@ -88,6 +99,7 @@ your Potential Customers. </b>
 const Page = () => {
   return (
     <main className="relative min-h-screen w-full overflow-hidden font-kumbh">
+      <JsonLd data={getServiceSchema(data.heading, data.subHeading)} />
       <HeroSection heading={data.heading} subHeading={data.subHeading} />
 
       <InfoSection content={data.info}/>

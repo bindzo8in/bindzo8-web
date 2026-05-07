@@ -11,6 +11,17 @@ import SectionFixedBlobs from "./section-fix";
 import StepContent from "./step-content";
 import BrandingLogoDesignsContent from "./branding-content";
 import PackageDesignsContent from "./package-content";
+import { Metadata } from "next";
+import JsonLd from "@/components/seo/JsonLd";
+import { getServiceSchema } from "@/components/seo/Schemas";
+
+export const metadata: Metadata = {
+  title: "Graphic Design Solutions",
+  description: "Bring your ideas to life with powerful visuals. We offer branding, logo design, and package design solutions that reflect your brand identity.",
+  alternates: {
+    canonical: "/services/graphic-design",
+  },
+};
 const data = {
   hero: {
     title: "Design Solution",
@@ -22,6 +33,7 @@ const data = {
 const Page = () => {
   return (
     <main className="min-h-screen w-full overflow-hidden font-kumbh">
+      <JsonLd data={getServiceSchema(data.hero.title, data.hero.desc)} />
       <HeroSection heading={data.hero.title} subHeading={data.hero.desc} />
 
       <InfoSection content={data.info} />

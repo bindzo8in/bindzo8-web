@@ -1,5 +1,14 @@
 import React from "react";
 import ContactForm from "./form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Get in touch with Bindzo 8 for your technology and marketing needs. We are here to help you grow your business with expert solutions.",
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 function Page() {
   return (

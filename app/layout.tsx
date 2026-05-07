@@ -7,6 +7,8 @@ import { AuthProvider } from "@/components/session-provider";
 import FixedQuoteButton from "@/components/contact-button";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
 import QuoteModal from "@/components/contact-model";
+import JsonLd from "@/components/seo/JsonLd";
+import { getOrganizationSchema, getLocalBusinessSchema } from "@/components/seo/Schemas";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +33,62 @@ const raleway = Raleway({
   display: 'swap',
 })
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bindzo8.com';
+const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || 'Bindzo 8';
+
 export const metadata: Metadata = {
-  title: "Bindzo 8",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: COMPANY_NAME,
+    template: `%s | ${COMPANY_NAME}`,
+  },
   description: "At Bindzo 8, we provide comprehensive digital marketing solutions, including SEO, social media marketing, website development, and programmatic advertising, to help businesses thrive in the digital landscape.",
+  keywords: ["Website Development", "Branding", "Digital Marketing", "Mobile App Development", "Enterprise Software", "Cloud Services", "Graphic Design", "QA/Testing"],
+  authors: [{ name: COMPANY_NAME }],
+  creator: COMPANY_NAME,
+  publisher: COMPANY_NAME,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: COMPANY_NAME,
+    title: COMPANY_NAME,
+    description: "Empowering businesses through cutting-edge technology and digital excellence.",
+    images: [
+      {
+        url: "/nav_logo.png",
+        width: 1200,
+        height: 630,
+        alt: COMPANY_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: COMPANY_NAME,
+    description: "Empowering businesses through cutting-edge technology and digital excellence.",
+    creator: process.env.NEXT_PUBLIC_TWITTER_HANDLE,
+    images: ["/nav_logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  }
 };
 
 export default function RootLayout({
@@ -47,6 +102,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
+      <head>
+        <JsonLd data={getOrganizationSchema()} />
+        <JsonLd data={getLocalBusinessSchema()} />
+      </head>
       <body className="min-h-full flex flex-col">
         <AuthProvider>
           <Navbar />
@@ -55,7 +114,7 @@ export default function RootLayout({
           {/* <FixedQuoteButton /> */}
           <QuoteModal />
           <FloatingWhatsApp
-            phoneNumber="919884344503"
+            phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
           />
         </AuthProvider>
       </body>
