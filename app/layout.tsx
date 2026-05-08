@@ -9,6 +9,7 @@ import FloatingWhatsApp from "@/components/floating-whatsapp";
 import QuoteModal from "@/components/contact-model";
 import JsonLd from "@/components/seo/JsonLd";
 import { getOrganizationSchema, getLocalBusinessSchema } from "@/components/seo/Schemas";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,7 +104,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased `}
       suppressHydrationWarning
-      
+
     >
       <head>
         <JsonLd data={getOrganizationSchema()} />
@@ -119,9 +120,12 @@ export default function RootLayout({
           <FloatingWhatsApp
             phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
           />
-          <Toaster expand richColors position="top-right"/>
+          <Toaster expand richColors position="top-right" />
         </AuthProvider>
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID ? (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      ) : null}
     </html>
   );
 }

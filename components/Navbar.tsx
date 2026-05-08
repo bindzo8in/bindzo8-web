@@ -84,7 +84,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed left-0 top-0 z-[999999] w-full bg-white transition-transform duration-300 ease-in-out ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
+        isVisible ? "translate-y-0" : "-translate-y-full font-kumbh"
       }`}
     >
       <div className="mx-auto flex h-[80px] max-w-[1600px] items-center justify-between px-6 font-kumbh lg:h-[95px] lg:px-12">
