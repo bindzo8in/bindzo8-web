@@ -7,53 +7,9 @@ import HorizontalSlide from "@/components/horizontal-scroll/HorizontalSlide";
 
 gsap.registerPlugin(useGSAP);
 
-const NAV_HEIGHT = 96;
-
 const BASE_W = 830;
 const BASE_H = 767;
 
-// const slots = [
-//     {
-//         x: 95,
-//         y: 55,
-//         size: 335,
-//         color: "#C90000",
-//         fontSize: 42,
-//         z: 5,
-//     },
-//     {
-//         x: 500,
-//         y: 155,
-//         size: 275,
-//         color: "#E22E33",
-//         fontSize: 34,
-//         z: 4,
-//     },
-//     {
-//         x: 700,
-//         y: 405,
-//         size: 125,
-//         color: "#FBDDDD",
-//         fontSize: 18,
-//         z: 1,
-//     },
-//     {
-//         x: 485,
-//         y: 505,
-//         size: 180,
-//         color: "#F8AAAA",
-//         fontSize: 26,
-//         z: 2,
-//     },
-//     {
-//         x: 140,
-//         y: 455,
-//         size: 265,
-//         color: "#FF6B70",
-//         fontSize: 32,
-//         z: 3,
-//     },
-// ];
 const slots = [
   {
     x: 95,
@@ -96,6 +52,7 @@ const slots = [
     z: 3,
   },
 ];
+
 const circles = [
   {
     title: "On- Page\nSEO",
@@ -199,10 +156,11 @@ const KeySeoContent = () => {
       width: circleSize,
       height: circleSize,
       backgroundColor: slot.color,
-      fontSize: Math.max(fontSize, 7),
+      fontSize: Math.max(fontSize, 8),
       padding: Math.max(circleSize * 0.12, 6),
       zIndex: slot.z,
     };
+
     if (immediate) {
       gsap.set(el, vars);
       return;
@@ -312,54 +270,135 @@ const KeySeoContent = () => {
   return (
     <HorizontalSlide
       className="
-      overflow-hidden
-      flex justify-center items-center
-    "
+        overflow-hidden
+        flex justify-center items-center
+      "
     >
       <div
         ref={sectionRef}
-        className="relative mt-[96px] h-[calc(100%-96px)] w-full overflow-hidden font-kumbh text-white"
+        className="
+          relative w-full overflow-hidden font-kumbh text-white
+
+          py-12
+          sm:py-14
+
+          lg:mt-[96px]
+          lg:h-[calc(100%-96px)]
+          lg:py-0
+        "
       >
         <div
           className="
-          relative
-          z-10
-          mx-auto
-          grid
-          h-full
-          w-full
-          max-w-[1320px]
-          grid-rows-[auto_1fr]
-          items-center
-          gap-2
-          px-4
-          py-2
-          sm:px-6
-          lg:grid-cols-[380px_1fr]
-          lg:grid-rows-1
-          lg:gap-4
-          lg:px-8
-          lg:py-0
-          xl:grid-cols-[420px_1fr]
-        "
+            relative
+            z-10
+            mx-auto
+            flex
+            w-full
+            max-w-[1320px]
+            flex-col
+            gap-8
+            px-5
+
+            sm:px-6
+
+            lg:grid
+            lg:h-full
+            lg:grid-rows-[auto_1fr]
+            lg:items-center
+            lg:gap-2
+            lg:px-4
+            lg:py-2
+
+            lg:grid-cols-[380px_1fr]
+            lg:grid-rows-1
+            lg:gap-4
+            lg:px-8
+            lg:py-0
+
+            xl:grid-cols-[420px_1fr]
+          "
         >
+          {/* Mobile Heading */}
+          <div className="lg:hidden">
+            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-orange-500">
+              SEO Services
+            </p>
+
+            <h2 className="max-w-[340px] text-[28px] font-semibold leading-tight text-white">
+              Key SEO Services We Provide
+            </h2>
+
+            <p className="mt-3 max-w-[350px] text-[14px] leading-relaxed text-white/70">
+              Improve search visibility, page performance, keyword ranking, and
+              organic business growth.
+            </p>
+          </div>
+
           {/* Left content */}
-          <div className="flex h-full w-full items-center justify-center">
-            <div className="w-full max-w-[340px]">
-              <h2 className="mb-2 text-xs font-bold text-orange-500 sm:text-sm lg:mb-3 lg:text-base">
+          <div
+            className="
+              order-3 flex w-full items-center justify-center
+
+              lg:order-none
+              lg:h-full
+            "
+          >
+            <div className="w-full max-w-[430px] lg:max-w-[340px]">
+              <h2 className="mb-2 hidden text-xs font-bold text-orange-500 sm:text-sm lg:mb-3 lg:block lg:text-base">
                 Key SEO Services We Provide
               </h2>
 
-              <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
+              <div
+                className="
+                  grid grid-cols-1 gap-3
+
+                  sm:grid-cols-2
+
+                  lg:block
+                  lg:space-y-3
+                "
+              >
                 {seoContent.map((item, index) => (
-                  <div key={item.title}>
-                    <h3 className="text-xs font-bold leading-tight sm:text-sm lg:text-base">
-                      {index + 1}. {item.title}
+                  <div
+                    key={item.title}
+                    className="
+                      rounded-[20px]
+                      border
+                      border-white/10
+                      bg-white/[0.06]
+                      p-4
+                      shadow-[0_16px_50px_rgba(0,0,0,0.22)]
+                      backdrop-blur-md
+
+                      lg:rounded-none
+                      lg:border-0
+                      lg:bg-transparent
+                      lg:p-0
+                      lg:shadow-none
+                      lg:backdrop-blur-0
+                    "
+                  >
+                    <h3 className="text-[14px] font-bold leading-tight text-white lg:text-base">
+                      <span className="text-orange-500 lg:hidden">
+                        {String(index + 1).padStart(2, "0")}.
+                      </span>
+
+                      <span className="hidden lg:inline">{index + 1}. </span>
+
+                      {item.title}
                     </h3>
 
-                    <ul className="mt-0.5 space-y-0 text-[11px] leading-snug text-white/85 sm:text-xs lg:text-[13px]">
+                    <ul className="mt-2 space-y-1.5 text-[12px] leading-relaxed text-white/75 lg:mt-0.5 lg:space-y-0 lg:text-[13px] lg:leading-snug">
                       {item.points.map((point) => (
-                        <li key={point}>· {point}</li>
+                        <li key={point} className="flex gap-2 lg:block">
+                          <span className="mt-[1px] text-orange-400 lg:hidden">
+                            •
+                          </span>
+                          <span>
+                            <span className="hidden lg:inline">· </span>
+                            {point}
+                          </span>
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -369,19 +408,29 @@ const KeySeoContent = () => {
           </div>
 
           {/* Right animation */}
-          <div className="relative flex h-full w-full items-center justify-center overflow-visible">
+          <div
+            className="
+              order-2 relative flex w-full items-center justify-center overflow-visible
+
+              lg:order-none
+              lg:h-full
+            "
+          >
             <div
               className="
-              relative
-              aspect-[830/767]
-              h-[clamp(260px,52vw,520px)]
-              max-h-[calc(100svh-150px)]
-              max-w-full
-              overflow-visible
-              sm:h-[clamp(320px,56vw,560px)]
-              lg:h-[clamp(430px,58vh,560px)]
-              xl:h-[clamp(460px,62vh,590px)]
-            "
+                relative
+                aspect-[830/767]
+                h-[310px]
+                max-w-full
+                overflow-visible
+
+                sm:h-[430px]
+
+                lg:h-[clamp(430px,58vh,560px)]
+                lg:max-h-[calc(100svh-150px)]
+
+                xl:h-[clamp(460px,62vh,590px)]
+              "
             >
               <div
                 ref={stageRef}
@@ -393,7 +442,22 @@ const KeySeoContent = () => {
                     ref={(el) => {
                       if (el) circleRefs.current[index] = el;
                     }}
-                    className="absolute flex items-center justify-center overflow-hidden rounded-full text-center font-bold leading-[1.05] text-white will-change-transform"
+                    className="
+                      absolute
+                      flex
+                      items-center
+                      justify-center
+                      overflow-hidden
+                      rounded-full
+                      text-center
+                      font-bold
+                      leading-[1.05]
+                      text-white
+                      shadow-[0_18px_60px_rgba(0,0,0,0.28)]
+                      will-change-transform
+
+                      lg:shadow-none
+                    "
                   >
                     <span className="block max-w-full break-words px-1">
                       {circle.title.split("\n").map((line) => (

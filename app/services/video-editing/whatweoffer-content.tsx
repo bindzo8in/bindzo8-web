@@ -35,22 +35,136 @@ const videoOffers = [
 export default function VideoEditingOfferContent() {
   return (
     <HorizontalSlide className="relative flex items-center justify-center overflow-hidden bg-transparent text-white">
-      <section className="relative w-full px-5 py-12 font-kumbh sm:px-8 sm:py-16 lg:h-screen lg:px-12 lg:py-0 xl:px-20">
-        <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col justify-center gap-10 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-8 xl:gap-12">
+      <section
+        className="
+          relative w-full overflow-hidden px-5 py-12 font-kumbh
+
+          sm:px-8 sm:py-16
+
+          lg:h-screen
+          lg:px-12
+          lg:py-0
+
+          xl:px-20
+        "
+      >
+        <div
+          className="
+            mx-auto flex h-full w-full max-w-[1500px] flex-col gap-8
+
+            lg:grid
+            lg:grid-cols-[0.95fr_1.05fr]
+            lg:items-center
+            lg:justify-center
+            lg:gap-8
+
+            xl:gap-12
+          "
+        >
+          {/* Mobile Heading */}
+          <div className="relative z-10 lg:hidden">
+            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#EF8030]">
+              Video Editing
+            </p>
+
+            <h2 className="max-w-[340px] text-[28px] font-semibold leading-tight text-white">
+              Professional edits that make every video feel premium
+            </h2>
+
+            <p className="mt-3 max-w-[360px] text-[14px] leading-relaxed text-white/70">
+              From storytelling to motion graphics, we refine your videos for
+              brand, platform, and audience impact.
+            </p>
+          </div>
+
           {/* Left Content */}
-          <div className="relative z-10 w-full lg:max-w-[620px] xl:max-w-[700px]">
-            <h2 className="mb-8 text-[28px] font-bold leading-none text-[#EF8030] sm:text-[34px] lg:mb-7 lg:text-[28px] xl:text-[34px]">
+          <div
+            className="
+              relative z-10 order-2 w-full
+
+              lg:order-none
+              lg:max-w-[620px]
+
+              xl:max-w-[700px]
+            "
+          >
+            <h2
+              className="
+                mb-8 hidden text-[28px] font-bold leading-none text-[#EF8030]
+
+                lg:block
+                lg:mb-7
+                lg:text-[28px]
+
+                xl:text-[34px]
+              "
+            >
               What We Offer
             </h2>
 
-            <div className="space-y-6 sm:space-y-7 lg:space-y-5 xl:space-y-6">
-              {videoOffers.map((item) => (
-                <div key={item.title}>
-                  <h3 className="text-[16px] font-bold leading-[1.15] sm:text-[18px] lg:text-[16px] xl:text-[18px]">
+            <div
+              className="
+                grid grid-cols-1 gap-4
+
+                sm:grid-cols-2
+                sm:gap-5
+
+                lg:block
+                lg:space-y-5
+
+                xl:space-y-6
+              "
+            >
+              {videoOffers.map((item, index) => (
+                <div
+                  key={item.title}
+                  className="
+                    rounded-[22px] border border-white/10 bg-white/[0.06]
+                    p-5 shadow-[0_18px_60px_rgba(0,0,0,0.24)]
+                    backdrop-blur-md
+
+                    lg:rounded-none
+                    lg:border-0
+                    lg:bg-transparent
+                    lg:p-0
+                    lg:shadow-none
+                    lg:backdrop-blur-0
+                  "
+                >
+                  <h3
+                    className="
+                      text-[15px] font-bold leading-[1.25] text-white
+
+                      sm:text-[16px]
+
+                      lg:text-[16px]
+                      lg:leading-[1.15]
+
+                      xl:text-[18px]
+                    "
+                  >
+                    <span className="mr-2 text-[#EF8030] lg:hidden">
+                      {String(index + 1).padStart(2, "0")}.
+                    </span>
                     {item.title}
                   </h3>
 
-                  <p className="mt-1 max-w-[690px] text-[14px] font-normal leading-[1.3] text-white/95 sm:text-[16px] lg:text-[14.5px] lg:leading-[1.22] xl:text-[16px] xl:leading-[1.25]">
+                  <p
+                    className="
+                      mt-2 text-[13px] font-normal leading-relaxed text-white/75
+
+                      sm:text-[14px]
+
+                      lg:mt-1
+                      lg:max-w-[690px]
+                      lg:text-[14.5px]
+                      lg:leading-[1.22]
+                      lg:text-white/95
+
+                      xl:text-[16px]
+                      xl:leading-[1.25]
+                    "
+                  >
                     {item.desc}
                   </p>
                 </div>
@@ -59,8 +173,34 @@ export default function VideoEditingOfferContent() {
           </div>
 
           {/* Right Image */}
-          <div className="relative z-10 flex w-full items-center justify-center lg:h-full lg:justify-end">
-            <div className="relative h-[330px] w-full max-w-[620px] sm:h-[460px] sm:max-w-[760px] md:h-[520px] lg:h-[62vh] lg:max-h-[580px] lg:max-w-[740px] xl:h-[68vh] xl:max-h-[680px] xl:max-w-[860px]">
+          <div
+            className="
+              relative z-10 order-1 flex w-full items-center justify-center
+
+              lg:order-none
+              lg:h-full
+              lg:justify-end
+            "
+          >
+            <div
+              className="
+                relative h-[280px] w-full max-w-[390px]
+
+                sm:h-[420px]
+                sm:max-w-[620px]
+
+                md:h-[480px]
+                md:max-w-[700px]
+
+                lg:h-[62vh]
+                lg:max-h-[580px]
+                lg:max-w-[740px]
+
+                xl:h-[68vh]
+                xl:max-h-[680px]
+                xl:max-w-[860px]
+              "
+            >
               <Image
                 src="/gurl.png"
                 alt="Video editing professional illustration"

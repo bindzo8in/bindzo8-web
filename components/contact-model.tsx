@@ -176,7 +176,7 @@ export default function QuoteModal({
 
           <DialogHeader className="relative z-10 mb-6 pr-8 text-center">
             <DialogTitle className="text-center font-kumbh text-[30px] font-normal leading-none tracking-wide text-[#E7325C] sm:text-[38px]">
-              Get in Touch
+              Get Quote
             </DialogTitle>
           </DialogHeader>
 

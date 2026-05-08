@@ -36,10 +36,7 @@ const Page = () => {
           <ProcessContent />
           <ProjectContent />
           <KeyHighlightContent />
-          {/* <UsageContent />
-          <ServiceContent />
-          <ServiceContent />
-          <KeyseoContent /> */}
+         
         </HorizontalScroll>
 
         <KeybenefitContent />

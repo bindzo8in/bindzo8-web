@@ -183,7 +183,7 @@ export const marketingPagesData = [
     {
         title: "Mobile App Development",
         slug: "mobile-app-development",
-        media: "/service_sidebar/mobile.png",
+        media: "/service_sidebar/mobile.webp",
         heroLabel: "Mobile App Development",
         heroDescription:
             "Mobile app development is the process of creating applications for smartphones and tablets. It involves designing, coding, and testing apps to ensure they work smoothly, look good, and provide useful features for users.",

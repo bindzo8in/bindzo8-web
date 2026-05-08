@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import QuoteModal from "../contact";
 
 export type Feature = {
   title: string;
@@ -60,14 +61,16 @@ export function MarketingSection({
                   </p>
 
                   {ctaLabel && (
+                    <QuoteModal service={title}>
                     <button
                       type="button"
-                      onClick={onCtaClick}
+                      // onClick={onCtaClick}
                       className="mt-5 inline-flex h-[28px] min-w-[190px] items-center justify-center rounded-full bg-[#E7325C] px-8 text-[12px] font-medium text-white shadow-[0_4px_6px_rgba(0,0,0,0.25)] transition hover:bg-[#d6244e]"
                     >
                       <span>{ctaLabel}</span>
                       <span className="ml-4 text-[16px] leading-none">→</span>
                     </button>
+                    </QuoteModal>
                   )}
                 </div>
               </div>

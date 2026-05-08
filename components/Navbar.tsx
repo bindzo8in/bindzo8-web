@@ -83,7 +83,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed left-0 top-0 z-[999999] w-full bg-[#e4dfd9] transition-transform duration-300 ease-in-out ${
+      className={`fixed left-0 top-0 z-[999999] w-full bg-white transition-transform duration-300 ease-in-out ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >

@@ -50,7 +50,7 @@ export default function KeyHighlightContent() {
       <section className="relative w-full px-5 py-12 font-kumbh sm:px-8 sm:py-16 lg:h-screen lg:px-12 lg:py-0 xl:px-20">
         <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col justify-center gap-10 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-6 xl:gap-10">
           {/* Left Content */}
-          <div className="relative z-10 w-full lg:max-w-[570px] xl:max-w-[610px]">
+          <div className="relative z-10 w-full lg:max-w-[570px] xl:max-w-[610px] order-2 lg:order-1">
             <h2 className="mb-8 text-[28px] font-bold leading-none text-[#EF8030] sm:text-[32px] lg:mb-7 lg:text-[28px] xl:mb-8 xl:text-[32px]">
               Key Highlights:
             </h2>
@@ -71,7 +71,7 @@ export default function KeyHighlightContent() {
           </div>
 
           {/* Right Image */}
-          <div className="relative z-10 flex w-full items-center justify-center lg:h-full lg:justify-end">
+          <div className="relative z-10 flex w-full items-center justify-center lg:h-full lg:justify-end order-1 lg:order-2">
             <div className="relative h-[280px] w-full max-w-[620px] sm:h-[420px] sm:max-w-[760px] md:h-[500px] lg:h-[70vh] lg:max-h-[560px] lg:max-w-[780px] xl:h-[72vh] xl:max-h-[620px] xl:max-w-[900px]">
               <Image
                 src="/web_keyhl.png"

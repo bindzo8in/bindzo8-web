@@ -37,6 +37,27 @@ const links = {
 export default function Footer() {
   return (
     <footer className="w-full bg-[#fdf9f9] relative font-kumbh overflow-hidden border-t border-gray-100">
+      {/* Top Black Bar: Follow Us */}
+      <div className="w-full bg-[#111111] py-5 border-b border-white/5">
+        <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-4">
+            <div className="h-px w-8 bg-[#d6335a] hidden md:block"></div>
+            <h4 className="font-bold text-white text-[14px] uppercase tracking-[0.2em]">Follow Our Journey</h4>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {socialLinks.map((item, i) => (
+              <a
+                key={i}
+                href={item.href}
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 text-sm hover:bg-[#d6335a] hover:text-white hover:border-[#d6335a] transition-all duration-300 hover:-translate-y-1 active:scale-95"
+              >
+                {item.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-20 pt-16 pb-12">
 
         {/* Top Row: Logo & Icons */}
@@ -44,9 +65,9 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left">
             <Link href="/" className="flex items-center">
-              <img src="/nav_logo.png" alt="Bindzo 8 Logo" className="h-[50px] md:h-[60px] object-contain" />
+              <img src="/footer_logo.webp" alt="Bindzo 8 Logo" className="h-[50px] md:h-[60px] object-contain" />
             </Link>
-            <p className="text-[#f45c75] font-semibold text-[14px] md:text-[15px]">Bindzo 8 Pvt. Ltd.</p>
+            {/* <p className="text-[#f45c75] font-semibold text-[14px] md:text-[15px]">Bindzo 8 Pvt. Ltd.</p> */}
           </div>
 
           {/* Marquee Icons */}
@@ -62,7 +83,7 @@ export default function Footer() {
         </div>
 
         {/* Links & Info Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8">
           {/* Quick Links */}
           <div className="text-center sm:text-left">
             <h4 className="font-bold text-gray-900 text-[15px] mb-6 uppercase tracking-wider">Quick Links</h4>
@@ -88,7 +109,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-left">
+          {/* <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-left">
             <h4 className="font-bold text-gray-900 text-[15px] mb-6 uppercase tracking-wider">Get Newsletter</h4>
             <p className="text-[14px] text-gray-600 mb-6 leading-relaxed">
               Stay updated with our latest<br className="hidden lg:block" /> news and offers.
@@ -101,62 +122,66 @@ export default function Footer() {
                 className="w-full bg-[#f3f1ed] rounded-full py-3.5 pl-11 pr-4 text-[13px] placeholder:text-gray-400 font-medium border-none outline-none focus:ring-2 focus:ring-[#d6335a]/20 shadow-inner"
               />
             </div>
-          </div>
+          </div> */}
 
           {/* Contact */}
+          {/* Contact */}
           <div className="space-y-5 text-center sm:text-left">
-            <h4 className="font-bold text-gray-900 text-[15px] mb-6 uppercase tracking-wider">Contact Us</h4>
-            <div className="flex items-center sm:items-start justify-center sm:justify-start gap-3">
-              <MapPin className="w-4 h-4 mt-0.5 text-[#d6335a] shrink-0" />
-              <p className="text-[14px] text-gray-700 font-medium leading-relaxed">{process.env.NEXT_PUBLIC_LOCATION}</p>
+            <h4 className="mb-6 text-[15px] font-bold uppercase tracking-wider text-gray-900">
+              Contact Us
+            </h4>
+
+            <div className="mx-auto flex w-full max-w-[310px] items-start gap-3 text-left sm:mx-0 sm:max-w-none">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#d6335a]" />
+              <p className="min-w-0 text-[14px] font-medium leading-relaxed text-gray-700">
+                {process.env.NEXT_PUBLIC_LOCATION}
+              </p>
             </div>
-            <div className="flex items-center sm:items-start justify-center sm:justify-start gap-3">
-              <Phone className="w-4 h-4 mt-0.5 text-[#d6335a] shrink-0" />
+
+            <div className="mx-auto flex w-full max-w-[310px] items-start gap-3 text-left sm:mx-0 sm:max-w-none">
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#d6335a]" />
               <a
                 href={`tel:${process.env.NEXT_PUBLIC_PHONE}`}
-                className="text-[14px] text-gray-700 font-medium"
+                className="min-w-0 text-[14px] font-medium text-gray-700 hover:text-[#d6335a]"
               >
                 {process.env.NEXT_PUBLIC_PHONE_LABEL}
               </a>
             </div>
-            <div className="flex items-center sm:items-start justify-center sm:justify-start gap-3">
-              <Mail className="w-4 h-4 mt-0.5 text-[#d6335a] shrink-0" />
-              <div className="text-[14px] text-gray-700 font-medium space-y-1 break-all flex justify-center items-start flex-col">
-                <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_1}`}>
+
+            <div className="mx-auto flex w-full max-w-[310px] items-start gap-3 text-left sm:mx-0 sm:max-w-none">
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#d6335a]" />
+
+              <div className="flex min-w-0 flex-col gap-1 text-[14px] font-medium text-gray-700">
+                <a
+                  href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_1}`}
+                  className="break-all hover:text-[#d6335a]"
+                >
                   {process.env.NEXT_PUBLIC_EMAIL_1}
                 </a>
 
-                <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_2}`}>
+                <a
+                  href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_2}`}
+                  className="break-all hover:text-[#d6335a]"
+                >
                   {process.env.NEXT_PUBLIC_EMAIL_2}
                 </a>
 
-                <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_3}`}>
+                <a
+                  href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_3}`}
+                  className="break-all hover:text-[#d6335a]"
+                >
                   {process.env.NEXT_PUBLIC_EMAIL_3}
                 </a>
               </div>
             </div>
+
             <div className="pt-2">
-              <button className="text-[13px] font-bold text-white bg-[#d6335a] rounded-full px-8 py-3 hover:bg-[#b52a4b] hover:shadow-lg transition-all active:scale-95 shadow-md">
+              <button className="rounded-full bg-[#d6335a] px-8 py-3 text-[13px] font-bold text-white shadow-md transition-all hover:bg-[#b52a4b] hover:shadow-lg active:scale-95">
                 Get a Quote
               </button>
             </div>
           </div>
 
-          {/* Social Icons - Integrated into grid */}
-          <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center lg:items-end gap-6 text-center lg:text-right pt-8 lg:pt-0">
-            <h4 className="font-bold text-gray-900 text-[15px] uppercase tracking-wider">Follow Us</h4>
-            <div className="flex flex-wrap justify-center lg:justify-end gap-3 max-w-[200px] lg:max-w-none">
-              {socialLinks.map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  className="w-10 h-10 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center text-gray-700 font-bold text-sm hover:bg-[#d6335a] hover:text-white hover:shadow-md transition-all active:scale-90"
-                >
-                  {item.icon}
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 

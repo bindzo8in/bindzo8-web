@@ -17,8 +17,6 @@ const Page = () => {
       <ServiceSection />
       <Methodology />
       <PrinciplesSection />
-      {/* <ProductSection />
-      <WhyChooseUs /> */}
       <ShowcaseSections />
       <CareerSection />
       <TestimonialSection />

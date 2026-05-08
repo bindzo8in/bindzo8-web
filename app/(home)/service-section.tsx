@@ -11,6 +11,7 @@ interface Service {
   description: string;
   media: string;
   slug: string;
+  href: string;
 }
 
 const services: Service[] = [
@@ -19,23 +20,27 @@ const services: Service[] = [
     description: "Elevate your online presence with data-driven strategies and creative campaigns that convert.",
     media: "/home_service_icons/digital-marketing.webp",
     slug: "digital-marketing",
+    href: `/services/digital-marketing`
   },
   {
     title: "Website Development",
     description: "High-performance, responsive websites built with the latest technologies to drive your business.",
     media: "/home_service_icons/website-development.webp",
     slug: "website-development",
+    href: `/services/website-development`
   },
   {
     title: "Mobile App Development",
     description: "Scalable and intuitive mobile solutions for iOS and Android that provide a seamless user experience.",
     media: "/home_service_icons/mobile-app-development.webp",
-    slug: "mobile-app-development",
+    slug: "mobile-app",
+    href: `/service/mobile-app`
   },
   {
     title: "SEO Optimization",
     description: "Boost your organic visibility and rank higher on search engines with our expert SEO techniques.",
     media: "/home_service_icons/search-engine-optimization.webp",
+    href: `/services/seo`,
     slug: "seo",
   },
   {
@@ -43,24 +48,28 @@ const services: Service[] = [
     description: "Creative and impactful design solutions that capture your brand essence and engage your audience.",
     media: "/home_service_icons/design-solution.webp",
     slug: "graphic-design",
+    href: `/services/graphic-design`
   },
   {
     title: "Video Editing",
     description: "Professional video editing that tells your story and captures attention in a crowded digital world.",
     media: "/home_service_icons/video-editing.webp",
     slug: "video-editing",
+    href: `/services/video-editing`,
   },
   {
     title: "E-Commerce Solutions",
     description: "Robust and user-friendly e-commerce platforms designed to maximize your sales and growth.",
     media: "/home_service_icons/ecommerce.webp",
     slug: "ecommerce",
+    href: `/service/ecommerce-solutions`,
   },
   {
     title: "Branding",
     description: "Build a strong and memorable brand identity that resonates with your customers.",
     media: "/home_service_icons/branding.webp",
     slug: "branding",
+    href: `/service/branding`,
   },
 ];
 
@@ -216,7 +225,7 @@ export default function ServiceSection() {
                   transition={{ delay: 0.4 }}
                 >
                   <Link 
-                    href={`/services/${services[current].slug}`}
+                    href={services[current].href}
                     className="group inline-flex items-center gap-3 px-8 py-4 bg-[#E7325C] hover:bg-[#d42d53] text-white rounded-full font-bold transition-all duration-300 hover:shadow-[0_0_20px_rgba(231,50,92,0.4)]"
                   >
                     Explore
