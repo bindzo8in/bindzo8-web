@@ -75,8 +75,8 @@ function HeroSection() {
                             />
                         </div>
                         <figcaption className="text-center mt-6">
-                            <h6 className="capitalize font-bold text-2xl">balaji</h6>
-                            <p className="text-[#EF8030] font-semibold tracking-wider uppercase text-sm">Founder</p>
+                            <h6 className="capitalize font-bold text-2xl font-antonio">balaji</h6>
+                            <p className="text-[#EF8030] font-semibold tracking-wider uppercase text-sm font-inter">Founder</p>
                         </figcaption>
                     </motion.figure>
 

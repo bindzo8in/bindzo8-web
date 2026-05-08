@@ -35,11 +35,6 @@ function WeAre() {
         </p>
       </div>
 
-      {/* Right Vertical Text (Hidden on Mobile) */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 rotate-90 origin-right text-xs md:text-sm tracking-[0.3em] hidden xl:block opacity-40 hover:opacity-100 transition-all duration-500 cursor-pointer uppercase font-bold">
-        Get Quote
-      </div>
-
     </section>
   )
 }

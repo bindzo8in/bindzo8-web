@@ -237,14 +237,14 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
       {/* text content */}
       <div className="relative z-40 flex flex-col items-center">
         <h3 className="relative mb-4 -translate-y-1 scale-105 text-[24px] font-bold text-white transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:translate-y-0 sm:scale-100 sm:text-[28px] sm:group-hover:-translate-y-1 sm:group-hover:scale-105">
-          <span className="bg-gradient-to-r from-[#E7325C] to-[#EF8030] bg-clip-text text-transparent transition-all duration-700 sm:from-white sm:to-white sm:group-hover:from-[#E7325C] sm:group-hover:to-[#EF8030]">
+          <span className="bg-gradient-to-r from-[#E7325C] to-[#EF8030] bg-clip-text text-transparent transition-all duration-700 sm:from-white sm:to-white sm:group-hover:from-[#E7325C] sm:group-hover:to-[#EF8030] font-antonio">
             {member.name}
           </span>
 
           <span className="absolute -bottom-2 left-1/2 h-[3px] w-20 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#E7325C] to-[#EF8030] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-0 sm:group-hover:w-20" />
         </h3>
 
-        <p className="relative -translate-y-1 scale-105 overflow-hidden rounded-full border border-transparent px-7 py-3 text-sm font-bold text-white shadow-xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:translate-y-0 sm:scale-100 sm:border-white/20 sm:px-8 sm:text-base sm:shadow-lg sm:group-hover:-translate-y-1 sm:group-hover:scale-105 sm:group-hover:border-transparent sm:group-hover:shadow-xl">
+        <p className="relative -translate-y-1 scale-105 overflow-hidden rounded-full border border-transparent px-7 py-3 text-sm font-bold text-white shadow-xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:translate-y-0 sm:scale-100 sm:border-white/20 sm:px-8 sm:text-base sm:shadow-lg sm:group-hover:-translate-y-1 sm:group-hover:scale-105 sm:group-hover:border-transparent sm:group-hover:shadow-xl font-inter">
           <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[#E7325C] to-[#EF8030] opacity-100 transition-opacity duration-700 sm:opacity-0 sm:group-hover:opacity-100" />
 
           <span className="absolute inset-y-0 left-[130%] w-1/2 skew-x-[-20deg] bg-white/25 transition-all duration-1000 ease-out sm:left-[-75%] sm:group-hover:left-[130%]" />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Kumbh_Sans, Raleway } from "next/font/google";
+import { Geist, Geist_Mono, Kumbh_Sans, Raleway, Antonio, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -33,6 +33,20 @@ const raleway = Raleway({
   variable: '--font-raleway',
   display: 'swap',
 })
+
+const antonio = Antonio({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  variable: "--font-antonio",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bindzo8.com';
 const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || 'Bindzo 8';
@@ -102,7 +116,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} h-full antialiased `}
+      className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} ${antonio.variable} ${inter.variable} h-full antialiased `}
       suppressHydrationWarning
 
     >
