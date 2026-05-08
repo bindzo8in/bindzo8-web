@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     description: "Empowering businesses through cutting-edge technology and digital excellence.",
     images: [
       {
-        url: "/nav_logo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: COMPANY_NAME,
