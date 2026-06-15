@@ -11,7 +11,7 @@ export default cloudinary
 export async function uploadToCloudinary(
   file: string,
   folder: string,
-  resourceType: "image" | "video" = "image"
+  resourceType: "image" | "video" | "raw" = "image"
 ) {
   try {
     const result = await cloudinary.uploader.upload(file, {
@@ -28,7 +28,7 @@ export async function uploadToCloudinary(
   }
 }
 
-export async function deleteFromCloudinary(publicId: string, resourceType: "image" | "video" = "image") {
+export async function deleteFromCloudinary(publicId: string, resourceType: "image" | "video" | "raw" = "image") {
   try {
     await cloudinary.uploader.destroy(publicId, { resource_type: resourceType })
   } catch (error) {

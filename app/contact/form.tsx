@@ -131,7 +131,7 @@ export default function ContactForm() {
                                         <p className="text-sm font-semibold text-gray-900">Sales:</p>
                                         <a
                                             href={`tel:${phone.replace(/\s+/g, "")}`}
-                                            className="text-sm text-gray-700 hover:text-[#E7325C] transition-colors"
+                                            className="text-sm text-gray-700 hover:text-[#c42b47] transition-colors"
                                         >
                                             {phoneLabel}
                                         </a>
@@ -139,7 +139,7 @@ export default function ContactForm() {
                                         <p className="text-sm font-semibold text-gray-900 mt-3">Marketing:</p>
                                         <a
                                             href={`tel:${phone.replace(/\s+/g, "")}`}
-                                            className="text-sm text-gray-700 hover:text-[#E7325C] transition-colors"
+                                            className="text-sm text-gray-700 hover:text-[#c42b47] transition-colors"
                                         >
                                             {phoneLabel}
                                         </a>
@@ -152,15 +152,15 @@ export default function ContactForm() {
                                         <Mail className="w-6 h-6 text-gray-700 mt-1" />
                                     </div>
                                     <div className='flex flex-col justify-center items-start'>
-                                        <a className={`text-sm text-gray-700 hover:text-[#E7325C] transition-colors`} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_1}`}>
+                                        <a className={`text-sm text-gray-700 hover:text-[#c42b47] transition-colors`} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_1}`}>
                                             {process.env.NEXT_PUBLIC_EMAIL_1}
                                         </a>
 
-                                        <a className={`text-sm text-gray-700 hover:text-[#E7325C] transition-colors`} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_2}`}>
+                                        <a className={`text-sm text-gray-700 hover:text-[#c42b47] transition-colors`} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_2}`}>
                                             {process.env.NEXT_PUBLIC_EMAIL_2}
                                         </a>
 
-                                        <a className={`text-sm text-gray-700 hover:text-[#E7325C] transition-colors`} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_3}`}>
+                                        <a className={`text-sm text-gray-700 hover:text-[#c42b47] transition-colors`} href={`mailto:${process.env.NEXT_PUBLIC_EMAIL_3}`}>
                                             {process.env.NEXT_PUBLIC_EMAIL_3}
                                         </a>
                                         {/* <p className="text-sm text-gray-700 break-all">

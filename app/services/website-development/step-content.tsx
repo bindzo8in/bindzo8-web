@@ -53,7 +53,7 @@ export default function UsageContent() {
       >
         {/* Mobile title */}
         <div className="mb-7 md:hidden">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.28em] text-orange-400">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.28em] text-[#d3325c]">
             Website Development
           </p>
 
@@ -81,14 +81,14 @@ export default function UsageContent() {
               md:shadow-none md:backdrop-blur-0
             "
           >
-            <h2 className="mb-4 text-base font-bold text-orange-500 lg:text-xl">
+            <h2 className="mb-4 text-base font-bold text-[#d3325c] lg:text-xl">
               Usage / Use Cases
             </h2>
 
             <ul className="space-y-3 text-sm leading-relaxed text-white/85 lg:space-y-4 lg:text-base">
               {usageList.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-[1px] text-orange-400">•</span>
+                  <span className="mt-[1px] text-[#d3325c]">•</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -105,14 +105,14 @@ export default function UsageContent() {
               md:shadow-none md:backdrop-blur-0
             "
           >
-            <h2 className="mb-4 text-base font-bold text-orange-500 lg:text-xl">
+            <h2 className="mb-4 text-base font-bold text-[#d3325c] lg:text-xl">
               Technologies Used
             </h2>
 
             <ul className="space-y-3 text-sm leading-relaxed text-white/85 lg:space-y-4 lg:text-base">
               {techList.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-[1px] text-orange-400">•</span>
+                  <span className="mt-[1px] text-[#d3325c]">•</span>
                   <span>{item}</span>
                 </li>
               ))}

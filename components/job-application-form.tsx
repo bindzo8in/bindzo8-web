@@ -275,7 +275,7 @@ export function JobApplicationForm() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 rounded-full disabled:opacity-70 disabled:pointer-events-none"
+              className="bg-[#d3325c] hover:bg-[#d3325c] text-white px-8 rounded-full disabled:opacity-70 disabled:pointer-events-none"
             >
               {isSubmitting ? (
                 <>

@@ -40,7 +40,7 @@ export default function DashboardSidebar() {
               className={cn(
                 "flex items-center gap-3 px-4 py-3 rounded-2xl text-[15px] font-bold transition-all",
                 isActive 
-                  ? "bg-[#E7325C]/5 text-[#E7325C]" 
+                  ? "bg-[#c42b47]/5 text-[#c42b47]" 
                   : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"
               )}
             >

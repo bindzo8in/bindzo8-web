@@ -62,7 +62,7 @@ function ProcessContent() {
       <section className="w-full px-5 py-16 font-kumbh sm:px-8 lg:px-12 lg:py-[95px] xl:px-20">
         <div className="mx-auto w-full max-w-[1500px]">
           <header className="mb-8 sm:mb-12 lg:mb-16">
-            <h4 className="text-[22px] font-semibold tracking-tight text-[#EF8030] sm:text-[28px] lg:text-[32px]">
+            <h4 className="text-[22px] font-semibold tracking-tight text-[#d3325c] sm:text-[28px] lg:text-[32px]">
               Process:
             </h4>
           </header>
@@ -132,7 +132,7 @@ function ProcessCard({
   return (
     <article className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.08] p-5 shadow-[0_18px_45px_rgba(0,0,0,0.25)] backdrop-blur-md">
       <div className="mb-5 flex items-start gap-4">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#EF8030] text-[18px] font-bold text-white">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#d3325c] text-[18px] font-bold text-white">
           {stepNumber}
         </span>
 
@@ -144,7 +144,7 @@ function ProcessCard({
       <ul className="space-y-3 text-[15px] leading-relaxed text-white/85 sm:text-[16px]">
         {items.map((item) => (
           <li key={item} className="flex gap-3">
-            <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#EF8030]" />
+            <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d3325c]" />
             <span>{item}</span>
           </li>
         ))}

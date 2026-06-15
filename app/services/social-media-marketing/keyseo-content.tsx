@@ -281,7 +281,7 @@ const KeySeoContent = () => {
     >
       {/* Mobile / Tablet: vertical stack */}
       <div className="lg:hidden w-full font-kumbh text-white py-12 px-6">
-        <h2 className="mb-6 text-base font-bold text-orange-500 sm:text-lg">
+        <h2 className="mb-6 text-base font-bold text-[#d3325c] sm:text-lg">
           Key SEO Services We Provide
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -293,7 +293,7 @@ const KeySeoContent = () => {
               <ul className="space-y-1 text-[12px] leading-snug text-white/85 sm:text-sm">
                 {item.points.map((point) => (
                   <li key={point} className="flex gap-2">
-                    <span className="text-orange-400 shrink-0">·</span>
+                    <span className="text-[#d3325c] shrink-0">·</span>
                     <span>{point}</span>
                   </li>
                 ))}
@@ -332,7 +332,7 @@ const KeySeoContent = () => {
         >
           {/* Left content */}
           <div className="w-full max-w-[340px] lg:pl-3 xl:pl-6">
-            <h2 className="mb-2 text-xs font-bold text-orange-500 lg:mb-3 lg:text-base">
+            <h2 className="mb-2 text-xs font-bold text-[#d3325c] lg:mb-3 lg:text-base">
               Key SEO Services We Provide
             </h2>
 

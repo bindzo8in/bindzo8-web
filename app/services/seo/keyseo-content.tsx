@@ -320,7 +320,7 @@ const KeySeoContent = () => {
         >
           {/* Mobile Heading */}
           <div className="lg:hidden">
-            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-orange-500">
+            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#d3325c]">
               SEO Services
             </p>
 
@@ -344,7 +344,7 @@ const KeySeoContent = () => {
             "
           >
             <div className="w-full max-w-[430px] lg:max-w-[340px]">
-              <h2 className="mb-2 hidden text-xs font-bold text-orange-500 sm:text-sm lg:mb-3 lg:block lg:text-base">
+              <h2 className="mb-2 hidden text-xs font-bold text-[#d3325c] sm:text-sm lg:mb-3 lg:block lg:text-base">
                 Key SEO Services We Provide
               </h2>
 
@@ -379,7 +379,7 @@ const KeySeoContent = () => {
                     "
                   >
                     <h3 className="text-[14px] font-bold leading-tight text-white lg:text-base">
-                      <span className="text-orange-500 lg:hidden">
+                      <span className="text-[#d3325c] lg:hidden">
                         {String(index + 1).padStart(2, "0")}.
                       </span>
 
@@ -391,7 +391,7 @@ const KeySeoContent = () => {
                     <ul className="mt-2 space-y-1.5 text-[12px] leading-relaxed text-white/75 lg:mt-0.5 lg:space-y-0 lg:text-[13px] lg:leading-snug">
                       {item.points.map((point) => (
                         <li key={point} className="flex gap-2 lg:block">
-                          <span className="mt-[1px] text-orange-400 lg:hidden">
+                          <span className="mt-[1px] text-[#d3325c] lg:hidden">
                             •
                           </span>
                           <span>

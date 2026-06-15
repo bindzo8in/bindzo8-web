@@ -571,7 +571,7 @@ export default function MethodologySection() {
 //             {/* ROW 1 */}
 //             <div className="grid grid-cols-1 md:grid-cols-[1fr_430px_1fr] items-center gap-8">
 //               <div>
-//                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">01</h1>
+//                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">01</h1>
 //                 <p className="mt-8 max-w-[560px] text-[22px] leading-[1.45]">
 //                   Branding gives your business a unique identity that builds
 //                   trust, attracts customers, and sets you apart.
@@ -590,7 +590,7 @@ export default function MethodologySection() {
 //               </div>
 //               <div />
 //               <div className="md:text-right">
-//                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">02</h1>
+//                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">02</h1>
 //                 <p className="mt-8 ml-auto max-w-[560px] text-[22px] leading-[1.45] text-right">
 //                   Marketing connects your brand with the right audience and drives sales.
 //                 </p>
@@ -600,7 +600,7 @@ export default function MethodologySection() {
 //             {/* ROW 3 */}
 //             <div className="grid grid-cols-1 md:grid-cols-[1fr_430px_1fr] items-center gap-8">
 //               <div>
-//                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">03</h1>
+//                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">03</h1>
 //                 <p className="mt-8 max-w-[560px] text-[22px] leading-[1.45]">
 //                   Development drives growth, innovation, and success in business.
 //                 </p>
@@ -828,7 +828,7 @@ export default function MethodologySection() {
 // //             {/* ROW 1 */}
 // //             <div className="grid grid-cols-1 md:grid-cols-[1fr_430px_1fr] items-center gap-8">
 // //               <div>
-// //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">
+// //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">
 // //                   01
 // //                 </h1>
 
@@ -860,7 +860,7 @@ export default function MethodologySection() {
 // //               <div />
 
 // //               <div className="md:text-right">
-// //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">
+// //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">
 // //                   02
 // //                 </h1>
 
@@ -875,7 +875,7 @@ export default function MethodologySection() {
 // //             {/* ROW 3 */}
 // //             <div className="grid grid-cols-1 md:grid-cols-[1fr_430px_1fr] items-center gap-8">
 // //               <div>
-// //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">
+// //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">
 // //                   03
 // //                 </h1>
 
@@ -1161,7 +1161,7 @@ export default function MethodologySection() {
 // // //             {/* ROW 1 */}
 // // //             <div className="grid grid-cols-1 md:grid-cols-[1fr_430px_1fr] items-center gap-8">
 // // //               <div>
-// // //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">
+// // //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">
 // // //                   01
 // // //                 </h1>
 // // //                 <p className="mt-8 max-w-[560px] text-lg leading-[1.4]">
@@ -1185,7 +1185,7 @@ export default function MethodologySection() {
 // // //               <div />
 
 // // //               <div className="md:text-right">
-// // //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">
+// // //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">
 // // //                   02
 // // //                 </h1>
 // // //                 <p className="mt-8 ml-auto max-w-[560px] text-lg leading-[1.4]">
@@ -1197,7 +1197,7 @@ export default function MethodologySection() {
 // // //             {/* ROW 3 */}
 // // //             <div className="grid grid-cols-1 md:grid-cols-[1fr_430px_1fr] items-center gap-8">
 // // //               <div>
-// // //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#E7325C]">
+// // //                 <h1 className="text-[92px] md:text-[160px] leading-none text-[#c42b47]">
 // // //                   03
 // // //                 </h1>
 // // //                 <p className="mt-8 max-w-[560px] text-lg leading-[1.4]">
@@ -1379,7 +1379,7 @@ export default function MethodologySection() {
 // // // //               transition={{ duration: 0.7 }}
 // // // //               className="flex flex-col"
 // // // //             >
-// // // //               <h1 className="text-[#E7325C] text-[90px] md:text-[150px] leading-none">
+// // // //               <h1 className="text-[#c42b47] text-[90px] md:text-[150px] leading-none">
 // // // //                 01
 // // // //               </h1>
 
@@ -1431,7 +1431,7 @@ export default function MethodologySection() {
 // // // //               transition={{ duration: 0.7 }}
 // // // //               className="flex flex-col items-start md:items-end"
 // // // //             >
-// // // //               <h1 className="text-[#E7325C] text-[90px] md:text-[150px] leading-none">
+// // // //               <h1 className="text-[#c42b47] text-[90px] md:text-[150px] leading-none">
 // // // //                 02
 // // // //               </h1>
 
@@ -1454,7 +1454,7 @@ export default function MethodologySection() {
 // // // //               transition={{ duration: 0.7 }}
 // // // //               className="flex flex-col"
 // // // //             >
-// // // //               <h1 className="text-[#E7325C] text-[90px] md:text-[150px] leading-none">
+// // // //               <h1 className="text-[#c42b47] text-[90px] md:text-[150px] leading-none">
 // // // //                 03
 // // // //               </h1>
 
@@ -1590,7 +1590,7 @@ export default function MethodologySection() {
 // // // // //           viewport={{ once: true, amount: 0.3 }}
 // // // // //           transition={{ duration: 0.7, ease: "easeOut" }}
 // // // // //         >
-// // // // //          <h1 className="text-[80px] @md:text-[120px] @lg:text-[160px] leading-none text-[#E7325C]">01</h1>
+// // // // //          <h1 className="text-[80px] @md:text-[120px] @lg:text-[160px] leading-none text-[#c42b47]">01</h1>
 // // // // //           <p className="mt-auto text-lg max-w-md justify-self-end">
 // // // // //             Branding gives your business a unique identity that builds trust, attracts customers, and sets you apart. We help you create a powerful brand that connects, inspires, and drives growth.
 // // // // //           </p>
@@ -1631,7 +1631,7 @@ export default function MethodologySection() {
 // // // // //           viewport={{ once: true, amount: 0.3 }}
 // // // // //           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
 // // // // //         >
-// // // // //           <h1 className="text-[80px] @md:text-[120px] @lg:text-[160px] leading-none text-[#E7325C]">02</h1>
+// // // // //           <h1 className="text-[80px] @md:text-[120px] @lg:text-[160px] leading-none text-[#c42b47]">02</h1>
 // // // // //           <p className="text-lg max-w-md text-right mt-auto">
 // // // // //             Marketing connects your brand with the right audience, builds awareness, and drives sales. We help you create impact strategies that attract, engage, and grow your business.
 // // // // //           </p>
@@ -1647,7 +1647,7 @@ export default function MethodologySection() {
 // // // // //           transition={{ duration: 0.7, ease: "easeOut" }}
 // // // // //         >
 // // // // //           <div>
-// // // // //          <h1 className="text-[80px] @md:text-[120px] @lg:text-[160px] leading-none text-[#E7325C]">03</h1>
+// // // // //          <h1 className="text-[80px] @md:text-[120px] @lg:text-[160px] leading-none text-[#c42b47]">03</h1>
 
 // // // // //           </div>
 // // // // //           <p className="mt-auto text-lg max-w-md">

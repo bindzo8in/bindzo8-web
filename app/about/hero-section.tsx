@@ -60,7 +60,7 @@ function HeroSection() {
 
                 <div className="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24">
                     {/* Left side: Founder Image */}
-                    <motion.figure 
+                    {/* <motion.figure 
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 }}
@@ -76,9 +76,9 @@ function HeroSection() {
                         </div>
                         <figcaption className="text-center mt-6">
                             <h6 className="capitalize font-bold text-2xl font-antonio">balaji</h6>
-                            <p className="text-[#EF8030] font-semibold tracking-wider uppercase text-sm font-inter">Founder</p>
+                            <p className="text-[#d3325c] font-semibold tracking-wider uppercase text-sm font-inter">Founder</p>
                         </figcaption>
-                    </motion.figure>
+                    </motion.figure> */}
 
                     {/* Right side: Mission/Vision/Goal Tabs */}
                     <article className="flex flex-col lg:flex-row gap-8 w-full max-w-3xl">
@@ -97,7 +97,7 @@ function HeroSection() {
                                     {selectedContent === index && (
                                         <motion.div 
                                             layoutId="activeTabAbout"
-                                            className="absolute inset-0 bg-gradient-to-r from-[#E7325C] to-[#EF8030]"
+                                            className="absolute inset-0 bg-gradient-to-r from-[#c42b47] to-[#d3325c]"
                                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                         />
                                     )}

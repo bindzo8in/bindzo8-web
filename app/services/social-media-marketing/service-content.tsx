@@ -75,7 +75,7 @@ function TextCard({
 }) {
   return (
     <div className="flex h-full flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-0">
-      <h3 className="mb-3 text-xl font-bold leading-tight text-orange-500 lg:text-2xl">
+      <h3 className="mb-3 text-xl font-bold leading-tight text-[#d3325c] lg:text-2xl">
         {title}
       </h3>
 

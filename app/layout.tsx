@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import { AuthProvider } from "@/components/session-provider";
 import FixedQuoteButton from "@/components/contact-button";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
-import QuoteModal from "@/components/contact-model";
+import InactivityRedirect from "@/components/InactivityRedirect";
+
 import JsonLd from "@/components/seo/JsonLd";
 import { getOrganizationSchema, getLocalBusinessSchema } from "@/components/seo/Schemas";
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -107,6 +108,9 @@ export const metadata: Metadata = {
 };
 
 import { Toaster } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/button";
+import QuoteModal from "@/components/contact-model";
+import { Providers } from "@/components/providers";
 
 export default function RootLayout({
   children,
@@ -125,17 +129,20 @@ export default function RootLayout({
         <JsonLd data={getLocalBusinessSchema()} />
       </head>
       <body className="min-h-full flex flex-col">
-        <AuthProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          {/* <FixedQuoteButton /> */}
-          <QuoteModal />
-          <FloatingWhatsApp
-            phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
-          />
-          <Toaster expand richColors position="top-right" />
-        </AuthProvider>
+        <Providers>
+          <AuthProvider>
+            <InactivityRedirect />
+            <Navbar />
+            {children}
+            <Footer />
+            {/* <FixedQuoteButton /> */}
+            <QuoteModal />
+            <FloatingWhatsApp
+              phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
+            />
+            <Toaster expand richColors position="top-right" />
+          </AuthProvider> 
+        </Providers>
       </body>
       {process.env.NEXT_PUBLIC_GA_ID ? (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />

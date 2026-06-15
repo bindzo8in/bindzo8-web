@@ -165,8 +165,8 @@ export default function DV360ServicePage() {
   return (
     <main className="relative w-full overflow-hidden bg-[#070712] font-kumbh text-white">
       {/* Background */}
-      <div className="pointer-events-none absolute left-[-180px] top-[-180px] h-[430px] w-[430px] rounded-full bg-[#E7325C]/35 blur-[120px]" />
-      <div className="pointer-events-none absolute right-[-160px] top-[420px] h-[520px] w-[520px] rounded-full bg-[#EF8030]/25 blur-[140px]" />
+      <div className="pointer-events-none absolute left-[-180px] top-[-180px] h-[430px] w-[430px] rounded-full bg-[#c42b47]/35 blur-[120px]" />
+      <div className="pointer-events-none absolute right-[-160px] top-[420px] h-[520px] w-[520px] rounded-full bg-[#d3325c]/25 blur-[140px]" />
       <div className="pointer-events-none absolute bottom-[300px] left-[30%] h-[440px] w-[440px] rounded-full bg-[#6D5DFB]/20 blur-[140px]" />
 
       {/* HERO */}
@@ -174,7 +174,7 @@ export default function DV360ServicePage() {
         <div className="container mx-auto grid min-h-screen grid-cols-1 items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:px-12">
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[12px] font-medium uppercase tracking-[0.25em] text-white/75 backdrop-blur-md">
-              <Box className="h-4 w-4 text-[#EF8030]" />
+              <Box className="h-4 w-4 text-[#d3325c]" />
               Display & Video 360
             </div>
 
@@ -205,7 +205,7 @@ export default function DV360ServicePage() {
 
             <button
               type="button"
-              className="group mt-9 inline-flex h-[48px] items-center justify-center gap-3 rounded-full bg-[linear-gradient(90deg,#E7325C,#EF8030)] px-8 text-[14px] font-semibold text-white shadow-[0_18px_50px_rgba(231,50,92,0.35)] transition duration-300 hover:scale-[1.03]"
+              className="group mt-9 inline-flex h-[48px] items-center justify-center gap-3 rounded-full bg-[linear-gradient(90deg,#c42b47,#d3325c)] px-8 text-[14px] font-semibold text-white shadow-[0_18px_50px_rgba(231,50,92,0.35)] transition duration-300 hover:scale-[1.03]"
             >
               Get Quote
               <ArrowRight className="h-4 w-4 transition duration-300 group-hover:translate-x-1" />
@@ -213,7 +213,7 @@ export default function DV360ServicePage() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[560px]">
-            <div className="absolute inset-0 rounded-[44px] bg-[linear-gradient(135deg,#E7325C,#EF8030)] opacity-35 blur-2xl" />
+            <div className="absolute inset-0 rounded-[44px] bg-[linear-gradient(135deg,#c42b47,#d3325c)] opacity-35 blur-2xl" />
 
             <div className="relative overflow-hidden rounded-[40px] border border-white/15 bg-white/[0.08] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
               <div className="absolute right-5 top-5 rounded-full border border-white/15 bg-black/30 px-4 py-1 text-[11px] uppercase tracking-[0.2em] text-white/60">
@@ -259,7 +259,7 @@ export default function DV360ServicePage() {
       <section className="relative z-10 py-20 lg:py-28">
         <div className="container mx-auto px-5 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-[820px] text-center">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-[#EF8030]">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-[#d3325c]">
               Display and Video 360
             </p>
             <h2 className="mt-4 text-[32px] font-semibold tracking-[-0.04em] text-white sm:text-[48px]">
@@ -276,7 +276,7 @@ export default function DV360ServicePage() {
             <div className="relative h-[580px] w-full max-w-[680px]">
               <div className="absolute left-1/2 top-1/2 h-[410px] w-[410px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/[0.03]">
                 <div className="absolute inset-5 animate-[spin_18s_linear_infinite] rounded-full border border-dashed border-white/20" />
-                <div className="absolute inset-12 rounded-full bg-[conic-gradient(from_90deg,#E7325C,#EF8030,#6466F1,#E7325C)] opacity-20 blur-md" />
+                <div className="absolute inset-12 rounded-full bg-[conic-gradient(from_90deg,#c42b47,#d3325c,#6466F1,#c42b47)] opacity-20 blur-md" />
               </div>
 
               <div className="absolute left-1/2 top-1/2 z-20 flex h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-white/15 bg-[#090914]/95 p-8 text-center shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl">
@@ -284,7 +284,7 @@ export default function DV360ServicePage() {
                   key={activeIndex}
                   className="animate-[featurePop_0.55s_ease_both]"
                 >
-                  <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(90deg,#E7325C,#EF8030)] text-white">
+                  <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(90deg,#c42b47,#d3325c)] text-white">
                     {activeFeature.icon}
                   </span>
 
@@ -319,7 +319,7 @@ export default function DV360ServicePage() {
                       className={[
                         "group flex h-[102px] w-[165px] flex-col items-center justify-center gap-2 rounded-[26px] border p-4 text-center shadow-xl backdrop-blur-xl transition-all duration-500",
                         isActive
-                          ? "scale-110 border-[#EF8030]/70 bg-[linear-gradient(135deg,rgba(231,50,92,0.95),rgba(239,128,48,0.95))] text-white shadow-[0_20px_60px_rgba(231,50,92,0.35)]"
+                          ? "scale-110 border-[#d3325c]/70 bg-[linear-gradient(135deg,rgba(231,50,92,0.95),rgba(239,128,48,0.95))] text-white shadow-[0_20px_60px_rgba(231,50,92,0.35)]"
                           : "border-white/10 bg-white/[0.08] text-white/70 hover:scale-105 hover:border-white/25 hover:bg-white/[0.13]",
                       ].join(" ")}
                     >
@@ -353,7 +353,7 @@ export default function DV360ServicePage() {
         <div className="container mx-auto px-5 sm:px-8 lg:px-12">
           <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <div>
-              <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-[#EF8030]">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-[#d3325c]">
                 Ad Formats
               </p>
               <h2 className="mt-4 max-w-[720px] text-[32px] font-semibold tracking-[-0.04em] text-white sm:text-[48px]">
@@ -371,12 +371,12 @@ export default function DV360ServicePage() {
             {adFormats.map((format, index) => (
               <div
                 key={format.title}
-                className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.07] p-6 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-[#EF8030]/45 hover:bg-white/[0.1]"
+                className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.07] p-6 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-[#d3325c]/45 hover:bg-white/[0.1]"
               >
-                <div className="absolute right-[-40px] top-[-40px] h-[120px] w-[120px] rounded-full bg-[#E7325C]/0 blur-2xl transition duration-500 group-hover:bg-[#E7325C]/25" />
+                <div className="absolute right-[-40px] top-[-40px] h-[120px] w-[120px] rounded-full bg-[#c42b47]/0 blur-2xl transition duration-500 group-hover:bg-[#c42b47]/25" />
 
                 <div className="mb-7 flex items-center justify-between">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#E7325C,#EF8030)] text-white shadow-[0_14px_35px_rgba(231,50,92,0.28)]">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#c42b47,#d3325c)] text-white shadow-[0_14px_35px_rgba(231,50,92,0.28)]">
                     {format.icon}
                   </span>
 
@@ -402,7 +402,7 @@ export default function DV360ServicePage() {
       <section className="relative z-10 py-20 lg:py-28">
         <div className="container mx-auto px-5 sm:px-8 lg:px-12">
           <div className="mx-auto mb-14 max-w-[880px] text-center">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-[#EF8030]">
+            <p className="text-[13px] font-semibold uppercase tracking-[0.3em] text-[#d3325c]">
               Platform Comparison
             </p>
             <h2 className="mt-4 text-[32px] font-semibold tracking-[-0.04em] text-white sm:text-[48px]">
@@ -462,8 +462,8 @@ function InfoCard({
   description: string;
 }) {
   return (
-    <div className="rounded-[30px] border border-white/10 bg-white/[0.07] p-6 backdrop-blur-xl transition duration-300 hover:border-[#EF8030]/40 hover:bg-white/[0.1]">
-      <CheckCircle2 className="mb-5 h-6 w-6 text-[#EF8030]" />
+    <div className="rounded-[30px] border border-white/10 bg-white/[0.07] p-6 backdrop-blur-xl transition duration-300 hover:border-[#d3325c]/40 hover:bg-white/[0.1]">
+      <CheckCircle2 className="mb-5 h-6 w-6 text-[#d3325c]" />
       <h3 className="text-[20px] font-semibold text-white">{title}</h3>
       <p className="mt-3 text-[14px] leading-[1.7] text-white/62">
         {description}
@@ -492,7 +492,7 @@ function FeatureMobileCard({
       className={[
         "rounded-[24px] border p-5 text-left transition-all duration-300",
         isActive
-          ? "border-[#EF8030]/70 bg-[linear-gradient(135deg,rgba(231,50,92,0.95),rgba(239,128,48,0.95))] shadow-[0_18px_45px_rgba(231,50,92,0.28)]"
+          ? "border-[#d3325c]/70 bg-[linear-gradient(135deg,rgba(231,50,92,0.95),rgba(239,128,48,0.95))] shadow-[0_18px_45px_rgba(231,50,92,0.28)]"
           : "border-white/10 bg-white/[0.07]",
       ].join(" ")}
     >
@@ -518,7 +518,7 @@ function ComparisonRow({ item }: { item: ComparisonItem }) {
   return (
     <>
       <div className="border-b border-white/10 p-5 lg:block">
-        <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#EF8030] lg:mb-0">
+        <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#d3325c] lg:mb-0">
           {item.label}
         </p>
       </div>

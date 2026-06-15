@@ -144,7 +144,7 @@ export default function ProductsSection({
 
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 md:px-8 lg:px-12">
-        <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-[#E7325C] md:mb-20 md:text-5xl lg:text-6xl">
+        <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-[#c42b47] md:mb-20 md:text-5xl lg:text-6xl">
           {title}
         </h2>
 
@@ -201,7 +201,7 @@ function ProductCard({ product }: { product: Project }) {
       </div>
 
       <div className="flex min-h-[180px] flex-col p-6 sm:p-8 md:min-h-[220px]">
-        <span className="mb-3 self-start rounded-full bg-[#E7325C]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#E7325C]">
+        <span className="mb-3 self-start rounded-full bg-[#c42b47]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#c42b47]">
           {product.category}
         </span>
 

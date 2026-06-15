@@ -99,7 +99,7 @@ export default function ResourceModal({
                   <select
                     value={formData[field.name] || ""}
                     onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
-                    className="w-full h-14 rounded-2xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#E7325C] focus:ring-4 focus:ring-[#E7325C]/5 transition-all px-6 outline-none appearance-none"
+                    className="w-full h-14 rounded-2xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#c42b47] focus:ring-4 focus:ring-[#c42b47]/5 transition-all px-6 outline-none appearance-none"
                     required
                   >
                     <option value="" disabled>Select {field.label}</option>
@@ -112,7 +112,7 @@ export default function ResourceModal({
                     value={formData[field.name] || ""}
                     onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
                     placeholder={field.placeholder}
-                    className="w-full rounded-2xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#E7325C] focus:ring-4 focus:ring-[#E7325C]/5 transition-all p-6 outline-none min-h-[120px]"
+                    className="w-full rounded-2xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#c42b47] focus:ring-4 focus:ring-[#c42b47]/5 transition-all p-6 outline-none min-h-[120px]"
                     required
                   />
                 ) : (
@@ -121,7 +121,7 @@ export default function ResourceModal({
                     value={formData[field.name] || ""}
                     onChange={(e) => setFormData({ ...formData, [field.name]: e.target.value })}
                     placeholder={field.placeholder}
-                    className="w-full h-14 rounded-2xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#E7325C] focus:ring-4 focus:ring-[#E7325C]/5 transition-all px-6 outline-none"
+                    className="w-full h-14 rounded-2xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#c42b47] focus:ring-4 focus:ring-[#c42b47]/5 transition-all px-6 outline-none"
                     required
                   />
                 )}
@@ -140,7 +140,7 @@ export default function ResourceModal({
             </button>
             <button
               type="submit"
-              className="flex-1 bg-[#E7325C] text-white h-14 rounded-2xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#E7325C]/20"
+              className="flex-1 bg-[#c42b47] text-white h-14 rounded-2xl font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-[#c42b47]/20"
             >
               Save Changes
             </button>

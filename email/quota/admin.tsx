@@ -20,7 +20,7 @@ type AdminQuoteEmailProps = {
 
 const brand = {
   primary: "#d3325c",
-  orange: "#F47C2A",
+  orange: "#d3325c",
   dark: "#161616",
   muted: "#666666",
   bg: "#fff4f4",

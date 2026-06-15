@@ -21,9 +21,9 @@ const sidebarCategories = [
     media: "/services_gif/webdev.gif",
   },
   {
-    text: "Quality Assurance",
-    slug: "quality-assurance",
-    media: "/services_gif/qa.gif",
+    text: "Design Solution",
+    slug: "design-solution",
+    media: "/services_gif/graphics.gif",
   },
   {
     text: "Mobile App Development",
@@ -31,9 +31,9 @@ const sidebarCategories = [
     media: "/services_gif/mobile-app.gif",
   },
   {
-    text: "Design Solution",
-    slug: "design-solution",
-    media: "/services_gif/graphics.gif",
+    text: "Social Media Marketing",
+    slug: "digital-marketing",
+    media: "/services_gif/dm.gif",
   },
   {
     text: "Software Development",
@@ -41,28 +41,29 @@ const sidebarCategories = [
     media: "/services_gif/software.gif",
   },
   {
-    text: "Digital Marketing",
-    slug: "digital-marketing",
-    media: "/services_gif/dm.gif",
+    text: "Google Ads",
+    slug: "google-ads",
+    media: "/services_gif/google-ads.gif",
+  },
+  {
+    text: "Quality Assurance",
+    slug: "quality-assurance",
+    media: "/services_gif/qa.gif",
+  },
+  {
+    text: "DV 360",
+    slug: "dv-360",
+    media: "/services_gif/dv360.gif",
   },
   {
     text: "Product Shooting",
     slug: "product-shooting",
     media: "/services_gif/cc.gif",
   },
-  // {
-  //   text: "IoT",
-  //   media: "/services_gif/iot.gif",
-  // },
   {
     text: "Search Engine Marketing",
     slug: "search-engine-marketing",
     media: "/services_gif/sem.gif",
-  },
-  {
-    text: "DV 360",
-    slug: "dv-360", 
-    media: "/services_gif/dv360.gif",
   },
   {
     text: "Creative & Communication",
@@ -72,20 +73,24 @@ const sidebarCategories = [
 ];
 
 export default function Sidebar() {
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const router = useRouter();
+  const [hoveredItem, setHoveredItem] = useState<
+    (typeof sidebarCategories)[number]
+  >(sidebarCategories[0]);
+
+  const previewItem = hoveredItem ?? sidebarCategories[0];
 
   return (
-    <aside className="relative z-40 order-2 flex h-auto w-full flex-shrink-0 flex-col overflow-hidden bg-[#0a0a0a] shadow-xl transition-[top,height] duration-300 ease-in-out lg:sticky lg:top-[var(--nav-height,95px)] lg:order-none lg:h-[calc(100vh-var(--nav-height,95px))] lg:w-[425px]">
-      {/* Mobile / Tablet Grid Card View */}
-      <div className="block lg:hidden" >
+    <aside className="relative z-40 order-2 flex h-auto w-full flex-shrink-0 flex-col overflow-hidden bg-[#0a0a0a] shadow-xl lg:sticky lg:top-[var(--nav-height,95px)] lg:order-none lg:h-[calc(100vh-var(--nav-height,95px))] lg:w-[425px]">
+      {/* Mobile */}
+      <div className="block lg:hidden">
         <div className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 md:grid-cols-4">
           {sidebarCategories.map((cat) => (
             <button
-              key={cat.text}
+              key={cat.slug}
               onClick={() => router.push(`/service/${cat.slug}`)}
               type="button"
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-[#151515] shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#E7325C]/60 hover:bg-[#1f1f1f]"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-[#151515] shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#c42b47]/60 hover:bg-[#1f1f1f]"
             >
               <div className="relative h-[120px] w-full bg-white sm:h-[135px] md:h-[145px]">
                 <img
@@ -96,7 +101,7 @@ export default function Sidebar() {
               </div>
 
               <div className="flex min-h-[56px] items-center justify-center px-2 py-3">
-                <h3 className="text-center text-[12px] font-semibold leading-tight text-white transition group-hover:text-[#E7325C] sm:text-[13px]">
+                <h3 className="text-center text-[12px] font-semibold leading-tight text-white transition group-hover:text-[#c42b47] sm:text-[13px]">
                   {cat.text}
                 </h3>
               </div>
@@ -105,50 +110,51 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Desktop Sidebar Button View */}
-      <div
-        className="hidden grid-cols-2 gap-2 overflow-y-auto p-3 lg:grid"
-        onMouseLeave={() => setSelectedCategory(null)}
-      >
-        {sidebarCategories.map((cat, index) => (
-          <button
-            key={cat.text}
-            type="button"
-            className={cn(
-              "bg-[#1c1c1c] px-2 py-3 text-center text-[11px] font-medium leading-tight text-white/85 transition-colors hover:bg-[#E7325C] hover:text-white",
-              selectedCategory === index && "bg-[#E7325C] text-white",
-              index % 2 === 0 && "rounded-tr-2xl rounded-br-2xl",
-              index % 2 !== 0 && "rounded-tl-2xl rounded-bl-2xl"
-            )}
-            onMouseEnter={() => setSelectedCategory(index)}
-            onClick={() =>
-              router.push(`/service/${cat.slug}`)
-            }
-          >
-            {cat.text}
-          </button>
-        ))}
-      </div>
+      {/* Desktop */}
+      <div className="hidden flex-1 flex-col lg:flex">
+        <div
+          className="grid grid-cols-2 gap-2 p-3"
+          onMouseLeave={() => setHoveredItem(sidebarCategories[0])}
+        >
+          {sidebarCategories.map((cat, index) => (
+            <button
+              key={cat.slug}
+              type="button"
+              onMouseEnter={() => setHoveredItem(cat)}
+              onClick={() => router.push(`/service/${cat.slug}`)}
+              className={cn(
+                "min-h-[54px] px-3 py-3 text-center text-[12px] font-medium transition-all duration-200",
+                index % 2 === 0
+                  ? "rounded-r-2xl"
+                  : "rounded-l-2xl",
+                hoveredItem?.slug === cat.slug
+                  ? "bg-[#c42b47] text-white"
+                  : "bg-[#1c1c1c] text-white/85 hover:bg-[#c42b47] hover:text-white"
+              )}
+            >
+              {cat.text}
+            </button>
+          ))}
+        </div>
 
-      {/* Desktop GIF Preview */}
-      {selectedCategory !== null && (
-        <div className="mt-auto hidden w-full bg-[#0a0a0a] px-4 py-4 pb-8 lg:block">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#111] p-4 shadow-2xl">
-            <div className="relative h-[240px] w-full">
+        {/* Preview */}
+        <div className="mt-auto px-4 pb-4">
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#111] p-4 shadow-2xl">
+            <div className="relative h-[180px] w-full">
               <img
-                key={sidebarCategories[selectedCategory].media}
-                src={sidebarCategories[selectedCategory].media}
-                alt={sidebarCategories[selectedCategory].text}
+                key={previewItem.media}
+                src={previewItem.media}
+                alt={previewItem.text}
                 className="h-full w-full rounded-xl bg-white object-contain"
               />
             </div>
 
             <div className="mt-3 text-center text-sm font-semibold uppercase tracking-wider text-white">
-              {sidebarCategories[selectedCategory].text}
+              {previewItem.text}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </aside>
   );
 }

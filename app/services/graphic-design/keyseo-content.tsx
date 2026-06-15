@@ -302,7 +302,7 @@ const KeySeoContent = () => {
       >
         {/* Left content */}
         <div className="w-full max-w-[340px] lg:pl-3 xl:pl-6">
-          <h2 className="mb-2 text-xs font-bold text-orange-500 sm:text-sm lg:mb-3 lg:text-base">
+          <h2 className="mb-2 text-xs font-bold text-[#d3325c] sm:text-sm lg:mb-3 lg:text-base">
             Key SEO Services We Provide
           </h2>
 

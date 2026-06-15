@@ -66,17 +66,17 @@ export default function MediaUpload({
           </button>
         </div>
       ) : (
-        <label className="flex flex-col items-center justify-center w-full aspect-video rounded-[2.5rem] border-4 border-dashed border-gray-100 bg-gray-50 hover:bg-white hover:border-[#E7325C]/20 transition-all cursor-pointer group">
+        <label className="flex flex-col items-center justify-center w-full aspect-video rounded-[2.5rem] border-4 border-dashed border-gray-100 bg-gray-50 hover:bg-white hover:border-[#c42b47]/20 transition-all cursor-pointer group">
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             {uploading ? (
-              <Loader2 className="w-12 h-12 text-[#E7325C] animate-spin" />
+              <Loader2 className="w-12 h-12 text-[#c42b47] animate-spin" />
             ) : (
               <>
                 <div className="w-16 h-16 rounded-3xl bg-white shadow-xl shadow-gray-200/50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   {resourceType === "image" ? (
-                    <ImageIcon className="text-[#E7325C]" size={32} />
+                    <ImageIcon className="text-[#c42b47]" size={32} />
                   ) : (
-                    <Film className="text-[#E7325C]" size={32} />
+                    <Film className="text-[#c42b47]" size={32} />
                   )}
                 </div>
                 <p className="mb-2 text-sm text-gray-700 font-bold uppercase tracking-widest">

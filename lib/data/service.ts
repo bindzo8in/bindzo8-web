@@ -1,11 +1,11 @@
 export const marketingPagesData = [
     {
-        title: "Ecommerce Solutions",
+        title: "Ecommerce Development",
         slug: "ecommerce-solutions",
         media: "/service_sidebar/ecommerce.svg",
-        heroLabel: "Ecommerce Solutions",
+        heroLabel: "Ecommerce Development",
         heroDescription:
-            "help businesses sell products and services online through secure, user-friendly, and scalable digital stores. They improve customer experience, simplify order management, and support business growth across web and mobile platforms.",
+            "We build robust, user-friendly, and scalable e-commerce platforms that help businesses sell products and services online seamlessly. From custom online stores to mobile-optimized shopping experiences, we ensure secure transactions, efficient order management, and continuous growth across all digital touchpoints.",
         features: [
             {
                 title: "Custom online store development",
@@ -133,6 +133,51 @@ export const marketingPagesData = [
             },
         ],
     },
+    {
+    title: "Google Ads",
+    slug: "google-ads",
+    media: "/service_sidebar/google-ads.webp",
+    heroLabel: "Google Ads",
+    heroDescription:
+        " is a powerful online advertising platform that helps businesses reach potential customers through Google Search, YouTube, Display Network, Shopping, and mobile apps. It enables targeted campaigns that drive qualified traffic, leads, sales, and measurable business growth.",
+    features: [
+        {
+            title: "High-intent customer targeting",
+            description:
+                "Reach users actively searching for your products or services at the exact moment they need them.",
+        },
+        {
+            title: "Search, Display, and YouTube advertising",
+            description:
+                "Promote your business across Google Search results, websites, mobile apps, and YouTube videos.",
+        },
+        {
+            title: "Advanced audience segmentation",
+            description:
+                "Target specific demographics, interests, locations, devices, and user behaviors for better results.",
+        },
+        {
+            title: "Conversion-focused campaign management",
+            description:
+                "Strategic campaign setup and optimization designed to maximize leads, inquiries, and online sales.",
+        },
+        {
+            title: "Real-time performance tracking",
+            description:
+                "Monitor clicks, impressions, conversions, and ROI through detailed analytics and reporting.",
+        },
+        {
+            title: "Budget optimization and bid management",
+            description:
+                "Efficient allocation of ad spend using smart bidding strategies to achieve the best possible return.",
+        },
+        {
+            title: "Continuous campaign improvement",
+            description:
+                "Regular testing, keyword optimization, ad refinement, and performance analysis to ensure long-term growth.",
+        },
+    ]
+},
     {
         title: "Quality Assurance",
         slug: "quality-assurance",

@@ -58,7 +58,7 @@ export default function SeoWhyChooseContent() {
         >
           {/* Mobile Heading */}
           <div className="relative z-10 lg:hidden">
-            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#EF8030]">
+            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#d3325c]">
               Why Choose Us
             </p>
 
@@ -150,7 +150,7 @@ export default function SeoWhyChooseContent() {
               >
                 <h2
                   className="
-                    text-[19px] font-bold leading-[1.2] text-[#EF8030]
+                    text-[19px] font-bold leading-[1.2] text-[#d3325c]
 
                     sm:text-[22px]
 
@@ -186,7 +186,7 @@ export default function SeoWhyChooseContent() {
                     >
                       <span
                         className="
-                          mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#EF8030]
+                          mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d3325c]
                         "
                       />
                       <span>{point}</span>
@@ -212,7 +212,7 @@ export default function SeoWhyChooseContent() {
               >
                 <h3
                   className="
-                    text-[19px] font-bold leading-[1.2] text-[#EF8030]
+                    text-[19px] font-bold leading-[1.2] text-[#d3325c]
 
                     sm:text-[22px]
 
@@ -246,7 +246,7 @@ export default function SeoWhyChooseContent() {
                         xl:text-[14px]
                       "
                     >
-                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#EF8030]" />
+                      <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d3325c]" />
                       <span>{point}</span>
                     </li>
                   ))}
@@ -273,7 +273,7 @@ export default function SeoWhyChooseContent() {
               >
                 <h3
                   className="
-                    text-[19px] font-bold leading-[1.2] text-[#EF8030]
+                    text-[19px] font-bold leading-[1.2] text-[#d3325c]
 
                     sm:text-[22px]
 
@@ -318,7 +318,7 @@ export default function SeoWhyChooseContent() {
                   >
                     {reportingPoints.map((point) => (
                       <li key={point} className="flex gap-3">
-                        <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#EF8030]" />
+                        <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d3325c]" />
                         <span>{point}</span>
                       </li>
                     ))}

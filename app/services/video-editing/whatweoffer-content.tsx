@@ -63,7 +63,7 @@ export default function VideoEditingOfferContent() {
         >
           {/* Mobile Heading */}
           <div className="relative z-10 lg:hidden">
-            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#EF8030]">
+            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#d3325c]">
               Video Editing
             </p>
 
@@ -90,7 +90,7 @@ export default function VideoEditingOfferContent() {
           >
             <h2
               className="
-                mb-8 hidden text-[28px] font-bold leading-none text-[#EF8030]
+                mb-8 hidden text-[28px] font-bold leading-none text-[#d3325c]
 
                 lg:block
                 lg:mb-7
@@ -143,7 +143,7 @@ export default function VideoEditingOfferContent() {
                       xl:text-[18px]
                     "
                   >
-                    <span className="mr-2 text-[#EF8030] lg:hidden">
+                    <span className="mr-2 text-[#d3325c] lg:hidden">
                       {String(index + 1).padStart(2, "0")}.
                     </span>
                     {item.title}

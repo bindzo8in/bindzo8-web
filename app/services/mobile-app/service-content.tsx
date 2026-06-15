@@ -90,7 +90,7 @@ function TextCard({
 }) {
   return (
     <div className="flex flex-col justify-center">
-      <h3 className="mb-5 text-2xl font-bold text-orange-500">
+      <h3 className="mb-5 text-2xl font-bold text-[#d3325c]">
         {title}
       </h3>
       <p className="max-w-xl text-[15px] leading-snug text-white">

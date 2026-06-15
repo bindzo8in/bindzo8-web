@@ -91,7 +91,7 @@ function ProductSection() {
             data.items.map((item: Project, idx: number) => ({
               id: item.id,
               bg: GRADIENTS[idx % GRADIENTS.length],
-              accent: "#E7325C",
+              accent: "#c42b47",
               label: item.title,
               desc: item.description,
               image: item.mediaUrl,
@@ -103,11 +103,11 @@ function ProductSection() {
   }, []);
 
   return (
-    <section className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl flex-col items-center justify-center px-5 py-8 md:py-0 sm:px-6 md:min-h-[640px] md:flex-row md:px-8 lg:px-12">
+    <section className="relative mx-auto flex w-full max-w-[1600px] flex-col items-center gap-12 px-5 py-8 md:flex-row md:justify-between md:px-8 md:py-10 lg:px-12 lg:py-10">
       {/* LEFT — copy */}
-      <article className="relative z-10 mb-10 flex w-full justify-center md:mb-0 md:flex-1 md:justify-start">
+      <article className="relative z-10 mb-10 flex w-full justify-center md:mb-0 md:flex-1 md:justify-start lg:pl-10">
         <div className="flex w-full max-w-[430px] flex-col items-center gap-4 text-center md:items-start md:text-left lg:gap-6">
-          <span className="text-base font-semibold tracking-wide text-[#E7325C] sm:text-lg">
+          <span className="text-base font-semibold tracking-wide text-[#c42b47] sm:text-lg">
             Our Products
           </span>
 
@@ -116,7 +116,7 @@ function ProductSection() {
             <br className="hidden md:block" /> From Our Team
           </h2>
 
-          <button className="group mt-2 flex items-center gap-2 rounded-2xl border border-[#E7325C] px-6 py-2.5 text-sm font-medium text-[#E7325C] transition-all duration-300 hover:bg-[#E7325C] hover:text-white">
+          <button className="group mt-2 flex items-center gap-2 rounded-2xl border border-[#c42b47] px-6 py-2.5 text-sm font-medium text-[#c42b47] transition-all duration-300 hover:bg-[#c42b47] hover:text-white">
             View all Projects
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
@@ -124,11 +124,11 @@ function ProductSection() {
       </article>
 
       {/* RIGHT — carousel */}
-      <article className="relative z-10 flex w-full justify-center overflow-hidden md:flex-1 md:justify-end md:py-16">
+      <article className="relative z-10 flex w-full justify-center overflow-hidden md:flex-1 md:justify-end md:py-8 lg:pr-10">
         <Carousel
           plugins={[autoScrollRef.current]}
           opts={{ align: "start", loop: true, dragFree: true }}
-          className="w-full max-w-[620px]"
+          className="w-full max-w-[800px]"
         >
           <CarouselContent className="-ml-3 sm:-ml-4">
             {slides.map((slide) => (
@@ -171,19 +171,19 @@ function ProductSection() {
 
 function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="relative mx-auto flex min-h-fit lg:min-h-screen w-full max-w-7xl items-center px-5 py-10 md:py-0 sm:px-6 md:min-h-[640px] md:px-8 lg:px-16 lg:py-20">
+    <section id="why-choose-us" className="relative mx-auto flex min-h-fit w-full max-w-[1600px] items-center px-5 py-6 sm:px-6 md:min-h-[400px] md:px-8 md:py-8 lg:px-20 lg:py-8">
       <div className="relative z-10 grid w-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
         {/* LEFT */}
         <div className="mx-auto max-w-[560px] text-center lg:mx-0 lg:text-left">
-          <p className="mb-4 text-[16px] font-medium tracking-wide text-black sm:text-[18px]">
+          <p className="mb-4 text-[16px] font-semibold tracking-wide text-[#d3325c] sm:text-[18px] uppercase">
             Why Choose Us?
           </p>
 
-          <h2 className="mb-6 text-[34px] font-bold leading-[1.12] text-black sm:text-[2.4rem] lg:text-[3rem]">
+          <h2 className="mb-6 text-[34px] font-bold leading-[1.12] text-gray-900 sm:text-[2.4rem] lg:text-[3rem]">
             We're Bindzo 8 Pvt Ltd
           </h2>
 
-          <p className="mb-8 text-justify text-[15px] leading-[1.8] text-black/65 sm:text-[16px] lg:mb-10 lg:text-[17px]">
+          <p className="mb-8 text-justify text-[15px] leading-[1.8] text-gray-600 sm:text-[16px] lg:mb-10 lg:text-[17px]">
             Bindzo 8 Pvt. Ltd. takes your business beyond boundaries
             with smart, scalable, and secure technology solutions. As a trusted
             end-to-end IT service partner, we deliver innovation that drives
@@ -193,7 +193,7 @@ function WhyChooseUs() {
             creativity, and a shared vision for success.
           </p>
 
-          <button className="rounded-full border border-[#ff3b6a] px-10 py-3.5 text-[16px] text-[#ff3b6a] transition-all duration-300 hover:bg-[#ff3b6a] hover:text-white sm:px-12 sm:py-4 sm:text-[18px]">
+          <button className="rounded-full border border-[#d3325c] px-10 py-3.5 text-[16px] font-medium text-[#d3325c] transition-all duration-300 hover:bg-[#d3325c] hover:text-white sm:px-12 sm:py-4 sm:text-[18px]">
             Explore
           </button>
         </div>

@@ -150,13 +150,13 @@ export default function QuoteModal({
           "data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=closed]:fade-out-0"
         )}
       >
-        <div className="h-4 w-full bg-[#E7325C]" />
+        <div className="h-4 w-full bg-[#c42b47]" />
 
         <DialogClose asChild>
           <button
             type="button"
             aria-label="Close modal"
-            className="absolute right-3 top-7 z-20 grid size-8 place-items-center bg-[#E7325C] text-white shadow-sm transition hover:scale-105 hover:bg-[#cf244b] focus:outline-none focus:ring-2 focus:ring-[#E7325C]/30"
+            className="absolute right-3 top-7 z-20 grid size-8 place-items-center bg-[#c42b47] text-white shadow-sm transition hover:scale-105 hover:bg-[#cf244b] focus:outline-none focus:ring-2 focus:ring-[#c42b47]/30"
           >
             <X className="size-4" strokeWidth={3} />
           </button>
@@ -175,7 +175,7 @@ export default function QuoteModal({
           </div>
 
           <DialogHeader className="relative z-10 mb-6 pr-8 text-center">
-            <DialogTitle className="text-center font-kumbh text-[30px] font-normal leading-none tracking-wide text-[#E7325C] sm:text-[38px]">
+            <DialogTitle className="text-center font-kumbh text-[30px] font-normal leading-none tracking-wide text-[#c42b47] sm:text-[38px]">
               Get Quote
             </DialogTitle>
           </DialogHeader>
@@ -198,7 +198,7 @@ export default function QuoteModal({
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="pl-2 text-xs text-[#E7325C]" />
+                    <FormMessage className="pl-2 text-xs text-[#c42b47]" />
                   </FormItem>
                 )}
               />
@@ -217,7 +217,7 @@ export default function QuoteModal({
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="pl-2 text-xs text-[#E7325C]" />
+                    <FormMessage className="pl-2 text-xs text-[#c42b47]" />
                   </FormItem>
                 )}
               />
@@ -237,7 +237,7 @@ export default function QuoteModal({
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="pl-2 text-xs text-[#E7325C]" />
+                    <FormMessage className="pl-2 text-xs text-[#c42b47]" />
                   </FormItem>
                 )}
               />
@@ -250,11 +250,11 @@ export default function QuoteModal({
                     <FormControl>
                       <Textarea
                         placeholder="Message:"
-                        className="min-h-[120px] resize-none rounded-[18px] border border-[#8f9698] bg-white px-5 py-4 font-kumbh text-[16px] text-gray-800 shadow-none outline-none placeholder:text-[#9c9c9c] focus-visible:ring-2 focus-visible:ring-[#E7325C]/25 sm:min-h-[135px]"
+                        className="min-h-[120px] resize-none rounded-[18px] border border-[#8f9698] bg-white px-5 py-4 font-kumbh text-[16px] text-gray-800 shadow-none outline-none placeholder:text-[#9c9c9c] focus-visible:ring-2 focus-visible:ring-[#c42b47]/25 sm:min-h-[135px]"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="pl-2 text-xs text-[#E7325C]" />
+                    <FormMessage className="pl-2 text-xs text-[#c42b47]" />
                   </FormItem>
                 )}
               />
@@ -299,4 +299,4 @@ export default function QuoteModal({
 }
 
 const inputClassName =
-  "h-12 rounded-full border border-[#8f9698] bg-white px-5 font-kumbh text-[16px] text-gray-800 shadow-none outline-none placeholder:text-[#9c9c9c] focus-visible:ring-2 focus-visible:ring-[#E7325C]/25 sm:h-14 sm:px-6 sm:text-[18px] lg:h-[56px]";
+  "h-12 rounded-full border border-[#8f9698] bg-white px-5 font-kumbh text-[16px] text-gray-800 shadow-none outline-none placeholder:text-[#9c9c9c] focus-visible:ring-2 focus-visible:ring-[#c42b47]/25 sm:h-14 sm:px-6 sm:text-[18px] lg:h-[56px]";

@@ -14,25 +14,24 @@ import JsonLd from "@/components/seo/JsonLd";
 import { getServiceSchema } from "@/components/seo/Schemas";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Services",
-  description: "Strategic digital marketing campaigns including SEO, SMM, PPC, and Email marketing to deliver real visibility, engagement, and conversions.",
+  title: "Social Media Marketing Services",
+  description: "Transform your online presence with expert social media marketing. We craft engaging content, targeted campaigns, and data-driven strategies to boost your brand, drive real engagement, and deliver measurable business results.",
   alternates: {
-    canonical: "/services/digital-marketing",
+    canonical: "/services/social-media-marketing",
   },
 };
 
 const data = {
-    heading: 'Digital Marketing',
-    subHeading: 'Strategic campaigns that deliver real visibility, engagement & conversions.',
-    info: "Your website is often the first impression your customers have of your brand.",
+    heading: 'Social Media Marketing',
+    subHeading: 'Transform your online presence with expert social media marketing. We craft engaging content, targeted campaigns, and data-driven strategies to boost your brand, drive real engagement, and deliver measurable business results.',
+    info: "In today’s digital-first world, your social media presence is often the first interaction potential customers have with your brand. A strong, strategic social media presence builds trust, fosters community, and drives measurable business growth.",
     services_1 : [
   {
-    title: "SEO (Search Engine Optimization)",
+    title: "Social Media Marketing (SMM)",
     image: "/digital_marketing_slide/seo.png",
     text: (
       <>
-        To make your website top in google search engine result page organically
-        which leads to come more <b>Business Conversion, High Visibility &amp; Higher Traffic.</b>
+        We help businesses establish a strong, authentic presence across major social media platforms including Facebook, Instagram, LinkedIn, Twitter, and more. Our data-driven approach ensures your brand connects with the right audience through engaging content, strategic campaigns, and consistent interaction.
       </>
     ),
   },

@@ -31,7 +31,7 @@ const UsageContent = () => {
                 />
             </div>
             <div className='flex-1 flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-4 lg:gap-0 w-full'>
-                <h2 className='text-orange-500 font-bold leading-[1.5] tracking-tight text-3xl lg:text-5xl text-center lg:text-left lg:pl-12 shrink-0'>
+                <h2 className='text-[#d3325c] font-bold leading-[1.5] tracking-tight text-3xl lg:text-5xl text-center lg:text-left lg:pl-12 shrink-0'>
                     360° Digital<br />
                     Marketing
                 </h2>
@@ -62,7 +62,7 @@ function ListBlock({
 }) {
     return (
         <div className="parallax-item w-full lg:w-auto">
-            <h3 className="text-orange-500 font-semibold mb-4 lg:mb-6 text-xl lg:text-[clamp(1.45rem,2vw,2.4rem)]">
+            <h3 className="text-[#d3325c] font-semibold mb-4 lg:mb-6 text-xl lg:text-[clamp(1.45rem,2vw,2.4rem)]">
                 {title}
             </h3>
 

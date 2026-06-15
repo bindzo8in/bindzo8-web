@@ -55,7 +55,7 @@ export default function LoginForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full h-14 rounded-xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#E7325C] focus:ring-[#E7325C]/20 transition-all px-6 outline-none"
+          className="w-full h-14 rounded-xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#c42b47] focus:ring-[#c42b47]/20 transition-all px-6 outline-none"
           placeholder="admin@bindzo8.com"
         />
       </div>
@@ -67,7 +67,7 @@ export default function LoginForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className="w-full h-14 rounded-xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#E7325C] focus:ring-[#E7325C]/20 transition-all px-6 outline-none"
+          className="w-full h-14 rounded-xl border-gray-100 bg-gray-50 focus:bg-white focus:border-[#c42b47] focus:ring-[#c42b47]/20 transition-all px-6 outline-none"
           placeholder="••••••••"
         />
       </div>
@@ -77,7 +77,7 @@ export default function LoginForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-gradient-to-r from-[#E7325C] to-[#c42b47] hover:from-[#c42b47] hover:to-[#d3325c] text-white h-14 text-lg font-bold rounded-2xl shadow-xl shadow-[#d3325c]/20 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100"
+        className="w-full bg-gradient-to-r from-[#c42b47] to-[#c42b47] hover:from-[#c42b47] hover:to-[#d3325c] text-white h-14 text-lg font-bold rounded-2xl shadow-xl shadow-[#d3325c]/20 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:scale-100"
       >
         {loading ? "Signing in..." : "Login to Dashboard"}
       </button>

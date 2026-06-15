@@ -18,7 +18,7 @@ const ProjectContent = () => {
 
         {/* right */}
         <div className="max-w-xl">
-          <h3 className="mb-6 text-xl font-bold text-orange-500 sm:text-2xl">
+          <h3 className="mb-6 text-xl font-bold text-[#d3325c] sm:text-2xl">
             Project Description
           </h3>
 
@@ -33,7 +33,7 @@ const ProjectContent = () => {
             for food businesses.
           </p>
 
-          <h4 className="mb-5 text-lg font-bold text-orange-500 sm:text-xl">
+          <h4 className="mb-5 text-lg font-bold text-[#d3325c] sm:text-xl">
             Key Features Developed:
           </h4>
 

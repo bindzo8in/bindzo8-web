@@ -89,8 +89,8 @@ export default function MethodologySection() {
       //       });
       const tl = gsap.timeline({
         defaults: { ease: "none" },
-        repeat: -1,
-        repeatDelay: 1,
+        // repeat: -1,
+        // repeatDelay: 1,
         scrollTrigger: {
           trigger: wrapRef.current,
           start: "top top",
@@ -102,7 +102,7 @@ export default function MethodologySection() {
             return `+=${Math.max(renderedSvgHeight - viewportHeight, viewportHeight)}`;
           },
 
-          // scrub: 1,
+          scrub: 1,
           // pin: true,
           invalidateOnRefresh: true,
           anticipatePin: 1,
@@ -321,7 +321,7 @@ export default function MethodologySection() {
      {/* --- MOBILE HTML SVG-LIKE VIEW (Hidden on Desktop) --- */}
 <div className="relative block md:hidden w-full min-h-fit bg-[#FFF5F4] overflow-hidden font-kumbh px-6 py-10">
   {/* Main Heading */}
-  <h2 className="text-3xl leading-tight text-center font-medium text-[#E7325C] whitespace-nowrap">
+  <h2 className="text-3xl leading-tight text-center font-medium text-[#c42b47] whitespace-nowrap">
     Our Methodology
   </h2>
 

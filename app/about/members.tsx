@@ -14,6 +14,7 @@ type TeamMember = {
 const LIMIT = 100;
 
 const FALLBACK_MEMBERS = [
+  { name: "Balaji", role: "Founder", image: "/binzo8_members/balaji_sir.png"},
   { name: "Manikandan R", role: "Graphic Designer", image: "/binzo8_members/mani_bro.png" },
   { name: "Ranjani Rajkumar", role: "UI/UX Designer", image: "/binzo8_members/ranjani_mam.png" },
   { name: "Jeyapandi R", role: "Developer", image: "/binzo8_members/m3.png" },
@@ -26,7 +27,7 @@ function Member() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
   const [useFallback, setUseFallback] = useState(false);
-  console.log(useFallback)
+  // console.log(useFallback)
 
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const isFetchingRef = useRef(false);
@@ -111,7 +112,7 @@ function Member() {
       {/* All content above background */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-5xl mx-auto text-center">
-          <h3 className="text-4xl mb-8 text-[#EF8030]">
+          <h3 className="text-4xl mb-8 text-[#d3325c]">
             The Bindzo 8 Family
           </h3>
 
@@ -123,10 +124,10 @@ function Member() {
         </div>
 
         <div className="max-w-6xl mx-auto pt-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-10 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-10 justify-items-center">
             {items.map((member, index) => (
               // <MemberCard key={`${member.name}-${index}`} {...member} />
-              <TeamMemberCard key={`${member.name}-${index}`} member={member} />
+              <TeamMemberCard key={`${member.name}-${index}`} member={member} index={index}/>
             ))}
 
             {isLoading &&
@@ -138,11 +139,11 @@ function Member() {
           {/* Invisible sentinel triggers next page load */}
           <div ref={sentinelRef} className="h-1 w-full" />
 
-          {!hasMore && items.length > 0 && !useFallback && (
+          {/* {!hasMore && items.length > 0 && !useFallback && (
             <p className="mt-12 text-center text-sm text-white/40 tracking-widest uppercase">
               End of team members
             </p>
-          )}
+          )} */}
         </div>
       </div>
     </section>
@@ -192,66 +193,110 @@ interface TeamMemberCardProps {
     role: string;
     image: string;
   };
+  index: number;
 }
 
-const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
+const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, index }) => {
   return (
-    <div className="group relative mx-auto flex w-full max-w-[300px] flex-col items-center overflow-hidden rounded-[30px] border border-white/30 bg-[#6b6b6b]/60 px-4 pt-8 pb-8 text-center shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:max-w-[340px] sm:rounded-[34px] sm:px-6 sm:pt-10 sm:pb-10 sm:hover:-translate-y-2">
-      {/* image + circle area */}
-      <div className="relative mb-4 h-[260px] w-full max-w-[240px] [perspective:1000px] sm:mb-6 sm:h-[310px] sm:max-w-[280px]">
-        {/* default black circle - desktop only visible */}
-        <div className="absolute left-1/2 top-[40px] z-0 h-[200px] w-[200px] -translate-x-1/2 rounded-full bg-gradient-to-r from-black to-gray-900 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[45px] sm:h-[240px] sm:w-[240px] sm:scale-100 sm:opacity-100 sm:group-hover:scale-105 sm:group-hover:opacity-0" />
+    <div className="group relative w-full max-w-[260px] bg-[#141414] rounded-[20px] border border-white/7 overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:border-white/14 cursor-pointer">
 
-        {/* brand gradient circle - active on mobile, hover on desktop */}
-        <div className="absolute left-1/2 top-[40px] z-[1] h-[200px] w-[200px] -translate-x-1/2 scale-105 rounded-full bg-gradient-to-r from-[#E7325C] to-[#EF8030] opacity-100 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[45px] sm:h-[240px] sm:w-[240px] sm:scale-100 sm:opacity-0 sm:group-hover:scale-105 sm:group-hover:opacity-100" />
-
-        {/* BACK full circle border (behind head) */}
-        <div className="absolute left-1/2 top-[34px] z-10 h-[212px] w-[212px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[38px] sm:h-[252px] sm:w-[252px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105" />
-
-        {/* person image with smooth bottom fade mask */}
+      {/* Image area */}
+      <div className="relative h-[230px] overflow-hidden bg-[#1a1a1a]">
         <img
           src={member.image}
           alt={`Portrait of ${member.name}`}
-          style={{
-            maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
-          }}
-          className="absolute bottom-0 left-1/2 z-20 h-[250px] w-[230px] -translate-x-1/2 scale-105 object-contain grayscale-0 drop-shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] rotate-x-[5deg] rotate-y-[-6deg] sm:h-[300px] sm:w-[270px] sm:scale-100 sm:rotate-x-0 sm:rotate-y-0 sm:grayscale sm:group-hover:-translate-y-4 sm:group-hover:scale-110 sm:group-hover:rotate-x-[6deg] sm:group-hover:rotate-y-[-8deg] sm:group-hover:grayscale-0 "
+          className="w-full h-full object-cover object-top grayscale-[60%] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grayscale-0 group-hover:scale-[1.04]"
           onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.onerror = null;
-            target.src = `https://placehold.co/300x300/E2E8F0/4A5568?text=${member.name
-              .split(" ")
-              .map((n) => n[0])
-              .join("")}`;
+            const t = e.target as HTMLImageElement;
+            t.onerror = null;
+            t.src = `https://placehold.co/260x230/1e1e1e/666?text=${member.name.split(" ").map((n) => n[0]).join("")}`;
           }}
         />
-
-        {/* FRONT clipped border (in front of chest/body for 3D depth) */}
-        <div
-          className="absolute left-1/2 top-[34px] z-30 h-[212px] w-[212px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[38px] sm:h-[252px] sm:w-[252px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105"
-          style={{ clipPath: "polygon(0 50%, 100% 50%, 100% 100%, 0 100%)" }}
-        />
+        {/* bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-[#141414] pointer-events-none" />
       </div>
 
-      {/* text content */}
-      <div className="relative z-40 flex flex-col items-center">
-        <h3 className="relative mb-4 -translate-y-1 scale-105 text-[24px] font-bold text-white transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:translate-y-0 sm:scale-100 sm:text-[28px] sm:group-hover:-translate-y-1 sm:group-hover:scale-105">
-          <span className="bg-gradient-to-r from-[#E7325C] to-[#EF8030] bg-clip-text text-transparent transition-all duration-700 sm:from-white sm:to-white sm:group-hover:from-[#E7325C] sm:group-hover:to-[#EF8030] font-antonio">
-            {member.name}
-          </span>
+      {/* Body */}
+      <div className="relative px-5 pt-4 pb-6">
+        {/* Accent line */}
+        <div className="absolute top-0 left-5 right-5 h-px bg-gradient-to-r from-[#c42b47] to-[#d3325c] opacity-0 scale-x-50 origin-left transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-hover:scale-x-100" />
 
-          <span className="absolute -bottom-2 left-1/2 h-[3px] w-20 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#E7325C] to-[#EF8030] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-0 sm:group-hover:w-20" />
-        </h3>
+        {/* Index */}
+        <span className="absolute top-3.5 right-4 text-[11px] font-medium text-white/15 tracking-widest">
+          {String(index + 1).padStart(2, "0")}
+        </span>
 
-        <p className="relative -translate-y-1 scale-105 overflow-hidden rounded-full border border-transparent px-7 py-3 text-sm font-bold text-white shadow-xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:translate-y-0 sm:scale-100 sm:border-white/20 sm:px-8 sm:text-base sm:shadow-lg sm:group-hover:-translate-y-1 sm:group-hover:scale-105 sm:group-hover:border-transparent sm:group-hover:shadow-xl font-inter">
-          <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[#E7325C] to-[#EF8030] opacity-100 transition-opacity duration-700 sm:opacity-0 sm:group-hover:opacity-100" />
-
-          <span className="absolute inset-y-0 left-[130%] w-1/2 skew-x-[-20deg] bg-white/25 transition-all duration-1000 ease-out sm:left-[-75%] sm:group-hover:left-[130%]" />
-
-          <span className="relative z-10">{member.role}</span>
+        {/* Name */}
+        <p className="text-[18px] font-semibold tracking-tight mb-2.5 text-white transition-all duration-400 group-hover:bg-gradient-to-r group-hover:from-[#c42b47] group-hover:to-[#d3325c] group-hover:bg-clip-text group-hover:text-transparent">
+          {member.name}
         </p>
+
+        {/* Role pill */}
+        <span className="inline-block text-[11px] font-medium uppercase tracking-[0.6px] text-white/50 border border-white/12 rounded-full px-3.5 py-1 transition-all duration-400 group-hover:bg-gradient-to-r group-hover:from-[#c42b47] group-hover:to-[#d3325c] group-hover:border-transparent group-hover:text-white">
+          {member.role}
+        </span>
       </div>
     </div>
   );
 };
+// const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
+//   return (
+//     <div className="group relative mx-auto flex w-full max-w-[300px] flex-col items-center overflow-hidden rounded-[30px] border border-white/30 bg-[#6b6b6b]/60 px-4 pt-8 pb-8 text-center shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:max-w-[340px] sm:rounded-[34px] sm:px-6 sm:pt-10 sm:pb-10 sm:hover:-translate-y-2">
+//       {/* image + circle area */}
+//       <div className="relative mb-4 h-[260px] w-full max-w-[240px] [perspective:1000px] sm:mb-6 sm:h-[310px] sm:max-w-[280px]">
+//         {/* default black circle - desktop only visible */}
+//         <div className="absolute left-1/2 top-[40px] z-0 h-[200px] w-[200px] -translate-x-1/2 rounded-full bg-gradient-to-r from-black to-gray-900 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[45px] sm:h-[240px] sm:w-[240px] sm:scale-100 sm:opacity-100 sm:group-hover:scale-105 sm:group-hover:opacity-0" />
+
+//         {/* brand gradient circle - active on mobile, hover on desktop */}
+//         <div className="absolute left-1/2 top-[40px] z-[1] h-[200px] w-[200px] -translate-x-1/2 scale-105 rounded-full bg-gradient-to-r from-[#c42b47] to-[#d3325c] opacity-100 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[45px] sm:h-[240px] sm:w-[240px] sm:scale-100 sm:opacity-0 sm:group-hover:scale-105 sm:group-hover:opacity-100" />
+
+//         {/* BACK full circle border (behind head) */}
+//         <div className="absolute left-1/2 top-[34px] z-10 h-[212px] w-[212px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[38px] sm:h-[252px] sm:w-[252px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105" />
+
+//         {/* person image with smooth bottom fade mask */}
+//         <img
+//           src={member.image}
+//           alt={`Portrait of ${member.name}`}
+//           style={{
+//             maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
+//             WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
+//           }}
+//           className="absolute bottom-0 left-1/2 z-20 h-[250px] w-[230px] -translate-x-1/2 scale-105 object-contain grayscale-0 drop-shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d] rotate-x-[5deg] rotate-y-[-6deg] sm:h-[300px] sm:w-[270px] sm:scale-100 sm:rotate-x-0 sm:rotate-y-0 sm:grayscale sm:group-hover:-translate-y-4 sm:group-hover:scale-110 sm:group-hover:rotate-x-[6deg] sm:group-hover:rotate-y-[-8deg] sm:group-hover:grayscale-0 "
+//           onError={(e) => {
+//             const target = e.target as HTMLImageElement;
+//             target.onerror = null;
+//             target.src = `https://placehold.co/300x300/E2E8F0/4A5568?text=${member.name
+//               .split(" ")
+//               .map((n) => n[0])
+//               .join("")}`;
+//           }}
+//         />
+
+//         {/* FRONT clipped border (in front of chest/body for 3D depth) */}
+//         <div
+//           className="absolute left-1/2 top-[34px] z-30 h-[212px] w-[212px] -translate-x-1/2 scale-105 rounded-full border-[5px] border-white/85 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:top-[38px] sm:h-[252px] sm:w-[252px] sm:scale-100 sm:border-[6px] sm:group-hover:scale-105"
+//           style={{ clipPath: "polygon(0 50%, 100% 50%, 100% 100%, 0 100%)" }}
+//         />
+//       </div>
+
+//       {/* text content */}
+//       <div className="relative z-40 flex flex-col items-center">
+//         <h3 className="relative mb-4 -translate-y-1 scale-105 text-[24px] font-bold text-white transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:translate-y-0 sm:scale-100 sm:text-[28px] sm:group-hover:-translate-y-1 sm:group-hover:scale-105">
+//           <span className="bg-gradient-to-r from-[#c42b47] to-[#d3325c] bg-clip-text text-transparent transition-all duration-700 sm:from-white sm:to-white sm:group-hover:from-[#c42b47] sm:group-hover:to-[#d3325c] font-antonio">
+//             {member.name}
+//           </span>
+
+//           <span className="absolute -bottom-2 left-1/2 h-[3px] w-20 -translate-x-1/2 rounded-full bg-gradient-to-r from-[#c42b47] to-[#d3325c] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-0 sm:group-hover:w-20" />
+//         </h3>
+
+//         <p className="relative -translate-y-1 scale-105 overflow-hidden rounded-full border border-transparent px-7 py-3 text-sm font-bold text-white shadow-xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:translate-y-0 sm:scale-100 sm:border-white/20 sm:px-8 sm:text-base sm:shadow-lg sm:group-hover:-translate-y-1 sm:group-hover:scale-105 sm:group-hover:border-transparent sm:group-hover:shadow-xl font-inter">
+//           <span className="absolute inset-0 -z-10 bg-gradient-to-r from-[#c42b47] to-[#d3325c] opacity-100 transition-opacity duration-700 sm:opacity-0 sm:group-hover:opacity-100" />
+
+//           <span className="absolute inset-y-0 left-[130%] w-1/2 skew-x-[-20deg] bg-white/25 transition-all duration-1000 ease-out sm:left-[-75%] sm:group-hover:left-[130%]" />
+
+//           <span className="relative z-10">{member.role}</span>
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };

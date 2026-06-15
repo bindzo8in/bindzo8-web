@@ -20,7 +20,7 @@ export async function GET(request: Request) {
           { position: { contains: search, mode: "insensitive" } },
         ],
       },
-      orderBy: { createdAt: "asc" },
+      orderBy: { dateOfJoining: "asc" },
     })
 
     let nextCursor: string | undefined = undefined

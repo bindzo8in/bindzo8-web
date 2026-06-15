@@ -41,7 +41,7 @@ export default function HeroSection() {
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl text-white leading-tight md:leading-[3.75rem]">
             Building your Digital Identity With{" "}
-            <span className="text-[#E7325C] font-bold">Precision and Creativity.</span>
+            <span className="text-[#c42b47] font-bold">Precision and Creativity.</span>
           </h1>
           <p className="text-base sm:text-lg md:text-2xl text-white">
             Because we value your brand as much as you do.
@@ -123,10 +123,10 @@ export default function HeroSection() {
 //                     transition={{ duration: 0.8, delay: 0.001, ease: "easeInOut", type: "spring", stiffness: 100 }}
 
 //                 >
-//                     <h1 className=" text-5xl text-white leading-15">Building your Digital Identity With <span className="text-[#E7325C] font-bold">Precision and Creativity.</span></h1>
+//                     <h1 className=" text-5xl text-white leading-15">Building your Digital Identity With <span className="text-[#c42b47] font-bold">Precision and Creativity.</span></h1>
 //                     <p className="text-2xl text-white">Because we value your brand as much as you do.</p>
 //                     <div>
-//                         {/* <button className="rounded-full bg-[#EF8030] px-20 py-3">Explore</button> */}
+//                         {/* <button className="rounded-full bg-[#d3325c] px-20 py-3">Explore</button> */}
 //                         <SlideButton />
 //                     </div>
 //                 </motion.div>

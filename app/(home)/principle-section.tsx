@@ -116,7 +116,7 @@ export default function PrinciplesSection() {
 
         {/* RIGHT SIDE */}
         <div className="flex flex-col justify-center px-6 pb-14 pt-4 text-center sm:px-8 md:px-12 lg:px-16 lg:py-20 lg:text-left xl:px-20">
-          <h2 className="mb-10 text-center text-[34px] font-bold leading-[1.05] text-[#E7325C] sm:text-5xl md:text-[58px] lg:mb-16 lg:text-left">
+          <h2 className="mb-10 text-center text-[34px] font-bold leading-[1.05] text-[#d3325c] sm:text-5xl md:text-[58px] lg:mb-16 lg:text-left">
             Our Principles
           </h2>
 
@@ -124,13 +124,13 @@ export default function PrinciplesSection() {
             {principles.map((item, index) => (
               <div
                 key={index}
-                className="rounded-2xl border border-white/5 bg-white/[0.02] px-4 py-5 sm:px-6 sm:py-6 lg:border-0 lg:bg-transparent lg:p-0"
+                className="group rounded-2xl border border-white/5 bg-white/[0.02] px-6 py-6 sm:px-8 sm:py-8 transition-colors hover:bg-white/[0.04] lg:border-0 lg:bg-transparent lg:p-0 lg:hover:bg-transparent"
               >
-                <h3 className="text-[22px] font-normal leading-tight text-orange-400 sm:text-2xl md:text-[32px]">
+                <h3 className="text-[22px] font-semibold tracking-wide text-white sm:text-2xl md:text-[32px]">
                   {item.title}
                 </h3>
 
-                <p className="mx-auto mt-3 max-w-[420px] text-[15px] leading-relaxed text-orange-300/90 sm:text-base lg:mx-0">
+                <p className="mx-auto mt-4 max-w-[420px] text-[15px] leading-relaxed text-gray-400 sm:text-base lg:mx-0">
                   {item.description}
                 </p>
               </div>
@@ -251,7 +251,7 @@ export default function PrinciplesSection() {
 
 //         {/* RIGHT SIDE */}
 //         <div className="flex flex-col justify-center px-6 pb-14 pt-4 text-center sm:px-8 md:px-12 lg:px-16 lg:py-20 lg:text-left xl:px-20">
-//           <h2 className="mb-10 text-center text-[34px] font-bold leading-[1.05] text-[#E7325C] sm:text-5xl md:text-[58px] lg:mb-16 lg:text-left">
+//           <h2 className="mb-10 text-center text-[34px] font-bold leading-[1.05] text-[#c42b47] sm:text-5xl md:text-[58px] lg:mb-16 lg:text-left">
 //             Our Principles
 //           </h2>
 
@@ -261,11 +261,11 @@ export default function PrinciplesSection() {
 //                 key={index}
 //                 className="rounded-2xl border border-white/5 bg-white/[0.02] px-4 py-5 sm:px-6 sm:py-6 lg:border-0 lg:bg-transparent lg:p-0"
 //               >
-//                 <h3 className="text-[22px] font-normal leading-tight text-orange-400 sm:text-2xl md:text-[32px]">
+//                 <h3 className="text-[22px] font-normal leading-tight text-[#d3325c] sm:text-2xl md:text-[32px]">
 //                   {item.title}
 //                 </h3>
 
-//                 <p className="mx-auto mt-3 max-w-[420px] text-[15px] leading-relaxed text-orange-300/90 sm:text-base lg:mx-0">
+//                 <p className="mx-auto mt-3 max-w-[420px] text-[15px] leading-relaxed text-[#d3325c]/90 sm:text-base lg:mx-0">
 //                   {item.description}
 //                 </p>
 //               </div>

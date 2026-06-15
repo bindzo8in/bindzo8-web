@@ -42,7 +42,7 @@ export default function UsageContent() {
         {/* Left text */}
         <div className="grid w-full max-w-[620px] grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
           <div>
-            <h2 className="mb-5 text-base font-bold text-orange-500 lg:text-xl">
+            <h2 className="mb-5 text-base font-bold text-[#d3325c] lg:text-xl">
               Usage / Use Cases
             </h2>
 
@@ -57,7 +57,7 @@ export default function UsageContent() {
           </div>
 
           <div>
-            <h2 className="mb-5 text-base font-bold text-orange-500 lg:text-xl">
+            <h2 className="mb-5 text-base font-bold text-[#d3325c] lg:text-xl">
               Technologies Used
             </h2>
 

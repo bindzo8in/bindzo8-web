@@ -107,14 +107,14 @@ export default function DataTable<T extends { id: string }>({
               placeholder="Search..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 w-full rounded-2xl border border-gray-100 bg-white pl-12 pr-4 outline-none transition-all focus:border-[#E7325C] focus:ring-4 focus:ring-[#E7325C]/5 sm:w-64"
+              className="h-11 w-full rounded-2xl border border-gray-100 bg-white pl-12 pr-4 outline-none transition-all focus:border-[#c42b47] focus:ring-4 focus:ring-[#c42b47]/5 sm:w-64"
             />
           </div>
 
           <button
             type="button"
             onClick={onCreate}
-            className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-[#E7325C] px-6 font-bold text-white shadow-lg shadow-[#E7325C]/20 transition-all hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
+            className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-[#c42b47] px-6 font-bold text-white shadow-lg shadow-[#c42b47]/20 transition-all hover:scale-[1.02] active:scale-[0.98] sm:w-auto"
           >
             <Plus size={18} />
             Add New

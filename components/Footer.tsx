@@ -8,11 +8,31 @@ import { FaInstagram, FaFacebookF, FaGoogle, FaBehance, FaLinkedinIn } from "rea
 const icons = ["/footer_icons/1.svg", "/footer_icons/2.svg", "/footer_icons/3.svg", "/footer_icons/4.svg", "/footer_icons/5.svg",]
 
 const socialLinks = [
-  { icon: <FaFacebookF />, href: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK },
-  { icon: <FaInstagram />, href: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM },
-  { icon: <FaGoogle />, href: process.env.NEXT_PUBLIC_SOCIAL_GOOGLE },
-  { icon: <FaBehance />, href: process.env.NEXT_PUBLIC_SOCIAL_BEHANCE },
-  { icon: <FaLinkedinIn />, href: "#" }
+  {
+    icon: FaFacebookF,
+    href: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK,
+    color: "#1877F2", // Facebook
+  },
+  {
+    icon: FaInstagram,
+    href: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM,
+    color: "#E4405F", // Instagram
+  },
+  {
+    icon: FaGoogle,
+    href: process.env.NEXT_PUBLIC_SOCIAL_GOOGLE,
+    color: "#DB4437", // Google
+  },
+  {
+    icon: FaBehance,
+    href: process.env.NEXT_PUBLIC_SOCIAL_BEHANCE,
+    color: "#1769FF", // Behance
+  },
+  {
+    icon: FaLinkedinIn,
+    href: "#",
+    color: "#0A66C2", // LinkedIn
+  },
 ];
 
 const links = {
@@ -38,7 +58,8 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#fdf9f9] relative font-kumbh overflow-hidden border-t border-gray-100">
       {/* Top Black Bar: Follow Us */}
-      <div className="w-full bg-[#111111] py-5 border-b border-white/5">
+      {/* <div className="w-full bg-[#111111] py-5 border-b border-white/5">
+      
         <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-4">
             <div className="h-px w-8 bg-[#d6335a] hidden md:block"></div>
@@ -53,6 +74,22 @@ export default function Footer() {
               >
                 {item.icon}
               </a>
+            ))}
+          </div>
+        </div>
+      </div> */}
+      <div className="w-full bg-[#111111] py-5 border-b border-white/5">
+        <div className="max-w-[1500px] mx-auto px-6 sm:px-10 lg:px-20 flex flex-col items-center gap-6">
+          <div className="flex items-center gap-4">
+            <div className="h-px w-8 bg-[#d6335a]"></div>
+            <h4 className="font-bold text-white text-[14px] uppercase tracking-[0.2em]">Follow Our Journey</h4>
+            <div className="h-px w-8 bg-[#d6335a]"></div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {socialLinks.map((item, i) => (
+              <a key={i} href={item.href}
+                className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 text-base hover:bg-[#d6335a] hover:text-white hover:border-[#d6335a] transition-all duration-300 hover:-translate-y-1 active:scale-95"
+              ><item.icon style={{ color: item.color }} /></a>
             ))}
           </div>
         </div>
@@ -108,23 +145,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
-          {/* <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-left">
-            <h4 className="font-bold text-gray-900 text-[15px] mb-6 uppercase tracking-wider">Get Newsletter</h4>
-            <p className="text-[14px] text-gray-600 mb-6 leading-relaxed">
-              Stay updated with our latest<br className="hidden lg:block" /> news and offers.
-            </p>
-            <div className="relative mx-auto sm:mx-0 max-w-[280px]">
-              <MailOpen className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-[#d6335a] z-10" />
-              <input
-                type="email"
-                placeholder="example@gmail.com"
-                className="w-full bg-[#f3f1ed] rounded-full py-3.5 pl-11 pr-4 text-[13px] placeholder:text-gray-400 font-medium border-none outline-none focus:ring-2 focus:ring-[#d6335a]/20 shadow-inner"
-              />
-            </div>
-          </div> */}
-
-          {/* Contact */}
           {/* Contact */}
           <div className="space-y-5 text-center sm:text-left">
             <h4 className="mb-6 text-[15px] font-bold uppercase tracking-wider text-gray-900">

@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+
 export default function CTASection() {
   return (
     <section className="w-full overflow-hidden">
@@ -14,11 +17,14 @@ export default function CTASection() {
 
         <p className="mt-4 max-w-[720px] font-raleway text-[clamp(1rem,3.5vw,1.8rem)] font-medium leading-[1.4] tracking-wide text-white/95 sm:mt-5">
           Start rewriting your story.
-        </p>
+      </p>
 
-        <button className="mt-8 rounded-full bg-[#e8e5df] px-8 py-3 text-[14px] font-bold text-[#c0272d] shadow-md transition-colors hover:bg-white sm:mt-10 sm:px-10 sm:text-[16px]">
-          Contact Us
-        </button>
+        <Link href="/contact">
+          <button className="mt-8 rounded-full bg-[#e8e5df] px-8 py-3 text-[14px] font-bold text-[#c0272d] shadow-md transition-colors hover:bg-white sm:mt-10 sm:px-10 sm:text-[16px]"
+          >
+            Contact Us
+          </button>
+        </Link>
       </div>
     </section>
   );

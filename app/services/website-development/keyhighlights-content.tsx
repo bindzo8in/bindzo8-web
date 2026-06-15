@@ -51,7 +51,7 @@ export default function KeyHighlightContent() {
         <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col justify-center gap-10 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-6 xl:gap-10">
           {/* Left Content */}
           <div className="relative z-10 w-full lg:max-w-[570px] xl:max-w-[610px] order-2 lg:order-1">
-            <h2 className="mb-8 text-[28px] font-bold leading-none text-[#EF8030] sm:text-[32px] lg:mb-7 lg:text-[28px] xl:mb-8 xl:text-[32px]">
+            <h2 className="mb-8 text-[28px] font-bold leading-none text-[#d3325c] sm:text-[32px] lg:mb-7 lg:text-[28px] xl:mb-8 xl:text-[32px]">
               Key Highlights:
             </h2>
 

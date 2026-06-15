@@ -188,7 +188,7 @@ export default function Navbar() {
                 <SheetClose asChild>
                   <Link
                     href="/contact"
-                    className="mt-6 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#d3325c] to-[#c42b47] px-8 py-3 text-[15px] font-semibold tracking-wide text-white shadow-md"
+                    className="mt-6 inline-flex items-center justify-center rounded-full bg-linear-to-r from-[#d3325c] to-[#c42b47] px-8 py-3 text-[15px] font-semibold tracking-wide text-white shadow-md"
                   >
                     Start a Project &rarr;
                   </Link>

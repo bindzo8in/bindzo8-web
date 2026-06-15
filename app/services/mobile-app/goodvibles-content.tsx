@@ -33,7 +33,7 @@ export default function GoodVibesContent() {
           <div className="relative z-10 w-full lg:max-w-[620px] xl:max-w-[680px]">
             <div className="space-y-8 sm:space-y-10 lg:space-y-12 xl:space-y-16">
               <div>
-                <h2 className="text-[24px] font-bold leading-[1.2] text-[#EF8030] sm:text-[30px] lg:text-[24px] xl:text-[28px]">
+                <h2 className="text-[24px] font-bold leading-[1.2] text-[#d3325c] sm:text-[30px] lg:text-[24px] xl:text-[28px]">
                   Good Vibes Food Delivery (By Bindzo 8)
                 </h2>
 
@@ -48,7 +48,7 @@ export default function GoodVibesContent() {
               </div>
 
               <div>
-                <h3 className="text-[22px] font-bold leading-[1.2] text-[#EF8030] sm:text-[28px] lg:text-[23px] xl:text-[27px]">
+                <h3 className="text-[22px] font-bold leading-[1.2] text-[#d3325c] sm:text-[28px] lg:text-[23px] xl:text-[27px]">
                   Why Good Vibes App by Bindzo 8 Stands Out?
                 </h3>
 

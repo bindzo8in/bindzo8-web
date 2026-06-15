@@ -110,7 +110,7 @@ const KeybenefitContent = () => {
               className={cn(
                 "w-full rounded-md px-4 py-2.5 transition-all duration-300 text-sm",
                 selectedIndex === index
-                  ? "bg-[#EF8030] text-white"
+                  ? "bg-[#d3325c] text-white"
                   : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
               )}
             >
@@ -128,7 +128,7 @@ const KeybenefitContent = () => {
             transition={{ duration: 0.3 }}
             className="flex flex-col items-center gap-4 text-white"
           >
-            <h2 className="text-xl font-bold text-orange-500">{selectedSlide.title}</h2>
+            <h2 className="text-xl font-bold text-[#d3325c]">{selectedSlide.title}</h2>
             <ol className="space-y-3 w-full list-decimal pl-5">
               {selectedSlide.content.map((item) => (
                 <li key={item} className="text-sm leading-relaxed">{item}</li>
@@ -158,8 +158,8 @@ const KeybenefitContent = () => {
               className={cn(
                 "min-w-[156px] rounded-none rounded-bl-md rounded-tl-md px-8 py-5 transition-all duration-300",
                 selectedIndex === index
-                  ? "bg-[#EF8030] text-white"
-                  : "bg-white text-[#EF8030]"
+                  ? "bg-[#d3325c] text-white"
+                  : "bg-white text-[#d3325c]"
               )}
             >
               {slide.title}

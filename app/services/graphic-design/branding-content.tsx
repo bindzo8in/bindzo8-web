@@ -55,7 +55,7 @@ export default function BrandingLogoDesignsContent() {
       <section className="relative w-full px-5 py-12 font-kumbh sm:px-8 sm:py-16 lg:h-screen lg:px-12 lg:py-0 xl:px-20">
         {/* Desktop horizontal-scroll slide - untouched */}
         <div className="relative mx-auto hidden h-full w-full max-w-[1500px] lg:block">
-          <h2 className="pointer-events-none absolute left-1/2 top-1/2 z-20 w-full max-w-[700px] -translate-x-1/2 -translate-y-1/2 text-center text-[48px] font-bold uppercase leading-[1.18] tracking-wide text-[#EF8030] xl:text-[64px] 2xl:text-[72px]">
+          <h2 className="pointer-events-none absolute left-1/2 top-1/2 z-20 w-full max-w-[700px] -translate-x-1/2 -translate-y-1/2 text-center text-[48px] font-bold uppercase leading-[1.18] tracking-wide text-[#d3325c] xl:text-[64px] 2xl:text-[72px]">
             Branding and Logo Designs
           </h2>
 
@@ -81,11 +81,11 @@ export default function BrandingLogoDesignsContent() {
         {/* Mobile / Tablet normal view */}
         <div className="mx-auto flex w-full max-w-[900px] flex-col lg:hidden">
           <div className="mb-8 text-center sm:mb-10">
-            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#EF8030]">
+            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#d3325c]">
               Brand Identity
             </p>
 
-            <h2 className="mx-auto max-w-[340px] text-[30px] font-bold uppercase leading-[1.12] tracking-wide text-[#EF8030] sm:max-w-[560px] sm:text-[46px]">
+            <h2 className="mx-auto max-w-[340px] text-[30px] font-bold uppercase leading-[1.12] tracking-wide text-[#d3325c] sm:max-w-[560px] sm:text-[46px]">
               Branding and Logo Designs
             </h2>
 

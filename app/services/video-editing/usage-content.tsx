@@ -17,7 +17,7 @@ const UsageContent = () => {
         >
           {/* Mobile Heading */}
           <div className="lg:hidden">
-            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-orange-500">
+            <p className="mb-2 text-[12px] font-bold uppercase tracking-[0.22em] text-[#d3325c]">
               Digital Marketing
             </p>
 
@@ -139,7 +139,7 @@ function ListBlock({ title, items }: { title: string; items: string[] }) {
     >
       <h3
         className="
-          mb-4 text-[20px] font-semibold leading-tight text-orange-500
+          mb-4 text-[20px] font-semibold leading-tight text-[#d3325c]
 
           sm:text-[22px]
 
@@ -168,7 +168,7 @@ function ListBlock({ title, items }: { title: string; items: string[] }) {
       >
         {items.map((item) => (
           <li key={item} className="flex gap-3">
-            <span className="mt-[2px] text-orange-400 lg:text-white/55">
+            <span className="mt-[2px] text-[#d3325c] lg:text-white/55">
               •
             </span>
             <span>{item}</span>

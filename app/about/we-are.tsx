@@ -2,7 +2,7 @@ import React from 'react'
 
 function WeAre() {
   return (
-    <section className="relative w-full min-h-[400px] md:min-h-[500px] flex items-center justify-center bg-gradient-to-r from-[#E7325C] to-[#EF8030] text-white overflow-hidden font-kumbh py-16 md:py-24">
+    <section className="relative w-full min-h-[400px] md:min-h-[500px] flex items-center justify-center bg-gradient-to-r from-[#c42b47] to-[#d3325c] text-white overflow-hidden font-kumbh py-16 md:py-24">
       
       {/* Decorative background elements for premium feel */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">

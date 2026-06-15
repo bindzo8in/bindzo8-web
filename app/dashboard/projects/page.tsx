@@ -1,125 +1,209 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import DataTable from "@/components/data-table"
-import ResourceModal from "@/components/resource-modal"
+import { useProjects, useDeleteProject } from "@/lib/hooks/use-projects";
+import { useState } from "react";
+import { 
+  flexRender, 
+  getCoreRowModel, 
+  useReactTable 
+} from "@tanstack/react-table";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { MoreHorizontal, Edit, Trash, Plus } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { ProjectStatus, MediaType } from "@/app/generated/prisma/client";
 
-type Project = {
-  id: string
-  title: string
-  description: string
-  category: string
-  tag: string
-  mediaUrl: string
-  mediaType: "image" | "video"
-}
+export default function AdminProjectsPage() {
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState<ProjectStatus | "ALL">("ALL");
 
-import { toast } from "sonner"
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useProjects({
+    search: search || undefined,
+    status: statusFilter !== "ALL" ? statusFilter : undefined,
+    take: 10
+  });
 
-export default function ProjectsPage() {
-  const [modalOpen, setModalOpen] = useState(false)
-  const [editingItem, setEditingItem] = useState<Project | null>(null)
-  const [refreshKey, setRefreshKey] = useState(0)
+  const deleteMutation = useDeleteProject();
 
-  const columns: { key: keyof Project; label: string; render?: (item: Project) => React.ReactNode }[] = [
-    { 
-      key: "mediaUrl", 
-      label: "Media",
-      render: (item) => (
-        <div className="w-12 h-12 rounded-xl overflow-hidden bg-gray-100">
-          {item.mediaType === "image" ? (
-            <img src={item.mediaUrl} alt={item.title} className="w-full h-full object-cover" />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gray-200 text-[10px] font-bold">VIDEO</div>
-          )}
-        </div>
-      )
-    },
-    { key: "title", label: "Title" },
-    { key: "category", label: "Category" },
-    { key: "tag", label: "Tag" },
-  ]
+  const projects = data?.pages.flatMap(p => p.data) || [];
 
   const handleDelete = async (id: string) => {
-    toast.info("Are you sure you want to delete this project?", {
-      action: {
-        label: "Delete",
-        onClick: async () => {
-          try {
-            const res = await fetch(`/api/projects/${id}`, { method: "DELETE" })
-            if (res.ok) {
-              toast.success("Project deleted successfully")
-              setRefreshKey(prev => prev + 1)
-            } else {
-              toast.error("Failed to delete project")
-            }
-          } catch (error) {
-            toast.error("An error occurred while deleting")
-          }
-        },
+    if (confirm("Are you sure you want to delete this project? This will also delete media from Cloudinary.")) {
+      deleteMutation.mutate(id);
+    }
+  };
+
+  const columns = [
+    {
+      accessorKey: "featuredMediaUrl",
+      header: "Media",
+      cell: ({ row }: any) => {
+        const url = row.getValue("featuredMediaUrl");
+        if (!url) return <div className="w-12 h-12 bg-gray-200 rounded"></div>;
+        return (
+          <div className="relative w-12 h-12 rounded overflow-hidden">
+            {url.match(/\.(mp4|webm)$/i) ? (
+              <video src={url} className="w-full h-full object-cover" muted />
+            ) : (
+              <Image src={url} alt="Media" fill className="object-cover" />
+            )}
+          </div>
+        );
+      }
+    },
+    {
+      accessorKey: "title",
+      header: "Title",
+    },
+    {
+      accessorKey: "clientName",
+      header: "Client",
+    },
+    {
+      accessorKey: "status",
+      header: "Status",
+      cell: ({ row }: any) => {
+        const status = row.getValue("status");
+        return (
+          <Badge variant={status === "PUBLISHED" ? "default" : "secondary"}>
+            {status}
+          </Badge>
+        );
+      }
+    },
+    {
+      accessorKey: "isFeatured",
+      header: "Featured",
+      cell: ({ row }: any) => {
+        return row.getValue("isFeatured") ? <Badge variant="secondary">Featured</Badge> : null;
+      }
+    },
+    {
+      id: "actions",
+      cell: ({ row }: any) => {
+        const project = row.original;
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem asChild>
+                <Link href={`/dashboard/projects/${project.id}/edit`}>
+                  <Edit className="mr-2 h-4 w-4" />
+                  Edit
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleDelete(project.id)} className="text-red-600">
+                <Trash className="mr-2 h-4 w-4" />
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
       },
-      cancel: {
-        label: "Cancel",
-        onClick: () => {},
-      },
-    })
-  }
+    },
+  ];
 
-  const handleSave = async (data: any) => {
-    const method = editingItem ? "PATCH" : "POST"
-    const url = editingItem ? `/api/projects/${editingItem.id}` : "/api/projects"
-
-    const promise = fetch(url, {
-      method,
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
-    }).then(async (res) => {
-      if (!res.ok) throw new Error("Failed to save")
-      setModalOpen(false)
-      setRefreshKey(prev => prev + 1)
-      return res
-    })
-
-    toast.promise(promise, {
-      loading: editingItem ? "Updating project..." : "Creating project...",
-      success: editingItem ? "Project updated successfully" : "Project created successfully",
-      error: (err) => err.message || "An error occurred while saving",
-    })
-  }
+  const table = useReactTable({
+    data: projects,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
 
   return (
-    <div>
-      <DataTable<Project>
-        key={refreshKey}
-        title="Projects"
-        resource="projects"
-        columns={columns}
-        onCreate={() => {
-          setEditingItem(null)
-          setModalOpen(true)
-        }}
-        onEdit={(item) => {
-          setEditingItem(item)
-          setModalOpen(true)
-        }}
-        onDelete={handleDelete}
-      />
+    <div className="p-6 max-w-7xl mx-auto space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold">Projects</h1>
+        <Button asChild>
+          <Link href="/dashboard/projects/create">
+            <Plus className="mr-2 h-4 w-4" /> New Project
+          </Link>
+        </Button>
+      </div>
 
-      <ResourceModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        title={editingItem ? "Edit Project" : "Add New Project"}
-        onSave={handleSave}
-        initialData={editingItem}
-        fields={[
-          { name: "title", label: "Project Title", type: "text", placeholder: "E-commerce Website" },
-          { name: "description", label: "Description", type: "textarea", placeholder: "Short description of the project" },
-          { name: "category", label: "Category", type: "text", placeholder: "Web Development" },
-          { name: "tag", label: "Tag", type: "text", placeholder: "Next.js" },
-          { name: "mediaType", label: "Media Type", type: "select", options: ["image", "video"] },
-          { name: "mediaUrl", label: "Media Upload", type: "media", folder: "projects" },
-        ]}
-      />
+      <div className="flex gap-4 items-center">
+        <Input 
+          placeholder="Search by title or client..." 
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="max-w-xs"
+        />
+        <select 
+          className="h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
+          value={statusFilter}
+          onChange={(e) => setStatusFilter(e.target.value as any)}
+        >
+          <option value="ALL">All Status</option>
+          <option value="PUBLISHED">Published</option>
+          <option value="DRAFT">Draft</option>
+        </select>
+      </div>
+
+      <div className="rounded-md border bg-white">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {isLoading ? (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="h-24 text-center">
+                  Loading...
+                </TableCell>
+              </TableRow>
+            ) : table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="h-24 text-center">
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      
+      {hasNextPage && (
+        <div className="flex justify-center mt-4">
+          <Button 
+            variant="outline" 
+            onClick={() => fetchNextPage()} 
+            disabled={isFetchingNextPage}
+          >
+            {isFetchingNextPage ? "Loading more..." : "Load More"}
+          </Button>
+        </div>
+      )}
     </div>
-  )
+  );
 }

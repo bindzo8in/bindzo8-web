@@ -14,7 +14,7 @@ function Page() {
   return (
     <main className="font-kumbh bg-[#FFF5F4] pt-20 md:pt-24">
       <header>
-        <h1 className="text-3xl md:text-5xl font-bold mb-6 text-[#E7325C] text-center tracking-tight">Contact Us</h1>
+        <h1 className="text-3xl md:text-5xl font-bold mb-6 text-[#c42b47] text-center tracking-tight">Contact Us</h1>
       </header>
 
       <section className="py-10 md:py-16">

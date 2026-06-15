@@ -40,7 +40,7 @@ export default function PackageDesignsContent() {
       <section className="relative w-full px-5 py-12 font-kumbh sm:px-8 sm:py-16 lg:h-screen lg:px-12 lg:py-0 xl:px-20">
         {/* Desktop horizontal-scroll slide */}
         <div className="relative mx-auto hidden h-full w-full max-w-[1500px] lg:block">
-          <h2 className="pointer-events-none absolute left-1/2 top-1/2 z-30 w-full max-w-[540px] -translate-x-1/2 -translate-y-1/2 text-center text-[54px] font-bold uppercase leading-[1.12] tracking-wide text-[#EF8030] xl:text-[64px] 2xl:text-[72px]">
+          <h2 className="pointer-events-none absolute left-1/2 top-1/2 z-30 w-full max-w-[540px] -translate-x-1/2 -translate-y-1/2 text-center text-[54px] font-bold uppercase leading-[1.12] tracking-wide text-[#d3325c] xl:text-[64px] 2xl:text-[72px]">
             Package Designs
           </h2>
 
@@ -77,7 +77,7 @@ export default function PackageDesignsContent() {
 
         {/* Mobile / Tablet card view */}
         <div className="mx-auto flex w-full max-w-[950px] flex-col items-center justify-center lg:hidden">
-          <h2 className="mb-8 text-center text-[32px] font-bold uppercase leading-[1.15] tracking-wide text-[#EF8030] sm:mb-10 sm:text-[46px]">
+          <h2 className="mb-8 text-center text-[32px] font-bold uppercase leading-[1.15] tracking-wide text-[#d3325c] sm:mb-10 sm:text-[46px]">
             Package Designs
           </h2>
 

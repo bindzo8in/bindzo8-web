@@ -30,7 +30,7 @@ export default function SlideButton() {
   const backgroundColor = useTransform(
     x,
     [0, maxDrag],
-    ["#EF8030", "#E7325C"]
+    ["#d3325c", "#c42b47"]
   )
   const slideOpacity = useTransform(x, [0, maxDrag * 0.4], [1, 0])
   const exploreOpacity = useTransform(x, [maxDrag * 0.6, maxDrag], [0, 1])
@@ -93,7 +93,7 @@ export default function SlideButton() {
         dragMomentum={false}
         onDragEnd={handleDragEnd}
       >
-        <ArrowRight className="text-[#EF8030] w-6 h-6" />
+        <ArrowRight className="text-[#d3325c] w-6 h-6" />
       </motion.div>
     </motion.div>
   )
