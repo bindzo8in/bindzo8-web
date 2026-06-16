@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AuthProvider } from "@/components/session-provider";
-import FixedQuoteButton from "@/components/contact-button";
+// import FixedQuoteButton from "@/components/contact-button";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
 import InactivityRedirect from "@/components/InactivityRedirect";
 
@@ -111,6 +111,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import QuoteModal from "@/components/contact-model";
 import { Providers } from "@/components/providers";
+import { FormDialog } from "@/components/form-dialogue";
+import { cn } from "@/lib/utils";
 
 export default function RootLayout({
   children,
@@ -141,7 +143,7 @@ export default function RootLayout({
               phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
             />
             <Toaster expand richColors position="top-right" />
-          </AuthProvider> 
+          </AuthProvider>
         </Providers>
       </body>
       {process.env.NEXT_PUBLIC_GA_ID ? (

@@ -73,7 +73,7 @@ export const ApplicantConfirmation = ({
           </Text>
 
           <Section style={buttonContainer}>
-            <Button style={button} href="https://yourcompany.com">
+            <Button style={button} href="https://bindzo8.com/">
               Visit Our Website
             </Button>
           </Section>
@@ -83,8 +83,8 @@ export const ApplicantConfirmation = ({
           <Text style={paragraph}>
             If you have any questions, please don&apos;t hesitate to reach out
             to us at{' '}
-            <Link href="mailto:careers@yourcompany.com" style={link}>
-              careers@yourcompany.com
+            <Link href="mailto:careers@bindzo8.com" style={link}>
+              careers@bindzo8.com
             </Link>
           </Text>
 

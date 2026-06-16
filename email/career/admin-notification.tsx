@@ -9,6 +9,7 @@ import {
   Section,
   Text,
 } from "@react-email/components";
+import { Link } from "lucide-react";
 
 interface AdminNotificationProps {
   name: string;
@@ -18,6 +19,7 @@ interface AdminNotificationProps {
   position: string;
   description: string;
   resumeFileName: string;
+  resume?: string;
   submittedAt: string;
 }
 
@@ -30,6 +32,7 @@ export const AdminNotification = ({
   description,
   resumeFileName,
   submittedAt,
+  resume
 }: AdminNotificationProps) => {
   const details = [
     ["Name", name],
@@ -37,7 +40,8 @@ export const AdminNotification = ({
     ["Phone", mobileNumber],
     ["Location", location],
     ["Position", position],
-    ["Resume", resumeFileName],
+    ["Resume Name", resumeFileName],
+    ["Resume", resume],
     ["Submitted", submittedAt],
   ];
 
@@ -81,15 +85,6 @@ export const AdminNotification = ({
               </Button>
             </Section>
 
-            <Section style={buttonWrap}>
-              <Button
-                style={secondaryButton}
-                href="https://yourcompany.com/admin/applications"
-              >
-                View All Applications
-              </Button>
-            </Section>
-
             <Hr style={hr} />
 
             <Text style={footer}>
@@ -99,7 +94,7 @@ export const AdminNotification = ({
           </Section>
 
           <Text style={footerText}>
-            © 2024 Your Company Name. All rights reserved.
+            © {new Date().getFullYear()} <Link href="https://bindzo8.com/">bindzo8.com</Link>. All rights reserved.
           </Text>
         </Container>
       </Body>

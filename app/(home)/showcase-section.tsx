@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import FloatingBrandMark from "./floatingBrandMark";
 import Image from "next/image";
+import { getProjectsAction } from "@/app/actions/project";
 
 type Project = {
   id: string;
@@ -27,7 +28,7 @@ const FALLBACK_SLIDES = [
     accent: "#64b5f6",
     label: "Travel & Explore",
     desc: "Responsive multi-platform web experience",
-    image: "/products/1.jpeg",
+    image: "/projects/1.jpeg",
   },
   {
     id: "2",
@@ -35,7 +36,7 @@ const FALLBACK_SLIDES = [
     accent: "#ffffff",
     label: "Landscape Discovery",
     desc: "Nature photography portfolio",
-    image: "/products/2.jpeg",
+    image: "/projects/2.jpeg",
   },
   {
     id: "3",
@@ -43,7 +44,7 @@ const FALLBACK_SLIDES = [
     accent: "#e65100",
     label: "Food & Lifestyle",
     desc: "E-commerce & delivery platform",
-    image: "/products/3.jpeg",
+    image: "/projects/3.jpeg",
   },
 ];
 
@@ -66,7 +67,7 @@ export default function ShowcaseSections() {
       </div>
 
       <FloatingBrandMark>
-        <ProductSection />
+        <ProjectSection />
       </FloatingBrandMark>
 
       <WhyChooseUs />
@@ -74,7 +75,7 @@ export default function ShowcaseSections() {
   );
 }
 
-function ProductSection() {
+function ProjectSection() {
   const autoScrollRef = useRef(AutoScroll({ 
     speed: 1, 
     stopOnInteraction: false,
@@ -83,18 +84,17 @@ function ProductSection() {
   const [slides, setSlides] = useState(FALLBACK_SLIDES);
 
   useEffect(() => {
-    fetch("/api/projects?limit=10")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data?.items?.length > 0) {
+    getProjectsAction({ take: 10 })
+      .then((res) => {
+        if (res?.data?.length > 0) {
           setSlides(
-            data.items.map((item: Project, idx: number) => ({
+            res.data.map((item: any, idx: number) => ({
               id: item.id,
               bg: GRADIENTS[idx % GRADIENTS.length],
               accent: "#c42b47",
               label: item.title,
-              desc: item.description,
-              image: item.mediaUrl,
+              desc: item.shortDescription || item.overview || "",
+              image: item.featuredMediaUrl || (item.media && item.media[0]?.url) || FALLBACK_SLIDES[idx % FALLBACK_SLIDES.length].image,
             }))
           );
         }
@@ -108,7 +108,7 @@ function ProductSection() {
       <article className="relative z-10 mb-10 flex w-full justify-center md:mb-0 md:flex-1 md:justify-start lg:pl-10">
         <div className="flex w-full max-w-[430px] flex-col items-center gap-4 text-center md:items-start md:text-left lg:gap-6">
           <span className="text-base font-semibold tracking-wide text-[#c42b47] sm:text-lg">
-            Our Products
+            Our Projects
           </span>
 
           <h2 className="text-[34px] font-bold leading-[1.08] text-black sm:text-4xl md:text-[2.25rem]">

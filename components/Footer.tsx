@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Marquee } from "./ui/marquee";
 import Image from "next/image";
-import { Mail, MailOpen, MapPin, Phone } from "lucide-react";
+import { Heart, Mail, MailOpen, MapPin, Phone, Smartphone } from "lucide-react";
 import { FaInstagram, FaFacebookF, FaGoogle, FaBehance, FaLinkedinIn } from "react-icons/fa";
+import QuoteModal from "./contact-model";
 
 
 const icons = ["/footer_icons/1.svg", "/footer_icons/2.svg", "/footer_icons/3.svg", "/footer_icons/4.svg", "/footer_icons/5.svg",]
@@ -196,20 +197,26 @@ export default function Footer() {
             </div>
 
             <div className="pt-2">
-              <button className="rounded-full bg-[#d6335a] px-8 py-3 text-[13px] font-bold text-white shadow-md transition-all hover:bg-[#b52a4b] hover:shadow-lg active:scale-95">
-                Get a Quote
-              </button>
+              <QuoteModal
+                customTrigger={
+                  <button className="rounded-full bg-[#d6335a] px-8 py-3 text-[13px] font-bold text-white shadow-md transition-all hover:bg-[#b52a4b] hover:shadow-lg active:scale-95">
+                    Get a Quote
+                  </button>
+                }
+              />
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="w-full py-6 text-center bg-[#d6335a]">
-        <div className="max-w-[1500px] mx-auto px-6">
-          <p className="text-white text-[12px] md:text-[13px] font-semibold tracking-wide opacity-90">
-            Copyright © {new Date().getFullYear()}, Bindzo 8 Private Limited. All Rights Reserved.
+      <div className="w-full py-6 bg-[#d6335a]">
+        <div className="max-w-[1500px] mx-auto px-6 flex flex-col items-center justify-between gap-3 sm:flex-row">
+          <p className="text-center text-[12px] font-semibold tracking-wide text-white opacity-90 md:text-left md:text-[13px]">
+            Copyright © {new Date().getFullYear()} <Link href="https://bindzo8.com/">bindzo8.com</Link>. All Rights Reserved.
+          </p>
+          <p className="text-center text-[12px] font-semibold tracking-wide text-white opacity-90 md:text-right md:text-[13px] flex items-center gap-2">
+            Designed & Developed by <Smartphone className="animate-pulse w-4 h-4" color="white" fill="red"/><Link href="https://bindzo8.com/">bindzo8.com</Link>
           </p>
         </div>
       </div>

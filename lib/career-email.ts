@@ -33,6 +33,7 @@ export async function sendCareerAdminMail(data: {
       position: data.position,
       description: data.description,
       resumeFileName: data.resumeFileName,
+      resume: data.resumeUrl,
       submittedAt: new Date().toLocaleString("en-US", {
         timeZone: "Asia/Kolkata",
       }),
