@@ -2,8 +2,7 @@
 
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createProjectSchema, CreateProjectInput } from "@/lib/validations/project";
-import { ProjectStatus, MediaType } from "@/app/generated/prisma/client";
+import { createProjectSchema, CreateProjectInput, ProjectStatus, MediaType } from "@/lib/validations/project";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

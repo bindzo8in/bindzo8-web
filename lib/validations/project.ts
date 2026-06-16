@@ -1,5 +1,17 @@
 import { z } from "zod";
-import { MediaType, ProjectStatus } from "@/app/generated/prisma/client";
+
+export const MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  DOCUMENT: 'DOCUMENT',
+} as const;
+export type MediaType = (typeof MediaType)[keyof typeof MediaType];
+
+export const ProjectStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+} as const;
+export type ProjectStatus = (typeof ProjectStatus)[keyof typeof ProjectStatus];
 
 export const projectMediaSchema = z.object({
   id: z.string().optional(),
