@@ -121,7 +121,7 @@ export default function ServiceSection() {
   }, [current]);
 
   return (
-    <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start px-8 md:px-16 sm:pb-8 font-kumbh">
+    <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-16 items-start px-8 md:px-16 sm:pb-8 font-kumbh" id="services">
 
       {/* LEFT COLUMN */}
       <div className="w-full lg:w-[38%] flex flex-col">
