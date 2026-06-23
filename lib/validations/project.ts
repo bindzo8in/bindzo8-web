@@ -46,6 +46,7 @@ export const createProjectSchema = z.object({
   sortOrder: z.number().default(0),
   media: z.array(projectMediaSchema).default([]),
   technologies: z.array(projectTechnologySchema).default([]),
+  tags: z.array(z.string()).default([]),
 });
 
 export const updateProjectSchema = createProjectSchema.extend({

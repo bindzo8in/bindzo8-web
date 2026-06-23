@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import React from 'react'
 
 export default function CTA() {
@@ -9,12 +10,16 @@ export default function CTA() {
                     Tap into your business potential now and achieve greater heights of success!
                 </h5>
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-12">
-                    <Button className='border-2 border-[#c42b47] bg-white text-[#c42b47] text-lg md:text-xl font-semibold py-6 w-full sm:w-auto min-w-[180px] px-8 rounded-2xl transition-all hover:bg-[#c42b47] hover:text-white shadow-md'>
-                        Start a Project
-                    </Button>
-                    <Button className='border-2 border-[#c42b47] bg-white text-[#c42b47] text-lg md:text-xl font-semibold py-6 w-full sm:w-auto min-w-[180px] px-8 rounded-2xl transition-all hover:bg-[#c42b47] hover:text-white shadow-md'>
-                        Our Services
-                    </Button>
+                    <Link href={"/contact"} scroll={false}>
+                        <Button className='border-2 border-[#c42b47] bg-white text-[#c42b47] text-lg md:text-xl font-semibold py-6 w-full sm:w-auto min-w-[180px] px-8 rounded-2xl transition-all hover:bg-[#c42b47] hover:text-white shadow-md'>
+                            Start a Project
+                        </Button>
+                    </Link>
+                    <Link href={"/services"} scroll={false}>
+                        <Button className='border-2 border-[#c42b47] bg-white text-[#c42b47] text-lg md:text-xl font-semibold py-6 w-full sm:w-auto min-w-[180px] px-8 rounded-2xl transition-all hover:bg-[#c42b47] hover:text-white shadow-md'>
+                            Our Services
+                        </Button>
+                    </Link>
                 </div>
             </article>
 
@@ -25,9 +30,11 @@ export default function CTA() {
                 <p className='text-xl md:text-2xl font-raleway font-medium opacity-90'>
                     Start rewriting your story.
                 </p>
-                <Button className='text-[#c42b47] bg-white text-xl mt-6 font-bold rounded-2xl py-7 px-12 shadow-xl hover:scale-105 transition-transform'>
-                    Contact Us
-                </Button>
+                <Link href="/contact">
+                    <Button className='text-[#c42b47] bg-white text-xl mt-6 font-bold rounded-2xl py-7 px-12 shadow-xl hover:scale-105 transition-transform'>
+                        Contact Us
+                    </Button>
+                </Link>
             </article>
         </section>
     )

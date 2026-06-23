@@ -9,13 +9,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
-import { uploadMediaAction } from "@/app/actions/upload";
-import { createServiceAction } from "@/app/actions/service";
+import { createServiceAction, updateServiceAction, deleteServiceAction } from "@/app/actions/service";
 import { useCreateProject, useUpdateProject } from "@/lib/hooks/use-projects";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import { Trash, Plus, GripVertical } from "lucide-react";
+import { Trash, Plus, GripVertical, Edit, Check, X } from "lucide-react";
+import MediaUpload from "@/components/media-upload";
 
 type ProjectFormProps = {
   initialData?: any; // The fetched project data
@@ -30,6 +30,8 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
   const [localServices, setLocalServices] = useState(services);
   const [newServiceName, setNewServiceName] = useState("");
   const [isCreatingService, setIsCreatingService] = useState(false);
+  const [editingServiceId, setEditingServiceId] = useState<string | null>(null);
+  const [editingServiceName, setEditingServiceName] = useState("");
 
   const handleCreateService = async () => {
     if (!newServiceName.trim()) return;
@@ -44,6 +46,38 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
       toast.success("Service created");
     } else {
       toast.error(result.error || "Failed to create service");
+    }
+  };
+
+  const handleUpdateService = async (id: string) => {
+    if (!editingServiceName.trim()) return;
+    setIsCreatingService(true);
+    const result = await updateServiceAction(id, editingServiceName);
+    setIsCreatingService(false);
+    
+    if (result.success && result.data) {
+      setLocalServices(localServices.map(s => s.id === id ? result.data! : s));
+      setEditingServiceId(null);
+      toast.success("Service updated");
+    } else {
+      toast.error(result.error || "Failed to update service");
+    }
+  };
+
+  const handleDeleteService = async (id: string) => {
+    if (!confirm("Are you sure you want to delete this service?")) return;
+    setIsCreatingService(true);
+    const result = await deleteServiceAction(id);
+    setIsCreatingService(false);
+    
+    if (result.success) {
+      setLocalServices(localServices.filter(s => s.id !== id));
+      if (form.getValues("serviceId") === id) {
+        form.setValue("serviceId", "");
+      }
+      toast.success("Service deleted");
+    } else {
+      toast.error(result.error || "Failed to delete service");
     }
   };
 
@@ -67,8 +101,25 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
       sortOrder: 0,
       media: [],
       technologies: [],
+      tags: [],
     },
   });
+
+  const [tagInput, setTagInput] = useState("");
+
+  const handleAddTag = () => {
+    if (!tagInput.trim()) return;
+    const currentTags = form.getValues("tags") || [];
+    if (!currentTags.includes(tagInput.trim())) {
+      form.setValue("tags", [...currentTags, tagInput.trim()]);
+    }
+    setTagInput("");
+  };
+
+  const handleRemoveTag = (tagToRemove: string) => {
+    const currentTags = form.getValues("tags") || [];
+    form.setValue("tags", currentTags.filter(tag => tag !== tagToRemove));
+  };
 
   const { fields: techFields, append: appendTech, remove: removeTech } = useFieldArray({
     control: form.control,
@@ -85,37 +136,7 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
     form.setValue("slug", title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, ""));
   };
 
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = (error) => reject(error);
-    });
-  };
 
-  const handleFeaturedMediaUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    try {
-      setIsUploading(true);
-      const base64 = await fileToBase64(file);
-      const resourceType = file.type.startsWith("video") ? "video" : "image";
-      const result = await uploadMediaAction(base64, "portfolio/featured", resourceType);
-      
-      if (result.success && result.data) {
-        form.setValue("featuredMediaUrl", result.data.url);
-        form.setValue("featuredMediaPublicId", result.data.publicId);
-        toast.success("Featured media uploaded");
-      } else {
-        toast.error(result.error);
-      }
-    } catch (error) {
-      toast.error("Upload failed");
-    } finally {
-      setIsUploading(false);
-    }
-  };
 
   const handleProjectMediaUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
@@ -124,7 +145,6 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
     setIsUploading(true);
     for (const file of files) {
       try {
-        const base64 = await fileToBase64(file);
         let resourceType: "image" | "video" | "raw" = "raw";
         let mediaType: MediaType = MediaType.DOCUMENT;
         
@@ -136,16 +156,27 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
           mediaType = MediaType.VIDEO;
         }
 
-        const result = await uploadMediaAction(base64, "portfolio/gallery", resourceType);
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("folder", "portfolio/gallery");
+        formData.append("resourceType", resourceType);
+
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await res.json();
         
-        if (result.success && result.data) {
+        if (res.ok && data.url) {
           appendMedia({
             type: mediaType,
-            url: result.data.url,
-            publicId: result.data.publicId,
+            url: data.url,
+            publicId: data.publicId,
             fileName: file.name,
             sortOrder: mediaFields.length,
           });
+        } else {
+          toast.error(data.error || `Failed to upload ${file.name}`);
         }
       } catch (error) {
         toast.error(`Failed to upload ${file.name}`);
@@ -187,7 +218,7 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label>Service</Label>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2">
               <select 
                 {...form.register("serviceId")}
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
@@ -197,10 +228,45 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
                   <option key={s.id} value={s.id}>{s.name}</option>
                 ))}
               </select>
+              
+              {localServices.length > 0 && (
+                <div className="mt-2 space-y-1 max-h-40 overflow-y-auto bg-gray-50 p-2 rounded-md border border-gray-100">
+                  <p className="text-xs text-gray-500 font-medium mb-2 uppercase tracking-wider">Manage Services</p>
+                  {localServices.map(s => (
+                    <div key={s.id} className="flex items-center gap-2 text-sm p-1 hover:bg-white rounded border border-transparent hover:border-gray-200 transition-colors">
+                      {editingServiceId === s.id ? (
+                        <>
+                          <Input 
+                            value={editingServiceName}
+                            onChange={e => setEditingServiceName(e.target.value)}
+                            className="h-7 text-sm"
+                          />
+                          <Button type="button" variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={() => handleUpdateService(s.id)} disabled={isCreatingService}>
+                            <Check className="w-4 h-4 text-green-600" />
+                          </Button>
+                          <Button type="button" variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={() => setEditingServiceId(null)}>
+                            <X className="w-4 h-4 text-gray-500" />
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <span className="flex-1 truncate pl-1">{s.name}</span>
+                          <Button type="button" variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={() => { setEditingServiceId(s.id); setEditingServiceName(s.name); }}>
+                            <Edit className="w-4 h-4 text-gray-400 hover:text-gray-600" />
+                          </Button>
+                          <Button type="button" variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={() => handleDeleteService(s.id)} disabled={isCreatingService}>
+                            <Trash className="w-4 h-4 text-red-400 hover:text-red-600" />
+                          </Button>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="flex gap-2 mt-2">
+            <div className="flex gap-2 mt-4">
               <Input 
-                placeholder="Or create new service" 
+                placeholder="New service name" 
                 value={newServiceName} 
                 onChange={(e) => setNewServiceName(e.target.value)}
                 onKeyDown={(e) => {
@@ -227,6 +293,7 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
         </div>
       </div>
 
+
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
         <h2 className="text-xl font-semibold">Case Study Content</h2>
         
@@ -252,6 +319,7 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
         </div>
       </div>
 
+
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Technologies</h2>
@@ -272,18 +340,22 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
         </div>
       </div>
 
+
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
         <h2 className="text-xl font-semibold">Featured Media</h2>
-        <Input type="file" accept="image/*,video/*" onChange={handleFeaturedMediaUpload} disabled={isUploading} />
-        {form.watch("featuredMediaUrl") && (
-          <div className="relative w-40 h-40 mt-4 rounded overflow-hidden border">
-            {form.watch("featuredMediaUrl")?.match(/\.(mp4|webm)$/i) ? (
-              <video src={form.watch("featuredMediaUrl")!} className="w-full h-full object-cover" muted autoPlay loop />
-            ) : (
-              <Image src={form.watch("featuredMediaUrl")!} alt="Featured" fill className="object-cover" />
-            )}
-          </div>
-        )}
+        <MediaUpload
+          value={form.watch("featuredMediaUrl") || undefined}
+          folder="portfolio/featured"
+          resourceType="image"
+          onChange={(url, publicId) => {
+            form.setValue("featuredMediaUrl", url);
+            form.setValue("featuredMediaPublicId", publicId);
+          }}
+          onClear={() => {
+            form.setValue("featuredMediaUrl", "");
+            form.setValue("featuredMediaPublicId", "");
+          }}
+        />
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
@@ -300,6 +372,50 @@ export function ProjectForm({ initialData, services = [] }: ProjectFormProps) {
               </Button>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Subcategories / Tags Section */}
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold">Subcategories / Tags</h2>
+        </div>
+        
+        <div className="flex flex-col gap-4">
+          <div className="flex gap-2">
+            <Input 
+              value={tagInput}
+              onChange={(e) => setTagInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleAddTag();
+                }
+              }}
+              placeholder="e.g. Poster Design, Logo Design (press Enter)"
+              className="max-w-md"
+            />
+            <Button type="button" variant="outline" onClick={handleAddTag}>
+              Add Tag
+            </Button>
+          </div>
+          
+          <div className="flex flex-wrap gap-2 mt-2">
+            {(form.watch("tags") || []).map((tag, index) => (
+              <div key={index} className="flex items-center gap-1 bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
+                <span>{tag}</span>
+                <Button 
+                  type="button" 
+                  variant="ghost" 
+                  size="icon" 
+                  className="h-4 w-4 ml-1 rounded-full hover:bg-gray-200" 
+                  onClick={() => handleRemoveTag(tag)}
+                >
+                  <X className="w-3 h-3" />
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

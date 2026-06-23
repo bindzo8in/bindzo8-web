@@ -9,10 +9,12 @@ export type GetProjectsParams = {
   status?: ProjectStatus;
   isFeatured?: boolean;
   mediaType?: MediaType;
+  tag?: string;
+  excludeServiceId?: string;
 };
 
 export async function getProjects(params: GetProjectsParams = {}) {
-  const { take = 10, cursor, search, serviceId, status, isFeatured, mediaType } = params;
+  const { take = 10, cursor, search, serviceId, status, isFeatured, mediaType, tag, excludeServiceId } = params;
 
   const where: Prisma.ProjectWhereInput = {
     ...(search && {
@@ -21,9 +23,12 @@ export async function getProjects(params: GetProjectsParams = {}) {
         { clientName: { contains: search, mode: "insensitive" } },
       ],
     }),
-    ...(serviceId && { serviceId }),
+    ...(serviceId 
+      ? { serviceId } 
+      : (excludeServiceId ? { serviceId: { not: excludeServiceId } } : {})),
     ...(status && { status }),
     ...(isFeatured !== undefined && { isFeatured }),
+    ...(tag && { tags: { has: tag } }),
     ...(mediaType && {
       media: {
         some: { type: mediaType },
@@ -132,8 +137,26 @@ export async function getRelatedProjects(projectId: string, serviceId?: string |
   });
 }
 
-export async function getServices() {
+export async function getServices(filter?: { nameContains?: string }) {
   return prisma.service.findMany({
+    where: filter?.nameContains ? {
+      name: { contains: filter.nameContains, mode: "insensitive" }
+    } : undefined,
     orderBy: { name: "asc" }
   });
+}
+
+export async function getAllTags() {
+  const projects = await prisma.project.findMany({
+    select: { tags: true },
+  });
+  const allTags = new Set<string>();
+  for (const project of projects) {
+    if (project.tags) {
+      for (const tag of project.tags) {
+        allTags.add(tag);
+      }
+    }
+  }
+  return Array.from(allTags).sort();
 }

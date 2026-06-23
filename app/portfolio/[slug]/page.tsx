@@ -56,7 +56,7 @@ export default async function PortfolioDetailPage({ params }: { params: { slug: 
   const documents = project.media.filter(m => m.type === "DOCUMENT");
 
   return (
-    <article className="min-h-screen bg-gray-50 pb-20">
+    <article className="min-h-screen bg-[#FFF5F4] pb-20 font-kumbh">
       <JsonLd data={getArticleSchema(
         project.title,
         project.shortDescription || "",
@@ -69,7 +69,7 @@ export default async function PortfolioDetailPage({ params }: { params: { slug: 
           project.featuredMediaUrl.match(/\.(mp4|webm)$/i) ? (
             <video src={project.featuredMediaUrl} className="w-full h-full object-cover opacity-70" autoPlay loop muted />
           ) : (
-            <Image src={project.featuredMediaUrl} alt={project.title} fill className="object-cover opacity-70" priority />
+            <Image src={project.featuredMediaUrl} alt={project.title} fill className="object-cover opacity-40" priority />
           )
         ) : null}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-6">
@@ -79,58 +79,68 @@ export default async function PortfolioDetailPage({ params }: { params: { slug: 
       </div>
 
       <div className="max-w-5xl mx-auto px-6 -mt-10 relative z-10">
-        <div className="bg-white rounded-xl shadow-lg p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="bg-white rounded-xl shadow-lg border border-red-50 p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-2 space-y-8">
             {project.overview && (
               <section>
-                <h2 className="text-2xl font-semibold mb-3">Overview</h2>
+                <h2 className="text-2xl font-semibold text-red-700 mb-3">Overview</h2>
                 <div className="prose text-gray-600 whitespace-pre-wrap">{project.overview}</div>
               </section>
             )}
             {project.challenge && (
               <section>
-                <h2 className="text-2xl font-semibold mb-3">The Challenge</h2>
+                <h2 className="text-2xl font-semibold text-red-700 mb-3">The Challenge</h2>
                 <div className="prose text-gray-600 whitespace-pre-wrap">{project.challenge}</div>
               </section>
             )}
             {project.solution && (
               <section>
-                <h2 className="text-2xl font-semibold mb-3">Our Solution</h2>
+                <h2 className="text-2xl font-semibold text-red-700 mb-3">Our Solution</h2>
                 <div className="prose text-gray-600 whitespace-pre-wrap">{project.solution}</div>
               </section>
             )}
             {project.results && (
               <section>
-                <h2 className="text-2xl font-semibold mb-3">Results</h2>
+                <h2 className="text-2xl font-semibold text-red-700 mb-3">Results</h2>
                 <div className="prose text-gray-600 whitespace-pre-wrap">{project.results}</div>
               </section>
             )}
           </div>
-          
-          <div className="space-y-6 bg-gray-50 p-6 rounded-lg h-fit border border-gray-100">
+
+          <div className="space-y-6 bg-[#FFF5F4] p-6 rounded-lg h-fit border border-red-100">
             {project.clientName && (
               <div>
-                <h3 className="font-semibold text-gray-900">Client</h3>
+                <h3 className="font-semibold text-red-700">Client</h3>
                 <p className="text-gray-600">{project.clientName}</p>
               </div>
             )}
             {project.service && (
               <div>
-                <h3 className="font-semibold text-gray-900">Service</h3>
+                <h3 className="font-semibold text-red-700">Service</h3>
                 <p className="text-gray-600">{project.service.name}</p>
               </div>
             )}
             {project.projectUrl && (
               <div>
-                <h3 className="font-semibold text-gray-900">Website</h3>
+                <h3 className="font-semibold text-red-700">Website</h3>
                 <a href={project.projectUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                   Visit Project ↗
                 </a>
               </div>
             )}
+            {project.tags.length > 0 && (
+              <div>
+                <h3 className="font-semibold text-red-700 mb-2">Categories / Tags</h3>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, idx) => (
+                    <Badge key={idx} variant="outline" className="border-red-200 text-gray-700 bg-white hover:bg-red-50">{tag}</Badge>
+                  ))}
+                </div>
+              </div>
+            )}
             {project.technologies.length > 0 && (
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Technologies</h3>
+                <h3 className="font-semibold text-red-700 mb-2">Technologies</h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map(t => (
                     <Badge key={t.id} variant="secondary">{t.name}</Badge>
@@ -144,16 +154,33 @@ export default async function PortfolioDetailPage({ params }: { params: { slug: 
         {/* Gallery */}
         {(images.length > 0 || videos.length > 0) && (
           <div className="mt-16">
-            <h2 className="text-3xl font-bold mb-8">Gallery</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {videos.map(v => (
-                <div key={v.id} className="w-full aspect-video rounded-xl overflow-hidden bg-black">
-                  <video src={v.url} controls className="w-full h-full" />
+            <h2 className="text-3xl font-bold text-red-700 mb-8">Gallery</h2>
+            <div className="columns-1 md:columns-2 gap-6 space-y-6">
+              {videos.map((video) => (
+                <div
+                  key={video.id}
+                  className="mb-6 break-inside-avoid overflow-hidden rounded-xl bg-black"
+                >
+                  <video
+                    src={video.url}
+                    controls
+                    className="w-full h-auto"
+                  />
                 </div>
               ))}
-              {images.map(img => (
-                <div key={img.id} className="relative w-full aspect-video rounded-xl overflow-hidden group border border-gray-200">
-                  <Image src={img.url} alt={img.alt || project.title} fill className="object-cover transition-transform group-hover:scale-105" />
+
+              {images.map((image) => (
+                <div
+                  key={image.id}
+                  className="mb-6 break-inside-avoid overflow-hidden rounded-xl border border-red-100 group"
+                >
+                  <Image
+                    src={image.url}
+                    alt={image.alt || project.title}
+                    width={1200}
+                    height={1200}
+                    className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
               ))}
             </div>
@@ -163,20 +190,20 @@ export default async function PortfolioDetailPage({ params }: { params: { slug: 
         {/* Documents */}
         {documents.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-3xl font-bold mb-8">Documents</h2>
+            <h2 className="text-3xl font-bold text-red-700 mb-8">Documents</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {documents.map(doc => (
-                <a 
-                  key={doc.id} 
-                  href={doc.url} 
-                  target="_blank" 
+                <a
+                  key={doc.id}
+                  href={doc.url}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-4 border rounded-lg bg-white hover:bg-gray-50 transition border-gray-200 shadow-sm"
+                  className="flex items-center p-4 border rounded-lg bg-white hover:bg-[#FFF5F4] transition border-red-100 shadow-sm"
                 >
                   <div className="w-10 h-10 bg-red-100 text-red-600 rounded flex items-center justify-center font-bold mr-4">
                     PDF
                   </div>
-                  <span className="font-medium truncate">{doc.fileName || 'Document'}</span>
+                  <span className="font-medium text-red-700 truncate">{doc.fileName || 'Document'}</span>
                 </a>
               ))}
             </div>
@@ -186,18 +213,18 @@ export default async function PortfolioDetailPage({ params }: { params: { slug: 
         {/* Related Projects */}
         {relatedProjects.length > 0 && (
           <div className="mt-20">
-            <h2 className="text-3xl font-bold mb-8">Related Projects</h2>
+            <h2 className="text-3xl font-bold text-red-700 mb-8">Related Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedProjects.map(rp => (
                 <Link key={rp.id} href={`/portfolio/${rp.slug}`} className="group block">
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 border border-gray-200">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 border border-red-100">
                     {rp.featuredMediaUrl ? (
                       <Image src={rp.featuredMediaUrl} alt={rp.title} fill className="object-cover transition-transform group-hover:scale-105" />
                     ) : (
-                      <div className="w-full h-full bg-gray-200" />
+                      <div className="w-full h-full bg-red-50" />
                     )}
                   </div>
-                  <h3 className="text-xl font-bold group-hover:text-blue-600 transition">{rp.title}</h3>
+                  <h3 className="text-xl font-bold text-red-700 group-hover:text-red-600 transition">{rp.title}</h3>
                   {rp.service && <p className="text-gray-500 text-sm mt-1">{rp.service.name}</p>}
                 </Link>
               ))}

@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
     ],
   },
 
+
   turbopack: {
     rules: {
       "*.svg": {

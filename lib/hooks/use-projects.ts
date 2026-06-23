@@ -41,7 +41,7 @@ export function useProjectBySlug(slug?: string) {
 export function useCreateProject() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (data: CreateProjectInput) => createProjectAction(data),
+    mutationFn: (data: CreateProjectInput) => createProjectAction(JSON.parse(JSON.stringify(data))),
     onSuccess: (res) => {
       if (res.success) {
         toast.success("Project created successfully");
@@ -59,7 +59,7 @@ export function useCreateProject() {
 export function useUpdateProject() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (data: UpdateProjectInput) => updateProjectAction(data),
+    mutationFn: (data: UpdateProjectInput) => updateProjectAction(JSON.parse(JSON.stringify(data))),
     onSuccess: (res) => {
       if (res.success) {
         toast.success("Project updated successfully");

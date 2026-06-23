@@ -30,7 +30,6 @@ export async function createProjectAction(formData: unknown) {
       },
     });
 
-    revalidatePath("/dashboard/projects");
     revalidatePath("/portfolio");
 
     return { success: true, data: project };
@@ -72,7 +71,6 @@ export async function updateProjectAction(formData: unknown) {
       },
     });
 
-    revalidatePath("/dashboard/projects");
     revalidatePath("/portfolio");
     revalidatePath(`/portfolio/${project.slug}`);
 
@@ -110,7 +108,6 @@ export async function deleteProjectAction(id: string) {
     // 3. Delete project record (Cascades to media and technologies)
     await deleteProject(id);
 
-    revalidatePath("/dashboard/projects");
     revalidatePath("/portfolio");
 
     return { success: true };

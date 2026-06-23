@@ -7,10 +7,12 @@ import DV360ServicePage from "@/components/dv-360-v2";
 import { Metadata } from "next";
 import JsonLd from "@/components/seo/JsonLd";
 import { getServiceSchema } from "@/components/seo/Schemas";
+import { PortfolioList } from "@/components/portfolio/portfolio-list";
+import { getServices } from "@/lib/repositories/project";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    
+
     if (slug === "dv-360") {
         return {
             title: "DV360 Programmatic Advertising Services | Display & Video 360 Agency",
@@ -58,10 +60,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ServicePage({ params }: PageProps<"/service/[slug]">) {
     const { slug } = await params;
     let data;
+    let services;
     let withProducts: boolean = false;
     if (marketingPagesData.some((item) => item.slug === slug)) {
         if (slug === "design-solution") {
             withProducts = true
+            services = await getServices({ nameContains: "design" });
         } else if (slug === "dv-360") {
             return <DV360ServicePage />
         }
@@ -78,10 +82,10 @@ export default async function ServicePage({ params }: PageProps<"/service/[slug]
 
     return (
         <>
-        <JsonLd data={getServiceSchema(title, heroDescription)} />
-        <MarketingSection title={title} media={media} heroLabel={heroLabel} heroDescription={heroDescription} features={features} />
-        {withProducts &&
-        <ProductsSection />}
+            <JsonLd data={getServiceSchema(title, heroDescription)} />
+            <MarketingSection title={title} media={media} heroLabel={heroLabel} heroDescription={heroDescription} features={features} />
+            {withProducts &&
+                <PortfolioList services={services ?? []} defaultServiceId={services?.[0]?.id} />}
         </>
     )
 }

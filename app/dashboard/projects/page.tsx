@@ -1,7 +1,7 @@
 "use client";
 
 import { useProjects, useDeleteProject } from "@/lib/hooks/use-projects";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { 
   flexRender, 
   getCoreRowModel, 
@@ -21,15 +21,17 @@ export default function AdminProjectsPage() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<ProjectStatus | "ALL">("ALL");
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useProjects({
+  const queryParams = useMemo(() => ({
     search: search || undefined,
     status: statusFilter !== "ALL" ? statusFilter : undefined,
     take: 10
-  });
+  }), [search, statusFilter]);
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useProjects(queryParams);
 
   const deleteMutation = useDeleteProject();
 
-  const projects = data?.pages.flatMap(p => p.data) || [];
+  const projects = useMemo(() => data?.pages.flatMap(p => p.data) || [], [data]);
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this project? This will also delete media from Cloudinary.")) {
@@ -37,7 +39,7 @@ export default function AdminProjectsPage() {
     }
   };
 
-  const columns = [
+  const columns = useMemo(() => [
     {
       accessorKey: "featuredMediaUrl",
       header: "Media",
@@ -110,7 +112,7 @@ export default function AdminProjectsPage() {
         );
       },
     },
-  ];
+  ], []);
 
   const table = useReactTable({
     data: projects,

@@ -7,7 +7,7 @@ import { Home, Briefcase, Package, Users, Phone } from "lucide-react";
 const bottomNavItems = [
   { label: "Home", href: "/", icon: Home },
   { label: "Services", href: "/services", icon: Briefcase },
-  { label: "Products", href: "/products", icon: Package },
+  { label: "Portfolio", href: "/portfolio", icon: Package },
   { label: "About", href: "/who-we-are", icon: Users },
   { label: "Contact", href: "/contact", icon: Phone },
 ];
