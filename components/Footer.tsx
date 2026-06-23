@@ -154,9 +154,10 @@ export default function Footer() {
 
             <div className="mx-auto flex w-full max-w-[310px] items-start gap-3 text-left sm:mx-0 sm:max-w-none">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#d6335a]" />
-              <p className="min-w-0 text-[14px] font-medium leading-relaxed text-gray-700">
+              <address className="min-w-0 text-[14px] font-medium leading-relaxed text-gray-700">
+                {process.env.NEXT_PUBLIC_COMPANY_NAME},<br />
                 {process.env.NEXT_PUBLIC_LOCATION}
-              </p>
+              </address>
             </div>
 
             <div className="mx-auto flex w-full max-w-[310px] items-start gap-3 text-left sm:mx-0 sm:max-w-none">
@@ -216,7 +217,7 @@ export default function Footer() {
             Copyright © {new Date().getFullYear()} <Link href="https://bindzo8.com/">bindzo8.com</Link>. All Rights Reserved.
           </p>
           <p className="text-center text-[12px] font-semibold tracking-wide text-white opacity-90 md:text-right md:text-[13px] flex items-center gap-2">
-            Designed & Developed by <Smartphone className="animate-pulse w-4 h-4" color="white" fill="red"/><Link href="https://bindzo8.com/">bindzo8.com</Link>
+            Designed & Developed by <Smartphone className="animate-pulse w-4 h-4" color="white" fill="red" /><Link href="https://bindzo8.com/">bindzo8.com</Link>
           </p>
         </div>
       </div>

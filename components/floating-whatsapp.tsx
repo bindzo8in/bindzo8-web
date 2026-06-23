@@ -25,7 +25,7 @@ export default function FloatingWhatsApp({
             aria-label="Chat on WhatsApp"
             className="
         fixed
-        bottom-5 right-5
+        bottom-20 lg:bottom-5 right-5
         z-999999
         flex items-center justify-center
         bg-transparent

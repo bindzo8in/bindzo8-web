@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 const WhyChooseUs = () => {
   return (
@@ -35,9 +36,11 @@ const WhyChooseUs = () => {
 
         {/* RIGHT IMAGE */}
         <div className="flex justify-center lg:justify-end">
-          <img
+          <Image
             src="/why-choose-us.png"
             alt="Why Choose Us"
+            width={560}
+            height={560}
             className="w-full max-w-[560px] object-contain animate-float"
           />
         </div>

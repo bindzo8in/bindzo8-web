@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 const sidebarCategories = [
   {
@@ -93,10 +94,12 @@ export default function Sidebar() {
               className="group overflow-hidden rounded-2xl border border-white/10 bg-[#151515] shadow-lg transition duration-300 hover:-translate-y-1 hover:border-[#c42b47]/60 hover:bg-[#1f1f1f]"
             >
               <div className="relative h-[120px] w-full bg-white sm:h-[135px] md:h-[145px]">
-                <img
+                <Image
                   src={cat.media}
                   alt={cat.text}
-                  className="h-full w-full object-contain p-2"
+                  fill
+                  sizes="(max-width: 640px) 120px, 145px"
+                  className="object-contain p-2"
                 />
               </div>
 
@@ -141,11 +144,13 @@ export default function Sidebar() {
         <div className="mt-auto px-4 pb-4">
           <div className="overflow-hidden rounded-3xl border border-white/10 bg-[#111] p-4 shadow-2xl">
             <div className="relative h-[180px] w-full">
-              <img
+              <Image
                 key={previewItem.media}
                 src={previewItem.media}
                 alt={previewItem.text}
-                className="h-full w-full rounded-xl bg-white object-contain"
+                fill
+                sizes="390px"
+                className="rounded-xl bg-white object-contain"
               />
             </div>
 

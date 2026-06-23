@@ -7,9 +7,10 @@ import { AuthProvider } from "@/components/session-provider";
 // import FixedQuoteButton from "@/components/contact-button";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
 import InactivityRedirect from "@/components/InactivityRedirect";
+import BottomNav from "@/components/BottomNav";
 
 import JsonLd from "@/components/seo/JsonLd";
-import { getOrganizationSchema, getLocalBusinessSchema } from "@/components/seo/Schemas";
+import { getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema } from "@/components/seo/Schemas";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const geistSans = Geist({
@@ -129,8 +130,9 @@ export default function RootLayout({
       <head>
         <JsonLd data={getOrganizationSchema()} />
         <JsonLd data={getLocalBusinessSchema()} />
+        <JsonLd data={getWebSiteSchema()} />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col pb-16 lg:pb-0">
         <Providers>
           <AuthProvider>
             <InactivityRedirect />
@@ -143,6 +145,7 @@ export default function RootLayout({
               phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
             />
             <Toaster expand richColors position="top-right" />
+            <BottomNav />
           </AuthProvider>
         </Providers>
       </body>

@@ -1,4 +1,13 @@
 import React from 'react'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Bindzo 8 | Digital Marketing & Tech Agency",
+  description: "Bindzo 8 provides cutting-edge digital marketing, SEO, and web development services to accelerate your business growth.",
+  alternates: {
+    canonical: "/",
+  },
+};
 import HeroSection from './hero-section'
 import Methodology from './methodology-section'
 import ServiceSection from './service-section'

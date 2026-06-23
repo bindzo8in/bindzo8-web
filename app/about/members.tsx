@@ -197,19 +197,21 @@ interface TeamMemberCardProps {
 }
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, index }) => {
+  const [imgSrc, setImgSrc] = useState(member.image);
+
   return (
     <div className="group relative w-full max-w-[260px] bg-[#141414] rounded-[20px] border border-white/7 overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:border-white/14 cursor-pointer">
 
       {/* Image area */}
       <div className="relative h-[230px] overflow-hidden bg-[#1a1a1a]">
-        <img
-          src={member.image}
+        <Image
+          src={imgSrc}
           alt={`Portrait of ${member.name}`}
-          className="w-full h-full object-cover object-top grayscale-[60%] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grayscale-0 group-hover:scale-[1.04]"
-          onError={(e) => {
-            const t = e.target as HTMLImageElement;
-            t.onerror = null;
-            t.src = `https://placehold.co/260x230/1e1e1e/666?text=${member.name.split(" ").map((n) => n[0]).join("")}`;
+          fill
+          sizes="(max-width: 640px) 260px, 260px"
+          className="object-cover object-top grayscale-[60%] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grayscale-0 group-hover:scale-[1.04]"
+          onError={() => {
+            setImgSrc(`https://placehold.co/260x230/1e1e1e/666?text=${member.name.split(" ").map((n) => n[0]).join("")}`);
           }}
         />
         {/* bottom fade */}

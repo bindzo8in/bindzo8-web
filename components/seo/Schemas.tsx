@@ -85,3 +85,78 @@ export const getFAQSchema = (faqs: { question: string; answer: string }[]) => ({
     },
   })),
 });
+
+export const getWebSiteSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: COMPANY_NAME,
+  url: SITE_URL,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+});
+
+export const getBreadcrumbSchema = (items: { name: string; item: string }[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((breadcrumb, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: breadcrumb.name,
+    item: `${SITE_URL}${breadcrumb.item}`,
+  })),
+});
+
+export const getProductSchema = (
+  name: string,
+  description: string,
+  image?: string,
+  price?: string
+) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name,
+  description,
+  image: image ? `${SITE_URL}${image}` : `${SITE_URL}/nav_logo.png`,
+  brand: {
+    '@type': 'Brand',
+    name: COMPANY_NAME,
+  },
+  ...(price && {
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      price,
+      availability: 'https://schema.org/InStock',
+    },
+  }),
+});
+
+export const getArticleSchema = (
+  title: string,
+  description: string,
+  image?: string,
+  publishedAt?: string,
+  authorName?: string
+) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  image: image ? `${SITE_URL}${image}` : `${SITE_URL}/nav_logo.png`,
+  datePublished: publishedAt || new Date().toISOString(),
+  author: {
+    '@type': 'Person',
+    name: authorName || COMPANY_NAME,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: COMPANY_NAME,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/nav_logo.png`,
+    },
+  },
+});

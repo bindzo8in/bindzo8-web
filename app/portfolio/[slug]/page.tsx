@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
+import JsonLd from "@/components/seo/JsonLd";
+import { getArticleSchema } from "@/components/seo/Schemas";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { slug } = await params;
@@ -11,9 +13,29 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!project) return { title: "Not Found" };
 
   return {
-    title: `${project.title} | Portfolio`,
+    title: `${project.title} | Bindzo 8 Portfolio`,
     description: project.shortDescription || `Case study for ${project.title}`,
+    alternates: {
+      canonical: `/portfolio/${slug}`,
+    },
     openGraph: {
+      title: project.title,
+      description: project.shortDescription || `Case study for ${project.title}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/portfolio/${slug}`,
+      type: "article",
+      images: project.featuredMediaUrl ? [
+        {
+          url: project.featuredMediaUrl,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        }
+      ] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.shortDescription || `Case study for ${project.title}`,
       images: project.featuredMediaUrl ? [project.featuredMediaUrl] : [],
     },
   };
@@ -35,6 +57,12 @@ export default async function PortfolioDetailPage({ params }: { params: { slug: 
 
   return (
     <article className="min-h-screen bg-gray-50 pb-20">
+      <JsonLd data={getArticleSchema(
+        project.title,
+        project.shortDescription || "",
+        project.featuredMediaUrl || undefined,
+        project.createdAt.toISOString()
+      )} />
       {/* Hero Section */}
       <div className="w-full h-[60vh] relative bg-black">
         {project.featuredMediaUrl ? (

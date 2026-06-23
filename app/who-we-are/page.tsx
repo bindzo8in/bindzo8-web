@@ -1,6 +1,15 @@
 import Image from "next/image";
 import WaveBackground from "./background";
 import { FeatureCard } from "./feature-card";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Who We Are | Bindzo 8",
+  description: "Learn about Bindzo 8, our expertise, modern technology stack, and how we deliver creative custom solutions with on-time delivery.",
+  alternates: {
+    canonical: "/who-we-are",
+  },
+};
 
 const features = [
     {
@@ -158,7 +167,7 @@ export default function Page() {
                 </section>
 
                 {/* ── Who We Work With ── */}
-                <section id="who-we-work" className="py-16 md:py-24 bg-white/[0.03]">
+                <section id="who-we-work" className="py-16 md:py-24 bg-white/3">
                     <div className="max-w-6xl mx-auto px-6 sm:px-10">
                         <SectionHeader
                             title="Who We Work With"
