@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const sidebarCategories = [
   {
-    text: "ECommerce Software",
+    text: "E-Commerce Development",
     slug: "ecommerce-solutions",
     media: "/services_gif/ecommerce.gif",
   },
