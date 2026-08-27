@@ -1,7 +1,7 @@
 import { marketingPagesData } from "@/lib/data/service";
 import { notFound } from "next/navigation";
 import { MarketingSection } from "./service";
-import ProductsSection from "@/app/products/ourProducts";
+import ProductsSection from "@/app/(public)/products/ourProducts";
 // import DV360ServicePage from "@/components/dv-360";
 import DV360ServicePage from "@/components/dv-360-v2";
 import { Metadata } from "next";

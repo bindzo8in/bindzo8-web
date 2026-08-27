@@ -1,37 +1,64 @@
-import React from 'react'
-import { Metadata } from 'next'
+import ClientsSection from "@/components/home/clients-section";
+import FAQSection from "@/components/home/faq-section";
+import HomeHeroSection from "@/components/home/hero-section";
+import PartnersSection from "@/components/home/partner-section";
+import PortfolioSection from "@/components/home/portfolio-section";
+import ServiceSection from "@/components/home/service-section";
+import TeamSection from "@/components/home/team-section";
+import TestimonialSection from "@/components/home/testimonial-section";
+import SmoothScroll from "@/components/smooth-scroll";
+import React from "react";
+import { Metadata } from "next";
+import FeaturedWork from "@/components/featured-work/FeaturedWork";
 
 export const metadata: Metadata = {
   title: "Bindzo 8 | Digital Marketing & Tech Agency",
-  description: "Bindzo 8 provides cutting-edge digital marketing, SEO, and web development services to accelerate your business growth.",
+  description:
+    "Bindzo 8 provides cutting-edge digital marketing, SEO, and web development services to accelerate your business growth.",
+  keywords: [
+    "Digital Marketing Agency",
+    "Tech Agency",
+    "SEO Services",
+    "Web Development",
+    "Mobile App Development",
+    "Bindzo 8",
+  ],
   alternates: {
     canonical: "/",
   },
+  openGraph: {
+    title: "Bindzo 8 | Digital Marketing & Tech Agency",
+    description:
+      "Bindzo 8 provides cutting-edge digital marketing, SEO, and web development services to accelerate your business growth.",
+    url: "/",
+    siteName: "Bindzo 8",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bindzo 8 | Digital Marketing & Tech Agency",
+    description:
+      "Bindzo 8 provides cutting-edge digital marketing, SEO, and web development services to accelerate your business growth.",
+  },
 };
-import HeroSection from './hero-section'
-import Methodology from './methodology-section'
-import ServiceSection from './service-section'
-import PrinciplesSection from './principle-section'
-import ShowcaseSections from './showcase-section'
-import CareerSection from './career-section'
-import TestimonialSection from './testimonials-section'
-import HappyClients from './happyClients-section'
-import Background from './background'
 
 const Page = () => {
   return (
-    <main className="pt-20 md:pt-24 relative">
-      <Background />
-      <HeroSection />
-      <ServiceSection />
-      <Methodology />
-      <PrinciplesSection />
-      <ShowcaseSections />
-      <CareerSection />
-      <TestimonialSection />
-      <HappyClients />
-    </main >
-  )
-}
+    <SmoothScroll>
+      <main>
+        <HomeHeroSection />
+        <ServiceSection />
+        {/* <PortfolioSection /> */}
+        <FeaturedWork />
+        <ClientsSection />
+        <TestimonialSection />
+        <PartnersSection />
+        {/* <CTASection /> */}
+        <TeamSection />
+        <FAQSection />
+      </main>
+    </SmoothScroll>
+  );
+};
 
-export default Page
+export default Page;

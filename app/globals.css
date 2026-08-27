@@ -187,6 +187,87 @@
 
 }
 
+.scroll-chevron {
+  position: absolute;
+
+  width: 2.1rem;
+  height: 0.48rem;
+
+  opacity: 0;
+
+  transform: scale(0.3);
+
+  animation: move-chevron 3s ease-out infinite;
+}
+
+/* Stagger the 3 arrows */
+.scroll-chevron:nth-child(1) {
+  animation-delay: 1s;
+}
+
+.scroll-chevron:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.scroll-chevron:nth-child(3) {
+  animation-delay: 3s;
+}
+
+/* Left + right sides of the chevron */
+.scroll-chevron::before,
+.scroll-chevron::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+
+  width: 50%;
+  height: 100%;
+
+  background: #ffffff;
+}
+
+.scroll-chevron::before {
+  left: 0;
+  transform: skewY(30deg);
+}
+
+.scroll-chevron::after {
+  right: 0;
+  transform: skewY(-30deg);
+}
+
+@keyframes move-chevron {
+  25% {
+    opacity: 1;
+  }
+
+  33.3% {
+    opacity: 1;
+    transform: translateY(2.3rem);
+  }
+
+  66.6% {
+    opacity: 1;
+    transform: translateY(3.1rem);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(4.8rem) scale(0.5);
+  }
+}
+
+@keyframes footer-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* * {
   border: 1px solid red;
 } */

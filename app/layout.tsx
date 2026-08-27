@@ -7,7 +7,6 @@ import { AuthProvider } from "@/components/session-provider";
 // import FixedQuoteButton from "@/components/contact-button";
 import FloatingWhatsApp from "@/components/floating-whatsapp";
 import InactivityRedirect from "@/components/InactivityRedirect";
-import BottomNav from "@/components/BottomNav";
 
 import JsonLd from "@/components/seo/JsonLd";
 import { getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema } from "@/components/seo/Schemas";
@@ -132,20 +131,17 @@ export default function RootLayout({
         <JsonLd data={getLocalBusinessSchema()} />
         <JsonLd data={getWebSiteSchema()} />
       </head>
-      <body className="min-h-full flex flex-col pb-16 lg:pb-0">
+      <body className="flex min-h-full flex-col">
         <Providers>
           <AuthProvider>
             <InactivityRedirect />
-            <Navbar />
             {children}
-            <Footer />
             {/* <FixedQuoteButton /> */}
             <QuoteModal />
             <FloatingWhatsApp
               phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
             />
             <Toaster expand richColors position="top-right" />
-            <BottomNav />
           </AuthProvider>
         </Providers>
       </body>
