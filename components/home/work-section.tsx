@@ -43,6 +43,16 @@ type WorkItem = {
 
 const works: WorkItem[] = [
   {
+    id: 8,
+    category: "video",
+    size: "c6",
+    video: "/video/yassh-mockup.mp4",
+    alt: "Yash Organics",
+    cat: "Video Editing",
+    title: "Yash Organics",
+    year: "2025",
+  },
+  {
     id: 1,
     category: "website",
     size: "c4",
@@ -56,10 +66,11 @@ const works: WorkItem[] = [
     id: 2,
     category: "app",
     size: "c2",
-    image: "https://picsum.photos/seed/wellness-app/700/900",
-    alt: "Wellness app",
-    cat: "Mobile App · Onboarding",
-    title: "Wellness App",
+    // image: "https://picsum.photos/seed/attendance-app/700/900",
+    video: "/video/attendance-app.mp4",
+    alt: "Attendance app",
+    cat: "Mobile App",
+    title: "Attendance App",
     year: "2025",
   },
   {

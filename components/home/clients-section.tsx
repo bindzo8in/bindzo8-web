@@ -11,36 +11,32 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const clients = [
     {
-        name: "Logo Ipsum 01",
-        logo: "/img/clients/logoipsum-404.svg",
+        name: "Client 01",
+        logo: "/img/clients/ALL LOGO POST 01.png",
     },
     {
-        name: "Logo Ipsum 02",
-        logo: "/img/clients/logoipsum-414.svg",
+        name: "Client 02",
+        logo: "/img/clients/ALL LOGO POST 02.png",
     },
     {
-        name: "Logo Ipsum 03",
-        logo: "/img/clients/logoipsum-417.svg",
+        name: "Client 03",
+        logo: "/img/clients/ALL LOGO POST 03.png",
     },
     {
-        name: "Logo Ipsum 04",
-        logo: "/img/clients/logoipsum-422.svg",
+        name: "Client 04",
+        logo: "/img/clients/ALL LOGO POST 04.png",
     },
     {
-        name: "Logo Ipsum 05",
-        logo: "/img/clients/logoipsum-423.svg",
+        name: "Client 05",
+        logo: "/img/clients/ALL LOGO POST 05.png",
     },
     {
-        name: "Logo Ipsum 06",
-        logo: "/img/clients/logoipsum-424.svg",
+        name: "Client 06",
+        logo: "/img/clients/ALL LOGO POST 06.png",
     },
     {
-        name: "Logo Ipsum 07",
-        logo: "/img/clients/logoipsum-425.svg",
-    },
-    {
-        name: "Logo Ipsum 08",
-        logo: "/img/clients/logoipsum-433.svg",
+        name: "Client 074",
+        logo: "/img/clients/ALL LOGO POST 074.png",
     },
 ];
 
@@ -190,7 +186,7 @@ export default function ClientsSection() {
                             text-[clamp(4rem,10vw,9rem)]
                             font-medium
                             leading-[0.82]
-                            tracking-[-0.07em]
+                            tracking-[-0.05em]
                             text-black
                         "
                     >

@@ -19,8 +19,12 @@ const partners = [
   { name: "GitHub", logo: "/img/partners/github.webp" },
   { name: "Meta", logo: "/img/partners/meta.svg" },
   { name: "Vercel", logo: "/img/partners/vercel.svg" },
-  { name: "AWS", logo: "/img/partners/aws.webp" },
-  { name: "Google Cloud", logo: "/img/partners/gcloud.webp" },
+  { name: "PostgreSQL", logo: "/img/partners/postgresql.png" },
+  { name: "React", logo: "/img/partners/react.svg" },
+  { name: "Zoho", logo: "/img/partners/zoho.svg" },
+  { name: "Resend", logo: "/img/partners/resend.png" },
+  { name: "DJI", logo: "/img/partners/dji.svg" },
+  { name: "Sony", logo: "/img/partners/sony.svg" },
 ];
 
 export default function PartnersSection() {

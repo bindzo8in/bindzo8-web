@@ -94,6 +94,7 @@ export default function FeaturedWorkCard({
             data-work-video
             src={item.video}
             poster={item.poster}
+            autoPlay
             muted
             loop
             playsInline
@@ -116,41 +117,7 @@ export default function FeaturedWorkCard({
           />
         )}
 
-        {/* Play button */}
-        {item.video && (
-          <div
-            className="
-              absolute
-              left-1/2
-              top-1/2
-              z-20
-              flex
-              h-16
-              w-16
-              -translate-x-1/2
-              -translate-y-1/2
-              items-center
-              justify-center
-              rounded-full
-              bg-[rgba(11,11,12,0.55)]
-              backdrop-blur-md
-              transition-all
-              duration-400
-              lg:group-hover:scale-[1.12]
-              lg:group-hover:bg-gradient-to-br
-              lg:group-hover:from-[#E7325C]
-              lg:group-hover:to-[#EF8030]
-            "
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="ml-1 h-[18px] w-[18px] fill-[#f2efe9]"
-              aria-hidden="true"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          </div>
-        )}
+
 
         {/* Overlay */}
         <div
