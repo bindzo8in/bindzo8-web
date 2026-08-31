@@ -13,162 +13,170 @@ const data = [
   {
     title: "Social Media Marketing",
     desc: "Elevate your online presence with data-driven strategies and creative campaigns that convert. We plan, create and manage content that builds engagement and grows your audience across every platform.",
+    src: "/img/services/social-media-marketing.webp",
   },
   {
     title: "Website Development",
     desc: "We create marketing websites that explain products clearly, strengthen brands and support business growth. From structure and content to responsive design and development, every website is built around a specific goal.",
+    src: "/img/services/web-development.webp",
   },
   {
     title: "Mobile App Development",
     desc: "We design and build mobile apps that are fast, intuitive and built to scale. From concept to launch, we handle UX, development and testing across iOS and Android.",
+    src: "/img/services/app-development.webp",
   },
   {
     title: "SEO Optimization",
     desc: "We help brands rank higher and reach the right audience through technical SEO, content strategy and continuous optimization, built for long-term organic visibility.",
+    src: "/img/services/seo.webp",
   },
   {
     title: "DV 360",
     desc: "We run programmatic advertising through Google's Display & Video 360 platform, reaching the right audience across web, video and connected TV with precision targeting.",
+    src: "/img/services/dv360.webp",
   },
   {
     title: "E-Commerce Development",
     desc: "We build online stores that are fast, secure and easy to manage. From product pages to checkout flow, every detail is designed to turn visitors into customers.",
+    src: "/img/services/ecommerce.webp",
   },
   {
     title: "Branding",
     desc: "We create visual identities that give companies a distinct and consistent presence. From typography and color to digital guidelines and campaign assets, every element is designed to work as one system.",
+    src: "/img/services/branding.webp",
   },
   {
     title: "Google Ads",
     desc: "We plan and manage Google Ads campaigns that put your business in front of people actively searching for what you offer, maximizing reach while keeping cost per acquisition in check.",
+    src: "/img/services/google-ads.webp",
   },
   {
     title: "Product Shooting",
     desc: "We produce high-quality product photography and videography that showcases your offerings in the best light, built for e-commerce listings, campaigns and social media.",
+    src: "/img/services/product-shooting.webp",
   },
   {
     title: "Design Solution",
     desc: "We deliver end-to-end design solutions across digital and print, combining creativity and strategy to solve real business problems.",
+    src: "/img/services/design-solution.webp",
   },
 ];
 
 export default function ServiceSection() {
   const introRef = useRef<HTMLDivElement>(null);
 
-useGSAP(
-  () => {
-    const section = introRef.current;
+  useGSAP(
+    () => {
+      const section = introRef.current;
 
-    if (!section) return;
+      if (!section) return;
 
-    const heading = section.querySelector(".service-intro-heading");
-    const paragraph = section.querySelector(".service-intro-paragraph");
+      const heading = section.querySelector(".service-intro-heading");
+      const paragraph = section.querySelector(".service-intro-paragraph");
 
-    if (!heading || !paragraph) return;
+      if (!heading || !paragraph) return;
 
-    /*
-     * =========================================================
-     * HEADING WORD SPLIT
-     * =========================================================
-     */
+      /*
+       * =========================================================
+       * HEADING WORD SPLIT
+       * =========================================================
+       */
 
-    const headingText = heading.textContent?.trim() || "";
-    const headingWords = headingText.split(" ");
+      const headingText = heading.textContent?.trim() || "";
+      const headingWords = headingText.split(" ");
 
-    heading.innerHTML = headingWords
-      .map((word, index) => {
-        const isLast = index === headingWords.length - 1;
+      heading.innerHTML = headingWords
+        .map((word, index) => {
+          const isLast = index === headingWords.length - 1;
 
-        const gradientClass = isLast
-          ? " bg-gradient-to-r from-[#E7325C] to-[#EF8030] bg-clip-text text-transparent"
-          : "";
+          const gradientClass = isLast
+            ? " bg-gradient-to-r from-[#E7325C] to-[#EF8030] bg-clip-text text-transparent"
+            : "";
 
-        return `<span class="service-intro-word-mask inline-block overflow-hidden align-top pb-[0.15em] -mb-[0.15em]"><span class="service-intro-word inline-block${gradientClass}">${word}</span></span>`;
-      })
-      .join(" ");
+          return `<span class="service-intro-word-mask inline-block overflow-hidden align-top pb-[0.15em] -mb-[0.15em]"><span class="service-intro-word inline-block${gradientClass}">${word}</span></span>`;
+        })
+        .join(" ");
 
-    const words = heading.querySelectorAll(
-      ".service-intro-word",
-    );
+      const words = heading.querySelectorAll(".service-intro-word");
 
-    /*
-     * =========================================================
-     * INITIAL STATE
-     * =========================================================
-     */
+      /*
+       * =========================================================
+       * INITIAL STATE
+       * =========================================================
+       */
 
-    gsap.set(words, {
-      yPercent: 110,
-      opacity: 0,
-    });
+      gsap.set(words, {
+        yPercent: 110,
+        opacity: 0,
+      });
 
-    gsap.set(paragraph, {
-      y: 35,
-      opacity: 0,
-    });
+      gsap.set(paragraph, {
+        y: 35,
+        opacity: 0,
+      });
 
-    /*
-     * =========================================================
-     * SCROLL ANIMATION
-     * =========================================================
-     */
+      /*
+       * =========================================================
+       * SCROLL ANIMATION
+       * =========================================================
+       */
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        end: "top 30%",
-        scrub: 1,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 1,
+        },
+      });
 
-    /*
-     * Heading
-     */
+      /*
+       * Heading
+       */
 
-    tl.to(
-      words,
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 1,
-        stagger: 0.12,
-        ease: "power4.out",
-      },
-      0,
-    );
+      tl.to(
+        words,
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.12,
+          ease: "power4.out",
+        },
+        0,
+      );
 
-    /*
-     * Paragraph
-     */
+      /*
+       * Paragraph
+       */
 
-    tl.to(
-      paragraph,
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-      },
-      0.55,
-    );
+      tl.to(
+        paragraph,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        0.55,
+      );
 
-    return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
-    };
-  },
-  {
-    scope: introRef,
-  },
-);
+      return () => {
+        tl.scrollTrigger?.kill();
+        tl.kill();
+      };
+    },
+    {
+      scope: introRef,
+    },
+  );
 
   return (
     <section id="home-what-we-do" className="w-full">
       {/* Intro */}
-<div
-  ref={introRef}
-  className="
+      <div
+        ref={introRef}
+        className="
     mx-auto
     w-full
     max-w-7xl
@@ -181,51 +189,49 @@ useGSAP(
     lg:pt-32
     xl:px-32
   "
->
-  <div className="max-w-7xl">
-
-    {/* =====================================================
+      >
+        <div className="max-w-7xl">
+          {/* =====================================================
         TOP META
     ===================================================== */}
 
-    <div className="service-intro-meta flex items-center justify-between border-b border-black/10 pb-5">
-      <div className="flex items-center gap-3">
-        <span className="service-intro-dot h-2 w-2 rounded-full bg-black" />
+          <div className="service-intro-meta flex items-center justify-between border-b border-black/10 pb-5">
+            <div className="flex items-center gap-3">
+              <span className="service-intro-dot h-2 w-2 rounded-full bg-black" />
 
-        <span
-          className="
+              <span
+                className="
             text-[10px]
             font-medium
             uppercase
             tracking-[0.25em]
             text-gray-400
           "
-        >
-          Services
-        </span>
-      </div>
+              >
+                Services
+              </span>
+            </div>
 
-      <span
-        className="
+            <span
+              className="
           text-[10px]
           font-medium
           uppercase
           tracking-[0.2em]
           text-gray-400
         "
-      >
-        01 — 10
-      </span>
-    </div>
+            >
+              01 — 10
+            </span>
+          </div>
 
-    {/* =====================================================
+          {/* =====================================================
         MAIN TITLE
     ===================================================== */}
 
-    <div className="mt-10 lg:mt-14">
-
-      <p
-        className="
+          <div className="mt-10 lg:mt-14">
+            <p
+              className="
           service-intro-kicker
           mb-5
           text-xs
@@ -234,12 +240,12 @@ useGSAP(
           tracking-[0.2em]
           text-gray-400
         "
-      >
-        What we bring to the table
-      </p>
+            >
+              What we bring to the table
+            </p>
 
-      <h2
-        className="
+            <h2
+              className="
           service-intro-heading
           max-w-6xl
           text-[clamp(4rem,11vw,10rem)]
@@ -248,18 +254,17 @@ useGSAP(
           tracking-tight
           text-black
         "
-      >
-        What we do
-      </h2>
+            >
+              What we do
+            </h2>
+          </div>
 
-    </div>
-
-    {/* =====================================================
+          {/* =====================================================
         DESCRIPTION
     ===================================================== */}
 
-    <div
-      className="
+          <div
+            className="
         mt-12
         flex
         flex-col
@@ -269,12 +274,11 @@ useGSAP(
         lg:items-start
         lg:justify-between
       "
-    >
+          >
+            <div className="service-intro-line h-px w-20 bg-black lg:mt-3" />
 
-      <div className="service-intro-line h-px w-20 bg-black lg:mt-3" />
-
-      <p
-        className="
+            <p
+              className="
           service-intro-paragraph
           max-w-2xl
           text-base
@@ -282,14 +286,14 @@ useGSAP(
           text-gray-500
           lg:text-lg
         "
-      >
-        We partner with ambitious teams to design brands, websites and
-        digital products that combine thoughtful strategy, beautiful design
-        and technology to create meaningful results.
-      </p>
+            >
+              We partner with ambitious teams to design brands, websites and
+              digital products that combine thoughtful strategy, beautiful
+              design and technology to create meaningful results.
+            </p>
 
-      <span
-        className="
+            <span
+              className="
           hidden
           text-[10px]
           font-medium
@@ -298,18 +302,16 @@ useGSAP(
           text-gray-400
           lg:block
         "
-      >
-        Strategy
-        <br />
-        Design
-        <br />
-        Technology
-      </span>
-
-    </div>
-
-  </div>
-</div>
+            >
+              Strategy
+              <br />
+              Design
+              <br />
+              Technology
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Mobile */}
       <div className="block md:hidden">
@@ -476,22 +478,18 @@ function DesktopServiceSection() {
           CARD_GAP_PX * (cards.length - 1);
 
         const pt = parseFloat(window.getComputedStyle(section).paddingTop) || 0;
-        const pb = parseFloat(window.getComputedStyle(section).paddingBottom) || 0;
+        const pb =
+          parseFloat(window.getComputedStyle(section).paddingBottom) || 0;
         const availableHeight = section.clientHeight - pt - pb;
 
-        const maxScroll = Math.max(
-          totalStackHeight - availableHeight,
-          0,
-        );
+        const maxScroll = Math.max(totalStackHeight - availableHeight, 0);
 
         const shiftableHeight = cardFinalHeights
           .slice(0, -1)
           .reduce((sum, h) => sum + h + CARD_GAP_PX, 0);
 
         const shiftScale =
-          shiftableHeight > 0
-            ? Math.min(maxScroll / shiftableHeight, 1)
-            : 1;
+          shiftableHeight > 0 ? Math.min(maxScroll / shiftableHeight, 1) : 1;
 
         /*
          * =========================================================
@@ -788,7 +786,7 @@ function DesktopServiceSection() {
                                 "
               >
                 <Image
-                  src={`/img/services/${index + 1}.png`}
+                  src={item.src}
                   alt=""
                   fill
                   priority={index === 0}

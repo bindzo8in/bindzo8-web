@@ -3,12 +3,14 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-const INACTIVITY_TIMEOUT = 2 * 60 * 1000; // 2 minutes in ms
+const INACTIVITY_TIMEOUT = 2 * 60 * 1000; // 2 minutes
 
 export default function InactivityRedirect() {
   const router = useRouter();
   const pathname = usePathname();
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const isDashboard = pathname.startsWith("/dashboard");
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) {
@@ -16,20 +18,31 @@ export default function InactivityRedirect() {
     }
 
     timerRef.current = setTimeout(() => {
-      // Only redirect if not already on the home page
       if (pathname !== "/") {
         router.push("/#services");
       } else {
-        // Already on home — just scroll to the services section
         const servicesEl = document.getElementById("services");
+
         if (servicesEl) {
-          servicesEl.scrollIntoView({ behavior: "smooth" });
+          servicesEl.scrollIntoView({
+            behavior: "smooth",
+          });
         }
       }
     }, INACTIVITY_TIMEOUT);
   }, [pathname, router]);
 
   useEffect(() => {
+    // Completely disable inactivity redirect in dashboard
+    if (isDashboard) {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+
+      return;
+    }
+
     const events: (keyof WindowEventMap)[] = [
       "mousemove",
       "mousedown",
@@ -39,18 +52,27 @@ export default function InactivityRedirect() {
       "click",
     ];
 
-    // Start the timer immediately
+    const handleActivity = () => resetTimer();
+
     resetTimer();
 
-    // Reset on any user interaction
-    const handleActivity = () => resetTimer();
-    events.forEach((event) => window.addEventListener(event, handleActivity, { passive: true }));
+    events.forEach((event) => {
+      window.addEventListener(event, handleActivity, {
+        passive: true,
+      });
+    });
 
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-      events.forEach((event) => window.removeEventListener(event, handleActivity));
-    };
-  }, [resetTimer]);
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
 
-  return null; // This component renders nothing
+      events.forEach((event) => {
+        window.removeEventListener(event, handleActivity);
+      });
+    };
+  }, [resetTimer, isDashboard]);
+
+  return null;
 }

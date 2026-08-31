@@ -21,7 +21,7 @@ const partners = [
   { name: "Vercel", logo: "/img/partners/vercel.svg" },
   { name: "PostgreSQL", logo: "/img/partners/postgresql.png" },
   { name: "React", logo: "/img/partners/react.svg" },
-  { name: "Zoho", logo: "/img/partners/zoho.svg" },
+  { name: "Wordpress", logo: "/img/partners/wordpress.webp" },
   { name: "Resend", logo: "/img/partners/resend.png" },
   { name: "DJI", logo: "/img/partners/dji.svg" },
   { name: "Sony", logo: "/img/partners/sony.svg" },

@@ -50,6 +50,7 @@ export async function POST(request: Request) {
       data: {
         content: body.content,
         author: body.author,
+        position: body.position || null,
       },
     })
     return NextResponse.json(item)

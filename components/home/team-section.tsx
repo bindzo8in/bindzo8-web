@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { use, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { PrismaPromise } from "@/app/generated/prisma";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -37,22 +38,41 @@ const slots = [
 
 const team = [
   { name: "BALAJI", role: "CEO & Founder", image: "/img/team/1.webp" },
-    { name: "SARAVANAN", role: "", image: "/img/team/8.webp" },
+  { name: "SARAVANAN", role: "", image: "/img/team/8.webp" },
   { name: "MANIKANDAN", role: "Graphics Designer", image: "/img/team/2.png" },
-  { name: "JEYAPANDI", role: "Full stack Developer", image: "/img/team/5.webp" },
+  {
+    name: "JEYAPANDI",
+    role: "Full stack Developer",
+    image: "/img/team/5.webp",
+  },
   { name: "RANJANI", role: "UI/UX Developer", image: "/img/team/3.png" },
-  { name: "GOKULAVANI", role: "Business Development Executive", image: "/img/team/4.webp" },
+  {
+    name: "GOKULAVANI",
+    role: "Business Development Executive",
+    image: "/img/team/4.webp",
+  },
   { name: "NANDHINI", role: "Graphics Designer", image: "/img/team/6.webp" },
   { name: "Dhanesh", role: "Campaign Manager", image: "/img/team/7.webp" },
 ];
 
 const BATCH_SIZE = 4;
-const batches = Array.from({ length: Math.ceil(team.length / BATCH_SIZE) }, (_, i) =>
-  team.slice(i * BATCH_SIZE, i * BATCH_SIZE + BATCH_SIZE)
-);
 
-export default function TeamSection() {
+export default function TeamSection({
+  teams,
+}: {
+  teams: {
+    position: string;
+    id: string;
+    name: string;
+    mediaUrl: string;
+  }[];
+}) {
+  const teamData = teams;
   const sectionRef = useRef<HTMLElement>(null);
+  const batches = Array.from(
+    { length: Math.ceil(teamData.length / BATCH_SIZE) },
+    (_, i) => teamData.slice(i * BATCH_SIZE, i * BATCH_SIZE + BATCH_SIZE),
+  );
 
   useGSAP(
     () => {
@@ -89,16 +109,28 @@ export default function TeamSection() {
         });
 
         tl.to(eyebrow, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" });
-        tl.to(heading, { opacity: 1, scale: 1, duration: 1, ease: "power4.out" }, "-=0.4");
-        tl.to(button, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, "-=0.5");
+        tl.to(
+          heading,
+          { opacity: 1, scale: 1, duration: 1, ease: "power4.out" },
+          "-=0.4",
+        );
+        tl.to(
+          button,
+          { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+          "-=0.5",
+        );
 
-        gsap.set(".team-card", { opacity: 0, scale: 0.8, filter: "blur(12px)" });
+        gsap.set(".team-card", {
+          opacity: 0,
+          scale: 0.8,
+          filter: "blur(12px)",
+        });
 
         batches.forEach((batch, batchIndex) => {
           const batchCards = batch.map((_, i) =>
             section.querySelector<HTMLElement>(
-              `.team-card[data-batch="${batchIndex}"][data-slot="${i}"]`
-            )
+              `.team-card[data-batch="${batchIndex}"][data-slot="${i}"]`,
+            ),
           );
 
           batchCards.forEach((card, index) => {
@@ -127,10 +159,14 @@ export default function TeamSection() {
                 duration: 1.1,
                 ease: "power4.out",
               },
-              index === 0 ? "+=0.1" : "-=0.45"
+              index === 0 ? "+=0.1" : "-=0.45",
             );
             tl.to(image, { scale: 1, duration: 1.2, ease: "power3.out" }, "<");
-            tl.to(info, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=0.5");
+            tl.to(
+              info,
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=0.5",
+            );
           });
 
           batchCards.forEach((card: HTMLElement | null, index) => {
@@ -138,8 +174,14 @@ export default function TeamSection() {
             const f = slots[index].float;
             tl.to(
               card,
-              { x: f.x, y: f.y, rotate: f.rotate, duration: 1.4, ease: "sine.inOut" },
-              index === 0 ? "+=0.2" : "<"
+              {
+                x: f.x,
+                y: f.y,
+                rotate: f.rotate,
+                duration: 1.4,
+                ease: "sine.inOut",
+              },
+              index === 0 ? "+=0.2" : "<",
             );
           });
 
@@ -155,7 +197,7 @@ export default function TeamSection() {
                   duration: 0.8,
                   ease: "power2.in",
                 },
-                index === 0 ? "+=0.3" : "<"
+                index === 0 ? "+=0.3" : "<",
               );
             });
           } else {
@@ -182,7 +224,11 @@ export default function TeamSection() {
         });
 
         intro.to(eyebrow, { opacity: 1, y: 0, duration: 0.5 });
-        intro.to(heading, { opacity: 1, y: 0, duration: 0.7, ease: "power4.out" }, "-=0.2");
+        intro.to(
+          heading,
+          { opacity: 1, y: 0, duration: 0.7, ease: "power4.out" },
+          "-=0.2",
+        );
 
         cards.forEach((card: HTMLElement) => {
           gsap.fromTo(
@@ -199,14 +245,14 @@ export default function TeamSection() {
                 start: "top 85%",
                 toggleActions: "play none none reverse",
               },
-            }
+            },
           );
         });
       });
 
       return () => mm.revert();
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
   return (
@@ -222,8 +268,12 @@ export default function TeamSection() {
             <div className="absolute bottom-[10%] right-[8%] h-96 w-96 rounded-full bg-primary/5 blur-[140px]" />
           </div>
 
-          <div className="absolute left-8 top-1/2 text-4xl font-light text-white/50">+</div>
-          <div className="absolute bottom-10 right-10 text-4xl font-light text-white/50">+</div>
+          <div className="absolute left-8 top-1/2 text-4xl font-light text-white/50">
+            +
+          </div>
+          <div className="absolute bottom-10 right-10 text-4xl font-light text-white/50">
+            +
+          </div>
 
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
             <p className="team-eyebrow mb-5 text-xs font-medium uppercase tracking-[0.3em] text-primary">
@@ -257,7 +307,7 @@ export default function TeamSection() {
 
                     <div className="relative aspect-[4/5] overflow-hidden bg-neutral-900 shadow-2xl">
                       <Image
-                        src={member.image}
+                        src={member.mediaUrl}
                         alt={member.name}
                         fill
                         className="team-image object-cover"
@@ -267,10 +317,16 @@ export default function TeamSection() {
                       <div className="team-info absolute inset-x-0 bottom-0 bg-linear-to-t from-black via-black/90 to-transparent px-4 pb-3 pt-10 backdrop-blur-sm">
                         <div className="flex items-end justify-between">
                           <div>
-                            <p className="text-sm font-semibold tracking-wide">{member.name}</p>
-                            <p className="mt-1 text-xs text-white/50">{member.role}</p>
+                            <p className="text-sm font-semibold tracking-wide">
+                              {member.name}
+                            </p>
+                            <p className="mt-1 text-xs text-white/50">
+                              {member.position}
+                            </p>
                           </div>
-                          <span className="text-lg text-white/40">{"\u2197"}</span>
+                          <span className="text-lg text-white/40">
+                            {"\u2197"}
+                          </span>
                         </div>
                       </div>
                     </div>

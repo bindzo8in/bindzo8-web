@@ -1,9 +1,10 @@
 "use client";
 
-import { Fragment, useRef } from "react";
+import { Fragment, use, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { PrismaPromise } from "@/app/generated/prisma";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -112,8 +113,20 @@ function HeadingReveal({
    COMPONENT
 ========================================================= */
 
-export default function TestimonialSection() {
+export default function TestimonialSection({
+  testimonials,
+}: {
+  testimonials: 
+    {
+      content: string;
+      position: string | null;
+      id: string;
+      author: string;
+    }[]
+  ;
+}) {
   const sectionRef = useRef<HTMLElement>(null);
+  const testimonialsData = testimonials;
 
   useGSAP(
     () => {
@@ -182,7 +195,8 @@ export default function TestimonialSection() {
         if (person) gsap.set(person, { y: 20, opacity: 0 });
         if (meta) gsap.set(meta, { opacity: 0 });
         if (number) gsap.set(number, { y: 16, opacity: 0 });
-        if (line) gsap.set(line, { scaleX: 0, opacity: 0, transformOrigin: "left" });
+        if (line)
+          gsap.set(line, { scaleX: 0, opacity: 0, transformOrigin: "left" });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -294,7 +308,7 @@ export default function TestimonialSection() {
                 text-white/25
               "
             >
-              {String(testimonials.length).padStart(2, "0")} Voices
+              {String(testimonialsData.length).padStart(2, "0")} Voices
             </span>
           </div>
 
@@ -334,9 +348,9 @@ export default function TestimonialSection() {
           xl:px-32
         "
       >
-        {testimonials.map((testimonial, index) => (
+        {testimonialsData.map((testimonial, index) => (
           <article
-            key={testimonial.name}
+            key={testimonial.author}
             className="testimonial-card border-b border-white/10 py-14 md:py-20 lg:py-24"
           >
             {/* Top line reveal */}
@@ -380,7 +394,7 @@ export default function TestimonialSection() {
                     lg:text-4xl
                   "
                 >
-                  <WordReveal text={`"${testimonial.quote}"`} />
+                  <WordReveal text={`"${testimonial.content}"`} />
                 </blockquote>
 
                 {/* Person */}
@@ -389,11 +403,11 @@ export default function TestimonialSection() {
                   <span className="h-8 w-px bg-primary/60 shrink-0" />
                   <div>
                     <p className="text-sm font-semibold tracking-wide text-white">
-                      {testimonial.name}
+                      {testimonial.author}
                     </p>
                     <p className="testimonial-meta mt-1 text-xs text-white/40">
-                      {testimonial.role}
-                      {testimonial.company && ` — ${testimonial.company}`}
+                      {testimonial.position}
+                      {testimonial.position && ` — ${testimonial.position}`}
                     </p>
                   </div>
                 </div>

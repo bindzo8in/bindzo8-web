@@ -1,32 +1,54 @@
-export type WorkCategory =
-  | "website"
-  | "app"
-  | "software"
-  | "branding"
-  | "marketing"
-  | "video";
+export type FeaturedWorkMedia = {
+  type: string;
+  url: string;
+  sortOrder: number;
+};
 
-export type WorkFilter = "all" | WorkCategory;
-
-export type WorkSize = "c4" | "c3" | "c2" | "c6";
-
-export interface WorkItem {
-  id: number;
-  category: WorkCategory;
-  size: WorkSize;
-
+export type FeaturedWorkProject = {
+  id: string;
   title: string;
+  featuredMediaUrl: string | null;
+  projectUrl: string | null;
+
+  service: {
+    name: string;
+  } | null;
+
+  media: FeaturedWorkMedia[];
+};
+
+/**
+ * Normalized UI item
+ * Used only after Prisma data is transformed
+ */
+export interface FeaturedWorkItem {
+  id: string;
+  title: string;
+  category: string;
   categoryLabel: string;
-  year: string;
 
-  image?: string;
-  video?: string;
-  poster?: string;
+  image: string | null;
+  video: string | null;
 
-  alt: string;
+  projectUrl: string | null;
 }
+
+export type WorkFilter = string;
 
 export interface WorkFilterItem {
   label: string;
   value: WorkFilter;
+}
+
+export interface WorkItem {
+  id: number;
+  category: string;
+  size: string;
+  image?: string;
+  video?: string;
+  poster?: string;
+  alt: string;
+  categoryLabel: string;
+  title: string;
+  year: string;
 }

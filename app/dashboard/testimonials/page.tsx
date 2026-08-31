@@ -8,6 +8,7 @@ type Testimonial = {
   id: string
   content: string
   author: string
+  position?: string
 }
 
 import { toast } from "sonner"
@@ -101,6 +102,7 @@ export default function TestimonialsPage() {
         initialData={editingItem}
         fields={[
           { name: "author", label: "Author Name", type: "text", placeholder: "Jane Smith" },
+          { name: "position", label: "Author Position", type: "text", placeholder: "CEO"},
           { name: "content", label: "Testimonial Content", type: "textarea", placeholder: "The service was amazing..." },
         ]}
       />
