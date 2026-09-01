@@ -59,6 +59,16 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/who-we-are',
+        destination: '/about',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;

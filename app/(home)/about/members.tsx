@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import Image from "next/image";
-import WaveBackground from "./background";
+import TeamSection from "@/components/home/team-section";
 
 type TeamMember = {
   id: string;
@@ -14,23 +13,22 @@ type TeamMember = {
 const LIMIT = 100;
 
 const FALLBACK_MEMBERS = [
-  { name: "Balaji", role: "Founder", image: "/binzo8_members/balaji_sir.png"},
-  { name: "Manikandan R", role: "Graphic Designer", image: "/binzo8_members/mani_bro.png" },
-  { name: "Ranjani Rajkumar", role: "UI/UX Designer", image: "/binzo8_members/ranjani_mam.png" },
-  { name: "Jeyapandi R", role: "Developer", image: "/binzo8_members/m3.png" },
-
+  { name: "Balaji", position: "Founder", mediaUrl: "/binzo8_members/balaji_sir.png", id: "1" },
+  { name: "Manikandan R", position: "Graphic Designer", mediaUrl: "/binzo8_members/mani_bro.png", id: "2" },
+  { name: "Ranjani Rajkumar", position: "UI/UX Designer", mediaUrl: "/binzo8_members/ranjani_mam.png", id: "3" },
+  { name: "Jeyapandi R", position: "Developer", mediaUrl: "/binzo8_members/m3.png", id: "4" },
 ];
 
 function Member() {
-  const [items, setItems] = useState<{ name: string, role: string, image: string }[]>([]);
+  const [items, setItems] = useState<TeamMember[]>([]);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
   const [useFallback, setUseFallback] = useState(false);
-  // console.log(useFallback)
 
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const isFetchingRef = useRef(false);
+  
   const fetchPage = useCallback(async (cursor?: string) => {
     if (isFetchingRef.current) return;
     isFetchingRef.current = true;
@@ -45,24 +43,21 @@ function Member() {
 
       const data = await res.json();
 
-
-
       if (data?.items?.length > 0) {
         const mappedItems = data.items.map((m: TeamMember) => ({
           name: m.name,
-          role: m.position,
-          image: m.mediaUrl,
+          position: m.position,
+          mediaUrl: m.mediaUrl,
+          id: m.id
         }));
 
         setItems((prev) => {
-          // Avoid duplicates if initial fetch and fallback might overlap (though unlikely with real IDs)
           return [...prev, ...mappedItems];
         });
         setNextCursor(data.nextCursor ?? null);
         setHasMore(!!data.nextCursor);
         setUseFallback(false);
       } else if (!cursor) {
-        // No items in DB at all on first load
         setItems(FALLBACK_MEMBERS);
         setHasMore(false);
         setUseFallback(true);
@@ -79,12 +74,10 @@ function Member() {
     }
   }, []);
 
-  // Initial load
   useEffect(() => {
     fetchPage();
   }, [fetchPage]);
 
-  // IntersectionObserver sentinel
   useEffect(() => {
     const sentinel = sentinelRef.current;
     if (!sentinel || useFallback) return;
@@ -102,145 +95,29 @@ function Member() {
     return () => observer.disconnect();
   }, [fetchPage, hasMore, nextCursor, useFallback]);
 
+  if (items.length === 0 && isLoading) {
+    return (
+      <section className="relative font-inter py-16 overflow-hidden min-h-screen bg-[#0b0b0c] flex items-center justify-center">
+         <div className="animate-pulse w-32 h-32 rounded-full bg-white/10" />
+      </section>
+    );
+  }
+
   return (
-    <section className="relative font-kumbh py-16 overflow-hidden min-h-screen bg-black">
-      {/* Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <WaveBackground />
-      </div>
-
-      {/* All content above background */}
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-5xl mx-auto text-center">
-          <h3 className="text-4xl mb-8 text-[#d3325c]">
-            The Bindzo 8 Family
-          </h3>
-
-          <p className="text-xl text-white">
-            Bindzo 8 is fortunate to be guided by some of the most skilled minds
-            in the creative and technology space, supported by a team with decades
-            of combined industry experience.
-          </p>
-        </div>
-
-        <div className="max-w-6xl mx-auto pt-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-10 justify-items-center">
-            {items.map((member, index) => (
-              // <MemberCard key={`${member.name}-${index}`} {...member} />
-              <TeamMemberCard key={`${member.name}-${index}`} member={member} index={index}/>
-            ))}
-
-            {isLoading &&
-              Array.from({ length: 3 }).map((_, i) => (
-                <SkeletonMemberCard key={`sk-${i}`} />
-              ))}
-          </div>
-
-          {/* Invisible sentinel triggers next page load */}
-          <div ref={sentinelRef} className="h-1 w-full" />
-
-          {/* {!hasMore && items.length > 0 && !useFallback && (
-            <p className="mt-12 text-center text-sm text-white/40 tracking-widest uppercase">
-              End of team members
-            </p>
-          )} */}
-        </div>
-      </div>
-    </section>
+    <div className="relative font-inter min-h-screen bg-[#0b0b0c]">
+       <TeamSection 
+          teams={items} 
+          hideGlow={true} 
+          eyebrowText="Our Team" 
+          titleText={<>THE BINDZO 8<br/>FAMILY</>} 
+       />
+       {/* Invisible sentinel triggers next page load if applicable */}
+       <div ref={sentinelRef} className="h-1 w-full absolute bottom-0" />
+    </div>
   );
 }
 
 export default Member;
-
-type MemberCardProps = {
-  name: string;
-  role: string;
-  image: string;
-};
-
-export function MemberCard({ name, role, image }: MemberCardProps) {
-  return (
-    <div className="flex flex-col items-center text-center group ">
-      <div className="relative w-full max-w-[220px] aspect-square mb-6 transition-transform duration-500 group-hover:scale-105 bg-black">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          sizes="(max-width: 640px) 220px, (max-width: 1024px) 220px, 220px"
-          className="object-contain"
-        />
-      </div>
-
-      <h4 className="text-white text-lg tracking-wide">{name}</h4>
-      <p className="text-gray-400 text-sm">{role}</p>
-    </div>
-  );
-}
-
-function SkeletonMemberCard() {
-  return (
-    <div className="flex flex-col items-center text-center animate-pulse">
-      <div className="w-[220px] aspect-square mb-6 bg-white/10 rounded-full" />
-      <div className="h-6 w-32 bg-white/10 rounded mb-2" />
-      <div className="h-4 w-24 bg-white/10 rounded" />
-    </div>
-  );
-}
-
-interface TeamMemberCardProps {
-  member: {
-    name: string;
-    role: string;
-    image: string;
-  };
-  index: number;
-}
-
-const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, index }) => {
-  const [imgSrc, setImgSrc] = useState(member.image);
-
-  return (
-    <div className="group relative w-full max-w-[260px] bg-[#141414] rounded-[20px] border border-white/7 overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:border-white/14 cursor-pointer">
-
-      {/* Image area */}
-      <div className="relative h-[230px] overflow-hidden bg-[#1a1a1a]">
-        <Image
-          src={imgSrc}
-          alt={`Portrait of ${member.name}`}
-          fill
-          sizes="(max-width: 640px) 260px, 260px"
-          className="object-cover object-top grayscale-[60%] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grayscale-0 group-hover:scale-[1.04]"
-          onError={() => {
-            setImgSrc(`https://placehold.co/260x230/1e1e1e/666?text=${member.name.split(" ").map((n) => n[0]).join("")}`);
-          }}
-        />
-        {/* bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-[#141414] pointer-events-none" />
-      </div>
-
-      {/* Body */}
-      <div className="relative px-5 pt-4 pb-6">
-        {/* Accent line */}
-        <div className="absolute top-0 left-5 right-5 h-px bg-gradient-to-r from-[#c42b47] to-[#d3325c] opacity-0 scale-x-50 origin-left transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100 group-hover:scale-x-100" />
-
-        {/* Index */}
-        <span className="absolute top-3.5 right-4 text-[11px] font-medium text-white/15 tracking-widest">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        {/* Name */}
-        <p className="text-[18px] font-semibold tracking-tight mb-2.5 text-white transition-all duration-400 group-hover:bg-gradient-to-r group-hover:from-[#c42b47] group-hover:to-[#d3325c] group-hover:bg-clip-text group-hover:text-transparent">
-          {member.name}
-        </p>
-
-        {/* Role pill */}
-        <span className="inline-block text-[11px] font-medium uppercase tracking-[0.6px] text-white/50 border border-white/12 rounded-full px-3.5 py-1 transition-all duration-400 group-hover:bg-gradient-to-r group-hover:from-[#c42b47] group-hover:to-[#d3325c] group-hover:border-transparent group-hover:text-white">
-          {member.role}
-        </span>
-      </div>
-    </div>
-  );
-};
 // const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member }) => {
 //   return (
 //     <div className="group relative mx-auto flex w-full max-w-[300px] flex-col items-center overflow-hidden rounded-[30px] border border-white/30 bg-[#6b6b6b]/60 px-4 pt-8 pb-8 text-center shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:max-w-[340px] sm:rounded-[34px] sm:px-6 sm:pt-10 sm:pb-10 sm:hover:-translate-y-2">

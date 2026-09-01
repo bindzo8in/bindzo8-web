@@ -84,7 +84,7 @@ export default function QuoteModal({
         customTrigger || (
           <Button
             className={cn(
-              "fixed right-0 top-1/2 z-[9999] hidden h-[42px] w-[120px] -translate-y-1/2 translate-x-[39px] -rotate-90 items-center justify-center rounded-b-[0px] bg-[#c42b47] font-kumbh text-[14px] font-semibold text-white shadow-lg transition hover:bg-[#c42b47]/90 sm:flex",
+              "fixed right-0 top-1/2 z-[9999] hidden h-[42px] w-[120px] -translate-y-1/2 translate-x-[39px] -rotate-90 items-center justify-center rounded-b-[0px] bg-gradient-to-r from-[#E7325C] to-[#EF8030] font-[var(--font-space-grotesk)] text-[14px] font-semibold text-[#f2efe9] shadow-lg transition hover:opacity-90 sm:flex",
               className
             )}
           >

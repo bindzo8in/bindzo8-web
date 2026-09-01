@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Marquee } from "./ui/marquee";
 import Image from "next/image";
 import { Heart, Mail, MailOpen, MapPin, Phone, Smartphone } from "lucide-react";
-import { FaInstagram, FaFacebookF, FaGoogle, FaBehance, FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaGoogle, FaBehance, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import QuoteModal from "./contact-model";
 
 
@@ -33,6 +33,11 @@ const socialLinks = [
     icon: FaLinkedinIn,
     href: "#",
     color: "#0A66C2", // LinkedIn
+  },
+  {
+    icon: FaWhatsapp,
+    href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`,
+    color: "#25D366", // WhatsApp
   },
 ];
 

@@ -139,7 +139,7 @@ export function JobApplicationForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Name" {...field} />
+                    <Input placeholder="Name" className="bg-white/5 border-white/10 text-white placeholder:text-white/50" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -153,7 +153,7 @@ export function JobApplicationForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Email" type="email" {...field} />
+                    <Input placeholder="Email" type="email" className="bg-white/5 border-white/10 text-white placeholder:text-white/50" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -167,7 +167,7 @@ export function JobApplicationForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Mobile Number" {...field} />
+                    <Input placeholder="Mobile Number" className="bg-white/5 border-white/10 text-white placeholder:text-white/50" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -181,7 +181,7 @@ export function JobApplicationForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Location" {...field} />
+                    <Input placeholder="Location" className="bg-white/5 border-white/10 text-white placeholder:text-white/50" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -196,12 +196,12 @@ export function JobApplicationForm() {
                 <FormItem>
                   <FormControl>
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-white/5 border-white/10 text-white">
                         <SelectValue placeholder="Position apply for" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-[#151515] border-white/10 text-white">
                         {positions.map((pos) => (
-                          <SelectItem key={pos.id} value={pos.id}>
+                          <SelectItem key={pos.id} value={pos.id} className="hover:bg-white/10 focus:bg-white/10 focus:text-white">
                             {pos.label}
                           </SelectItem>
                         ))}
@@ -234,13 +234,13 @@ export function JobApplicationForm() {
 
                       <label
                         htmlFor="resume-upload"
-                        className="flex items-center justify-between px-3 py-2 border border-input rounded-md bg-background hover:bg-accent cursor-pointer"
+                        className="flex items-center justify-between px-3 py-2 border border-white/10 rounded-md bg-white/5 hover:bg-white/10 cursor-pointer"
                       >
-                        <span className="text-sm text-muted-foreground">
+                        <span className="text-sm text-white/50">
                           {value?.name || "Resume"}
                         </span>
 
-                        <span className="text-xs bg-foreground text-background px-2 py-1 rounded">
+                        <span className="text-xs bg-white text-black px-2 py-1 rounded">
                           Choose file
                         </span>
                       </label>
@@ -261,7 +261,7 @@ export function JobApplicationForm() {
                 <FormControl>
                   <Textarea
                     placeholder="Description:"
-                    className="min-h-48"
+                    className="min-h-48 bg-white/5 border-white/10 text-white placeholder:text-white/50"
                     {...field}
                   />
                 </FormControl>
@@ -275,7 +275,7 @@ export function JobApplicationForm() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="bg-[#d3325c] hover:bg-[#d3325c] text-white px-8 rounded-full disabled:opacity-70 disabled:pointer-events-none"
+              className="bg-[#EF8030] hover:bg-[#d87126] text-white px-8 rounded-full disabled:opacity-70 disabled:pointer-events-none"
             >
               {isSubmitting ? (
                 <>

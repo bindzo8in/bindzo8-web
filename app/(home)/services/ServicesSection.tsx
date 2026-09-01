@@ -79,9 +79,9 @@ export default function ServicesSection() {
   const router = useRouter();
 
   return (
-    <section className="px-4 sm:px-8 pt-12 md:pt-20 pb-16 bg-[#f0eee9] min-h-screen">
+    <section className="px-4 sm:px-8 pt-12 md:pt-20 pb-16 bg-transparent min-h-screen">
       {/* Heading */}
-      <h1 className="text-center text-[clamp(2.2rem,4vw,3.2rem)] font-bold text-[#8b1a1a] mb-12 tracking-tight">
+      <h1 className="text-center text-[clamp(2.2rem,4vw,3.2rem)] font-bold text-[#EF8030] mb-12 tracking-tight">
         Our Services
       </h1>
 
@@ -90,11 +90,11 @@ export default function ServicesSection() {
         {services.map((service) => (
           <div
             key={service.id}
-            className="bg-[#e8e5df] rounded-md p-7 flex flex-col gap-4 shadow-sm border border-white/60 filter drop-shadow-[-7px_6px_11.9px_rgba(0,0,0,0.25)]"
-            onClick={() => router.push(`/services/${service.id}`)}
+            className="bg-[#151515] rounded-xl p-7 flex flex-col gap-4 shadow-xl border border-white/5 transition-transform hover:-translate-y-1"
+            onClick={() => router.push(`/service/${service.id}`)}
           >
             {/* Icon placeholder */}
-            <div className="w-32 h-24 mx-auto bg-gray-200/60  flex items-center justify-center">
+            <div className="w-32 h-24 mx-auto bg-transparent flex items-center justify-center">
               <Image
                 src={service.icon}
                 alt={service.title}
@@ -104,7 +104,7 @@ export default function ServicesSection() {
             </div>
 
             {/* Title */}
-            <h3 className="text-center text-[15px] font-extrabold text-gray-900 leading-tight">
+            <h3 className="text-center text-[15px] font-extrabold text-[#f2efe9] leading-tight">
               {service.title}
             </h3>
 
@@ -112,7 +112,7 @@ export default function ServicesSection() {
             {service.items.length > 0 && (
               <ul className="text-center space-y-0.5">
                 {service.items.map((item) => (
-                  <li key={item} className="text-[12.5px] text-gray-700 leading-snug">
+                  <li key={item} className="text-[12.5px] text-[#f2efe9]/70 leading-snug">
                     {item}
                   </li>
                 ))}
@@ -121,10 +121,10 @@ export default function ServicesSection() {
 
             {/* CTA Buttons */}
             <div className="flex gap-3 justify-center mt-auto pt-3">
-              <button className="flex items-center gap-1.5 bg-[#111] text-white text-[11px] font-medium px-4 py-2 rounded-full hover:bg-[#e3001b] transition-colors">
+              <button className="flex items-center gap-1.5 bg-white/5 border border-white/10 text-white/90 text-[11px] font-medium px-4 py-2 rounded-full hover:bg-[#EF8030] hover:text-white transition-colors">
                 <span className="text-[10px]">💬</span> Chat With Us
               </button>
-              <button className="flex items-center gap-1.5 bg-[#111] text-white text-[11px] font-medium px-4 py-2 rounded-full hover:bg-[#e3001b] transition-colors">
+              <button className="flex items-center gap-1.5 bg-white/5 border border-white/10 text-white/90 text-[11px] font-medium px-4 py-2 rounded-full hover:bg-[#EF8030] hover:text-white transition-colors">
                 <span className="text-[10px]">📞</span> Call Us
               </button>
             </div>

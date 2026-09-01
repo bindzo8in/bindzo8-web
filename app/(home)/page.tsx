@@ -118,7 +118,6 @@ const Page = async () => {
     getFeaturedWorks()
   ]);
   return (
-    <SmoothScroll>
       <main>
         <HomeHeroSection />
         <ServiceSection />
@@ -131,7 +130,6 @@ const Page = async () => {
         <TeamSection teams={teams} />
         <FAQSection />
       </main>
-    </SmoothScroll>
   );
 };
 

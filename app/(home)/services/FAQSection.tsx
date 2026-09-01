@@ -45,11 +45,11 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="mx-4 sm:mx-8 px-4 sm:px-8 py-10 sm:py-14 bg-[#e8e5df] rounded-2xl"
-    style={{background: "linear-gradient(180deg, rgba(232, 229, 223, 1) 0%, rgba(255, 255, 255, 1) 100%)"}}>
+    <section className="mx-2 sm:mx-4 md:mx-8 px-4 sm:px-8 py-10 sm:py-14 bg-[#151515] border border-white/5 shadow-2xl rounded-2xl"
+    style={{background: "linear-gradient(180deg, rgba(21, 21, 21, 1) 0%, rgba(11, 11, 12, 1) 100%)"}}>
       <div className="max-w-[1000px] mx-auto">
         {/* Heading */}
-        <h2 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-[#c0272d] mb-10">
+        <h2 className="text-[clamp(1.3rem,2.5vw,1.8rem)] font-bold text-[#EF8030] mb-10">
           Frequently Asked Questions:
         </h2>
 
@@ -57,10 +57,10 @@ export default function FAQSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8">
           {faqs.map((faq, i) => (
             <div key={i}>
-              <p className="text-[13px] font-bold text-gray-900 mb-1.5 leading-snug">
+              <p className="text-[13px] font-bold text-[#f2efe9] mb-1.5 leading-snug">
                 {i + 1}. {faq.q}
               </p>
-              <p className="text-[12.5px] text-gray-600 leading-relaxed pl-4">
+              <p className="text-[12.5px] text-[#f2efe9]/60 leading-relaxed pl-4">
                 {faq.a}
               </p>
             </div>

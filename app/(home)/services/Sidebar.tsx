@@ -66,11 +66,6 @@ const sidebarCategories = [
     slug: "search-engine-marketing",
     media: "/services_gif/sem.gif",
   },
-  {
-    text: "Creative & Communication",
-    slug: "creative-and-communication",
-    media: "/services_gif/cc.gif",
-  },
 ];
 
 export default function Sidebar() {
@@ -85,7 +80,7 @@ export default function Sidebar() {
     <aside className="relative z-40 order-2 flex h-auto w-full flex-shrink-0 flex-col overflow-hidden bg-[#0a0a0a] shadow-xl lg:sticky lg:top-[var(--nav-height,95px)] lg:order-none lg:h-[calc(100vh-var(--nav-height,95px))] lg:w-[425px]">
       {/* Mobile */}
       <div className="block lg:hidden">
-        <div className="grid grid-cols-2 gap-3 p-4 sm:grid-cols-3 md:grid-cols-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-3 sm:p-4">
           {sidebarCategories.map((cat) => (
             <button
               key={cat.slug}

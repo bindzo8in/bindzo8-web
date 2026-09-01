@@ -89,9 +89,9 @@ export function FormDialog<TSchema extends z.ZodTypeAny>({
     <Dialog open={open} onOpenChange={onOpenChange}>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
 
-      <DialogContent className="sm:max-w-[550px]">
+      <DialogContent className="sm:max-w-[550px] bg-[#0b0b0c] border border-[rgba(242,239,233,0.05)] text-[#f2efe9] font-inter">
         <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
+          <DialogTitle className="font-[var(--font-fraunces)] text-2xl tracking-tight text-[#f2efe9]">{title}</DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -110,12 +110,14 @@ export function FormDialog<TSchema extends z.ZodTypeAny>({
                       {field.type === "textarea" ? (
                         <Textarea
                           placeholder={field.placeholder}
+                          className="bg-white/[0.02] border-[rgba(242,239,233,0.08)] text-[#f2efe9] placeholder:text-[#8b8985] focus-visible:ring-[#EF8030]/50"
                           {...inputField}
                         />
                       ) : (
                         <Input
                           type={field.type ?? "text"}
                           placeholder={field.placeholder}
+                          className="bg-white/[0.02] border-[rgba(242,239,233,0.08)] text-[#f2efe9] placeholder:text-[#8b8985] focus-visible:ring-[#EF8030]/50 h-11"
                           {...inputField}
                         />
                       )}
@@ -136,7 +138,7 @@ export function FormDialog<TSchema extends z.ZodTypeAny>({
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full"
+              className="w-full bg-[#f2efe9] text-[#0b0b0c] hover:bg-[#e0deda] font-[var(--font-space-grotesk)] font-bold text-[15px] h-12 rounded-lg transition-colors"
             >
               {isSubmitting ? (
                 <>

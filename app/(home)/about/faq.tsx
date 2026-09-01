@@ -43,28 +43,27 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="relative w-full bg-white font-kumbh py-16 md:py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
-      <div className="container mx-auto">
-        <h2 className="text-[#B40000] text-3xl md:text-4xl font-bold mb-12 md:mb-20 text-center md:text-left">
+    <section className="relative w-full bg-[#0b0b0c] font-inter py-16 md:py-24 px-6 md:px-12 lg:px-[clamp(40px,6vw,72px)] overflow-hidden">
+      <div className="max-w-[1560px] mx-auto">
+        <h2 className="text-[#f2efe9] text-3xl md:text-5xl font-[var(--font-fraunces)] font-bold mb-12 md:mb-20 text-center md:text-left tracking-tight">
           Frequently Asked Questions
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 lg:gap-x-28 gap-y-10 lg:gap-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-8 lg:gap-y-12">
           {faqs.map((item, index) => (
-            <div key={index} className="bg-gray-50/50 p-6 rounded-2xl hover:bg-gray-50 transition-colors duration-300">
-              <h3 className="text-lg font-bold mb-4 flex gap-3 text-gray-900">
-                <span className="text-[#B40000]">{index + 1}.</span>
+            <div key={index} className="bg-white/[0.02] border border-[rgba(242,239,233,0.05)] p-6 md:p-8 rounded-2xl hover:bg-white/[0.04] hover:border-[#EF8030]/30 transition-all duration-300">
+              <h3 className="text-lg md:text-xl font-[var(--font-space-grotesk)] font-bold mb-4 flex gap-3 text-[#f2efe9]">
+                <span className="text-[#EF8030]">{index + 1}.</span>
                 <span>{item.q}</span>
               </h3>
 
-              <p className="text-gray-600 leading-relaxed text-sm md:text-base pl-8">
+              <p className="text-[#8b8985] font-[var(--font-space-grotesk)] leading-relaxed text-sm md:text-base pl-7 md:pl-8 font-light">
                 {item.a}
               </p>
             </div>
           ))}
         </div>
       </div>
-
     </section>
   );
 }

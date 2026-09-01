@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { AuthProvider } from "@/components/session-provider";
 // import FixedQuoteButton from "@/components/contact-button";
-import FloatingWhatsApp from "@/components/floating-whatsapp";
 import InactivityRedirect from "@/components/InactivityRedirect";
+import Chatbot from "@/components/chatbot";
 
 import JsonLd from "@/components/seo/JsonLd";
 import { getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema } from "@/components/seo/Schemas";
@@ -138,9 +138,7 @@ export default function RootLayout({
             {children}
             {/* <FixedQuoteButton /> */}
             <QuoteModal />
-            <FloatingWhatsApp
-              phoneNumber={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER!}
-            />
+            <Chatbot />
             <Toaster expand richColors position="top-right" />
           </AuthProvider>
         </Providers>

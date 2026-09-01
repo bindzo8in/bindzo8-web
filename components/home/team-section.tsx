@@ -58,6 +58,9 @@ const BATCH_SIZE = 4;
 
 export default function TeamSection({
   teams,
+  hideGlow = false,
+  eyebrowText = "Our Team",
+  titleText = "CREATIVE\nMINDS"
 }: {
   teams: {
     position: string;
@@ -65,6 +68,9 @@ export default function TeamSection({
     name: string;
     mediaUrl: string;
   }[];
+  hideGlow?: boolean;
+  eyebrowText?: string;
+  titleText?: React.ReactNode;
 }) {
   const teamData = teams;
   const sectionRef = useRef<HTMLElement>(null);
@@ -83,13 +89,11 @@ export default function TeamSection({
       mm.add("(min-width: 768px)", () => {
         const eyebrow = section.querySelector<HTMLElement>(".team-eyebrow");
         const heading = section.querySelector<HTMLElement>(".team-heading");
-        const button = section.querySelector<HTMLElement>(".team-button");
 
-        if (!eyebrow || !heading || !button) return;
+        if (!eyebrow || !heading) return;
 
         gsap.set(eyebrow, { opacity: 0, y: 20 });
         gsap.set(heading, { opacity: 0.15, scale: 0.92 });
-        gsap.set(button, { opacity: 0, y: 20 });
 
         const SCROLL_PER_BATCH = 2200;
         const INTRO_SCROLL = 1300;
@@ -113,13 +117,8 @@ export default function TeamSection({
           { opacity: 1, scale: 1, duration: 1, ease: "power4.out" },
           "-=0.4",
         );
-        tl.to(
-          button,
-          { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-          "-=0.5",
-        );
 
-        gsap.set(".team-card", {
+        gsap.set(section.querySelectorAll(".team-card"), {
           opacity: 0,
           scale: 0.8,
           filter: "blur(12px)",
@@ -203,10 +202,16 @@ export default function TeamSection({
             tl.to({}, { duration: 1 });
           }
         });
+        
+        // Force a refresh so smooth scrolling (Lenis) and ScrollTrigger 
+        // calculate the correct document height after the pin spacer is added.
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 100);
       });
 
       mm.add("(max-width: 767px)", () => {
-        const cards = gsap.utils.toArray<HTMLElement>(".team-mobile-card");
+        const cards = gsap.utils.toArray<HTMLElement>(section.querySelectorAll(".team-mobile-card"));
         const heading = section.querySelector(".team-mobile-heading");
         const eyebrow = section.querySelector(".team-mobile-eyebrow");
 
@@ -251,21 +256,23 @@ export default function TeamSection({
 
       return () => mm.revert();
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [teams] },
   );
 
   return (
     <section
       ref={sectionRef}
       id="home-team"
-      className="relative w-full overflow-hidden bg-black text-white"
+      className="relative w-full overflow-hidden bg-[#0b0b0c] text-white"
     >
       <div className="hidden min-h-screen md:block">
         <div className="relative h-screen w-full overflow-hidden">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute left-[10%] top-[18%] h-72 w-72 rounded-full bg-primary/10 blur-[120px]" />
-            <div className="absolute bottom-[10%] right-[8%] h-96 w-96 rounded-full bg-primary/5 blur-[140px]" />
-          </div>
+          {!hideGlow && (
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute left-[10%] top-[18%] h-72 w-72 rounded-full bg-[#EF8030]/20 blur-[120px]" />
+              <div className="absolute bottom-[10%] right-[8%] h-96 w-96 rounded-full bg-[#E7325C]/20 blur-[140px]" />
+            </div>
+          )}
 
           <div className="absolute left-8 top-1/2 text-4xl font-light text-white/50">
             +
@@ -274,21 +281,13 @@ export default function TeamSection({
             +
           </div>
 
-          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
-            <p className="team-eyebrow mb-5 text-xs font-medium uppercase tracking-[0.3em] text-primary">
-              Our Team
+          <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center">
+            <p className="team-eyebrow mb-5 text-xs font-medium uppercase tracking-[0.3em] text-[#EF8030]">
+              {eyebrowText}
             </p>
-            <h2 className="team-heading pointer-events-none text-center text-[clamp(5rem,11vw,12rem)] font-medium leading-[0.82] tracking-[-0.08em] text-white">
-              CREATIVE
-              <br />
-              MINDS
+            <h2 className="team-heading pointer-events-none text-center text-[clamp(4rem,10vw,10rem)] font-medium leading-[1] tracking-[-0.04em] text-white whitespace-pre-line font-[var(--font-fraunces)]">
+              {titleText}
             </h2>
-            <a
-              href="#contact"
-              className="team-button mt-10 bg-primary px-7 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-black transition-transform duration-300 hover:scale-105"
-            >
-              Meet Team
-            </a>
           </div>
 
           {batches.map((batch, batchIndex) => (
@@ -336,7 +335,7 @@ export default function TeamSection({
           ))}
 
           <div className="absolute left-6 top-1/2 z-30 -translate-y-1/2">
-            <span className="-rotate-90 whitespace-nowrap text-[10px] uppercase tracking-[0.35em] text-white/30">
+            <span className="inline-block -rotate-90 whitespace-nowrap text-[10px] uppercase tracking-[0.3em] text-white/30">
               People behind great products
             </span>
           </div>
@@ -356,12 +355,12 @@ export default function TeamSection({
         </div>
 
         <div className="grid gap-8">
-          {team.map((member) => (
+          {teamData.map((member) => (
             <article key={member.name} className="team-mobile-card">
               <div className="relative overflow-hidden">
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src={member.image}
+                    src={member.mediaUrl}
                     alt={member.name}
                     fill
                     className="object-cover"
@@ -370,7 +369,7 @@ export default function TeamSection({
                 </div>
                 <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black via-black/70 to-transparent p-5 pt-16">
                   <p className="text-lg font-semibold">{member.name}</p>
-                  <p className="mt-1 text-sm text-white/60">{member.role}</p>
+                  <p className="mt-1 text-sm text-white/60">{member.position}</p>
                 </div>
               </div>
             </article>

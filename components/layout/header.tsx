@@ -12,6 +12,7 @@ const NavBar = () => {
     { label: "ABOUT", href: "/about" },
     { label: "SERVICES", href: "/services" },
     { label: "PORTFOLIO", href: "/portfolio" },
+    { label: "CAREER", href: "/career" },
   ];
 
   useEffect(() => {
@@ -162,13 +163,15 @@ const NavBar = () => {
                   href="/contact"
                   className="
                     rounded-2xl
-                    bg-primary/60
+                    bg-gradient-to-r from-[#E7325C] to-[#EF8030]
                     px-4
                     py-2
-                    text-primary-foreground
+                    text-white
+                    font-semibold
                     transition-all
                     duration-300
-                    hover:bg-primary
+                    hover:opacity-90
+                    hover:shadow-lg
                   "
                 >
                   CONTACT
@@ -325,12 +328,14 @@ const NavBar = () => {
                   className="
                     block
                     rounded-2xl
-                    bg-primary/60
+                    bg-gradient-to-r from-[#E7325C] to-[#EF8030]
                     px-4
                     py-3
                     text-center
-                    transition-colors
-                    hover:bg-primary
+                    text-white
+                    font-semibold
+                    transition-all
+                    hover:opacity-90
                   "
                 >
                   CONTACT

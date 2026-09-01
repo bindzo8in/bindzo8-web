@@ -6,6 +6,7 @@ import MasonryLayout from "@/components/ui/masonry-layout";
 import FeaturedWorkCard from "@/components/featured-work/FeaturedWorkCard";
 import { normalizeProjectToFeaturedWorkItem } from "@/components/featured-work/featured-work.utils";
 import type { FeaturedWorkItem } from "@/components/featured-work/featured-work.types";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface FeaturedPortfolioListProps {
   services: { id: string, name: string }[];
@@ -52,6 +53,16 @@ export default function FeaturedPortfolioList({
 
     return () => observer.disconnect();
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [normalizedItems, isLoading]);
 
   const allFilters = [{ id: "all", name: "All Work" }, ...services];
 

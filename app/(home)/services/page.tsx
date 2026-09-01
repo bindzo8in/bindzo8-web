@@ -22,7 +22,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative bg-[#f0eee9] font-kumbh flex flex-col lg:flex-row items-start pt-16 md:pt-20">
+    <main className="relative bg-[#0b0b0c] font-kumbh flex flex-col lg:flex-row items-start pt-16 md:pt-20">
       <JsonLd data={getServiceSchema("Bindzo 8 Services", "Comprehensive technology and marketing services.")} />
       <JsonLd data={getFAQSchema(faqs)} />
       {/* Mobile-only ServicesSection (appears first) */}
@@ -34,7 +34,7 @@ export default function Home() {
       <Sidebar />
 
       {/* Desktop content area */}
-      <div className="flex-1 w-full min-w-0 bg-[#f0eee9] order-3 lg:order-none">
+      <div className="flex-1 w-full min-w-0 bg-[#0b0b0c] order-3 lg:order-none">
         {/* Desktop-only ServicesSection */}
         <div className="hidden lg:block">
           <ServicesSection />

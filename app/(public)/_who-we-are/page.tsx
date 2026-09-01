@@ -1,6 +1,6 @@
 import Image from "next/image";
 import WaveBackground from "./background";
-import { FeatureCard } from "./feature-card";
+// import { FeatureCard } from "./feature-card";
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -160,7 +160,8 @@ export default function Page() {
                         {/* two-column editorial list on md+ */}
                         <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
                             {features.map((item, i) => (
-                                <FeatureCard key={i} {...item} index={i} />
+                                // <FeatureCard key={i} {...item} index={i} />
+                                <></>
                             ))}
                         </div>
                     </div>
@@ -192,7 +193,8 @@ export default function Page() {
 
                         <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
                             {whatWeDo.map((item, i) => (
-                                <FeatureCard key={i} {...item} index={i} />
+                                // <FeatureCard key={i} {...item} index={i} />
+                                <></>
                             ))}
                         </div>
                     </div>
