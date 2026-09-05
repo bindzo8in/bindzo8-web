@@ -73,11 +73,9 @@ const getTestimonials = async () => {
 const getFeaturedWorks = async () => {
   return prisma.project.findMany({
     take: 12,
-
     where: {
       isFeatured: true,
     },
-
     select: {
       id: true,
       title: true,
@@ -102,9 +100,8 @@ const getFeaturedWorks = async () => {
         },
       },
     },
-
     orderBy: {
-      createdAt: "desc",
+      sortOrder: "desc",
     },
   });
 };

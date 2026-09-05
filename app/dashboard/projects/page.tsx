@@ -1,7 +1,7 @@
 "use client";
 
-import { useProjects, useDeleteProject } from "@/lib/hooks/use-projects";
-import { useState, useMemo } from "react";
+import { useProjects, useDeleteProject, useUpdateProjectSortOrder } from "@/lib/hooks/use-projects";
+import { useState, useMemo, useEffect } from "react";
 import { 
   flexRender, 
   getCoreRowModel, 
@@ -12,14 +12,70 @@ import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, Edit, Trash, Plus } from "lucide-react";
+import { MoreHorizontal, Edit, Trash, Plus, GripVertical } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { ProjectStatus, MediaType } from "@/app/generated/prisma/client";
+import { ProjectStatus } from "@/app/generated/prisma/client";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  DragEndEvent,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  useSortable
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+
+function SortableRow({ row, flexRender }: { row: any, flexRender: any }) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: row.original.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    ...(isDragging ? { position: "relative" as any, zIndex: 50, backgroundColor: "rgba(255, 255, 255, 0.9)" } : {})
+  };
+
+  return (
+    <TableRow ref={setNodeRef} style={style}>
+      {row.getVisibleCells().map((cell: any) => {
+        if (cell.column.id === 'drag-handle') {
+          return (
+            <TableCell key={cell.id} className="w-12">
+              <div {...attributes} {...listeners} className="cursor-grab p-2 hover:bg-gray-100 rounded inline-block">
+                <GripVertical className="h-4 w-4 text-gray-500" />
+              </div>
+            </TableCell>
+          );
+        }
+        return (
+          <TableCell key={cell.id}>
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </TableCell>
+        );
+      })}
+    </TableRow>
+  );
+}
 
 export default function AdminProjectsPage() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<ProjectStatus | "ALL">("ALL");
+  const [localProjects, setLocalProjects] = useState<any[]>([]);
 
   const queryParams = useMemo(() => ({
     search: search || undefined,
@@ -28,10 +84,14 @@ export default function AdminProjectsPage() {
   }), [search, statusFilter]);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useProjects(queryParams);
-
   const deleteMutation = useDeleteProject();
+  const updateSortOrderMutation = useUpdateProjectSortOrder();
 
   const projects = useMemo(() => data?.pages.flatMap(p => p.data) || [], [data]);
+
+  useEffect(() => {
+    setLocalProjects(projects);
+  }, [projects]);
 
   const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this project? This will also delete media from Cloudinary.")) {
@@ -39,7 +99,39 @@ export default function AdminProjectsPage() {
     }
   };
 
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+
+    const oldIndex = localProjects.findIndex((p) => p.id === active.id);
+    const newIndex = localProjects.findIndex((p) => p.id === over.id);
+
+    if (oldIndex !== -1 && newIndex !== -1) {
+      const newItems = arrayMove(localProjects, oldIndex, newIndex);
+      
+      const updates = newItems.map((item, index) => ({
+        id: item.id,
+        sortOrder: newItems.length - index,
+      }));
+
+      setLocalProjects(newItems);
+      updateSortOrderMutation.mutate(updates);
+    }
+  };
+
   const columns = useMemo(() => [
+    {
+      id: "drag-handle",
+      header: "",
+      cell: () => null, // Handled in SortableRow
+    },
     {
       accessorKey: "featuredMediaUrl",
       header: "Media",
@@ -115,7 +207,7 @@ export default function AdminProjectsPage() {
   ], []);
 
   const table = useReactTable({
-    data: projects,
+    data: localProjects,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
@@ -150,49 +242,54 @@ export default function AdminProjectsPage() {
       </div>
 
       <div className="rounded-md border bg-white">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                ))}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {isLoading ? (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  Loading...
-                </TableCell>
-              </TableRow>
-            ) : table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+        >
+          <Table>
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
                   ))}
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {isLoading ? (
+                <TableRow>
+                  <TableCell colSpan={columns.length} className="h-24 text-center">
+                    Loading...
+                  </TableCell>
+                </TableRow>
+              ) : table.getRowModel().rows?.length ? (
+                <SortableContext
+                  items={localProjects.map(p => p.id)}
+                  strategy={verticalListSortingStrategy}
+                >
+                  {table.getRowModel().rows.map((row) => (
+                    <SortableRow key={row.id} row={row} flexRender={flexRender} />
+                  ))}
+                </SortableContext>
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={columns.length} className="h-24 text-center">
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </DndContext>
       </div>
       
       {hasNextPage && (

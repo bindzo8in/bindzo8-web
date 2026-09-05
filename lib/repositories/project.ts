@@ -160,3 +160,14 @@ export async function getAllTags() {
   }
   return Array.from(allTags).sort();
 }
+
+export async function updateProjectSortOrders(updates: { id: string, sortOrder: number }[]) {
+  return prisma.$transaction(
+    updates.map((update) =>
+      prisma.project.update({
+        where: { id: update.id },
+        data: { sortOrder: update.sortOrder },
+      })
+    )
+  );
+}

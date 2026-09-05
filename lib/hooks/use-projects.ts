@@ -6,7 +6,8 @@ import {
   deleteProjectAction,
   getProjectsAction,
   getProjectAction,
-  getProjectBySlugAction
+  getProjectBySlugAction,
+  updateProjectSortOrdersAction
 } from "../../app/actions/project";
 import { toast } from "sonner";
 import { CreateProjectInput, UpdateProjectInput } from "../validations/project";
@@ -85,6 +86,24 @@ export function useDeleteProject() {
         queryClient.invalidateQueries({ queryKey: ["projects"] });
       } else {
         toast.error(res.error || "Failed to delete project");
+      }
+    },
+    onError: (error) => {
+      toast.error(error.message || "An error occurred");
+    }
+  });
+}
+
+export function useUpdateProjectSortOrder() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (updates: { id: string, sortOrder: number }[]) => updateProjectSortOrdersAction(updates),
+    onSuccess: (res) => {
+      if (res.success) {
+        toast.success("Sort order updated successfully");
+        queryClient.invalidateQueries({ queryKey: ["projects"] });
+      } else {
+        toast.error(res.error || "Failed to update sort order");
       }
     },
     onError: (error) => {

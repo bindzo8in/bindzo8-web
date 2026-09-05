@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createProject, updateProject, deleteProject, getProject } from "@/lib/repositories/project";
+import { createProject, updateProject, deleteProject, getProject, updateProjectSortOrders } from "@/lib/repositories/project";
 import { createProjectSchema, updateProjectSchema } from "@/lib/validations/project";
 import { deleteFromCloudinary } from "@/lib/cloudinary";
 
@@ -127,4 +127,22 @@ export async function getProjectAction(id: string) {
 
 export async function getProjectBySlugAction(slug: string) {
   return import("@/lib/repositories/project").then(m => m.getProjectBySlug(slug));
+}
+
+export async function updateProjectSortOrdersAction(updates: { id: string, sortOrder: number }[]) {
+  try {
+    // Assuming validation is handled or we trust the caller for simplicity, 
+    // or we can use a basic check.
+    if (!Array.isArray(updates)) throw new Error("Invalid input");
+    
+    await updateProjectSortOrders(updates);
+
+    revalidatePath("/portfolio");
+    revalidatePath("/dashboard/projects");
+
+    return { success: true };
+  } catch (error: any) {
+    console.error("Update Project Sort Orders Error:", error);
+    return { success: false, error: error.message || "Failed to update sort orders" };
+  }
 }
