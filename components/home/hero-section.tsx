@@ -67,6 +67,17 @@ export default function HomeHeroSection() {
         "-=0.35",
       );
 
+      // Fade out underlying white text smoothly to prevent edge bleeding
+      tl.to(
+        ".hero-letter-hide",
+        {
+          autoAlpha: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
+
       // 3. Description
       tl.to(
         descriptionWords,
@@ -211,7 +222,9 @@ export default function HomeHeroSection() {
                   {word.split("").map((letter, letterIndex) => (
                     <span
                       key={`${word}-${letterIndex}`}
-                      className="hero-letter inline-block text-white"
+                      className={`hero-letter inline-block text-white ${
+                        wordIndex > 0 ? "hero-letter-hide" : ""
+                      }`}
                     >
                       {letter}
                     </span>
