@@ -63,7 +63,8 @@ export default async function BlogPage(props: BlogPageProps) {
   })
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-24 max-w-7xl">
+    <div className="dark bg-[#0b0b0c] text-white min-h-screen pt-20 md:pt-24">
+      <div className="container mx-auto px-4 py-12 md:py-16 max-w-7xl">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Our Blog</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -106,6 +107,7 @@ export default async function BlogPage(props: BlogPageProps) {
             ))}
           </div>
         )}
+      </div>
       </div>
     </div>
   )

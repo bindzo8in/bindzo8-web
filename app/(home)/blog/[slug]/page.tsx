@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { format } from "date-fns"
 import { Badge } from "@/components/ui/badge"
+import { SocialShare } from "@/features/blog/components/social-share"
 import { Metadata } from "next"
 
 interface BlogPostPageProps {
@@ -56,7 +57,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
   }
 
   return (
-    <article className="min-h-screen bg-background">
+    <article className="dark bg-[#0b0b0c] text-white min-h-screen pt-20 md:pt-24">
       {/* Header / Hero Section */}
       <header className="relative w-full py-20 md:py-32 overflow-hidden flex items-center justify-center">
         {post.featuredImage && (
@@ -130,19 +131,25 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        {/* Footer Tags */}
-        {post.tags.length > 0 && (
-          <div className="mt-16 pt-8 border-t flex items-center gap-4 flex-wrap">
-            <span className="font-medium">Tags:</span>
-            {post.tags.map(tag => (
-              <Link key={tag.id} href={`/blog?tag=${tag.slug}`}>
-                <Badge variant="outline" className="hover:bg-accent cursor-pointer">
-                  {tag.name}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
+        {/* Footer Actions (Tags & Share) */}
+        <div className="mt-16 pt-8 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-8">
+          {post.tags.length > 0 ? (
+            <div className="flex items-center gap-4 flex-wrap">
+              <span className="font-medium">Tags:</span>
+              {post.tags.map(tag => (
+                <Link key={tag.id} href={`/blog?tag=${tag.slug}`}>
+                  <Badge variant="outline" className="hover:bg-accent cursor-pointer">
+                    {tag.name}
+                  </Badge>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div />
+          )}
+
+          <SocialShare title={post.title} />
+        </div>
       </main>
     </article>
   )

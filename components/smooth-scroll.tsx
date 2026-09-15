@@ -47,7 +47,8 @@ export default function SmoothScroll({
 
     // When ScrollTrigger refreshes (e.g. after a pin spacer is added),
     // tell Lenis to recalculate scrollable distance.
-    ScrollTrigger.addEventListener("refresh", () => lenis.resize());
+    const onRefresh = () => lenis.resize();
+    ScrollTrigger.addEventListener("refresh", onRefresh);
 
     const update = (time: number) => {
       lenis.raf(time * 1000);
@@ -59,8 +60,18 @@ export default function SmoothScroll({
     // Initial refresh so pin spacers are accounted for on mount.
     ScrollTrigger.refresh();
 
+    // Create a ResizeObserver to refresh ScrollTrigger and Lenis when the body size changes (e.g., when images load).
+    // This fixes the issue where the page gets stuck and cannot be scrolled to the bottom.
+    const resizeObserver = new ResizeObserver(() => {
+      ScrollTrigger.refresh();
+      lenis.resize();
+    });
+    
+    resizeObserver.observe(document.body);
+
     return () => {
-      ScrollTrigger.removeEventListener("refresh", () => lenis.resize());
+      resizeObserver.disconnect();
+      ScrollTrigger.removeEventListener("refresh", onRefresh);
       gsap.ticker.remove(update);
       lenis.destroy();
     };

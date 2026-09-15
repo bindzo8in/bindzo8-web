@@ -5,6 +5,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { usePathname } from "next/navigation";
 
 import Logo from "@/public/img/logo.webp";
 import LogoSymbol from "@/public/img/logo-symbol.png";
@@ -39,6 +40,7 @@ const headline = [
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const ctaButtonRef = useRef<HTMLAnchorElement>(null);
+  const pathname = usePathname();
 
   useGSAP(
     () => {
@@ -147,8 +149,8 @@ export default function Footer() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: footer,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
+            start: "top bottom",
+            toggleActions: "play none none none",
           },
         });
 
@@ -382,8 +384,8 @@ export default function Footer() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: footer,
-            start: "top 88%",
-            toggleActions: "play none none reverse",
+            start: "top bottom",
+            toggleActions: "play none none none",
           },
         });
 
@@ -485,6 +487,7 @@ export default function Footer() {
     },
     {
       scope: footerRef,
+      dependencies: [pathname],
     },
   );
 
