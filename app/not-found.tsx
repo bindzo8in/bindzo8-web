@@ -9,6 +9,8 @@ export default function NotFound() {
           src="/nav_logo.png"
           alt="Bindzo 8"
           fill
+          sizes="160px"
+          priority
           className="object-contain opacity-20 grayscale"
         />
       </div>

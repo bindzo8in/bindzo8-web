@@ -13,11 +13,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
+  id        String     @id @default(cuid())
+  email     String     @unique
   password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  blogPosts BlogPost[]
 }
 
 model TeamMember {
@@ -150,4 +151,61 @@ model Client {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
   deletedAt    DateTime?
+}
+
+model BlogCategory {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  description String?    @db.Text
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  posts       BlogPost[]
+}
+
+model BlogTag {
+  id        String     @id @default(cuid())
+  name      String
+  slug      String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  posts     BlogPost[]
+}
+
+enum BlogPostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+model BlogPost {
+  id                    String         @id @default(cuid())
+  title                 String
+  slug                  String         @unique
+  excerpt               String         @db.Text
+  content               String         @db.Text
+  featuredImage         String?
+  featuredImagePublicId String?
+  featuredImageAlt      String?
+  status                BlogPostStatus @default(DRAFT)
+  readingTime           Int?
+  isFeatured            Boolean        @default(false)
+  metaTitle             String?
+  metaDescription       String?        @db.Text
+  publishedAt           DateTime?
+  
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+
+  authorId              String
+  author                User           @relation(fields: [authorId], references: [id])
+  
+  categoryId            String
+  category              BlogCategory   @relation(fields: [categoryId], references: [id])
+  
+  tags                  BlogTag[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([categoryId])
+  @@index([authorId])
 }

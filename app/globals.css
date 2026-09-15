@@ -1,6 +1,29 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+
+/* Tiptap styles */
+.ProseMirror {
+  outline: none;
+}
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.ProseMirror mark {
+  background-color: #fef08a; /* bg-yellow-200 */
+  color: inherit;
+  border-radius: 0.125rem;
+  padding: 0.125rem 0.25rem;
+}
+.dark .ProseMirror mark {
+  background-color: #854d0e; /* bg-yellow-800 */
+  color: #fef08a; /* text-yellow-200 */
+}
 
 @custom-variant dark (&:is(.dark *));
 

@@ -8,6 +8,9 @@ import {
   Briefcase, 
   MessageSquare, 
   Building2,
+  FileText,
+  Tags,
+  FolderTree,
   LogOut
 } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -19,6 +22,9 @@ const menuItems = [
   { label: "Projects", href: "/dashboard/projects", icon: Briefcase },
   { label: "Testimonials", href: "/dashboard/testimonials", icon: MessageSquare },
   { label: "Clients", href: "/dashboard/clients", icon: Building2 },
+  { label: "Blog Posts", href: "/dashboard/blog/posts", icon: FileText },
+  { label: "Blog Categories", href: "/dashboard/blog/categories", icon: FolderTree },
+  { label: "Blog Tags", href: "/dashboard/blog/tags", icon: Tags },
 ]
 
 export default function DashboardSidebar() {

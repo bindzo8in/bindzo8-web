@@ -11,6 +11,7 @@ export default function Loading() {
             src="/nav_logo.png"
             alt="Bindzo 8 Logo"
             fill
+            sizes="192px"
             className="object-contain"
             priority
           />

@@ -21,6 +21,8 @@ export default function Error({
           src="/nav_logo.png"
           alt="Bindzo 8"
           fill
+          sizes="128px"
+          priority
           className="object-contain"
         />
       </div>
