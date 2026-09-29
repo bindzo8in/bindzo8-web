@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { getServices } from "@/lib/repositories/project";
 import FeaturedPortfolioList from "./FeaturedPortfolioList";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Portfolio & Case Studies",
   description: "Explore our portfolio of website development, ecommerce, mobile apps, branding, and digital marketing case studies.",

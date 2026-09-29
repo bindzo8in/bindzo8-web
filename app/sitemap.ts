@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { getProjects } from '@/lib/repositories/project';
 import { prisma } from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bindzo8.com';
 

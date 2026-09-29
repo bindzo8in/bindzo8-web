@@ -12,6 +12,8 @@ import { Metadata } from "next";
 import FeaturedWork from "@/components/featured-work/FeaturedWork";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Bindzo 8 | Digital Marketing & Tech Agency",
   description:

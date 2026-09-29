@@ -51,6 +51,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build Next.js
 RUN --mount=type=secret,id=DATABASE_URL,env=DATABASE_URL \
+    --mount=type=secret,id=PRISMA_DATABASE_URL,env=PRISMA_DATABASE_URL \
     --mount=type=secret,id=AUTH_TRUST_HOST,env=AUTH_TRUST_HOST \
     --mount=type=secret,id=AUTH_SECRET,env=AUTH_SECRET \
     --mount=type=secret,id=AUTH_URL,env=AUTH_URL \
