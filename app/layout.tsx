@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kumbh_Sans, Raleway, Antonio, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { AuthProvider } from "@/components/session-provider";
 // import FixedQuoteButton from "@/components/contact-button";
 import InactivityRedirect from "@/components/InactivityRedirect";
@@ -108,11 +106,8 @@ export const metadata: Metadata = {
 };
 
 import { Toaster } from "@/components/ui/sonner";
-import { Button } from "@/components/ui/button";
 import QuoteModal from "@/components/contact-model";
 import { Providers } from "@/components/providers";
-import { FormDialog } from "@/components/form-dialogue";
-import { cn } from "@/lib/utils";
 
 export default function RootLayout({
   children,
@@ -124,7 +119,6 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${kumbhSans.variable} ${raleway.variable} ${antonio.variable} ${inter.variable} h-full antialiased `}
       suppressHydrationWarning
-
     >
       <head>
         <JsonLd data={getOrganizationSchema()} />
